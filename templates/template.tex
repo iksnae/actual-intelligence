@@ -15,6 +15,9 @@
 \usepackage{caption}
 \usepackage{etoolbox}
 \usepackage{wallpaper}
+\usepackage{ragged2e}
+\usepackage{microtype}
+\usepackage{hyphenat}
 
 % Fix for footnotes in tables
 \usepackage{footnote}
@@ -33,6 +36,18 @@
 
 % Set page geometry
 \geometry{margin=1in}
+
+% Set default alignment to ragged right (left-aligned)
+\raggedright
+\RaggedRight
+
+% Enable hyphenation for cleaner edges in columns
+\hyphenpenalty=50
+\tolerance=1000
+
+% Configure multicol for newspaper-style layouts with proper hyphenation
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
 
 % IMPORTANT: Always start sections on a new page
 \let\oldsection\section
