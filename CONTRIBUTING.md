@@ -1,59 +1,88 @@
 # Contributing to "Actual Intelligence"
 
-Thank you for your interest in contributing to "Actual Intelligence"! This guide will help you understand how to contribute effectively to this project.
+Thank you for your interest in contributing to "Actual Intelligence"! This guide will help you understand how to contribute to this book project.
+
+## Project Overview
+
+"Actual Intelligence" is a practical guide designed to help non-technical people use AI tools like ChatGPT in their everyday lives. The book aims to be accessible, practical, and immediately useful to readers of all ages and backgrounds.
 
 ## How to Contribute
 
 ### Content Contributions
 
-1. **Chapter Content**: If you'd like to contribute to existing chapters, please review the chapter structure in the `book/en` directory.
-
-2. **New Sections**: To propose new sections, create a new markdown file in the appropriate chapter's `sections` directory following the naming convention (e.g., `04-new-section-name.md`).
-
-3. **Activities**: Hands-on examples should be added to the relevant chapter's `activities` directory.
-
-4. **Images**: Place images in the appropriate `images` directory and reference them in your markdown.
-
-### Translation Contributions
-
-Translations are very welcome! To contribute a translation:
-
-1. Create a new directory under `book` with the appropriate language code (e.g., `book/es` for Spanish).
-2. Follow the same structure as the English content.
-3. Update the translation status in `translation-status.js`.
+1. **Chapter Content**: Each chapter is organized into markdown files in the `book/[language]/chapter-XX/` directories.
+2. **Activities and Examples**: We need practical, real-world examples and activities for readers to try.
+3. **Case Studies**: Real-world stories of how AI tools have been used effectively by non-technical people.
+4. **Illustrations and Diagrams**: Concepts that could benefit from visual explanation.
 
 ### Technical Contributions
 
-1. **Build Process**: Improvements to the build process are welcome.
-2. **GitHub Actions**: Enhancements to our CI/CD pipeline.
-3. **UI/UX**: Suggestions for improving the presentation of the book in different formats.
+1. **Build Process Improvements**: Enhancements to the book building process.
+2. **Translations**: Help translate the book into other languages.
+3. **Website and Distribution**: Improvements to how the book is distributed and accessed.
 
-## Submission Guidelines
+## Getting Started
 
-1. **Fork the Repository**: Create your own fork of the repository.
-2. **Create a Branch**: Make your changes in a new branch.
-3. **Submit a Pull Request**: Once your changes are ready, submit a pull request with a clear description of the changes.
+1. **Fork the Repository**: Start by forking the repository to your own GitHub account.
+2. **Clone the Repository**: Clone the forked repository to your local machine.
+3. **Create a Branch**: Create a branch for your contribution.
+4. **Make Changes**: Make your desired changes or additions.
+5. **Test Locally**: If possible, build the book locally to verify your changes.
+6. **Submit a Pull Request**: Push your changes and submit a pull request.
+
+## Directory Structure
+
+```
+actual-intelligence/
+├── book/
+│   ├── en/              # English content
+│   │   ├── chapter-01/  # Chapter 1 content
+│   │   ├── chapter-02/  # Chapter 2 content
+│   │   └── ...
+│   └── images/          # Common images
+├── tools/               # Build tools
+└── README.md            # Project README
+```
 
 ## Content Guidelines
 
-1. **Accuracy**: Ensure information about AI tools is accurate and up-to-date.
-2. **Accessibility**: Write in clear, simple language that non-technical readers can understand.
-3. **Practical Focus**: Include practical examples and real-world applications.
-4. **Inclusive Language**: Use inclusive language that welcomes readers of all backgrounds.
-5. **Screenshots**: Include clear, annotated screenshots for visual guidance.
+1. **Accessibility**: Content should be accessible to readers with no technical background.
+2. **Practicality**: Focus on practical applications and real-world usage.
+3. **Examples**: Include concrete examples that readers can try immediately.
+4. **Progressive Learning**: Build concepts progressively, don't introduce advanced topics too early.
+5. **Language**: Use clear, simple language and avoid technical jargon when possible.
 
-## Code Style
+## Markdown Formatting
 
-- Use consistent markdown formatting.
-- Follow the existing structure for new content.
-- Include appropriate headings and subheadings.
+Content files use Markdown with the following conventions:
 
-## Review Process
+1. **Chapter Titles**: Use `# Chapter X: Title`
+2. **Section Headings**: Use `## Section Title`
+3. **Subsections**: Use `### Subsection Title`
+4. **Code Blocks**: Use triple backticks for code samples
+5. **Activity Blocks**: Use the following format for activities:
 
-All contributions will be reviewed by the project maintainers. We may suggest changes or improvements before merging.
+```markdown
+## Try This Now
+
+1. Step one...
+2. Step two...
+3. Step three...
+```
+
+## Pull Request Process
+
+1. **Description**: Provide a clear description of your changes.
+2. **Issue Link**: Reference any relevant issues.
+3. **Documentation**: Update documentation if needed.
+4. **Review**: Be open to feedback and make requested changes.
+
+## Code of Conduct
+
+Please note that this project adheres to a Code of Conduct. By participating, you are expected to uphold this code.
 
 ## Questions?
 
-If you have any questions about contributing, please open an issue in the repository.
+If you have any questions or need help, please open an issue in the repository.
 
-Thank you for helping make "Actual Intelligence" a valuable resource for everyone!
+Thank you for contributing to make AI more accessible to everyone!
