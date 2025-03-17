@@ -74,8 +74,8 @@ async function buildLanguage(language) {
   // Sort files to ensure correct order
   markdownFiles.sort((a, b) => {
     // First by chapter
-    const chapterA = a.match(/chapter-(\\d+)/);
-    const chapterB = b.match(/chapter-(\\d+)/);
+    const chapterA = a.match(/chapter-(\d+)/);
+    const chapterB = b.match(/chapter-(\d+)/);
     
     if (chapterA && chapterB) {
       const chapterNumA = parseInt(chapterA[1]);
@@ -87,8 +87,8 @@ async function buildLanguage(language) {
     }
     
     // Then by section/activity number if within same chapter
-    const sectionA = a.match(/\\/(\\d+)-/);
-    const sectionB = b.match(/\\/(\\d+)-/);
+    const sectionA = a.match(/\/(\d+)-/);
+    const sectionB = b.match(/\/(\d+)-/);
     
     if (sectionA && sectionB) {
       return parseInt(sectionA[1]) - parseInt(sectionB[1]);
@@ -116,7 +116,7 @@ async function buildLanguage(language) {
   // Concatenate all markdown files
   for (const file of markdownFiles) {
     const content = fs.readFileSync(file, 'utf-8');
-    fs.appendFileSync(outputMdFile, content + '\\n\\n');
+    fs.appendFileSync(outputMdFile, content + '\n\n');
   }
   
   console.log(`Created concatenated markdown file: ${outputMdFile}`);
@@ -188,7 +188,7 @@ async function main() {
     // Create placeholder file in case PDF generation fails
     fs.writeFileSync(
       path.join(config.outputDir, 'placeholder.md'),
-      `# ${config.bookName} - Placeholder\\n\\nThis is a placeholder file for when PDF generation fails.`
+      `# ${config.bookName} - Placeholder\n\nThis is a placeholder file for when PDF generation fails.`
     );
     
     // Build each language
