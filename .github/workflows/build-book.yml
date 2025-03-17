@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - '**'  # This will match all branches
     paths:
       - 'book/**/*.md'
       - 'tools/build.js'
@@ -18,8 +19,107 @@ permissions:
   contents: write  # Required for creating releases and tags
 
 jobs:
+  # Build-only job that runs on all branches
+  build-only:
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'  # Skip on main branch as it will run the full build job
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install Node.js dependencies
+        run: npm install
+          
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra librsvg2-bin
+          
+      - name: Create build directory
+        run: mkdir -p build
+      
+      - name: Ensure templates directory exists
+        run: mkdir -p templates
+      
+      - name: Check for cover image
+        id: cover_image
+        run: |
+          if [ -f "art/cover.png" ]; then
+            echo "COVER_IMAGE=art/cover.png" >> $GITHUB_ENV
+            echo "✅ Found cover image at art/cover.png"
+            echo "cover_found=true" >> $GITHUB_OUTPUT
+          elif [ -f "book/images/cover.png" ]; then
+            echo "COVER_IMAGE=book/images/cover.png" >> $GITHUB_ENV
+            echo "✅ Found cover image at book/images/cover.png"
+            echo "cover_found=true" >> $GITHUB_OUTPUT
+          elif [ -f "book/en/images/cover.png" ]; then
+            echo "COVER_IMAGE=book/en/images/cover.png" >> $GITHUB_ENV
+            echo "✅ Found cover image at book/en/images/cover.png"
+            echo "cover_found=true" >> $GITHUB_OUTPUT
+          else
+            echo "⚠️ No cover image found"
+            echo "cover_found=false" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Run build script
+        run: |
+          echo "Running build script for branch testing..."
+          chmod +x build.sh
+          ./build.sh
+        
+      - name: Check build outputs
+        run: |
+          echo "Checking build outputs..."
+          
+          # Check PDF
+          if [ -f "build/actual-intelligence.pdf" ] && [ -s "build/actual-intelligence.pdf" ]; then
+            echo "✅ PDF file exists and has content"
+            du -h build/actual-intelligence.pdf
+          else
+            echo "❌ PDF file is missing or empty!"
+          fi
+          
+          # Check EPUB
+          if [ -f "build/actual-intelligence.epub" ] && [ -s "build/actual-intelligence.epub" ]; then
+            echo "✅ EPUB file exists and has content"
+            du -h build/actual-intelligence.epub
+          else
+            echo "❌ EPUB file is missing or empty!"
+          fi
+          
+          # Check HTML/index
+          if [ -f "build/index.html" ] && [ -s "build/index.html" ]; then
+            echo "✅ HTML index file exists and has content"
+            du -h build/index.html
+          else
+            echo "❌ HTML index file is missing or empty!"
+          fi
+
+      - name: List generated files
+        run: |
+          echo "Generated files:"
+          ls -la build/
+          echo ""
+          echo "File sizes to ensure they're not empty:"
+          du -h build/* 2>/dev/null || echo "Some files not found"
+
+      - name: Upload artifacts for debugging if needed
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-outputs-${{ github.ref_name }}
+          path: build/
+          retention-days: 3
+
+  # Original build job that creates releases (runs only on main branch)
   build:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'  # Only run on main branch
     
     steps:
       - name: Checkout code
