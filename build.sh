@@ -193,12 +193,14 @@ if [ -n "$COVER_IMAGE" ]; then
     --epub-cover-image="$COVER_IMAGE" \
     --toc \
     --toc-depth=2 \
+    --metadata publisher="Khaos Studios" \
     --resource-path="$RESOURCE_PATHS" \
     --extract-media=build/epub-media || true
 else
   pandoc build/actual-intelligence.md -o build/actual-intelligence.epub \
     --toc \
     --toc-depth=2 \
+    --metadata publisher="Khaos Studios" \
     --resource-path="$RESOURCE_PATHS" \
     --extract-media=build/epub-media || true
 fi
@@ -212,10 +214,29 @@ if [ ! -s "build/actual-intelligence.epub" ]; then
   pandoc build/actual-intelligence-safe.md -o build/actual-intelligence.epub \
     --toc \
     --toc-depth=2 \
+    --metadata publisher="Khaos Studios" \
     --resource-path="$RESOURCE_PATHS" || true
 fi
 
 echo "EPUB file generated: build/actual-intelligence.epub"
+
+# Step 4.5: Generate MOBI file from EPUB using Calibre
+echo "Generating MOBI file..."
+if [ -s "build/actual-intelligence.epub" ]; then
+  # Use Calibre's ebook-convert to convert EPUB to MOBI
+  ebook-convert build/actual-intelligence.epub build/actual-intelligence.mobi \
+    --authors="Open Source Community" \
+    --publisher="Khaos Studios" \
+    --language="en" || true
+    
+  if [ -s "build/actual-intelligence.mobi" ]; then
+    echo "MOBI file generated: build/actual-intelligence.mobi"
+  else
+    echo "WARNING: MOBI generation failed."
+  fi
+else
+  echo "WARNING: Cannot generate MOBI file because EPUB generation failed."
+fi
 
 # Step 5: Generate HTML file from Markdown files with images
 echo "Generating HTML file..."
