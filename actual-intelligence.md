@@ -3,7 +3,7 @@
 
 Have you ever watched someone use a new technology and make it look effortless, only to feel lost when you try it yourself? Or perhaps you've heard about ChatGPT and other AI tools in the news but haven't tried them yet, unsure if they're too complicated or technical for you?
 
-![A person looking hesitantly at a computer screen showing an AI interface](./images/human-ai-partnership.svg)
+![A person looking hesitantly at a computer screen showing an AI interface](./images/human-ai-partnership.jpg)
 
 You're not alone. Many people find these technologies intimidating or aren't sure where to start. The good news is that you don't need to be a tech expert to use these tools effectively. In fact, the most important skills you'll need are ones you already have—curiosity, judgment, and your own unique perspective on what matters.
 
@@ -29,6 +29,7 @@ Let's begin our journey toward becoming confident, effective directors of these 
 ---
 
 <div style="page-break-after: always;"></div>
+
 
 # What is "Actual Intelligence"? (The Human-AI Partnership)
 
