@@ -1,3 +1,5 @@
+![cover](./art/image.png)
+
 # Actual Intelligence
 
 A practical, non-technical guide to using AI tools like ChatGPT in everyday life.
