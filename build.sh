@@ -10,6 +10,32 @@ DATE=$(date +'%B %d, %Y')
 # Create build directory if it doesn't exist
 mkdir -p build
 
+# Ensure cover image is properly handled
+echo "Checking for cover image..."
+COVER_IMAGE=""
+
+# Try to find cover image in standard locations
+if [ -f "art/cover.png" ]; then
+  echo "✅ Found cover image at art/cover.png"
+  COVER_IMAGE="art/cover.png"
+  
+  # Ensure book/images directories exist
+  mkdir -p book/images
+  mkdir -p book/en/images
+  
+  # Copy cover to book directories for consistency
+  cp "$COVER_IMAGE" book/images/cover.png
+  cp "$COVER_IMAGE" book/en/images/cover.png
+elif [ -f "book/images/cover.png" ]; then
+  echo "✅ Found cover image at book/images/cover.png"
+  COVER_IMAGE="book/images/cover.png"
+elif [ -f "book/en/images/cover.png" ]; then
+  echo "✅ Found cover image at book/en/images/cover.png"
+  COVER_IMAGE="book/en/images/cover.png"
+else
+  echo "⚠️ No cover image found. Building book without cover."
+fi
+
 # Update LaTeX template with version and date
 if [ -f "templates/template.tex" ]; then
   echo "Updating LaTeX template with version and date info..."
@@ -46,6 +72,12 @@ else
   echo "date: '$DATE'" >> build/actual-intelligence.md
   echo "author: 'Open Source Community'" >> build/actual-intelligence.md
   echo "toc: true" >> build/actual-intelligence.md
+  
+  # Add cover image metadata if found
+  if [ -n "$COVER_IMAGE" ]; then
+    echo "cover-image: '$COVER_IMAGE'" >> build/actual-intelligence.md
+  fi
+  
   echo "---" >> build/actual-intelligence.md
   echo "" >> build/actual-intelligence.md
   
@@ -91,9 +123,14 @@ else
   pandoc build/placeholder.md -o build/actual-intelligence.pdf --pdf-engine=xelatex
 fi
 
-# Step 5: Generate EPUB
+# Step 5: Generate EPUB with cover image
 echo "Generating EPUB file..."
-pandoc build/actual-intelligence.md -o build/actual-intelligence.epub --toc
+if [ -n "$COVER_IMAGE" ]; then
+  echo "Including cover image in EPUB: $COVER_IMAGE"
+  pandoc build/actual-intelligence.md -o build/actual-intelligence.epub --epub-cover-image="$COVER_IMAGE" --toc
+else
+  pandoc build/actual-intelligence.md -o build/actual-intelligence.epub --toc
+fi
 echo "EPUB file generated: build/actual-intelligence.epub"
 
 # Step 6: Generate HTML file from Markdown files
