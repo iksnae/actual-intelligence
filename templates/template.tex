@@ -15,6 +15,7 @@
 \usepackage{textcomp}
 \usepackage{caption}
 \usepackage{etoolbox}
+\usepackage{wallpaper}
 
 % Fix for footnotes in tables
 \usepackage{footnote}
@@ -84,10 +85,41 @@
 \author{Open Source Community}
 \date{\builddate}
 
+% Custom commands for cover image handling
+$if(cover-image)$
+\newcommand{\coverimage}{$cover-image$}
+\newcommand{\makecovertitle}{
+  \begin{titlepage}
+    \centering
+    \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{\coverimage}
+    % The title page is the cover image
+  \end{titlepage}
+  \newpage
+  \thispagestyle{empty}
+  \begin{center}
+    \vspace*{2cm}
+    {\Huge \textbf{Actual Intelligence}}\par
+    \vspace{1cm}
+    {\Large A Practical Guide to Using AI in Everyday Life}\par
+    \vspace{2cm}
+    {\large Open Source Community}\par
+    \vspace{1cm}
+    {\large \builddate}\par
+    \vspace{1cm}
+    {\large Version \bookversion}\par
+  \end{center}
+  \newpage
+}
+$else$
+\newcommand{\makecovertitle}{
+  \maketitle
+}
+$endif$
+
 \begin{document}
 
 $if(title)$
-\maketitle
+\makecovertitle
 $endif$
 
 $if(toc)$
