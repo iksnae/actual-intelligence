@@ -137,12 +137,14 @@ if [ -n "$TEMP_TEMPLATE" ]; then
   # First attempt: Use our custom template with resource path for images
   pandoc build/actual-intelligence.md -o build/actual-intelligence.pdf \
     --template="$TEMP_TEMPLATE" \
+    --metadata title="Actual Intelligence" \
     --pdf-engine=xelatex \
     --toc \
     --resource-path="$RESOURCE_PATHS"
 else
   # First attempt: Fallback to default pandoc styling with resource path for images
   pandoc build/actual-intelligence.md -o build/actual-intelligence.pdf \
+    --metadata title="Actual Intelligence" \
     --pdf-engine=xelatex \
     --toc \
     --resource-path="$RESOURCE_PATHS"
@@ -157,6 +159,7 @@ if [ $? -ne 0 ] || [ ! -s "build/actual-intelligence.pdf" ]; then
   
   # Second attempt: Try with modified settings and more lenient image paths
   pandoc build/actual-intelligence-safe.md -o build/actual-intelligence.pdf \
+    --metadata title="Actual Intelligence" \
     --pdf-engine=xelatex \
     --toc \
     --variable=graphics=true \
@@ -171,6 +174,7 @@ if [ $? -ne 0 ] || [ ! -s "build/actual-intelligence.pdf" ]; then
     
     # Final attempt: minimal PDF with no images
     pandoc build/actual-intelligence-safe.md -o build/actual-intelligence.pdf \
+      --metadata title="Actual Intelligence" \
       --pdf-engine=xelatex \
       --toc \
       --resource-path="$RESOURCE_PATHS" || true
@@ -193,14 +197,18 @@ if [ -n "$COVER_IMAGE" ]; then
     --epub-cover-image="$COVER_IMAGE" \
     --toc \
     --toc-depth=2 \
+    --metadata title="Actual Intelligence" \
     --metadata publisher="Khaos Studios" \
+    --metadata creator="Open Source Community" \
     --resource-path="$RESOURCE_PATHS" \
     --extract-media=build/epub-media || true
 else
   pandoc build/actual-intelligence.md -o build/actual-intelligence.epub \
     --toc \
     --toc-depth=2 \
+    --metadata title="Actual Intelligence" \
     --metadata publisher="Khaos Studios" \
+    --metadata creator="Open Source Community" \
     --resource-path="$RESOURCE_PATHS" \
     --extract-media=build/epub-media || true
 fi
@@ -214,7 +222,9 @@ if [ ! -s "build/actual-intelligence.epub" ]; then
   pandoc build/actual-intelligence-safe.md -o build/actual-intelligence.epub \
     --toc \
     --toc-depth=2 \
+    --metadata title="Actual Intelligence" \
     --metadata publisher="Khaos Studios" \
+    --metadata creator="Open Source Community" \
     --resource-path="$RESOURCE_PATHS" || true
 fi
 
@@ -225,6 +235,7 @@ echo "Generating MOBI file..."
 if [ -s "build/actual-intelligence.epub" ]; then
   # Use Calibre's ebook-convert to convert EPUB to MOBI
   ebook-convert build/actual-intelligence.epub build/actual-intelligence.mobi \
+    --title="Actual Intelligence" \
     --authors="Open Source Community" \
     --publisher="Khaos Studios" \
     --language="en" || true
