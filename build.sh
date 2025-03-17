@@ -52,12 +52,28 @@ fi
 echo "Installing Node.js dependencies..."
 npm install
 
-# Create a directory for images in the build folder
+# Create directories for images in the build folder
+echo "Creating image directories in build folder..."
 mkdir -p build/images
 
-# Copy all image directories to the build folder
+# Copy all image directories to the build folder to ensure proper path resolution
 echo "Copying image directories..."
-find book -type d -name "images" -exec cp -r {} build/ \;
+find book -path "*/images" -type d | while read -r imgdir; do
+  echo "Found image directory: $imgdir"
+  cp -r "$imgdir" build/
+  echo "Copied $imgdir to build/"
+done
+
+# Also explicitly copy images to standard locations for better compatibility
+if [ -d "book/en/images" ]; then
+  echo "Copying book/en/images to build/images..."
+  cp -r book/en/images/* build/images/ 2>/dev/null || true
+fi
+
+if [ -d "book/images" ]; then
+  echo "Copying book/images to build/images..."
+  cp -r book/images/* build/images/ 2>/dev/null || true
+fi
 
 # Step 2: Build book using custom Node.js script if it exists
 if [ -f "tools/build.js" ]; then
@@ -106,6 +122,9 @@ else
   done
 fi
 
+# Define common resource paths to help pandoc find images
+RESOURCE_PATHS=".:book:book/en:build:book/en/images:book/images:build/images"
+
 # Step 3: Generate PDF with our template
 echo "Generating PDF..."
 if [ -n "$TEMP_TEMPLATE" ]; then
@@ -114,13 +133,13 @@ if [ -n "$TEMP_TEMPLATE" ]; then
     --template="$TEMP_TEMPLATE" \
     --pdf-engine=xelatex \
     --toc \
-    --resource-path=.:book:book/en
+    --resource-path="$RESOURCE_PATHS"
 else
   # Fallback to default pandoc styling with resource path for images
   pandoc build/actual-intelligence.md -o build/actual-intelligence.pdf \
     --pdf-engine=xelatex \
     --toc \
-    --resource-path=.:book:book/en
+    --resource-path="$RESOURCE_PATHS"
 fi
 
 # Step 4: Check if PDF file exists and has content
@@ -139,12 +158,12 @@ if [ -n "$COVER_IMAGE" ]; then
   pandoc build/actual-intelligence.md -o build/actual-intelligence.epub \
     --epub-cover-image="$COVER_IMAGE" \
     --toc \
-    --resource-path=.:book:book/en \
+    --resource-path="$RESOURCE_PATHS" \
     --extract-media=build/epub-media
 else
   pandoc build/actual-intelligence.md -o build/actual-intelligence.epub \
     --toc \
-    --resource-path=.:book:book/en \
+    --resource-path="$RESOURCE_PATHS" \
     --extract-media=build/epub-media
 fi
 echo "EPUB file generated: build/actual-intelligence.epub"
@@ -154,7 +173,7 @@ echo "Generating HTML file..."
 pandoc build/actual-intelligence.md -o build/actual-intelligence.html \
   --standalone \
   --toc \
-  --resource-path=.:book:book/en \
+  --resource-path="$RESOURCE_PATHS" \
   --metadata title="Actual Intelligence"
 
 # Check if HTML file exists
