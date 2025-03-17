@@ -35,10 +35,21 @@
 % Set page geometry
 \geometry{margin=1in}
 
+% IMPORTANT: Always start sections on a new page
+\let\oldsection\section
+\renewcommand{\section}[1]{\clearpage\oldsection{#1}}
+
+% IMPORTANT: Always start subsections with extra space
+\let\oldsubsection\subsection
+\renewcommand{\subsection}[1]{\vspace{1cm}\oldsubsection{#1}}
+
 % Configure section formatting
 \titleformat{\chapter}[display]{\normalfont\huge\bfseries\color{titlecolor}}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 \titleformat{\section}{\normalfont\Large\bfseries\color{sectioncolor}}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+% Add more space between paragraphs
+\setlength{\parskip}{0.5em}
 
 % Commands for new pages after sections and subsections
 \newcommand{\sectionbreak}{\clearpage}
