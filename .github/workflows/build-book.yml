@@ -96,8 +96,22 @@ jobs:
           tag_name: ${{ env.VERSION }}
           name: Actual Intelligence ${{ env.VERSION }}
           body: |
-            Actual Intelligence Book
-            Built on ${{ env.DATE }}
+            # Actual Intelligence Book
+            
+            Built on ${{ env.DATE }} by Khaos Studios
+            
+            ## 📚 Download Options
+            
+            | Format | Description | Link |
+            |--------|-------------|------|
+            | 📄 PDF | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.pdf) |
+            | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.epub) |
+            | 📚 MOBI | For Kindle devices | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.mobi) |
+            | 🌐 HTML | Read online in your browser | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.html) |
+            
+            ## 🔄 Web Version
+            
+            The latest version is also available at https://iksnae.github.io/actual-intelligence/
           draft: false
       
       - name: Deploy to GitHub Pages
