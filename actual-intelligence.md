@@ -44,7 +44,7 @@ Let's start with something simple. No technical skills required—just the abili
 
 That's it! You've just had your first AI conversation. 
 
-![Screenshot showing a simple first conversation with ChatGPT](images/first-conversation.png)
+![](images/first-conversation.png)
 
 Notice how the AI introduces itself and explains its capabilities. This isn't a pre-recorded message—the AI is generating this response specifically for you. In the coming chapters, you'll learn how to make these conversations increasingly useful for your specific needs.
 
@@ -54,13 +54,13 @@ Maria, a small business owner with no technical background, described her first 
 
 Think of AI tools like kitchen appliances. A stand mixer can do the hard work of mixing dough, but it doesn't decide what recipe to make or know when the consistency is just right—that's your job. The mixer is very good at its specific task, but you're the one with the taste buds, the creativity to modify recipes, and the knowledge of whether you're baking for someone with dietary restrictions.
 
-![A person using a stand mixer while making creative decisions about a recipe](images/kitchen-analogy.png)
+![](images/kitchen-analogy.png)
 
 **Actual Intelligence** is this partnership between your human judgment and AI's capabilities. It's what happens when your wisdom, creativity, and purpose combine with AI's ability to process information and generate content.
 
 Think about the last time you used a powerful tool to solve a problem. Maybe it was a food processor that cut your prep time in half, or mapping software that helped you navigate an unfamiliar city. The tool was invaluable, but you were the one who decided what to cook or where to go. That's exactly your relationship with AI—you're not just pushing buttons, you're the creative director calling the shots.
 
-![Diagram showing the human-AI partnership model with human providing direction and AI providing assistance](images/human-ai-partnership.png)
+![](images/human-ai-partnership.png)
 
 ### The Partnership Model
 
@@ -81,7 +81,7 @@ Let's see this partnership in action through a real example.
 
 Lisa, a middle school science teacher with no previous AI experience, wanted to create a lesson on climate change. She could have simply asked ChatGPT to "create a climate change lesson for 7th graders" and used whatever it generated—but that would have ignored her unique knowledge of her students.
 
-![A teacher reviewing lesson plans while using a laptop](images/teacher-example.png)
+![](images/teacher-example.png)
 
 Instead, Lisa applied her human judgment. She knew her specific students—their knowledge levels, interests, and the local environmental issues they see every day. She understood which concepts they'd struggled with in past lessons.
 
@@ -95,7 +95,7 @@ Now it's your turn. Let's create a prompt that's specifically relevant to you. F
 
 "I work as a _____________ and one challenge I often face is _____________. Could you suggest three ways I might approach this problem?"
 
-![A template showing the fill-in-the-blank prompt with examples](images/prompt-template.png)
+![](images/prompt-template.png)
 
 For example:
 * "I work as a retail manager and one challenge I often face is scheduling staff efficiently. Could you suggest three ways I might approach this problem?"
