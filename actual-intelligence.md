@@ -222,7 +222,7 @@ Let's explore how AI tools like ChatGPT work, using simple analogies that highli
 
 "When I first heard about AI, I imagined something from science fiction movies—like a computer that thinks and feels," says James, a retiree who now uses ChatGPT daily to help with his genealogy hobby. "But once I started using it, I realized it's more like having a very well-read research assistant who's incredibly fast but needs careful direction."
 
-![A senior person using ChatGPT to research family history](images/senior-genealogy.png)
+![](images/senior-genealogy.png)
 
 ## The Pattern Completion Machine
 
@@ -236,7 +236,7 @@ Why? Because based on all the language they've encountered throughout their life
 
 ChatGPT does something similar, but on a much larger scale. It's been trained on enormous amounts of text from books, articles, websites, and other sources. During this training, it learned to recognize patterns in how words and ideas typically follow one another.
 
-![Visual representation of AI as a pattern completion machine, showing input and prediction](images/pattern-matcher.png)
+![](images/pattern-matcher.png)
 
 Think of it like a musician who has listened to thousands of songs but doesn't actually understand music theory. When you hum a few notes, the musician can continue the melody based on similar patterns they've heard before. They're not composing something truly original—they're drawing on all the music they've absorbed to continue the pattern you started.
 
@@ -244,7 +244,7 @@ Think of it like a musician who has listened to thousands of songs but doesn't a
 
 Another helpful way to think about these AI tools is as an echo chamber of human knowledge. They can only reflect back information and patterns that already exist in the data they were trained on.
 
-![An echo chamber of books and documents representing AI's knowledge base](images/echo-chamber.png)
+![](images/echo-chamber.png)
 
 If you ask ChatGPT about the French Revolution, it can provide information because many human writers have written about this topic, and those writings were part of its training data. But if you ask about a completely fictional historical event that no one has written about, it can't provide accurate information because that pattern doesn't exist in its training data.
 
@@ -259,7 +259,7 @@ Despite its impressive ability to generate human-like text, ChatGPT doesn't actu
 
 Think of it like someone who has memorized a cookbook in a foreign language without understanding what the words mean. They might be able to recite recipes perfectly and even make reasonable substitutions based on patterns they've observed, but they've never tasted the food, felt the texture of the ingredients, or understood why certain techniques are used.
 
-![A person following a recipe book in a language they don't understand](images/foreign-cookbook.png)
+![](images/foreign-cookbook.png)
 
 This limitation explains why AI often struggles with:
 - Common sense reasoning
@@ -277,7 +277,7 @@ Imagine a game where you start a sentence, and someone has to guess what word co
 
 Most people would guess "oven" because that's the most probable word to follow in this context. AI systems do something similar, but with a much more sophisticated understanding of language patterns and a much larger vocabulary of possible words to choose from.
 
-![A diagram showing how AI predicts the next word based on probability](images/probability-prediction.png)
+![](images/probability-prediction.png)
 
 This probabilistic approach means that:
 - ChatGPT doesn't have a fixed set of responses—it generates new text each time
@@ -304,7 +304,7 @@ These characteristics make AI tools incredibly useful for certain tasks but also
 
 Given these limitations, it's helpful to think of AI tools as assistants rather than experts or authorities. They can help you brainstorm, draft content, summarize information, and explore ideas, but you should always apply your own judgment to their output.
 
-![A person evaluating AI suggestions and applying their own judgment](images/human-judgment.png)
+![](images/human-judgment.png)
 
 Remember Jake, who's planning a family vacation to Japan. If he simply asks ChatGPT "Plan my perfect Japan trip" and follows whatever itinerary it generates, he might end up with a generic tourist experience that doesn't match his family's interests or visit attractions that are closed for renovation.
 
