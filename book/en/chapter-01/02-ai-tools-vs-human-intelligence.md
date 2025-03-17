@@ -5,7 +5,7 @@ You might be wondering: "Do I need to learn coding or computer science to use th
 
 The simple answer is no. Using AI tools like ChatGPT requires no more technical skill than using a search engine or sending a text message. If you can type a question, you can use AI.
 
-![](images/simple-interface.png)
+![](images/simple-interface.jpg)
 
 What matters far more than technical knowledge is your ability to:
 * Ask clear questions about topics that matter to you
@@ -26,7 +26,7 @@ Humans don't just do things—we do things for reasons. We ask "why" questions, 
 
 AI systems, by contrast, have no intrinsic purposes or desires. They don't "want" anything—they simply process inputs and generate outputs. Any sense of purpose must come from the humans using them.
 
-![](images/purpose-meaning.png)
+![](images/purpose-meaning.jpg)
 
 ### Real-World Understanding
 
@@ -38,7 +38,7 @@ AI systems like ChatGPT have been trained on vast amounts of text that describe 
 
 Elena, a retired art teacher, was skeptical about using AI for her watercolor hobby. "I didn't see how a computer program could help with something as personal as art," she said. But when she asked ChatGPT for suggestions on painting autumn leaves with more vibrancy, she was pleasantly surprised.
 
-![](images/artist-example.png)
+![](images/artist-example.jpg)
 
 "The techniques it suggested were solid fundamentals—things I might tell my own students. But I still had to apply my eye for color, my sense of composition, and my own aesthetic preferences. The AI gave me options to consider, but the creative decisions remained mine."
 
@@ -52,7 +52,7 @@ These differences aren't weaknesses—they're the foundation of a powerful partn
 
 Imagine you're researching a health condition that affects someone you love. You could spend weeks reading medical journals, trying to understand complex terminology and conflicting studies. Or you could ask an AI to summarize the current research, explain key terms, and highlight treatment options—all in minutes. This is where AI truly shines: processing vast amounts of information that would overwhelm even the most dedicated human reader.
 
-![](images/information-processing.png)
+![](images/information-processing.jpg)
 
 AI excels at:
 
@@ -68,7 +68,7 @@ AI excels at:
 
 A helpful way to understand this relationship is to think of yourself as a film director and AI as your assistant.
 
-![](images/director-assistant.png)
+![](images/director-assistant.jpg)
 
 As the director, you:
 * Determine the vision and purpose of the project
@@ -88,7 +88,7 @@ So what does this look like in practice? Let's see how Marcus, a small business 
 
 Marcus owns a successful bakery and is considering opening a second location. Instead of simply asking AI, "Where should I open my second bakery location?"—a question the AI couldn't possibly answer well without knowing his specific business—Marcus directs the AI with more specific prompts:
 
-![](images/bakery-example.png)
+![](images/bakery-example.jpg)
 
 * "What demographic data should I analyze when selecting a new bakery location?"
 * "Help me create a checklist for evaluating potential retail spaces for a bakery."
