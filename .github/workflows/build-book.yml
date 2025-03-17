@@ -8,6 +8,7 @@ on:
       - 'book/**/*.md'
       - 'tools/build.js'
       - '.github/workflows/build-book.yml'
+      - 'package.json'
   workflow_dispatch:  # Allow manual triggering
 
 permissions:
@@ -26,7 +27,10 @@ jobs:
         with:
           node-version: '20'
           
-      - name: Install dependencies
+      - name: Install Node.js dependencies
+        run: npm install
+          
+      - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc texlive-xetex librsvg2-bin
@@ -95,6 +99,26 @@ jobs:
                   fi
                 else
                   echo "WARNING: Could not find cover image in art directory"
+                  
+                  # Create a placeholder cover image for testing
+                  mkdir -p art
+                  echo '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                  <svg width="800" height="1200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="800" height="1200" fill="#f0f0f0"/>
+                    <text x="400" y="400" font-family="Arial" font-size="60" text-anchor="middle" fill="#333">Actual Intelligence</text>
+                    <text x="400" y="500" font-family="Arial" font-size="40" text-anchor="middle" fill="#666">A Practical Guide to Using AI in Everyday Life</text>
+                    <text x="400" y="600" font-family="Arial" font-size="30" text-anchor="middle" fill="#999">Placeholder Cover</text>
+                  </svg>' > art/cover.svg
+                  echo "Created placeholder cover image at art/cover.svg"
+                  
+                  # Copy to language-specific directory
+                  mkdir -p book/$lang/images
+                  cp art/cover.svg book/$lang/images/cover.svg
+                  echo "Placeholder cover image copied to book/$lang/images/cover.svg"
+                  
+                  # Also copy to common directory
+                  cp art/cover.svg book/images/cover.svg
+                  echo "Placeholder cover image also copied to book/images/cover.svg"
                 fi
               fi
             done
