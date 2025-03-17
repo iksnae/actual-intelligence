@@ -11,6 +11,7 @@ on:
       - 'package.json'
       - 'templates/**/*'
       - 'build.sh'
+      - 'art/cover.png'
   workflow_dispatch:  # Allow manual triggering
 
 permissions:
@@ -50,88 +51,26 @@ jobs:
       - name: Ensure templates directory exists
         run: mkdir -p templates
       
-      - name: Ensure images directory exists
+      - name: Check for cover image
+        id: cover_image
         run: |
-          # Ensure common images directory exists
-          mkdir -p book/images
-          
-          # Ensure language-specific images directories exist
-          mkdir -p book/en/images
-          
-          # Copy any SVG files from chapter directories to image directories
-          find book -name "*.svg" -exec cp {} book/images/ \;
-          
-          # Verify common cover image exists
-          if [ -f "book/images/cover.svg" ]; then
-            echo "Cover image exists at book/images/cover.svg"
+          if [ -f "art/cover.png" ]; then
+            echo "COVER_IMAGE=art/cover.png" >> $GITHUB_ENV
+            echo "✅ Found cover image at art/cover.png"
+            echo "cover_found=true" >> $GITHUB_OUTPUT
           elif [ -f "book/images/cover.png" ]; then
-            echo "Cover image exists at book/images/cover.png"
+            echo "COVER_IMAGE=book/images/cover.png" >> $GITHUB_ENV
+            echo "✅ Found cover image at book/images/cover.png"
+            echo "cover_found=true" >> $GITHUB_OUTPUT
+          elif [ -f "book/en/images/cover.png" ]; then
+            echo "COVER_IMAGE=book/en/images/cover.png" >> $GITHUB_ENV
+            echo "✅ Found cover image at book/en/images/cover.png"
+            echo "cover_found=true" >> $GITHUB_OUTPUT
           else
-            echo "WARNING: Cover image not found in common directory"
-            
-            # Check for language-specific covers
-            for lang in en; do
-              if [ -f "book/$lang/images/cover.svg" ]; then
-                echo "Language-specific cover image found at book/$lang/images/cover.svg"
-              elif [ -f "book/$lang/images/cover.png" ]; then
-                echo "Language-specific cover image found at book/$lang/images/cover.png"
-              else
-                echo "WARNING: Cover image not found in language directory"
-                
-                # Try to find cover image in art directory and copy to language-specific folder
-                if [ -f "art/cover.svg" ]; then
-                  echo "Found cover image at art/cover.svg, copying to language directories"
-                  
-                  # Copy to language-specific directories
-                  mkdir -p book/$lang/images
-                  cp art/cover.svg book/$lang/images/cover.svg
-                  echo "Cover image copied to book/$lang/images/cover.svg"
-                  
-                  # Also copy to common directory if it doesn't exist
-                  if [ ! -f "book/images/cover.svg" ]; then
-                    cp art/cover.svg book/images/cover.svg
-                    echo "Cover image also copied to book/images/cover.svg"
-                  fi
-                elif [ -f "art/cover.png" ]; then
-                  echo "Found cover image at art/cover.png, copying to language directories"
-                  
-                  # Copy to language-specific directories
-                  mkdir -p book/$lang/images
-                  cp art/cover.png book/$lang/images/cover.png
-                  echo "Cover image copied to book/$lang/images/cover.png"
-                  
-                  # Also copy to common directory if it doesn't exist
-                  if [ ! -f "book/images/cover.png" ]; then
-                    cp art/cover.png book/images/cover.png
-                    echo "Cover image also copied to book/images/cover.png"
-                  fi
-                else
-                  echo "WARNING: Could not find cover image in art directory"
-                  
-                  # Create a placeholder cover image for testing
-                  mkdir -p art
-                  echo '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                  <svg width="800" height="1200" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="800" height="1200" fill="#f0f0f0"/>
-                    <text x="400" y="400" font-family="Arial" font-size="60" text-anchor="middle" fill="#333">Actual Intelligence</text>
-                    <text x="400" y="500" font-family="Arial" font-size="40" text-anchor="middle" fill="#666">A Practical Guide to Using AI in Everyday Life</text>
-                    <text x="400" y="600" font-family="Arial" font-size="30" text-anchor="middle" fill="#999">Placeholder Cover</text>
-                  </svg>' > art/cover.svg
-                  echo "Created placeholder cover image at art/cover.svg"
-                  
-                  # Copy to language-specific directory
-                  mkdir -p book/$lang/images
-                  cp art/cover.svg book/$lang/images/cover.svg
-                  echo "Placeholder cover image copied to book/$lang/images/cover.svg"
-                  
-                  # Also copy to common directory
-                  cp art/cover.svg book/images/cover.svg
-                  echo "Placeholder cover image also copied to book/images/cover.svg"
-                fi
-              fi
-            done
+            echo "⚠️ No cover image found"
+            echo "cover_found=false" >> $GITHUB_OUTPUT
           fi
-        
+          
       - name: Use enhanced build script
         run: |
           echo "Running enhanced build script..."
@@ -209,6 +148,14 @@ jobs:
           # Add markdown and online reading links
           echo "| Markdown | [View Raw Content](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.md) |" >> release_body.md
           echo "| Online Reading | [Read Online](https://iksnae.github.io/actual-intelligence/) |" >> release_body.md
+          
+          # Add cover image info if found
+          if [ "${{ steps.cover_image.outputs.cover_found }}" == "true" ]; then
+            echo "" >> release_body.md
+            echo "## Cover" >> release_body.md
+            echo "" >> release_body.md
+            echo "This edition includes the official book cover." >> release_body.md
+          fi
           
           echo "" >> release_body.md
           echo "## Changes in this version" >> release_body.md
