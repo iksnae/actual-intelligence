@@ -3,7 +3,7 @@
 
 Have you ever watched someone use a new technology and make it look effortless, only to feel lost when you try it yourself? Or perhaps you've heard about ChatGPT and other AI tools in the news but haven't tried them yet, unsure if they're too complicated or technical for you?
 
-![A person looking hesitantly at a computer screen showing an AI interface](./images/hesitant-beginner.jpg)
+![](./images/hesitant-beginner.jpg)
 
 You're not alone. Many people find these technologies intimidating or aren't sure where to start. The good news is that you don't need to be a tech expert to use these tools effectively. In fact, the most important skills you'll need are ones you already have—curiosity, judgment, and your own unique perspective on what matters.
 
@@ -17,7 +17,7 @@ Before we dive in, take a moment to jot down your answers to these questions:
 * What's one topic you've been curious about but haven't had time to explore deeply?
 * What's one creative project you've wanted to try but haven't gotten around to?
 
-![A notebook with space for answering reflection questions](images/reflection-notebook.jpg)
+![](images/reflection-notebook.jpg)
 
 Keep these answers handy—they'll help us personalize your first AI experiences as we move through this chapter.
 
