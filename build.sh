@@ -3,10 +3,6 @@
 # Ensure that any errors stop the script
 set -e
 
-# Set version and date (same as in the workflow)
-VERSION=$(date +'v%Y.%m.%d-%H%M')
-DATE=$(date +'%B %d, %Y')
-
 # Create build directory if it doesn't exist
 mkdir -p build
 
@@ -36,17 +32,17 @@ else
   echo "⚠️ No cover image found. Building book without cover."
 fi
 
-# Update LaTeX template with version and date
+# Update LaTeX template (but don't include version and date)
 if [ -f "templates/template.tex" ]; then
-  echo "Updating LaTeX template with version and date info..."
+  echo "Using LaTeX template..."
   TEMP_TEMPLATE="templates/template-version.tex"
   cp templates/template.tex "$TEMP_TEMPLATE"
   
-  # Replace version and build date in the template
-  sed -i "s/\\newcommand{\\bookversion}{VERSION}/\\newcommand{\\bookversion}{${VERSION}}/g" "$TEMP_TEMPLATE"
-  sed -i "s/\\newcommand{\\builddate}{BUILDDATE}/\\newcommand{\\builddate}{${DATE}}/g" "$TEMP_TEMPLATE"
+  # Use empty values for version and date to effectively remove them
+  sed -i "s/\\\\newcommand{\\\\bookversion}{VERSION}/\\\\newcommand{\\\\bookversion}{}/g" "$TEMP_TEMPLATE"
+  sed -i "s/\\\\newcommand{\\\\builddate}{BUILDDATE}/\\\\newcommand{\\\\builddate}{}/g" "$TEMP_TEMPLATE"
   
-  echo "LaTeX template updated with version: $VERSION and date: $DATE"
+  echo "LaTeX template updated with empty version and date"
 else
   echo "No LaTeX template found. Proceeding with default styling."
   TEMP_TEMPLATE=""
@@ -65,11 +61,10 @@ else
   # Create a combined markdown file for the book
   echo "Combining markdown files..."
   
-  # Initialize metadata for the book
+  # Initialize metadata for the book (removing date)
   echo "---" > build/actual-intelligence.md
   echo "title: 'Actual Intelligence'" >> build/actual-intelligence.md
   echo "subtitle: 'A Practical Guide to Using AI in Everyday Life'" >> build/actual-intelligence.md
-  echo "date: '$DATE'" >> build/actual-intelligence.md
   echo "author: 'Open Source Community'" >> build/actual-intelligence.md
   echo "toc: true" >> build/actual-intelligence.md
   
