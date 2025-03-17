@@ -24,7 +24,7 @@ The book is organized into five main parts:
 
 ## Building the Book
 
-This book is built using a combination of Markdown, Pandoc, and GitHub workflows.
+This book is built using a combination of Markdown, Pandoc, and GitHub workflows. The book is designed with a clean layout, without headers, footers, or version information in the output.
 
 ### Prerequisites
 
