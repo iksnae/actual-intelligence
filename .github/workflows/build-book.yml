@@ -9,6 +9,8 @@ on:
       - 'tools/build.js'
       - '.github/workflows/build-book.yml'
       - 'package.json'
+      - 'templates/**/*'
+      - 'build.sh'
   workflow_dispatch:  # Allow manual triggering
 
 permissions:
@@ -33,7 +35,7 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex librsvg2-bin
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra librsvg2-bin
           
       - name: Set up version info
         id: version
@@ -45,6 +47,9 @@ jobs:
       - name: Create build directory
         run: mkdir -p build
       
+      - name: Ensure templates directory exists
+        run: mkdir -p templates
+      
       - name: Ensure images directory exists
         run: |
           # Ensure common images directory exists
@@ -52,6 +57,9 @@ jobs:
           
           # Ensure language-specific images directories exist
           mkdir -p book/en/images
+          
+          # Copy any SVG files from chapter directories to image directories
+          find book -name "*.svg" -exec cp {} book/images/ \;
           
           # Verify common cover image exists
           if [ -f "book/images/cover.svg" ]; then
@@ -124,21 +132,41 @@ jobs:
             done
           fi
         
-      - name: Build book in all available languages
+      - name: Use enhanced build script
         run: |
-          node tools/build.js --all-languages
+          echo "Running enhanced build script..."
+          chmod +x build.sh
+          ./build.sh
         env:
           VERSION: ${{ env.VERSION }}
           DATE: ${{ env.DATE }}
       
-      - name: Check primary PDF file exists
+      - name: Check build outputs
         run: |
+          echo "Checking build outputs..."
+          
+          # Check PDF
           if [ -f "build/actual-intelligence.pdf" ] && [ -s "build/actual-intelligence.pdf" ]; then
-            echo "Primary PDF file exists and has content"
+            echo "✅ PDF file exists and has content"
+            du -h build/actual-intelligence.pdf
           else
-            echo "WARNING: Primary PDF file is missing or empty, creating a placeholder"
-            echo "# Actual Intelligence - Placeholder PDF" > build/placeholder.md
-            pandoc build/placeholder.md -o build/actual-intelligence.pdf --pdf-engine=xelatex
+            echo "❌ PDF file is missing or empty!"
+          fi
+          
+          # Check EPUB
+          if [ -f "build/actual-intelligence.epub" ] && [ -s "build/actual-intelligence.epub" ]; then
+            echo "✅ EPUB file exists and has content"
+            du -h build/actual-intelligence.epub
+          else
+            echo "❌ EPUB file is missing or empty!"
+          fi
+          
+          # Check HTML/index
+          if [ -f "build/index.html" ] && [ -s "build/index.html" ]; then
+            echo "✅ HTML index file exists and has content"
+            du -h build/index.html
+          else
+            echo "❌ HTML index file is missing or empty!"
           fi
 
       - name: List generated files
@@ -146,22 +174,8 @@ jobs:
           echo "Generated files:"
           ls -la build/
           echo ""
-          echo "Available languages:"
-          find build -name "actual-intelligence*.pdf" | sort
-          echo ""
-          echo "Available EPUB files:"
-          find build -name "actual-intelligence*.epub" | sort
-          echo ""
           echo "File sizes to ensure they're not empty:"
-          du -h build/actual-intelligence*.pdf build/actual-intelligence*.epub 2>/dev/null || echo "Some files not found"
-          
-      - name: Rename HTML files for GitHub Pages
-        run: |
-          # Create index.html from English version
-          if [ -f "build/actual-intelligence.html" ]; then
-            cp build/actual-intelligence.html build/index.html
-            echo "Created index.html from English version"
-          fi
+          du -h build/* 2>/dev/null || echo "Some files not found"
 
       - name: Upload artifacts for debugging if needed
         uses: actions/upload-artifact@v4
@@ -177,25 +191,24 @@ jobs:
           echo "" >> release_body.md
           echo "Automatically generated build of the Actual Intelligence book." >> release_body.md
           echo "" >> release_body.md
-          echo "## Available Languages" >> release_body.md
+          echo "## Available Formats" >> release_body.md
           echo "" >> release_body.md
           
-          # List all generated files and their languages
-          echo "| Language | PDF | EPUB | Markdown | HTML |" >> release_body.md
-          echo "|----------|-----|------|----------|------|" >> release_body.md
+          # Create table of formats
+          echo "| Format | Link |" >> release_body.md
+          echo "|--------|------|" >> release_body.md
+          echo "| PDF | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.pdf) |" >> release_body.md
           
-          # English (default) version
-          if [ -f "build/actual-intelligence.pdf" ]; then
-            # Check for EPUB and ensure it's not empty
-            if [ -f "build/actual-intelligence.epub" ] && [ -s "build/actual-intelligence.epub" ]; then
-              echo "Including English EPUB in release"
-              epub_link="[EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.epub)"
-            else
-              echo "WARNING: English EPUB is missing or empty, marking as N/A"
-              epub_link="N/A"
-            fi
-            echo "| English | [PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.pdf) | ${epub_link} | [Markdown](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.md) | [HTML](https://iksnae.github.io/actual-intelligence/) |" >> release_body.md
+          # Check for EPUB and add if it exists
+          if [ -f "build/actual-intelligence.epub" ] && [ -s "build/actual-intelligence.epub" ]; then
+            echo "| EPUB | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.epub) |" >> release_body.md
+          else
+            echo "| EPUB | Not available in this build |" >> release_body.md
           fi
+          
+          # Add markdown and online reading links
+          echo "| Markdown | [View Raw Content](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.md) |" >> release_body.md
+          echo "| Online Reading | [Read Online](https://iksnae.github.io/actual-intelligence/) |" >> release_body.md
           
           echo "" >> release_body.md
           echo "## Changes in this version" >> release_body.md
