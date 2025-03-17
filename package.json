@@ -1,0 +1,33 @@
+{
+  "name": "actual-intelligence",
+  "version": "1.0.0",
+  "description": "A practical, non-technical guide to using AI tools like ChatGPT in everyday life",
+  "main": "index.js",
+  "scripts": {
+    "build": "node tools/build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iksnae/actual-intelligence.git"
+  },
+  "keywords": [
+    "AI",
+    "ChatGPT",
+    "artificial intelligence",
+    "learning",
+    "guide",
+    "non-technical"
+  ],
+  "author": "iksnae",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iksnae/actual-intelligence/issues"
+  },
+  "homepage": "https://github.com/iksnae/actual-intelligence#readme",
+  "dependencies": {
+    "glob": "^10.3.10",
+    "markdown-it": "^14.0.0",
+    "fs-extra": "^11.2.0"
+  }
+}
