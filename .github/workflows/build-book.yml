@@ -32,7 +32,7 @@ jobs:
       - name: Install required packages
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra librsvg2-bin
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra librsvg2-bin calibre
       
       - name: Set version and date
         id: version
@@ -80,6 +80,7 @@ jobs:
           path: |
             build/*.pdf
             build/*.epub
+            build/*.mobi
             build/*.html
             build/*.md
       
@@ -90,6 +91,7 @@ jobs:
           files: |
             build/actual-intelligence.pdf
             build/actual-intelligence.epub
+            build/actual-intelligence.mobi
             build/actual-intelligence.html
           tag_name: ${{ env.VERSION }}
           name: Actual Intelligence ${{ env.VERSION }}
