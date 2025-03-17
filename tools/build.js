@@ -40,9 +40,33 @@ function getLanguagesToBuild(args) {
   return [config.defaultLanguage];
 }
 
+// Copy image directories to build folder
+function copyImageDirectories(language) {
+  console.log("Copying image directories...");
+  
+  // Create images directory in build folder
+  fs.ensureDirSync(path.join(config.outputDir, 'images'));
+  
+  // Find all image directories and copy to build folder
+  try {
+    const imageDirs = glob.sync(`book/${language}/**/images`);
+    imageDirs.forEach(dir => {
+      const relativePath = dir.replace(`book/${language}/`, '');
+      const targetDir = path.join(config.outputDir, relativePath);
+      fs.copySync(dir, targetDir);
+      console.log(`Copied ${dir} to ${targetDir}`);
+    });
+  } catch (error) {
+    console.error(`Error copying image directories: ${error.message}`);
+  }
+}
+
 // Build a single language version of the book
 async function buildLanguage(language) {
   console.log(`Building ${language} version of the book...`);
+  
+  // Copy image directories
+  copyImageDirectories(language);
   
   // Find all markdown files for this language
   const markdownFiles = await glob(`book/${language}/**/*.md`, { ignore: '**/README.md' });
@@ -50,8 +74,8 @@ async function buildLanguage(language) {
   // Sort files to ensure correct order
   markdownFiles.sort((a, b) => {
     // First by chapter
-    const chapterA = a.match(/chapter-(\d+)/);
-    const chapterB = b.match(/chapter-(\d+)/);
+    const chapterA = a.match(/chapter-(\\d+)/);
+    const chapterB = b.match(/chapter-(\\d+)/);
     
     if (chapterA && chapterB) {
       const chapterNumA = parseInt(chapterA[1]);
@@ -63,8 +87,8 @@ async function buildLanguage(language) {
     }
     
     // Then by section/activity number if within same chapter
-    const sectionA = a.match(/\/(\d+)-/);
-    const sectionB = b.match(/\/(\d+)-/);
+    const sectionA = a.match(/\\/(\\d+)-/);
+    const sectionB = b.match(/\\/(\\d+)-/);
     
     if (sectionA && sectionB) {
       return parseInt(sectionA[1]) - parseInt(sectionB[1]);
@@ -92,7 +116,7 @@ async function buildLanguage(language) {
   // Concatenate all markdown files
   for (const file of markdownFiles) {
     const content = fs.readFileSync(file, 'utf-8');
-    fs.appendFileSync(outputMdFile, content + '\n\n');
+    fs.appendFileSync(outputMdFile, content + '\\n\\n');
   }
   
   console.log(`Created concatenated markdown file: ${outputMdFile}`);
@@ -103,7 +127,7 @@ async function buildLanguage(language) {
       ? `${config.bookName}.pdf` 
       : `${config.bookName}-${language}.pdf`);
     
-    const command = `pandoc "${outputMdFile}" -o "${pdfFile}" --pdf-engine=xelatex`;
+    const command = `pandoc "${outputMdFile}" -o "${pdfFile}" --pdf-engine=xelatex --toc --resource-path=.:book:book/${language}`;
     console.log(`Running: ${command}`);
     execSync(command, { stdio: 'inherit' });
     console.log(`PDF created: ${pdfFile}`);
@@ -117,7 +141,22 @@ async function buildLanguage(language) {
       ? `${config.bookName}.epub` 
       : `${config.bookName}-${language}.epub`);
     
-    const command = `pandoc "${outputMdFile}" -o "${epubFile}" --toc --toc-depth=2`;
+    // Check for cover image
+    let coverImageOption = '';
+    const coverImagePaths = [
+      'art/cover.png',
+      `book/images/cover.png`,
+      `book/${language}/images/cover.png`
+    ];
+    
+    for (const imgPath of coverImagePaths) {
+      if (fs.existsSync(imgPath)) {
+        coverImageOption = `--epub-cover-image="${imgPath}" `;
+        break;
+      }
+    }
+    
+    const command = `pandoc "${outputMdFile}" -o "${epubFile}" ${coverImageOption}--toc --toc-depth=2 --resource-path=.:book:book/${language} --extract-media=${config.outputDir}/epub-media`;
     console.log(`Running: ${command}`);
     execSync(command, { stdio: 'inherit' });
     console.log(`EPUB created: ${epubFile}`);
@@ -131,7 +170,7 @@ async function buildLanguage(language) {
       ? `${config.bookName}.html` 
       : `${config.bookName}-${language}.html`);
     
-    const command = `pandoc "${outputMdFile}" -o "${htmlFile}" --standalone --toc --toc-depth=2`;
+    const command = `pandoc "${outputMdFile}" -o "${htmlFile}" --standalone --toc --toc-depth=2 --resource-path=.:book:book/${language}`;
     console.log(`Running: ${command}`);
     execSync(command, { stdio: 'inherit' });
     console.log(`HTML created: ${htmlFile}`);
@@ -149,12 +188,18 @@ async function main() {
     // Create placeholder file in case PDF generation fails
     fs.writeFileSync(
       path.join(config.outputDir, 'placeholder.md'),
-      `# ${config.bookName} - Placeholder\n\nThis is a placeholder file for when PDF generation fails.`
+      `# ${config.bookName} - Placeholder\\n\\nThis is a placeholder file for when PDF generation fails.`
     );
     
     // Build each language
     for (const language of languagesToBuild) {
       await buildLanguage(language);
+    }
+    
+    // Create index.html from the HTML file for GitHub Pages
+    const htmlFile = path.join(config.outputDir, `${config.bookName}.html`);
+    if (fs.existsSync(htmlFile)) {
+      fs.copyFileSync(htmlFile, path.join(config.outputDir, 'index.html'));
     }
     
     console.log('Build completed successfully!');

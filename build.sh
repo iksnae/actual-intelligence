@@ -39,8 +39,8 @@ if [ -f "templates/template.tex" ]; then
   cp templates/template.tex "$TEMP_TEMPLATE"
   
   # Use empty values for version and date to effectively remove them
-  sed -i "s/\\\\newcommand{\\\\bookversion}{VERSION}/\\\\newcommand{\\\\bookversion}{}/g" "$TEMP_TEMPLATE"
-  sed -i "s/\\\\newcommand{\\\\builddate}{BUILDDATE}/\\\\newcommand{\\\\builddate}{}/g" "$TEMP_TEMPLATE"
+  sed -i "s/\\\\\\\\newcommand{\\\\\\\\bookversion}{VERSION}/\\\\\\\\newcommand{\\\\\\\\bookversion}{}/g" "$TEMP_TEMPLATE"
+  sed -i "s/\\\\\\\\newcommand{\\\\\\\\builddate}{BUILDDATE}/\\\\\\\\newcommand{\\\\\\\\builddate}{}/g" "$TEMP_TEMPLATE"
   
   echo "LaTeX template updated with empty version and date"
 else
@@ -51,6 +51,13 @@ fi
 # Step 1: Install Node.js dependencies (if they are not already installed)
 echo "Installing Node.js dependencies..."
 npm install
+
+# Create a directory for images in the build folder
+mkdir -p build/images
+
+# Copy all image directories to the build folder
+echo "Copying image directories..."
+find book -type d -name "images" -exec cp -r {} build/ \;
 
 # Step 2: Build book using custom Node.js script if it exists
 if [ -f "tools/build.js" ]; then
@@ -102,11 +109,18 @@ fi
 # Step 3: Generate PDF with our template
 echo "Generating PDF..."
 if [ -n "$TEMP_TEMPLATE" ]; then
-  # Use our custom template
-  pandoc build/actual-intelligence.md -o build/actual-intelligence.pdf --template="$TEMP_TEMPLATE" --pdf-engine=xelatex --toc
+  # Use our custom template with resource path for images
+  pandoc build/actual-intelligence.md -o build/actual-intelligence.pdf \
+    --template="$TEMP_TEMPLATE" \
+    --pdf-engine=xelatex \
+    --toc \
+    --resource-path=.:book:book/en
 else
-  # Fallback to default pandoc styling
-  pandoc build/actual-intelligence.md -o build/actual-intelligence.pdf --pdf-engine=xelatex --toc
+  # Fallback to default pandoc styling with resource path for images
+  pandoc build/actual-intelligence.md -o build/actual-intelligence.pdf \
+    --pdf-engine=xelatex \
+    --toc \
+    --resource-path=.:book:book/en
 fi
 
 # Step 4: Check if PDF file exists and has content
@@ -118,19 +132,30 @@ else
   pandoc build/placeholder.md -o build/actual-intelligence.pdf --pdf-engine=xelatex
 fi
 
-# Step 5: Generate EPUB with cover image
+# Step 5: Generate EPUB with cover image and extract media
 echo "Generating EPUB file..."
 if [ -n "$COVER_IMAGE" ]; then
   echo "Including cover image in EPUB: $COVER_IMAGE"
-  pandoc build/actual-intelligence.md -o build/actual-intelligence.epub --epub-cover-image="$COVER_IMAGE" --toc
+  pandoc build/actual-intelligence.md -o build/actual-intelligence.epub \
+    --epub-cover-image="$COVER_IMAGE" \
+    --toc \
+    --resource-path=.:book:book/en \
+    --extract-media=build/epub-media
 else
-  pandoc build/actual-intelligence.md -o build/actual-intelligence.epub --toc
+  pandoc build/actual-intelligence.md -o build/actual-intelligence.epub \
+    --toc \
+    --resource-path=.:book:book/en \
+    --extract-media=build/epub-media
 fi
 echo "EPUB file generated: build/actual-intelligence.epub"
 
-# Step 6: Generate HTML file from Markdown files
+# Step 6: Generate HTML file from Markdown files with images
 echo "Generating HTML file..."
-pandoc build/actual-intelligence.md -o build/actual-intelligence.html --standalone --toc --metadata title="Actual Intelligence"
+pandoc build/actual-intelligence.md -o build/actual-intelligence.html \
+  --standalone \
+  --toc \
+  --resource-path=.:book:book/en \
+  --metadata title="Actual Intelligence"
 
 # Check if HTML file exists
 if [ ! -f "build/actual-intelligence.html" ]; then
