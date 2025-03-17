@@ -10,6 +10,32 @@ DATE=$(date +'%B %d, %Y')
 # Create build directory if it doesn't exist
 mkdir -p build
 
+# Ensure cover image is properly handled
+echo "Checking for cover image..."
+COVER_IMAGE=""
+
+# Try to find cover image in standard locations
+if [ -f "art/cover.png" ]; then
+  echo "✅ Found cover image at art/cover.png"
+  COVER_IMAGE="art/cover.png"
+  
+  # Ensure book/images directories exist
+  mkdir -p book/images
+  mkdir -p book/en/images
+  
+  # Copy cover to book directories for consistency
+  cp "$COVER_IMAGE" book/images/cover.png
+  cp "$COVER_IMAGE" book/en/images/cover.png
+elif [ -f "book/images/cover.png" ]; then
+  echo "✅ Found cover image at book/images/cover.png"
+  COVER_IMAGE="book/images/cover.png"
+elif [ -f "book/en/images/cover.png" ]; then
+  echo "✅ Found cover image at book/en/images/cover.png"
+  COVER_IMAGE="book/en/images/cover.png"
+else
+  echo "⚠️ No cover image found. Building book without cover."
+fi
+
 # Update LaTeX template with version and date
 if [ -f "templates/template.tex" ]; then
   echo "Updating LaTeX template with version and date info..."
@@ -46,18 +72,35 @@ else
   echo "date: '$DATE'" >> build/actual-intelligence.md
   echo "author: 'Open Source Community'" >> build/actual-intelligence.md
   echo "toc: true" >> build/actual-intelligence.md
+  
+  # Add cover image metadata if found
+  if [ -n "$COVER_IMAGE" ]; then
+    echo "cover-image: '$COVER_IMAGE'" >> build/actual-intelligence.md
+  fi
+  
   echo "---" >> build/actual-intelligence.md
   echo "" >> build/actual-intelligence.md
   
-  # Find and concatenate all markdown files in book directory
-  # Sort alphabetically to ensure proper ordering
-  find book -name "*.md" | sort | while read -r file; do
-    echo "Adding $file to combined markdown"
-    echo "\n\n" >> build/actual-intelligence.md  # Add newlines between files
-    cat "$file" >> build/actual-intelligence.md
+  # Process chapter directories in order
+  find book -type d -name "chapter-*" | sort | while read -r chapter_dir; do
+    echo "Processing chapter directory: $chapter_dir"
     
-    # Add explicit page breaks after each file
-    echo "\n\n\\newpage\n\n" >> build/actual-intelligence.md
+    # Add chapter introduction if it exists
+    if [ -f "$chapter_dir/00-introduction.md" ]; then
+      echo "Adding chapter introduction from $chapter_dir/00-introduction.md"
+      cat "$chapter_dir/00-introduction.md" >> build/actual-intelligence.md
+      echo -e "\n\n\\newpage\n\n" >> build/actual-intelligence.md
+    fi
+    
+    # Find all numbered markdown files (excluding 00-introduction.md) and process them in order
+    find "$chapter_dir" -maxdepth 1 -name "[0-9]*.md" | grep -v "00-introduction.md" | sort | while read -r section_file; do
+      echo "Adding section from $section_file"
+      # Add an explicit section header comment for better visibility in source
+      echo -e "\n\n<!-- Start of section: $(basename "$section_file") -->\n" >> build/actual-intelligence.md
+      cat "$section_file" >> build/actual-intelligence.md
+      # Add explicit page break after each section
+      echo -e "\n\n\\newpage\n\n" >> build/actual-intelligence.md
+    done
   done
 fi
 
@@ -80,9 +123,14 @@ else
   pandoc build/placeholder.md -o build/actual-intelligence.pdf --pdf-engine=xelatex
 fi
 
-# Step 5: Generate EPUB
+# Step 5: Generate EPUB with cover image
 echo "Generating EPUB file..."
-pandoc build/actual-intelligence.md -o build/actual-intelligence.epub --toc
+if [ -n "$COVER_IMAGE" ]; then
+  echo "Including cover image in EPUB: $COVER_IMAGE"
+  pandoc build/actual-intelligence.md -o build/actual-intelligence.epub --epub-cover-image="$COVER_IMAGE" --toc
+else
+  pandoc build/actual-intelligence.md -o build/actual-intelligence.epub --toc
+fi
 echo "EPUB file generated: build/actual-intelligence.epub"
 
 # Step 6: Generate HTML file from Markdown files
