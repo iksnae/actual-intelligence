@@ -11,13 +11,19 @@ A practical, non-technical guide to using AI tools like ChatGPT in everyday life
 [![Download PDF](https://img.shields.io/badge/Download-PDF%20Version-blue?style=for-the-badge&logo=adobe-acrobat-reader)](https://github.com/iksnae/actual-intelligence/releases/latest/download/actual-intelligence.pdf)
 [![Download EPUB](https://img.shields.io/badge/Download-EPUB%20Version-green?style=for-the-badge&logo=apple)](https://github.com/iksnae/actual-intelligence/releases/latest/download/actual-intelligence.epub)
 [![Download MOBI](https://img.shields.io/badge/Download-Kindle%20Version-orange?style=for-the-badge&logo=amazon)](https://github.com/iksnae/actual-intelligence/releases/latest/download/actual-intelligence.mobi)
-[![Read Online](https://img.shields.io/badge/Read-Web%20Version-orange?style=for-the-badge&logo=html5)](https://github.com/iksnae/actual-intelligence/releases/latest/download/actual-intelligence.html)
+[![Read Online](https://img.shields.io/badge/Read-Web%20Version-purple?style=for-the-badge&logo=html5)](https://iksnae.github.io/actual-intelligence/)
 
 </div>
+
+You can also view all previous versions and releases [here](https://github.com/iksnae/actual-intelligence/releases).
 
 ## About This Book
 
 "Actual Intelligence" is designed to be a learning resource for people without technical backgrounds, helping them leverage AI in their personal and professional lives. Starting with ChatGPT as training wheels, this guide will help readers use AI to accomplish various goals.
+
+## Publisher
+
+This book is published by Khaos Studios.
 
 ## Target Audience
 
