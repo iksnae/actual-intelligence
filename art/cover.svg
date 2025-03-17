@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200">
+  <!-- Background -->
+  <rect width="800" height="1200" fill="#2c3e50"/>
+  
+  <!-- Title Area -->
+  <rect x="100" y="200" width="600" height="300" fill="#34495e"/>
+  
+  <!-- Title Text -->
+  <text x="400" y="350" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#ecf0f1">ACTUAL</text>
+  <text x="400" y="430" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#ecf0f1">INTELLIGENCE</text>
+  
+  <!-- Subtitle -->
+  <text x="400" y="500" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="#bdc3c7">A Practical Guide to Using AI in Everyday Life</text>
+  
+  <!-- Author name -->
+  <text x="400" y="1000" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="#ecf0f1">by Iksnae</text>
+  
+  <!-- AI Icons/Design Element -->
+  <circle cx="400" cy="700" r="150" fill="#3498db" opacity="0.7"/>
+  <path d="M320 650 L480 650 L480 750 L320 750 Z" fill="#2980b9" opacity="0.8"/>
+  <circle cx="400" cy="700" r="70" fill="#ecf0f1" opacity="0.6"/>
+  <line x1="300" y1="700" x2="500" y2="700" stroke="#ecf0f1" stroke-width="6"/>
+  <line x1="400" y1="600" x2="400" y2="800" stroke="#ecf0f1" stroke-width="6"/>
+</svg>
