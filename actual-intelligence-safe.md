@@ -322,10 +322,6 @@ In the next section, we'll explore how to take control of this human-AI partners
 
 <div style="page-break-after: always;"></div>
 
-# This file has been consolidated into 04-directing-ai-and-setting-expectations.md
-
-Please see the new consolidated file for this content.
-
 # Directing AI and Setting Realistic Expectations
 
 
@@ -595,10 +591,6 @@ In the next section, we'll put these ideas into practice with hands-on activitie
 
 <div style="page-break-after: always;"></div>
 
-# This file has been consolidated into 04-directing-ai-and-setting-expectations.md
-
-Please see the new consolidated file for this content.
-
 # Activities: Your First Hands-On AI Experiences
 
 
@@ -854,8 +846,4 @@ For now, take a moment to reflect on what you've discovered about the human-AI p
 ---
 
 <div style="page-break-after: always;"></div>
-
-# This file has been moved to 05-activities.md
-
-Please see the new file for this content.
 
