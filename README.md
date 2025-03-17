@@ -1,8 +1,18 @@
-![cover](./art/image.png)
+![cover](./art/cover.png)
 
 # Actual Intelligence
 
 A practical, non-technical guide to using AI tools like ChatGPT in everyday life.
+
+## 📚 Download the Book
+
+<div align="center">
+
+[![Download PDF](https://img.shields.io/badge/Download-PDF%20Version-blue?style=for-the-badge&logo=adobe-acrobat-reader)](https://github.com/iksnae/actual-intelligence/releases/latest/download/actual-intelligence.pdf)
+[![Download EPUB](https://img.shields.io/badge/Download-EPUB%20Version-green?style=for-the-badge&logo=apple)](https://github.com/iksnae/actual-intelligence/releases/latest/download/actual-intelligence.epub)
+[![Read Online](https://img.shields.io/badge/Read-Web%20Version-orange?style=for-the-badge&logo=html5)](https://github.com/iksnae/actual-intelligence/releases/latest/download/actual-intelligence.html)
+
+</div>
 
 ## About This Book
 
