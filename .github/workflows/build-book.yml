@@ -12,6 +12,11 @@ on:
       - '.github/workflows/build-book.yml'
   workflow_dispatch:
 
+# Add permissions block to fix 403 error when creating releases
+permissions:
+  contents: write
+  deployments: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -67,33 +72,6 @@ jobs:
           echo "Running enhanced build script..."
           chmod +x build.sh
           ./build.sh || echo "Build script completed with warnings"
-
-      - name: Create PDF with fallback
-        if: success() || failure()
-        run: |
-          echo "Attempting to create PDF with error-tolerant settings..."
-          # Create a modified version of the Markdown file that makes image references optional
-          sed 's/!\[\([^]]*\)\](\([^)]*\))/&<!-- -->/' build/actual-intelligence.md > build/actual-intelligence-safe.md
-          
-          # Try an alternative pandoc command with more lenient image handling
-          pandoc "build/actual-intelligence-safe.md" \
-            -o "build/actual-intelligence.pdf" \
-            --pdf-engine=xelatex \
-            --toc \
-            --variable=graphics \
-            --variable documentclass=book \
-            --fail-if-warnings=false \
-            || echo "PDF generation had issues, but we'll continue with other formats"
-          
-          # Check if PDF was created
-          if [ -f "build/actual-intelligence.pdf" ]; then
-            echo "✅ PDF created successfully"
-          else
-            echo "⚠️ PDF could not be created, but build will continue"
-            # Create a placeholder PDF to avoid failing the workflow
-            echo "PDF generation failed - please check build logs" > build/pdf-error.txt
-            pandoc build/pdf-error.txt -o build/actual-intelligence.pdf || true
-          fi
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -119,8 +97,6 @@ jobs:
             Actual Intelligence Book
             Built on ${{ env.DATE }}
           draft: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
