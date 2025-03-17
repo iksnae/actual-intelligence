@@ -3,7 +3,7 @@
 
 Have you ever watched someone use a new technology and make it look effortless, only to feel lost when you try it yourself? Or perhaps you've heard about ChatGPT and other AI tools in the news but haven't tried them yet, unsure if they're too complicated or technical for you?
 
-![A person looking hesitantly at a computer screen showing an AI interface](./images/human-ai-partnership.jpg)
+![](./images/hesitant-beginner.jpg)
 
 You're not alone. Many people find these technologies intimidating or aren't sure where to start. The good news is that you don't need to be a tech expert to use these tools effectively. In fact, the most important skills you'll need are ones you already have—curiosity, judgment, and your own unique perspective on what matters.
 
@@ -17,7 +17,7 @@ Before we dive in, take a moment to jot down your answers to these questions:
 * What's one topic you've been curious about but haven't had time to explore deeply?
 * What's one creative project you've wanted to try but haven't gotten around to?
 
-![A notebook with space for answering reflection questions](images/reflection-notebook.jpg)
+![](images/reflection-notebook.jpg)
 
 Keep these answers handy—they'll help us personalize your first AI experiences as we move through this chapter.
 
@@ -44,7 +44,7 @@ Let's start with something simple. No technical skills required—just the abili
 
 That's it! You've just had your first AI conversation. 
 
-![](images/first-conversation.png)
+![](images/first-conversation.jpg)
 
 Notice how the AI introduces itself and explains its capabilities. This isn't a pre-recorded message—the AI is generating this response specifically for you. In the coming chapters, you'll learn how to make these conversations increasingly useful for your specific needs.
 
@@ -54,13 +54,13 @@ Maria, a small business owner with no technical background, described her first 
 
 Think of AI tools like kitchen appliances. A stand mixer can do the hard work of mixing dough, but it doesn't decide what recipe to make or know when the consistency is just right—that's your job. The mixer is very good at its specific task, but you're the one with the taste buds, the creativity to modify recipes, and the knowledge of whether you're baking for someone with dietary restrictions.
 
-![](images/kitchen-analogy.png)
+![](images/kitchen-analogy.jpg)
 
 **Actual Intelligence** is this partnership between your human judgment and AI's capabilities. It's what happens when your wisdom, creativity, and purpose combine with AI's ability to process information and generate content.
 
 Think about the last time you used a powerful tool to solve a problem. Maybe it was a food processor that cut your prep time in half, or mapping software that helped you navigate an unfamiliar city. The tool was invaluable, but you were the one who decided what to cook or where to go. That's exactly your relationship with AI—you're not just pushing buttons, you're the creative director calling the shots.
 
-![](images/human-ai-partnership.png)
+![](images/human-ai-partnership.jpg)
 
 ### The Partnership Model
 
@@ -81,7 +81,7 @@ Let's see this partnership in action through a real example.
 
 Lisa, a middle school science teacher with no previous AI experience, wanted to create a lesson on climate change. She could have simply asked ChatGPT to "create a climate change lesson for 7th graders" and used whatever it generated—but that would have ignored her unique knowledge of her students.
 
-![](images/teacher-example.png)
+![](images/teacher-example.jpg)
 
 Instead, Lisa applied her human judgment. She knew her specific students—their knowledge levels, interests, and the local environmental issues they see every day. She understood which concepts they'd struggled with in past lessons.
 
@@ -95,7 +95,7 @@ Now it's your turn. Let's create a prompt that's specifically relevant to you. F
 
 "I work as a _____________ and one challenge I often face is _____________. Could you suggest three ways I might approach this problem?"
 
-![](images/prompt-template.png)
+![](images/prompt-template.jpg)
 
 For example:
 * "I work as a retail manager and one challenge I often face is scheduling staff efficiently. Could you suggest three ways I might approach this problem?"
@@ -115,7 +115,7 @@ You might be wondering: "Do I need to learn coding or computer science to use th
 
 The simple answer is no. Using AI tools like ChatGPT requires no more technical skill than using a search engine or sending a text message. If you can type a question, you can use AI.
 
-![](images/simple-interface.png)
+![](images/simple-interface.jpg)
 
 What matters far more than technical knowledge is your ability to:
 * Ask clear questions about topics that matter to you
@@ -136,7 +136,7 @@ Humans don't just do things—we do things for reasons. We ask "why" questions, 
 
 AI systems, by contrast, have no intrinsic purposes or desires. They don't "want" anything—they simply process inputs and generate outputs. Any sense of purpose must come from the humans using them.
 
-![](images/purpose-meaning.png)
+![](images/purpose-meaning.jpg)
 
 ### Real-World Understanding
 
@@ -148,7 +148,7 @@ AI systems like ChatGPT have been trained on vast amounts of text that describe 
 
 Elena, a retired art teacher, was skeptical about using AI for her watercolor hobby. "I didn't see how a computer program could help with something as personal as art," she said. But when she asked ChatGPT for suggestions on painting autumn leaves with more vibrancy, she was pleasantly surprised.
 
-![](images/artist-example.png)
+![](images/artist-example.jpg)
 
 "The techniques it suggested were solid fundamentals—things I might tell my own students. But I still had to apply my eye for color, my sense of composition, and my own aesthetic preferences. The AI gave me options to consider, but the creative decisions remained mine."
 
@@ -162,7 +162,7 @@ These differences aren't weaknesses—they're the foundation of a powerful partn
 
 Imagine you're researching a health condition that affects someone you love. You could spend weeks reading medical journals, trying to understand complex terminology and conflicting studies. Or you could ask an AI to summarize the current research, explain key terms, and highlight treatment options—all in minutes. This is where AI truly shines: processing vast amounts of information that would overwhelm even the most dedicated human reader.
 
-![](images/information-processing.png)
+![](images/information-processing.jpg)
 
 AI excels at:
 
@@ -178,7 +178,7 @@ AI excels at:
 
 A helpful way to understand this relationship is to think of yourself as a film director and AI as your assistant.
 
-![](images/director-assistant.png)
+![](images/director-assistant.jpg)
 
 As the director, you:
 * Determine the vision and purpose of the project
@@ -198,7 +198,7 @@ So what does this look like in practice? Let's see how Marcus, a small business 
 
 Marcus owns a successful bakery and is considering opening a second location. Instead of simply asking AI, "Where should I open my second bakery location?"—a question the AI couldn't possibly answer well without knowing his specific business—Marcus directs the AI with more specific prompts:
 
-![](images/bakery-example.png)
+![](images/bakery-example.jpg)
 
 * "What demographic data should I analyze when selecting a new bakery location?"
 * "Help me create a checklist for evaluating potential retail spaces for a bakery."
