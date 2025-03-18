@@ -1,7 +1,8 @@
-# Chapter 1: Actual Intelligence - The Human Side of AI
+# Chapter 1: Actual Intelligence
+*... The Human Side of AI*
 
 
-Have you ever watched someone use a new technology and make it look effortless, only to feel lost when you try it yourself? Or perhaps you've heard about ChatGPT and other AI tools in the news but haven't tried them yet, unsure if they're too complicated or technical for you?
+Have you ever watched someone use a new technology and make it look effortless, only to feel lost when you try it yourself? Or perhaps you've heard about **ChatGPT** and other AI tools in the news but haven't tried them yet, unsure if they're too complicated or technical for you?
 
 ![](./images/hesitant-beginner.jpg)
 
@@ -31,15 +32,15 @@ Let's begin our journey toward becoming confident, effective directors of these 
 <div style="page-break-after: always;"></div>
 
 
-# What is "Actual Intelligence"? (The Human-AI Partnership)
-
+# What is **Actual Intelligence**?
+*...The Human-AI Partnership*
 
 ## Your First AI Conversation: A Guided Tour
 
 Let's start with something simple. No technical skills required—just the ability to type a sentence.
 
-1. Open ChatGPT (we'll show you exactly how in the next chapter)
-2. Type exactly this: "Hi, I'm new to ChatGPT. Can you explain what you can help me with in simple terms?"
+1. Open ChatGPT *(we'll show you exactly how in the next chapter)*
+2. Type exactly this: `Hi, I'm new to ChatGPT. Can you explain what you can help me with in simple terms?`
 3. Press Enter and read the response
 
 That's it! You've just had your first AI conversation. 
@@ -48,7 +49,8 @@ That's it! You've just had your first AI conversation.
 
 Notice how the AI introduces itself and explains its capabilities. This isn't a pre-recorded message—the AI is generating this response specifically for you. In the coming chapters, you'll learn how to make these conversations increasingly useful for your specific needs.
 
-Maria, a small business owner with no technical background, described her first experience: "I was honestly expecting it to be complicated—like I'd need to learn special commands or something. But it was just like texting. I asked how to write a better email newsletter, and within seconds I had ideas I could actually use. No technical jargon, no complicated setup."
+Maria, a small business owner with no technical background, described her first experience: 
+*"I was honestly expecting it to be complicated—like I'd need to learn special commands or something. But it was just like texting. I asked how to write a better email newsletter, and within seconds I had ideas I could actually use. No technical jargon, no complicated setup."*
 
 ## Understanding the Human-AI Partnership
 
@@ -79,30 +81,31 @@ Isn't that a more empowering way to approach these tools?
 
 Let's see this partnership in action through a real example.
 
-Lisa, a middle school science teacher with no previous AI experience, wanted to create a lesson on climate change. She could have simply asked ChatGPT to "create a climate change lesson for 7th graders" and used whatever it generated—but that would have ignored her unique knowledge of her students.
+Lisa, a middle school science teacher with no previous AI experience, wanted to create a lesson on climate change. She could have simply asked ChatGPT to `"create a climate change lesson for 7th graders"` and used whatever it generated—but that would have ignored her unique knowledge of her students.
 
 ![](images/teacher-example.jpg)
 
 Instead, Lisa applied her human judgment. She knew her specific students—their knowledge levels, interests, and the local environmental issues they see every day. She understood which concepts they'd struggled with in past lessons.
 
-With this context that no AI could possess, Lisa directed ChatGPT with a more specific request: "Help me create an interactive demonstration that shows how greenhouse gases work, suitable for 7th graders who have already learned about the water cycle but struggle with abstract concepts."
+With this context that no AI could possess, Lisa directed ChatGPT with a more specific request: `"Help me create an interactive demonstration that shows how greenhouse gases work, suitable for 7th graders who have already learned about the water cycle but struggle with abstract concepts."`
 
 The resulting lesson was far more effective because it combined Lisa's understanding of her students with the AI's ability to generate creative teaching ideas. That's Actual Intelligence at work—you remain central to the process while leveraging AI as a powerful tool.
 
 ## Creating Your First Personalized Prompt
 
 Now it's your turn. Let's create a prompt that's specifically relevant to you. Fill in the blanks below:
-
-"I work as a _____________ and one challenge I often face is _____________. Could you suggest three ways I might approach this problem?"
+`"I work as a _____________ and one challenge I often face is _____________. Could you suggest three ways I might approach this problem?"`
 
 ![](images/prompt-template.jpg)
 
 For example:
-* "I work as a retail manager and one challenge I often face is scheduling staff efficiently. Could you suggest three ways I might approach this problem?"
-* "I work as a parent and one challenge I often face is finding educational activities for rainy days. Could you suggest three ways I might approach this problem?"
+`"I work as a retail manager and one challenge I often face is scheduling staff efficiently. Could you suggest three ways I might approach this problem?"`
+
+ or
+
+ `"I work as a parent and one challenge I often face is finding educational activities for rainy days. Could you suggest three ways I might approach this problem?"`
 
 In the next sections, we'll explore what makes human intelligence unique and how it complements AI capabilities. But remember, you don't need to understand all the technical details to start using these tools effectively today.
-
 
 ---
 
@@ -111,9 +114,10 @@ In the next sections, we'll explore what makes human intelligence unique and how
 # AI Tools vs. Human Intelligence: Understanding the Relationship
 
 
-You might be wondering: "Do I need to learn coding or computer science to use these AI tools effectively?"
+You might be wondering...
+*"Do I need to learn coding or computer science to use these AI tools effectively?"*
 
-The simple answer is no. Using AI tools like ChatGPT requires no more technical skill than using a search engine or sending a text message. If you can type a question, you can use AI.
+The simple answer is *no*. Using AI tools like ChatGPT requires no more technical skill than using a search engine or sending a text message. If you can type a question, you can use AI.
 
 ![](images/simple-interface.jpg)
 
@@ -122,7 +126,7 @@ What matters far more than technical knowledge is your ability to:
 * Evaluate whether the answers make sense for your situation
 * Follow up when you need more details or a different approach
 
-These are human skills you've been developing your entire life—and they're exactly what makes you the "Actual Intelligence" in the partnership.
+These are human skills you've been developing your entire life—and they're exactly what makes you the **Actual Intelligence** in the partnership.
 
 To use AI tools effectively, it helps to understand what makes human intelligence different from artificial intelligence, and why that difference creates such a powerful partnership.
 
@@ -132,9 +136,9 @@ Human intelligence has several qualities that current AI systems simply don't po
 
 ### Purpose and Meaning
 
-Humans don't just do things—we do things for reasons. We ask "why" questions, set goals based on our values, and feel satisfaction when we accomplish something meaningful. We care deeply about the purpose behind an activity, not just getting it done.
+Humans don't just do things—we do things for reasons. We ask *why* questions, set goals based on our values, and feel satisfaction when we accomplish something meaningful. We care deeply about the purpose behind an activity, not just getting it done.
 
-AI systems, by contrast, have no intrinsic purposes or desires. They don't "want" anything—they simply process inputs and generate outputs. Any sense of purpose must come from the humans using them.
+AI systems, by contrast, have no intrinsic purposes or desires. They don't *want* anything—they simply process inputs and generate outputs. Any sense of purpose must come from the humans using them.
 
 ![](images/purpose-meaning.jpg)
 
@@ -146,11 +150,11 @@ AI systems like ChatGPT have been trained on vast amounts of text that describe 
 
 ### Creativity and Intuition
 
-Elena, a retired art teacher, was skeptical about using AI for her watercolor hobby. "I didn't see how a computer program could help with something as personal as art," she said. But when she asked ChatGPT for suggestions on painting autumn leaves with more vibrancy, she was pleasantly surprised.
+Elena, a retired art teacher, was skeptical about using AI for her watercolor hobby. *"I didn't see how a computer program could help with something as personal as art,"* she said. But when she asked ChatGPT for suggestions on painting autumn leaves with more vibrancy, she was pleasantly surprised.
 
 ![](images/artist-example.jpg)
 
-"The techniques it suggested were solid fundamentals—things I might tell my own students. But I still had to apply my eye for color, my sense of composition, and my own aesthetic preferences. The AI gave me options to consider, but the creative decisions remained mine."
+*"The techniques it suggested were solid fundamentals—things I might tell my own students. But I still had to apply my eye for color, my sense of composition, and my own aesthetic preferences. The AI gave me options to consider, but the creative decisions remained mine."*
 
 This illustrates another key difference: human creativity often involves making unexpected connections, being inspired by seemingly unrelated ideas, or having sudden insights that can't be fully explained. Our intuition allows us to make judgment calls based on subtle cues and years of experience.
 
@@ -196,13 +200,13 @@ Without the director, the assistant would have no purpose or direction. Without 
 
 So what does this look like in practice? Let's see how Marcus, a small business owner with no technical background, puts this partnership into action.
 
-Marcus owns a successful bakery and is considering opening a second location. Instead of simply asking AI, "Where should I open my second bakery location?"—a question the AI couldn't possibly answer well without knowing his specific business—Marcus directs the AI with more specific prompts:
+Marcus owns a successful bakery and is considering opening a second location. Instead of simply asking AI, *"Where should I open my second bakery location?"*—a question the AI couldn't possibly answer well without knowing his specific business—Marcus directs the AI with more specific prompts:
 
 ![](images/bakery-example.jpg)
 
-* "What demographic data should I analyze when selecting a new bakery location?"
-* "Help me create a checklist for evaluating potential retail spaces for a bakery."
-* "What are typical challenges bakeries face when opening a second location?"
+* `What demographic data should I analyze when selecting a new bakery location?`
+* `Help me create a checklist for evaluating potential retail spaces for a bakery.`
+* `What are typical challenges bakeries face when opening a second location?`
 
 Notice the pattern here—each question taps into the AI's ability to organize information while keeping Marcus firmly in the decision-making role. The AI provides valuable frameworks and information, but Marcus makes the final decision based on factors only he can fully understand—his appetite for risk, his intuition about different neighborhoods, and his vision for his brand.
 
@@ -215,12 +219,11 @@ In the next section, we'll explore in simple terms how these AI tools actually w
 
 # How Modern AI Tools Work (Simplified for Non-Technical Readers)
 
-
 To effectively direct AI tools, you don't need to understand all the technical details—just as you don't need to know exactly how a car engine functions to drive effectively. However, having a basic conceptual understanding will help you set realistic expectations and use these tools more skillfully.
 
 Let's explore how AI tools like ChatGPT work, using simple analogies that highlight both their capabilities and limitations.
 
-"When I first heard about AI, I imagined something from science fiction movies—like a computer that thinks and feels," says James, a retiree who now uses ChatGPT daily to help with his genealogy hobby. "But once I started using it, I realized it's more like having a very well-read research assistant who's incredibly fast but needs careful direction."
+*"When I first heard about AI, I imagined something from science fiction movies—like a computer that thinks and feels,"* says James, a retiree who now uses ChatGPT daily to help with his genealogy hobby. "*But once I started using it, I realized it's more like having a very well-read research assistant who's incredibly fast but needs careful direction."*
 
 ![](images/senior-genealogy.jpg)
 
@@ -228,11 +231,11 @@ Let's explore how AI tools like ChatGPT work, using simple analogies that highli
 
 At its core, an AI like ChatGPT is a sophisticated pattern completion machine. Imagine you're playing a game with a friend where you start a sentence and they finish it:
 
-You say: "The chef put the cake in the..."
+You say: `The chef put the cake in the...`
 
-Your friend almost certainly responds: "oven"
+Your friend almost certainly responds: `oven`
 
-Why? Because based on all the language they've encountered throughout their life, "oven" is the most likely word to come next in this context.
+Why? Because based on all the language they've encountered throughout their life, `oven` is the most likely word to come next in this context.
 
 ChatGPT does something similar, but on a much larger scale. It's been trained on enormous amounts of text from books, articles, websites, and other sources. During this training, it learned to recognize patterns in how words and ideas typically follow one another.
 
@@ -273,9 +276,9 @@ When ChatGPT generates text, it's essentially making a series of word choices ba
 
 Imagine a game where you start a sentence, and someone has to guess what word comes next:
 
-"The chef put the cake in the..."
+`The chef put the cake in the...`
 
-Most people would guess "oven" because that's the most probable word to follow in this context. AI systems do something similar, but with a much more sophisticated understanding of language patterns and a much larger vocabulary of possible words to choose from.
+Most people would guess `"oven"` because that's the most probable word to follow in this context. AI systems do something similar, but with a much more sophisticated understanding of language patterns and a much larger vocabulary of possible words to choose from.
 
 ![](images/probability-prediction.jpg)
 
@@ -306,7 +309,7 @@ Given these limitations, it's helpful to think of AI tools as assistants rather 
 
 ![](images/human-judgment.jpg)
 
-Remember Jake, who's planning a family vacation to Japan. If he simply asks ChatGPT "Plan my perfect Japan trip" and follows whatever itinerary it generates, he might end up with a generic tourist experience that doesn't match his family's interests or visit attractions that are closed for renovation.
+Remember Jake, who's planning a family vacation to Japan. If he simply asks ChatGPT `"Plan my perfect Japan trip"` and follows whatever itinerary it generates, he might end up with a generic tourist experience that doesn't match his family's interests or visit attractions that are closed for renovation.
 
 Instead, Jake uses his understanding of AI limitations to direct the tool more effectively. He knows that:
 - The AI's information might be outdated
@@ -593,12 +596,11 @@ In the next section, we'll put these ideas into practice with hands-on activitie
 
 # Activities: Your First Hands-On AI Experiences
 
-
 Let's put everything we've learned into practice! These hands-on activities will help you develop your AI direction skills while experiencing firsthand how your input shapes the results you get.
 
 Remember, there's no better way to learn than by doing. Don't worry about making mistakes—they're part of the learning process.
 
-![A person engaged in hands-on learning with ChatGPT](images/hands-on-learning.png)
+![](images/hands-on-learning.jpg)
 
 ---
 
@@ -622,17 +624,17 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 
 2. First, give a vague prompt and observe the response:
    
-   *"Give me some advice."*
+   `"Give me some advice."`
 
 3. Now, try a slightly more specific prompt:
    
-   *"Give me some advice about learning new skills."*
+   `"Give me some advice about learning new skills."`
 
 4. Finally, provide a highly specific prompt with context, constraints, and your goal:
    
-   *"I'm a busy parent with two young children trying to learn basic Spanish in preparation for a family trip to Mexico in three months. I can only practice for about 15 minutes each day, usually while commuting on public transportation. Give me a realistic learning plan that fits these constraints and focuses on practical travel phrases."*
+   `"I'm a busy parent with two young children trying to learn basic Spanish in preparation for a family trip to Mexico in three months. I can only practice for about 15 minutes each day, usually while commuting on public transportation. Give me a realistic learning plan that fits these constraints and focuses on practical travel phrases."`
 
-![A visual comparison of vague vs. specific prompts](images/prompt-specificity.png)
+![](images/prompt-specificity.jpg)
 
 5. Compare the three responses. Notice how the quality and usefulness of the AI's output directly corresponds to the specificity of your direction.
 
@@ -662,7 +664,7 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 
 1. Identify a current challenge in your life that requires some thinking or planning. This could be a decision you need to make, a project you're planning, or a problem you're trying to solve. Choose something real but not extremely personal or sensitive.
 
-![A person identifying a real-life challenge to explore with AI assistance](images/identify-challenge.png)
+![](images/identify-challenge.jpg)
 
 2. Before consulting AI, spend 3-5 minutes writing down your own thoughts about the challenge:
    - What makes this challenging?
@@ -678,7 +680,7 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 
 5. Follow up with at least one clarifying question or request based on the AI's response.
 
-"I used this approach when planning a career change," shares Tanisha, a former retail manager now working in healthcare administration. "The AI didn't tell me what to do, but it helped me organize my thoughts and consider aspects I hadn't thought about, like what transferable skills I already had."
+*"I used this approach when planning a career change,"* shares Tanisha, a former retail manager now working in healthcare administration. *"The AI didn't tell me what to do, but it helped me organize my thoughts and consider aspects I hadn't thought about, like what transferable skills I already had."*
 
 **Reflection Questions:**
 
@@ -706,7 +708,7 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 
 1. Choose a topic you know well—perhaps related to your profession, a hobby, or your local community.
 
-![A person comparing AI responses to their own knowledge on a familiar topic](images/testing-limitations.png)
+![](images/testing-limitations.jpg)
 
 2. Ask ChatGPT a series of increasingly specific questions about this topic, starting with general questions and moving toward highly specific ones that might require very recent or specialized knowledge.
 
@@ -716,9 +718,9 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 
 5. Ask the AI to explain its limitations regarding this topic. A prompt like this works well: 
    
-   *"What limitations might you have in providing information about [your topic]? What aspects of this subject would be difficult for you to address accurately?"*
+   `"What limitations might you have in providing information about [your topic]? What aspects of this subject would be difficult for you to address accurately?"`
 
-Robert, an amateur astronomer, tried this with his hobby: "I was impressed with the AI's knowledge of basic astronomy concepts, but when I asked about specific deep-sky objects I've observed or recent discoveries, it either gave outdated information or made up details. It was actually quite honest about its limitations when I asked directly."
+Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with the AI's knowledge of basic astronomy concepts, but when I asked about specific deep-sky objects I've observed or recent discoveries, it either gave outdated information or made up details. It was actually quite honest about its limitations when I asked directly."*
 
 **Reflection Questions:**
 
@@ -749,7 +751,7 @@ Robert, an amateur astronomer, tried this with his hobby: "I was impressed with 
    - Design a flyer for a community event
    - Create a workout routine
 
-![A person maintaining creative control while collaborating with AI](images/creative-control.png)
+![](images/creative-control.jpg)
 
 2. Begin by defining your vision for the project. Write down:
    - The main goal or purpose
@@ -758,15 +760,15 @@ Robert, an amateur astronomer, tried this with his hobby: "I was impressed with 
    - Any constraints or requirements
 
 3. Create a series of specific requests for ChatGPT that will help you with different aspects of your project. Instead of asking it to complete the entire project, break it down into components where AI assistance would be helpful. For example, if writing a short story:
-   - "Suggest three possible opening paragraphs for a story about..."
-   - "Help me develop the main character who is..."
-   - "Provide some descriptive language for the setting of..."
+   - `Suggest three possible opening paragraphs for a story about...`
+   - `Help me develop the main character who is...`
+   - `Provide some descriptive language for the setting of...`
 
 4. For each AI response, select elements you like, modify others, and discard those that don't fit your vision.
 
 5. Assemble the final project yourself, integrating AI-assisted elements with your own contributions.
 
-"I used this approach to plan my daughter's birthday party," explains Wei, a busy parent. "I had a dinosaur theme in mind but needed help with game ideas and decorations. Instead of asking for a complete party plan, I asked specific questions about each aspect and pieced together the elements I liked. The party felt like my creation, not something an AI made."
+*"I used this approach to plan my daughter's birthday party,"* explains Wei, a busy parent. *"I had a dinosaur theme in mind but needed help with game ideas and decorations. Instead of asking for a complete party plan, I asked specific questions about each aspect and pieced together the elements I liked. The party felt like my creation, not something an AI made."*
 
 **Reflection Questions:**
 
@@ -789,7 +791,6 @@ Robert, an amateur astronomer, tried this with his hobby: "I was impressed with 
 - Paper and pen, or digital document
 - 15-20 minutes
 
-
 **Instructions:**
 
 1. Reflect on your values, goals, and the areas of your life where you think AI tools might be helpful. Consider:
@@ -797,11 +798,11 @@ Robert, an amateur astronomer, tried this with his hobby: "I was impressed with 
    - What skills would you like to develop, with AI as a learning aid?
    - What aspects of your thinking or work would you never want to outsource?
 
-![A person reflecting on personal values and creating AI usage guidelines](images/personal-guidelines.png)
+![](images/personal-guidelines.jpg)
 
 2. Ask ChatGPT for assistance in thinking through these questions with a prompt like:
    
-   *"I'm developing personal guidelines for how I want to use AI tools like you in my life. Can you help me think through some questions to consider about where AI might be most helpful to me and where I might want to be cautious about using it? Consider aspects like learning, creativity, critical thinking, and practical tasks."*
+   `I'm developing personal guidelines for how I want to use AI tools like you in my life. Can you help me think through some questions to consider about where AI might be most helpful to me and where I might want to be cautious about using it? Consider aspects like learning, creativity, critical thinking, and practical tasks.`
 
 3. Based on the AI's suggestions and your own reflection, draft 3-5 personal guidelines for your AI use. These might include:
    - Types of tasks you'll use AI for
@@ -811,11 +812,11 @@ Robert, an amateur astronomer, tried this with his hobby: "I was impressed with 
 
 4. Share your draft guidelines with ChatGPT and ask for feedback: 
    
-   *"Here are my draft guidelines for using AI. Can you suggest any considerations I might have overlooked or ways to make these guidelines more practical?"*
+   `Here are my draft guidelines for using AI. Can you suggest any considerations I might have overlooked or ways to make these guidelines more practical?`
 
 5. Finalize your guidelines based on this feedback, keeping what resonates and discarding what doesn't fit your values and needs.
 
-"This exercise helped me set healthy boundaries," says Gabriela, a freelance writer. "I realized I wanted to use AI for research and editing but not for the creative heart of my writing. Having these guidelines helps me use AI as a tool without feeling like I'm compromising my craft."
+*"This exercise helped me set healthy boundaries,"* says Gabriela, a freelance writer. *"I realized I wanted to use AI for research and editing but not for the creative heart of my writing. Having these guidelines helps me use AI as a tool without feeling like I'm compromising my craft."*
 
 **Reflection Questions:**
 
@@ -833,11 +834,11 @@ Robert, an amateur astronomer, tried this with his hobby: "I was impressed with 
 
 Congratulations on completing these activities! You've taken your first steps toward becoming a skilled AI director. Through these exercises, you've experienced firsthand how your direction shapes AI output, how to maintain control of creative processes, and how to set healthy boundaries for AI use in your life.
 
-![A confident person ready to use AI tools effectively](images/moving-forward.png)
+![](images/moving-forward.jpg)
 
 Remember that the concept of Actual Intelligence emphasizes that you—the human—are the essential intelligence in this partnership. The AI is a tool that amplifies your thinking, but the direction, purpose, and wisdom come from you.
 
-"Before trying these activities, I felt like AI was this mysterious thing I couldn't possibly understand," shares Jordan, a small business owner. "Now I see it's just a tool—a powerful one, but still just a tool that I control. That shift in perspective has made all the difference."
+*"Before trying these activities, I felt like AI was this mysterious thing I couldn't possibly understand,"* shares Jordan, a small business owner. *"Now I see it's just a tool—a powerful one, but still just a tool that I control. That shift in perspective has made all the difference."*
 
 In the chapters ahead, we'll build on these foundations by exploring more specific applications and techniques for using AI tools effectively in various aspects of your life. We'll start by setting up your free ChatGPT account and walking through the basics of the interface, so you can begin applying what you've learned right away.
 
