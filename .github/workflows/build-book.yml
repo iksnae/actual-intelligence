@@ -79,21 +79,26 @@ jobs:
           mkdir -p build
           mkdir -p templates
           mkdir -p build/images
+          mkdir -p build/es
+          mkdir -p build/es/images
           
           # Fix permissions on script files
           chmod +x build.sh
           find tools/scripts -name "*.sh" -exec chmod +x {} \;
 
-      - name: Build book (English only)
+      - name: Build book (All languages)
         run: |
-          echo "Running build script for English version only..."
-          # Run the build script with English language only
-          ./build.sh --lang=en || echo "Build script completed with warnings"
+          echo "Running build script for all languages..."
+          # Run the build script with all languages
+          ./build.sh --all-languages || echo "Build script completed with warnings"
 
       - name: List build directory contents
         run: |
           echo "=== Build Directory Contents ==="
           ls -la build/
+          
+          echo "\n=== ES Directory Contents ==="
+          ls -la build/es/ || echo "ES directory may not exist yet"
           
           echo "\n=== Images Directory Contents ==="
           ls -la build/images/ || echo "Images directory may not exist yet"
@@ -108,6 +113,7 @@ jobs:
             build/*.mobi
             build/*.html
             build/*.md
+            build/es/*
             build/images/*
 
   release:
@@ -129,6 +135,9 @@ jobs:
         run: |
           echo "=== Build Directory Contents ==="
           ls -la build/
+          
+          echo "\n=== ES Directory Contents ==="
+          ls -la build/es/ || echo "ES directory may not exist yet"
 
       - name: Create release
         id: create_release
@@ -139,6 +148,9 @@ jobs:
             build/actual-intelligence.epub
             build/actual-intelligence.mobi
             build/actual-intelligence.html
+            build/inteligencia-real.pdf
+            build/inteligencia-real.epub
+            build/inteligencia-real.mobi
           tag_name: ${{ needs.setup.outputs.version }}
           name: Actual Intelligence ${{ needs.setup.outputs.version }}
           body: |
@@ -157,10 +169,19 @@ jobs:
             | 📚 MOBI | For Kindle devices | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/actual-intelligence.mobi) |
             | 🌐 HTML | Read online in your browser | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/actual-intelligence.html) |
             
+            ### Spanish Version (Versión en Español)
+            
+            | Format | Description | Link |
+            |--------|-------------|------|
+            | 📄 PDF | Para leer en computadoras e imprimir | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.pdf) |
+            | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.epub) |
+            | 📚 MOBI | Para dispositivos Kindle | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.mobi) |
+            
             ## 🔄 Web Version
             
             The latest version is also available online:
             - English: https://iksnae.github.io/actual-intelligence/
+            - Spanish: https://iksnae.github.io/actual-intelligence/es/
           draft: false
 
   deploy:
