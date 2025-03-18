@@ -2,7 +2,7 @@ name: Build Book
 
 on:
   push:
-    branches: [main]
+    # Run on any branch
     paths:
       - 'book/**'
       - 'art/**'
@@ -63,7 +63,8 @@ jobs:
         run: |
           echo "Running enhanced build script..."
           chmod +x build.sh
-          ./build.sh || echo "Build script completed with warnings"
+          # Run the build script with the all-languages flag
+          ./build.sh --all-languages || echo "Build script completed with warnings"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -79,6 +80,8 @@ jobs:
             build/images/*
 
   release:
+    # Only run release job on main branch
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -90,6 +93,9 @@ jobs:
         with:
           name: book-files
           path: build
+
+      - name: List build directory contents
+        run: ls -la build/
 
       - name: Get current date
         id: date
