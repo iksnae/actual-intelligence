@@ -20,9 +20,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     container:
-      image: iksnae/book-builder:latest  # Replace with your image URL
+      image: iksnae/book-builder:latest
 
     steps:
       - uses: actions/checkout@v4
@@ -77,6 +76,25 @@ jobs:
             build/*.html
             build/*.md
             build/es/*
+            build/images/*
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: book-files
+          path: build
+
+      - name: Get current date
+        id: date
+        run: echo "DATE=$(date +'%B %d, %Y')" >> $GITHUB_ENV
+
+      - name: Set version
+        id: version
+        run: echo "VERSION=$(date +'v%Y.%m.%d-%H%M')" >> $GITHUB_ENV
 
       - name: Create release
         id: create_release
