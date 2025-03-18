@@ -20,8 +20,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     container:
-      image: iksnae/book-builder:latest
+      image: ghcr.io/iksnae/book-builder:latest  # Replace with your image URL
 
     steps:
       - uses: actions/checkout@v4
@@ -59,16 +60,6 @@ jobs:
             echo "cover_found=false" >> $GITHUB_OUTPUT
           fi
 
-      # Install dependencies if there's a package.json file
-      - name: Install Node.js dependencies
-        run: |
-          if [ -f "package.json" ]; then
-            echo "Installing Node.js dependencies..."
-            npm install
-          else
-            echo "No package.json found, skipping npm install"
-          fi
-
       - name: Build book
         run: |
           echo "Running enhanced build script..."
@@ -85,6 +76,7 @@ jobs:
             build/*.mobi
             build/*.html
             build/*.md
+            build/es/*
 
       - name: Create release
         id: create_release
@@ -95,6 +87,9 @@ jobs:
             build/actual-intelligence.epub
             build/actual-intelligence.mobi
             build/actual-intelligence.html
+            build/inteligencia-real.pdf
+            build/inteligencia-real.epub
+            build/inteligencia-real.mobi
           tag_name: ${{ env.VERSION }}
           name: Actual Intelligence ${{ env.VERSION }}
           body: |
@@ -104,6 +99,8 @@ jobs:
             
             ## 📚 Download Options
             
+            ### English Version
+            
             | Format | Description | Link |
             |--------|-------------|------|
             | 📄 PDF | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.pdf) |
@@ -111,9 +108,19 @@ jobs:
             | 📚 MOBI | For Kindle devices | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.mobi) |
             | 🌐 HTML | Read online in your browser | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.html) |
             
+            ### Spanish Version (Versión en Español)
+            
+            | Format | Description | Link |
+            |--------|-------------|------|
+            | 📄 PDF | Para leer en computadoras e imprimir | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/inteligencia-real.pdf) |
+            | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/inteligencia-real.epub) |
+            | 📚 MOBI | Para dispositivos Kindle | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/inteligencia-real.mobi) |
+            
             ## 🔄 Web Version
             
-            The latest version is also available at https://iksnae.github.io/actual-intelligence/
+            The latest version is also available online:
+            - English: https://iksnae.github.io/actual-intelligence/
+            - Spanish: https://iksnae.github.io/actual-intelligence/es/
           draft: false
 
       - name: Deploy to GitHub Pages
