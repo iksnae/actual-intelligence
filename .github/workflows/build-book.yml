@@ -22,31 +22,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      
+          cache: 'npm'  # This enables npm caching for the node_modules folder
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Install required packages
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra librsvg2-bin calibre
-      
+
       - name: Set version and date
         id: version
         run: |
           VERSION=$(date +'v%Y.%m.%d-%H%M')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "DATE=$(date +'%B %d, %Y')" >> $GITHUB_ENV
-      
+
       - name: Create build directories
         run: mkdir -p build
-      
+
       - name: Create templates directory
         run: mkdir -p templates
-      
+
       - name: Check for cover image
         id: cover
         run: |
@@ -66,13 +68,13 @@ jobs:
             echo "⚠️ No cover image found"
             echo "cover_found=false" >> $GITHUB_OUTPUT
           fi
-      
+
       - name: Build book
         run: |
           echo "Running enhanced build script..."
           chmod +x build.sh
           ./build.sh || echo "Build script completed with warnings"
-      
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -83,7 +85,7 @@ jobs:
             build/*.mobi
             build/*.html
             build/*.md
-      
+
       - name: Create release
         id: create_release
         uses: softprops/action-gh-release@v1
@@ -113,7 +115,7 @@ jobs:
             
             The latest version is also available at https://iksnae.github.io/actual-intelligence/
           draft: false
-      
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
