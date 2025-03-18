@@ -3,9 +3,6 @@
 # generate-epub.sh - Generates EPUB version of the book
 # Usage: generate-epub.sh [language] [input_file] [output_file] [book_title] [book_subtitle] [resource_paths]
 
-# Debugging - show exactly what we're doing
-set -x
-
 # Don't exit on error - we'll handle errors manually
 set +e
 
@@ -16,136 +13,141 @@ OUTPUT_FILE=${3:-build/actual-intelligence.epub}
 BOOK_TITLE=${4:-"Actual Intelligence"}
 BOOK_SUBTITLE=${5:-"A Practical Guide to Using AI in Everyday Life"}
 
-# Create a unique working directory for this build
-WORK_DIR="build/epub_build_${LANGUAGE}_$(date +%s)"
-mkdir -p "$WORK_DIR"
+echo "📱 Generating EPUB for $LANGUAGE..."
+echo "📊 Input: $INPUT_FILE"
+echo "📊 Output: $OUTPUT_FILE"
 
-# Copy the Markdown file to our working directory
-WORKING_MD="$WORK_DIR/content.md"
-cp "$INPUT_FILE" "$WORKING_MD"
+# Simplify the approach for Docker environment
 
-# Create an images directory 
-mkdir -p "$WORK_DIR/images"
+# Step 1: Copy all images to build/images directory
+echo "📁 Ensuring all images are available..."
+mkdir -p build/images
 
-# Copy ALL images to our working directory to ensure they're found
-echo "Copying all images to working directory..."
+# Copy images from all possible sources
 if [ -d "book/images" ]; then
-  cp -r book/images/* "$WORK_DIR/images/" 2>/dev/null || true
+  echo "Copying from book/images"
+  cp -r book/images/* build/images/ 2>/dev/null || true
 fi
 
 if [ -d "book/en/images" ]; then
-  cp -r book/en/images/* "$WORK_DIR/images/" 2>/dev/null || true
+  echo "Copying from book/en/images"
+  cp -r book/en/images/* build/images/ 2>/dev/null || true
 fi
 
 if [ -d "book/$LANGUAGE/images" ]; then
-  cp -r book/$LANGUAGE/images/* "$WORK_DIR/images/" 2>/dev/null || true
+  echo "Copying from book/$LANGUAGE/images"
+  cp -r book/$LANGUAGE/images/* build/images/ 2>/dev/null || true
 fi
 
-if [ -d "build/images" ]; then
-  cp -r build/images/* "$WORK_DIR/images/" 2>/dev/null || true
-fi
-
-if [ -d "build/$LANGUAGE/images" ]; then
-  cp -r build/$LANGUAGE/images/* "$WORK_DIR/images/" 2>/dev/null || true
-fi
-
-# Special handling for cover image
 if [ -n "$COVER_IMAGE" ]; then
-  # Copy cover image to our working directory
-  cp "$COVER_IMAGE" "$WORK_DIR/cover.png"
-  COVER_IMAGE_ARG="--epub-cover-image=$WORK_DIR/cover.png"
-  
-  # Update metadata in the markdown file
-  sed -i "s|cover-image: '.*'|cover-image: 'cover.png'|g" "$WORKING_MD"
-else
-  COVER_IMAGE_ARG=""
+  echo "Copying cover image: $COVER_IMAGE"
+  cp "$COVER_IMAGE" build/images/cover.png 2>/dev/null || true
 fi
 
-# Fix image paths in the markdown file to be relative to working directory
-# This is critical for Pandoc to find the images
-echo "Fixing image paths in Markdown..."
-sed -i 's|!\[\([^]]*\)\](\([^)]*\))|![\1](images/\2)|g' "$WORKING_MD"
-sed -i 's|!\[\([^]]*\)\](images/images/|![\1](images/|g' "$WORKING_MD"
+# Step 2: Create a modified markdown file with fixed image paths
+MODIFIED_MD="build/epub-ready-$LANGUAGE.md"
+cp "$INPUT_FILE" "$MODIFIED_MD"
 
-# Make images directory easily available
-ln -s "$WORK_DIR/images" "images" 2>/dev/null || true
+# Try to fix image paths to use the build/images directory
+echo "🔄 Updating image paths in markdown..."
+sed -i 's|!\[\([^]]*\)\](\([^)]*\))|![\1](build/images/\2)|g' "$MODIFIED_MD"
+sed -i 's|cover-image: .*|cover-image: build/images/cover.png|g' "$MODIFIED_MD"
 
-# Change to working directory (CRITICAL for path resolution)
-cd "$WORK_DIR"
+# List the image folder contents for debugging
+echo "📸 Available images:"
+ls -la build/images/
 
-echo "📱 Generating EPUB for $LANGUAGE from working directory $(pwd)..."
-echo "Current directory contents:"
-ls -la
+# Step 3: Generate the EPUB with maximum debugging
+echo "🔄 Running pandoc..."
 
-echo "Images directory contents:"
-ls -la images/
-
-# Generate EPUB directly from the working directory
-pandoc content.md -o "output.epub" \
-  $COVER_IMAGE_ARG \
+# First try: Generate with all images and self-contained flag
+pandoc "$MODIFIED_MD" -o "$OUTPUT_FILE" \
+  --epub-cover-image=build/images/cover.png \
   --self-contained \
+  --verbose \
   --toc \
   --toc-depth=2 \
+  --resource-path=".:build:build/images" \
   --metadata title="$BOOK_TITLE" \
   --metadata subtitle="$BOOK_SUBTITLE" \
   --metadata publisher="Khaos Studios" \
   --metadata creator="Open Source Community" \
-  --metadata lang="$LANGUAGE"
+  --metadata lang="$LANGUAGE" 2>&1 | tee build/pandoc-output.log
 
-# Check if EPUB generation succeeded
-if [ -s "output.epub" ]; then
-  # Copy back to the intended location
-  cp "output.epub" "../../../$OUTPUT_FILE"
-  
-  # Get file size for verification
-  FILE_SIZE=$(du -k "../../../$OUTPUT_FILE" | cut -f1)
+# Check if EPUB was generated successfully
+if [ -s "$OUTPUT_FILE" ]; then
+  FILE_SIZE=$(du -k "$OUTPUT_FILE" | cut -f1)
   echo "📊 EPUB file size: ${FILE_SIZE}KB"
   
   if [ "$FILE_SIZE" -lt 3000 ]; then
     echo "⚠️ WARNING: EPUB file size is smaller than expected (${FILE_SIZE}KB). Images may be missing."
-  else
-    echo "✅ EPUB file size looks good (${FILE_SIZE}KB). Images likely included."
+    echo "🔍 Trying with embed-resources flag..."
+    
+    # Second try: Use embed-resources flag
+    pandoc "$MODIFIED_MD" -o "$OUTPUT_FILE" \
+      --epub-cover-image=build/images/cover.png \
+      --embed-resources \
+      --toc \
+      --toc-depth=2 \
+      --resource-path=".:build:build/images" \
+      --metadata title="$BOOK_TITLE" \
+      --metadata subtitle="$BOOK_SUBTITLE" \
+      --metadata publisher="Khaos Studios" \
+      --metadata creator="Open Source Community" \
+      --metadata lang="$LANGUAGE" 2>&1 | tee -a build/pandoc-output.log
+      
+    # Check file size again
+    if [ -s "$OUTPUT_FILE" ]; then
+      FILE_SIZE=$(du -k "$OUTPUT_FILE" | cut -f1)
+      echo "📊 EPUB file size (second attempt): ${FILE_SIZE}KB"
+      
+      if [ "$FILE_SIZE" -lt 3000 ]; then
+        echo "⚠️ WARNING: Images still missing. Final attempt with direct paths..."
+        
+        # Final attempt with direct path replacements
+        sed -i 's|!\[\([^]]*\)\](build/images/\([^)]*\))|![\1](\2)|g' "$MODIFIED_MD"
+        sed -i 's|cover-image: build/images/cover.png|cover-image: cover.png|g' "$MODIFIED_MD"
+        
+        # Copy images to current directory for simplicity
+        mkdir -p images
+        cp -r build/images/* images/ 2>/dev/null || true
+        
+        # Create temporary directory for this attempt
+        TEMP_DIR="build/epub-temp"
+        mkdir -p "$TEMP_DIR"
+        cp "$MODIFIED_MD" "$TEMP_DIR/content.md"
+        cp -r images "$TEMP_DIR/"
+        
+        # Run pandoc from the temporary directory
+        (cd "$TEMP_DIR" && \
+         pandoc content.md -o epub-output.epub \
+          --epub-cover-image=images/cover.png \
+          --toc \
+          --toc-depth=2 \
+          --resource-path=".:images" \
+          --metadata title="$BOOK_TITLE" \
+          --metadata subtitle="$BOOK_SUBTITLE" \
+          --metadata publisher="Khaos Studios" \
+          --metadata creator="Open Source Community" \
+          --metadata lang="$LANGUAGE")
+          
+        # Copy the result back if successful
+        if [ -s "$TEMP_DIR/epub-output.epub" ]; then
+          cp "$TEMP_DIR/epub-output.epub" "$OUTPUT_FILE"
+          FILE_SIZE=$(du -k "$OUTPUT_FILE" | cut -f1)
+          echo "📊 EPUB file size (final attempt): ${FILE_SIZE}KB"
+        fi
+      fi
+    fi
   fi
   
-  echo "✅ EPUB created successfully at $OUTPUT_FILE"
-else
-  echo "❌ Failed to create EPUB (first attempt)"
-  
-  # Try with explicit --extract-media approach
-  cd "../.."
-  echo "Attempting alternate EPUB generation approach..."
-  
-  # Create a separate extract media directory
-  EXTRACT_DIR="$WORK_DIR/extract"
-  mkdir -p "$EXTRACT_DIR"
-  
-  # Generate EPUB with extract-media
-  pandoc "$WORKING_MD" -o "$OUTPUT_FILE" \
-    $COVER_IMAGE_ARG \
-    --toc \
-    --toc-depth=2 \
-    --metadata title="$BOOK_TITLE" \
-    --metadata subtitle="$BOOK_SUBTITLE" \
-    --metadata publisher="Khaos Studios" \
-    --metadata creator="Open Source Community" \
-    --metadata lang="$LANGUAGE" \
-    --extract-media="$EXTRACT_DIR" \
-    --resource-path="$WORK_DIR:$WORK_DIR/images:."
-  
-  # Check results of second attempt
   if [ -s "$OUTPUT_FILE" ]; then
-    FILE_SIZE=$(du -k "$OUTPUT_FILE" | cut -f1)
-    echo "📊 EPUB file size (second attempt): ${FILE_SIZE}KB"
-    
-    if [ "$FILE_SIZE" -lt 3000 ]; then
-      echo "⚠️ WARNING: EPUB file size is smaller than expected (${FILE_SIZE}KB). Images may be missing."
-    else
-      echo "✅ EPUB file size looks good (${FILE_SIZE}KB). Images likely included."
-    fi
-    
     echo "✅ EPUB created successfully at $OUTPUT_FILE"
   else
     echo "❌ Failed to create EPUB after multiple attempts"
     exit 1
   fi
+else
+  echo "❌ Failed to create EPUB. Check pandoc-output.log for details."
+  exit 1
 fi
