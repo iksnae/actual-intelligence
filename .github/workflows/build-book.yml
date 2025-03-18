@@ -79,11 +79,14 @@ jobs:
           mkdir -p build
           mkdir -p templates
           mkdir -p build/images
+          
+          # Fix permissions on script files
+          chmod +x build.sh
+          find tools/scripts -name "*.sh" -exec chmod +x {} \;
 
       - name: Build book (English only)
         run: |
           echo "Running build script for English version only..."
-          chmod +x build.sh
           # Run the build script with English language only
           ./build.sh --lang=en || echo "Build script completed with warnings"
 
