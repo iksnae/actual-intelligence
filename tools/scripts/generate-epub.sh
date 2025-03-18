@@ -30,35 +30,49 @@ fi
 # Make sure the output directory exists
 mkdir -p "$(dirname "$OUTPUT_FILE")"
 
-# Figure out the cover image option
-COVER_OPTION=""
-if [ -n "$COVER_IMAGE" ]; then
-  echo "Including cover image in EPUB: $COVER_IMAGE"
-  COVER_OPTION="--epub-cover-image=\"$COVER_IMAGE\""
+# Define extract media directory
+EXTRACT_DIR="build/epub-media"
+if [ "$LANGUAGE" != "en" ]; then
+  EXTRACT_DIR="build/epub-media/$LANGUAGE"
 fi
-
-# First attempt: Generate EPUB with all features
-EXTRACT_DIR="build/epub-media/$LANGUAGE"
 mkdir -p "$EXTRACT_DIR"
 
-eval pandoc "$INPUT_FILE" -o "$OUTPUT_FILE" \
-  $COVER_OPTION \
-  --toc \
-  --toc-depth=2 \
-  --metadata title="$BOOK_TITLE" \
-  --metadata subtitle="$BOOK_SUBTITLE" \
-  --metadata publisher="Khaos Studios" \
-  --metadata creator="Open Source Community" \
-  --metadata lang="$LANGUAGE" \
-  --resource-path="$RESOURCE_PATHS" \
-  --extract-media="$EXTRACT_DIR" || true
+# Generate EPUB with cover image if available
+if [ -n "$COVER_IMAGE" ]; then
+  echo "✓ Including cover image in EPUB: $COVER_IMAGE"
+  pandoc "$INPUT_FILE" -o "$OUTPUT_FILE" \
+    --epub-cover-image="$COVER_IMAGE" \
+    --toc \
+    --toc-depth=2 \
+    --metadata title="$BOOK_TITLE" \
+    --metadata subtitle="$BOOK_SUBTITLE" \
+    --metadata publisher="Khaos Studios" \
+    --metadata creator="Open Source Community" \
+    --metadata lang="$LANGUAGE" \
+    --resource-path="$RESOURCE_PATHS" \
+    --extract-media="$EXTRACT_DIR" || true
+else
+  # Generate EPUB without cover image
+  pandoc "$INPUT_FILE" -o "$OUTPUT_FILE" \
+    --toc \
+    --toc-depth=2 \
+    --metadata title="$BOOK_TITLE" \
+    --metadata subtitle="$BOOK_SUBTITLE" \
+    --metadata publisher="Khaos Studios" \
+    --metadata creator="Open Source Community" \
+    --metadata lang="$LANGUAGE" \
+    --resource-path="$RESOURCE_PATHS" \
+    --extract-media="$EXTRACT_DIR" || true
+fi
 
 # If EPUB generation failed, try without images
 if [ ! -s "$OUTPUT_FILE" ]; then
-  echo "⚠️ WARNING: EPUB generation failed, creating minimal EPUB without images..."
-  # Create a version with image references removed
-  sed -i 's/!\[\([^]]*\)\](\([^)]*\))//g' "$SAFE_INPUT_FILE"
+  echo "⚠️ WARNING: EPUB generation failed, trying with more resilient settings..."
   
+  # Create a version of the markdown with image references made more resilient
+  sed -i 's/!\[\([^]]*\)\](\([^)]*\))/![\1](images\/\2)/g' "$SAFE_INPUT_FILE"
+  
+  # Try again with modified image paths
   pandoc "$SAFE_INPUT_FILE" -o "$OUTPUT_FILE" \
     --toc \
     --toc-depth=2 \
@@ -67,7 +81,26 @@ if [ ! -s "$OUTPUT_FILE" ]; then
     --metadata publisher="Khaos Studios" \
     --metadata creator="Open Source Community" \
     --metadata lang="$LANGUAGE" \
-    --resource-path="$RESOURCE_PATHS" || true
+    --resource-path="$RESOURCE_PATHS" \
+    --extract-media="$EXTRACT_DIR" || true
+  
+  # If still not successful, create a minimal EPUB without images
+  if [ ! -s "$OUTPUT_FILE" ]; then
+    echo "⚠️ WARNING: EPUB generation with images failed, creating a minimal EPUB without images..."
+    # Create a version with image references removed
+    sed -i 's/!\[\([^]]*\)\](\([^)]*\))//g' "$SAFE_INPUT_FILE"
+    
+    # Final attempt: minimal EPUB with no images
+    pandoc "$SAFE_INPUT_FILE" -o "$OUTPUT_FILE" \
+      --toc \
+      --toc-depth=2 \
+      --metadata title="$BOOK_TITLE" \
+      --metadata subtitle="$BOOK_SUBTITLE" \
+      --metadata publisher="Khaos Studios" \
+      --metadata creator="Open Source Community" \
+      --metadata lang="$LANGUAGE" \
+      --resource-path="$RESOURCE_PATHS" || true
+  fi
 fi
 
 # Check final result
