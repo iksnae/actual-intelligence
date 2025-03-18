@@ -36,12 +36,42 @@ if [ -f "art/cover.png" ]; then
   cp "$COVER_IMAGE" book/images/cover.png
   cp "$COVER_IMAGE" book/en/images/cover.png
   cp "$COVER_IMAGE" book/es/images/cover.png
+  
+  # Also copy to build directories
+  cp "$COVER_IMAGE" build/images/cover.png
+  mkdir -p build/es/images
+  cp "$COVER_IMAGE" build/es/images/cover.png
+  
 elif [ -f "book/images/cover.png" ]; then
   echo "✅ Found cover image at book/images/cover.png"
   COVER_IMAGE="book/images/cover.png"
+  
+  # Copy to other locations
+  mkdir -p book/en/images
+  mkdir -p book/es/images
+  cp "$COVER_IMAGE" book/en/images/cover.png
+  cp "$COVER_IMAGE" book/es/images/cover.png
+  
+  # Also copy to build directories
+  cp "$COVER_IMAGE" build/images/cover.png
+  mkdir -p build/es/images
+  cp "$COVER_IMAGE" build/es/images/cover.png
+  
 elif [ -f "book/en/images/cover.png" ]; then
   echo "✅ Found cover image at book/en/images/cover.png"
   COVER_IMAGE="book/en/images/cover.png"
+  
+  # Copy to other locations
+  mkdir -p book/images
+  mkdir -p book/es/images
+  cp "$COVER_IMAGE" book/images/cover.png
+  cp "$COVER_IMAGE" book/es/images/cover.png
+  
+  # Also copy to build directories
+  cp "$COVER_IMAGE" build/images/cover.png
+  mkdir -p build/es/images
+  cp "$COVER_IMAGE" build/es/images/cover.png
+  
 else
   echo "⚠️ No cover image found. Building book without cover."
 fi
@@ -70,5 +100,16 @@ fi
 # Copy image resources to build directory
 echo "🖼️ Copying image directories..."
 source tools/scripts/copy-images.sh
+
+echo "📋 Environment Summary:"
+echo "   - COVER_IMAGE: $COVER_IMAGE"
+echo "   - TEMP_TEMPLATE: $TEMP_TEMPLATE"
+echo "   - Working Directory: $(pwd)"
+find book -path "*/images" -type d | while read -r imgdir; do
+  echo "   - Image directory found: $imgdir"
+  # Count images for verification
+  IMG_COUNT=$(find "$imgdir" -type f | wc -l)
+  echo "     (contains $IMG_COUNT image files)"
+done
 
 echo "✅ Setup completed successfully"
