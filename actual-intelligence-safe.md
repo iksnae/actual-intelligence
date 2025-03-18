@@ -185,16 +185,18 @@ A helpful way to understand this relationship is to think of yourself as a film 
 ![](images/images/director-assistant.jpg)
 
 As the director, you:
-* Determine the vision and purpose of the project
-* Make creative and ethical decisions
-* Evaluate quality based on your taste and judgment
-* Take ultimate responsibility for the final product
+
+- Determine the vision and purpose of the project
+- Make creative and ethical decisions
+- Evaluate quality based on your taste and judgment
+- Take ultimate responsibility for the final product
 
 The AI assistant:
-* Helps execute specific tasks
-* Offers options based on your direction
-* Provides information and suggestions
-* Works tirelessly on the details you specify
+
+- Helps execute specific tasks
+- Offers options based on your direction
+- Provides information and suggestions
+- Works tirelessly on the details you specify
 
 Without the director, the assistant would have no purpose or direction. Without the assistant, the director would have to handle every small detail alone.
 
