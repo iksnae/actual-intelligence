@@ -2,7 +2,7 @@ name: Build Book
 
 on:
   push:
-    branches: [main]
+    # Run on any branch
     paths:
       - 'book/**'
       - 'art/**'
@@ -18,11 +18,14 @@ permissions:
   deployments: write
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
     container:
       image: iksnae/book-builder:latest
-
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      date: ${{ steps.version.outputs.date }}
+      cover_found: ${{ steps.cover.outputs.cover_found }}
     steps:
       - uses: actions/checkout@v4
 
@@ -31,7 +34,11 @@ jobs:
         run: |
           VERSION=$(date +'v%Y.%m.%d-%H%M')
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "DATE=$(date +'%B %d, %Y')" >> $GITHUB_ENV
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          
+          DATE=$(date +'%B %d, %Y')
+          echo "DATE=$DATE" >> $GITHUB_ENV
+          echo "date=$DATE" >> $GITHUB_OUTPUT
 
       - name: Create build directories
         run: mkdir -p build
@@ -59,11 +66,39 @@ jobs:
             echo "cover_found=false" >> $GITHUB_OUTPUT
           fi
 
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    container:
+      image: iksnae/book-builder:latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Prepare environment
+        run: |
+          mkdir -p build
+          mkdir -p templates
+          mkdir -p build/es
+          mkdir -p build/images
+          mkdir -p build/es/images
+
       - name: Build book
         run: |
           echo "Running enhanced build script..."
           chmod +x build.sh
-          ./build.sh || echo "Build script completed with warnings"
+          # Run the build script with the all-languages flag
+          ./build.sh --all-languages || echo "Build script completed with warnings"
+
+      - name: List build directory contents
+        run: |
+          echo "=== Build Directory Contents ==="
+          ls -la build/
+          
+          echo "\n=== ES Directory Contents ==="
+          ls -la build/es/ || echo "ES directory may not exist yet"
+          
+          echo "\n=== Images Directory Contents ==="
+          ls -la build/images/ || echo "Images directory may not exist yet"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -79,7 +114,9 @@ jobs:
             build/images/*
 
   release:
-    needs: build
+    # Only run release job on main branch
+    if: github.ref == 'refs/heads/main'
+    needs: [setup, build]
     runs-on: ubuntu-latest
     steps:
       # Add checkout step so Git commands work properly
@@ -91,13 +128,13 @@ jobs:
           name: book-files
           path: build
 
-      - name: Get current date
-        id: date
-        run: echo "DATE=$(date +'%B %d, %Y')" >> $GITHUB_ENV
-
-      - name: Set version
-        id: version
-        run: echo "VERSION=$(date +'v%Y.%m.%d-%H%M')" >> $GITHUB_ENV
+      - name: List build directory contents
+        run: |
+          echo "=== Build Directory Contents ==="
+          ls -la build/
+          
+          echo "\n=== ES Directory Contents ==="
+          ls -la build/es/ || echo "ES directory may not exist yet"
 
       - name: Create release
         id: create_release
@@ -111,12 +148,12 @@ jobs:
             build/inteligencia-real.pdf
             build/inteligencia-real.epub
             build/inteligencia-real.mobi
-          tag_name: ${{ env.VERSION }}
-          name: Actual Intelligence ${{ env.VERSION }}
+          tag_name: ${{ needs.setup.outputs.version }}
+          name: Actual Intelligence ${{ needs.setup.outputs.version }}
           body: |
             # Actual Intelligence Book
             
-            Built on ${{ env.DATE }} by Khaos Studios
+            Built on ${{ needs.setup.outputs.date }} by Khaos Studios
             
             ## 📚 Download Options
             
@@ -124,18 +161,18 @@ jobs:
             
             | Format | Description | Link |
             |--------|-------------|------|
-            | 📄 PDF | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.pdf) |
-            | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.epub) |
-            | 📚 MOBI | For Kindle devices | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.mobi) |
-            | 🌐 HTML | Read online in your browser | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/actual-intelligence.html) |
+            | 📄 PDF | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/actual-intelligence.pdf) |
+            | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/actual-intelligence.epub) |
+            | 📚 MOBI | For Kindle devices | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/actual-intelligence.mobi) |
+            | 🌐 HTML | Read online in your browser | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/actual-intelligence.html) |
             
             ### Spanish Version (Versión en Español)
             
             | Format | Description | Link |
             |--------|-------------|------|
-            | 📄 PDF | Para leer en computadoras e imprimir | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/inteligencia-real.pdf) |
-            | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/inteligencia-real.epub) |
-            | 📚 MOBI | Para dispositivos Kindle | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ env.VERSION }}/inteligencia-real.mobi) |
+            | 📄 PDF | Para leer en computadoras e imprimir | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.pdf) |
+            | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.epub) |
+            | 📚 MOBI | Para dispositivos Kindle | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.mobi) |
             
             ## 🔄 Web Version
             
@@ -143,6 +180,20 @@ jobs:
             - English: https://iksnae.github.io/actual-intelligence/
             - Spanish: https://iksnae.github.io/actual-intelligence/es/
           draft: false
+
+  deploy:
+    # Only run deploy job on main branch
+    if: github.ref == 'refs/heads/main'
+    needs: [build, release]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: book-files
+          path: build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
