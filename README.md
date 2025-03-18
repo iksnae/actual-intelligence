@@ -6,6 +6,8 @@ A practical, non-technical guide to using AI tools like ChatGPT in everyday life
 
 ## 📚 Download the Book
 
+### English Version
+
 <div align="center">
 
 [![Download PDF](https://img.shields.io/badge/Download-PDF%20Version-blue?style=for-the-badge&logo=adobe-acrobat-reader)](https://github.com/iksnae/actual-intelligence/releases/latest/download/actual-intelligence.pdf)
@@ -15,11 +17,27 @@ A practical, non-technical guide to using AI tools like ChatGPT in everyday life
 
 </div>
 
+### Spanish Version (Versión en Español)
+
+<div align="center">
+
+[![Download PDF](https://img.shields.io/badge/Descargar-Versión%20PDF-blue?style=for-the-badge&logo=adobe-acrobat-reader)](https://github.com/iksnae/actual-intelligence/releases/latest/download/inteligencia-real.pdf)
+[![Download EPUB](https://img.shields.io/badge/Descargar-Versión%20EPUB-green?style=for-the-badge&logo=apple)](https://github.com/iksnae/actual-intelligence/releases/latest/download/inteligencia-real.epub)
+[![Download MOBI](https://img.shields.io/badge/Descargar-Versión%20Kindle-orange?style=for-the-badge&logo=amazon)](https://github.com/iksnae/actual-intelligence/releases/latest/download/inteligencia-real.mobi)
+[![Read Online](https://img.shields.io/badge/Leer-Versión%20Web-purple?style=for-the-badge&logo=html5)](https://iksnae.github.io/actual-intelligence/es/)
+
+</div>
+
 You can also view all previous versions and releases [here](https://github.com/iksnae/actual-intelligence/releases).
 
 ## About This Book
 
 "Actual Intelligence" is designed to be a learning resource for people without technical backgrounds, helping them leverage AI in their personal and professional lives. Starting with ChatGPT as training wheels, this guide will help readers use AI to accomplish various goals.
+
+## Available Languages
+
+- **English**: Original version
+- **Spanish (Español)**: Complete translation of Chapter 1
 
 ## Publisher
 
