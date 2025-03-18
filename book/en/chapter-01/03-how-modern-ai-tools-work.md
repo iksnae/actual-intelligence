@@ -1,11 +1,10 @@
 # How Modern AI Tools Work (Simplified for Non-Technical Readers)
 
-
 To effectively direct AI tools, you don't need to understand all the technical details—just as you don't need to know exactly how a car engine functions to drive effectively. However, having a basic conceptual understanding will help you set realistic expectations and use these tools more skillfully.
 
 Let's explore how AI tools like ChatGPT work, using simple analogies that highlight both their capabilities and limitations.
 
-"When I first heard about AI, I imagined something from science fiction movies—like a computer that thinks and feels," says James, a retiree who now uses ChatGPT daily to help with his genealogy hobby. "But once I started using it, I realized it's more like having a very well-read research assistant who's incredibly fast but needs careful direction."
+*"When I first heard about AI, I imagined something from science fiction movies—like a computer that thinks and feels,"* says James, a retiree who now uses ChatGPT daily to help with his genealogy hobby. "*But once I started using it, I realized it's more like having a very well-read research assistant who's incredibly fast but needs careful direction."*
 
 ![](images/senior-genealogy.jpg)
 
@@ -13,11 +12,11 @@ Let's explore how AI tools like ChatGPT work, using simple analogies that highli
 
 At its core, an AI like ChatGPT is a sophisticated pattern completion machine. Imagine you're playing a game with a friend where you start a sentence and they finish it:
 
-You say: "The chef put the cake in the..."
+You say: `The chef put the cake in the...`
 
-Your friend almost certainly responds: "oven"
+Your friend almost certainly responds: `oven`
 
-Why? Because based on all the language they've encountered throughout their life, "oven" is the most likely word to come next in this context.
+Why? Because based on all the language they've encountered throughout their life, `oven` is the most likely word to come next in this context.
 
 ChatGPT does something similar, but on a much larger scale. It's been trained on enormous amounts of text from books, articles, websites, and other sources. During this training, it learned to recognize patterns in how words and ideas typically follow one another.
 
@@ -58,9 +57,9 @@ When ChatGPT generates text, it's essentially making a series of word choices ba
 
 Imagine a game where you start a sentence, and someone has to guess what word comes next:
 
-"The chef put the cake in the..."
+`The chef put the cake in the...`
 
-Most people would guess "oven" because that's the most probable word to follow in this context. AI systems do something similar, but with a much more sophisticated understanding of language patterns and a much larger vocabulary of possible words to choose from.
+Most people would guess `"oven"` because that's the most probable word to follow in this context. AI systems do something similar, but with a much more sophisticated understanding of language patterns and a much larger vocabulary of possible words to choose from.
 
 ![](images/probability-prediction.jpg)
 
@@ -91,7 +90,7 @@ Given these limitations, it's helpful to think of AI tools as assistants rather 
 
 ![](images/human-judgment.jpg)
 
-Remember Jake, who's planning a family vacation to Japan. If he simply asks ChatGPT "Plan my perfect Japan trip" and follows whatever itinerary it generates, he might end up with a generic tourist experience that doesn't match his family's interests or visit attractions that are closed for renovation.
+Remember Jake, who's planning a family vacation to Japan. If he simply asks ChatGPT `"Plan my perfect Japan trip"` and follows whatever itinerary it generates, he might end up with a generic tourist experience that doesn't match his family's interests or visit attractions that are closed for renovation.
 
 Instead, Jake uses his understanding of AI limitations to direct the tool more effectively. He knows that:
 - The AI's information might be outdated
