@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: ghcr.io/iksnae/book-builder:latest  # Replace with your image URL
+      image: iksnae/book-builder:latest  # Changed from ghcr.io/iksnae/book-builder:latest to iksnae/book-builder:latest
 
     steps:
       - uses: actions/checkout@v4
