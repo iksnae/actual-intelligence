@@ -14,7 +14,7 @@ cover-image: 'art/cover.png'
 
 ¿Alguna vez has visto a alguien usar una nueva tecnología y hacer que parezca sencillo, sólo para sentirte perdido cuando lo intentas tú mismo? ¿O quizás has escuchado sobre **ChatGPT** y otras herramientas de IA en las noticias pero aún no las has probado, inseguro de si son demasiado complicadas o técnicas para ti?
 
-
+![](./images/hesitant-beginner.jpg)
 
 No estás solo. Muchas personas encuentran estas tecnologías intimidantes o no están seguras por dónde empezar. La buena noticia es que no necesitas ser un experto en tecnología para usar estas herramientas de manera efectiva. De hecho, las habilidades más importantes que necesitarás son las que ya tienes: curiosidad, criterio y tu propia perspectiva única sobre lo que importa.
 
@@ -28,7 +28,7 @@ Antes de sumergirnos, tómate un momento para anotar tus respuestas a estas preg
 * ¿Cuál es un tema sobre el que has sentido curiosidad pero no has tenido tiempo de explorar a fondo?
 * ¿Cuál es un proyecto creativo que has querido probar pero no has tenido la oportunidad de hacerlo?
 
-
+![](images/reflection-notebook.jpg)
 
 Mantén estas respuestas a mano; te ayudarán a personalizar tus primeras experiencias con IA a medida que avanzamos en este capítulo.
 
@@ -62,7 +62,7 @@ Comencemos con algo simple. No se requieren habilidades técnicas, solo la capac
 
 ¡Eso es todo! Acabas de tener tu primera conversación con IA.
 
-
+![](images/first-conversation.jpg)
 
 Observa cómo la IA se presenta y explica sus capacidades. Este no es un mensaje pregrabado; la IA está generando esta respuesta específicamente para ti. En los próximos capítulos, aprenderás cómo hacer que estas conversaciones sean cada vez más útiles para tus necesidades específicas.
 
@@ -73,13 +73,13 @@ María, una propietaria de un pequeño negocio sin experiencia técnica, describ
 
 Piensa en las herramientas de IA como electrodomésticos de cocina. Una batidora de pie puede hacer el trabajo duro de mezclar la masa, pero no decide qué receta hacer o sabe cuándo la consistencia es perfecta; ese es tu trabajo. La batidora es muy buena en su tarea específica, pero tú eres quien tiene las papilas gustativas, la creatividad para modificar recetas y el conocimiento de si estás horneando para alguien con restricciones dietéticas.
 
-
+![](images/kitchen-analogy.jpg)
 
 **Inteligencia Real** es esta colaboración entre tu juicio humano y las capacidades de la IA. Es lo que sucede cuando tu sabiduría, creatividad y propósito se combinan con la capacidad de la IA para procesar información y generar contenido.
 
 Piensa en la última vez que usaste una herramienta poderosa para resolver un problema. Quizás fue un procesador de alimentos que redujo tu tiempo de preparación a la mitad, o un software de mapas que te ayudó a navegar por una ciudad desconocida. La herramienta fue invaluable, pero tú fuiste quien decidió qué cocinar o a dónde ir. Esa es exactamente tu relación con la IA: no solo estás presionando botones, eres el director creativo que toma las decisiones.
 
-
+![](images/human-ai-partnership.jpg)
 
 ### El Modelo de Colaboración
 
@@ -100,7 +100,7 @@ Veamos esta colaboración en acción a través de un ejemplo real.
 
 Luisa, una profesora de ciencias de secundaria sin experiencia previa en IA, quería crear una lección sobre el cambio climático. Podría haber simplemente pedido a ChatGPT que `cree una lección sobre cambio climático para estudiantes de 7º grado` y usar lo que generara, pero eso habría ignorado su conocimiento único de sus estudiantes.
 
-
+![](images/teacher-example.jpg)
 
 En cambio, Luisa aplicó su criterio humano. Conocía a sus estudiantes específicos: sus niveles de conocimiento, intereses y los problemas ambientales locales que ven todos los días. Entendía con qué conceptos habían luchado en lecciones anteriores.
 
@@ -113,7 +113,7 @@ La lección resultante fue mucho más efectiva porque combinó la comprensión d
 Ahora es tu turno. Vamos a crear una solicitud que sea específicamente relevante para ti. Completa los espacios en blanco a continuación:
 `Trabajo como _____________ y un desafío que enfrento a menudo es _____________. ¿Podrías sugerirme tres formas en las que podría abordar este problema?`
 
-
+![](images/prompt-template.jpg)
 
 Por ejemplo:
 `Trabajo como gerente de tienda y un desafío que enfrento a menudo es programar al personal de manera eficiente. ¿Podrías sugerirme tres formas en las que podría abordar este problema?`
@@ -143,7 +143,7 @@ Quizás te estés preguntando... *"¿Necesito aprender programación o ciencias 
 
 La respuesta simple es *no*. Usar herramientas de IA como ChatGPT no requiere más habilidades técnicas que usar un motor de búsqueda o enviar un mensaje de texto. Si puedes escribir una pregunta, puedes usar IA.
 
-
+![](images/simple-interface.jpg)
 
 Lo que importa mucho más que el conocimiento técnico es tu capacidad para:
 
@@ -165,7 +165,7 @@ Los humanos no solo hacemos cosas, las hacemos por razones. Nos preguntamos *por
 
 Los sistemas de IA, en contraste, no tienen propósitos o deseos intrínsecos. No *quieren* nada; simplemente procesan entradas y generan salidas. Cualquier sentido de propósito debe provenir de los humanos que los utilizan.
 
-
+![](images/purpose-meaning.jpg)
 
 ### Comprensión del Mundo Real
 
@@ -177,7 +177,7 @@ Los sistemas de IA como ChatGPT han sido entrenados con enormes cantidades de te
 
 Elena, una profesora de arte jubilada, era escéptica sobre el uso de la IA para su afición a la acuarela. *"No veía cómo un programa de computadora podía ayudar con algo tan personal como el arte"*, dijo. Pero cuando le pidió a ChatGPT sugerencias para pintar hojas de otoño con más vivacidad, se sorprendió gratamente.
 
-
+![](images/artist-example.jpg)
 
 *"Las técnicas que sugirió eran fundamentos sólidos, cosas que podría decirles a mis propios estudiantes. Pero aún tenía que aplicar mi sentido del color, mi sentido de la composición y mis propias preferencias estéticas. La IA me dio opciones para considerar, pero las decisiones creativas siguieron siendo mías."*
 
@@ -191,7 +191,7 @@ Estas diferencias no son debilidades, son la base de una asociación poderosa. L
 
 Imagina que estás investigando sobre una condición de salud que afecta a alguien que amas. Podrías pasar semanas leyendo revistas médicas, tratando de entender terminología compleja y estudios contradictorios. O podrías pedirle a una IA que resuma la investigación actual, explique términos clave y destaque opciones de tratamiento, todo en minutos. Aquí es donde la IA realmente brilla: procesando vastas cantidades de información que abrumarían incluso al lector humano más dedicado.
 
-
+![](images/information-processing.jpg)
 
 La IA sobresale en:
 
@@ -207,7 +207,7 @@ La IA sobresale en:
 
 Una forma útil de entender esta relación es pensar en ti mismo como un director de cine y en la IA como tu asistente.
 
-
+![](images/director-assistant.jpg)
 
 Como director, tú:
 
@@ -229,7 +229,7 @@ Sin el director, el asistente no tendría propósito ni dirección. Sin el asist
 
 Marcos es propietario de una panadería exitosa y está considerando abrir un segundo local. En lugar de simplemente preguntar a la IA: *"¿Dónde debería abrir mi segunda panadería?"* — una pregunta que la IA no podría responder bien sin conocer su negocio específico — Marcos dirige la IA con indicaciones más específicas:
 
-
+![](images/bakery-example.jpg)
 
 - `¿Qué datos demográficos debería analizar al seleccionar una nueva ubicación para una panadería?`
 - `Ayúdame a crear una lista de verificación para evaluar posibles espacios comerciales para una panadería.`
@@ -259,7 +259,7 @@ Exploraremos cómo funcionan herramientas de IA como ChatGPT, usando analogías 
 
 *"Cuando escuché por primera vez sobre IA, imaginaba algo de películas de ciencia ficción, como una computadora que piensa y siente"*, dice Jaime, un jubilado que ahora usa ChatGPT diariamente para ayudar con su afición a la genealogía. *"Pero una vez que comencé a usarla, me di cuenta de que es más como tener un asistente de investigación muy culto que es increíblemente rápido pero necesita dirección cuidadosa."*
 
-
+![](images/senior-genealogy.jpg)
 
 ## La Máquina de Completar Patrones
 
@@ -273,7 +273,7 @@ Tu amigo casi seguramente responde: `horno`
 
 ChatGPT hace algo similar, pero a una escala mucho mayor. Ha sido entrenado con enormes cantidades de texto de libros, artículos, sitios web y otras fuentes. Durante este entrenamiento, aprendió a reconocer patrones en cómo las palabras e ideas normalmente se siguen unas a otras.
 
-
+![](images/pattern-matcher.jpg)
 
 Piénsalo como un músico que ha escuchado miles de canciones pero no entiende realmente la teoría musical. Cuando tarareas algunas notas, el músico puede continuar la melodía basándose en patrones similares que ha escuchado antes. No está componiendo algo verdaderamente original, está recurriendo a toda la música que ha absorbido para continuar el patrón que iniciaste.
 
@@ -281,7 +281,7 @@ Piénsalo como un músico que ha escuchado miles de canciones pero no entiende r
 
 Otra forma útil de pensar sobre estas herramientas de IA es como una cámara de eco del conocimiento humano. Solo pueden reflejar información y patrones que ya existen en los datos con los que fueron entrenadas.
 
-
+![](images/echo-chamber.jpg)
 
 Si le preguntas a ChatGPT sobre la Revolución Francesa, puede proporcionar información porque muchos escritores humanos han escrito sobre este tema, y esos escritos formaron parte de sus datos de entrenamiento. Pero si preguntas sobre un evento histórico completamente ficticio del que nadie ha escrito, no puede proporcionar información precisa porque ese patrón no existe en sus datos de entrenamiento.
 
@@ -296,7 +296,7 @@ A pesar de su impresionante capacidad para generar texto similar al humano, Chat
 
 Piénsalo como alguien que ha memorizado un libro de cocina en un idioma extranjero sin entender lo que significan las palabras. Podrían recitar recetas perfectamente e incluso hacer sustituciones razonables basadas en patrones que han observado, pero nunca han probado la comida, sentido la textura de los ingredientes o entendido por qué se utilizan ciertas técnicas.
 
-
+![](images/foreign-cookbook.jpg)
 
 Esta limitación explica por qué la IA a menudo tiene dificultades con:
 - Razonamiento de sentido común
@@ -314,7 +314,7 @@ Imagina un juego donde comienzas una oración, y alguien tiene que adivinar qué
 
 La mayoría de las personas adivinarían `"horno"` porque esa es la palabra más probable que sigue en este contexto. Los sistemas de IA hacen algo similar, pero con una comprensión mucho más sofisticada de los patrones del lenguaje y un vocabulario mucho más amplio de posibles palabras entre las que elegir.
 
-
+![](images/probability-prediction.jpg)
 
 Este enfoque probabilístico significa que:
 - ChatGPT no tiene un conjunto fijo de respuestas—genera nuevo texto cada vez
@@ -341,7 +341,7 @@ Estas características hacen que las herramientas de IA sean increíblemente út
 
 Dadas estas limitaciones, es útil pensar en las herramientas de IA como asistentes en lugar de expertos o autoridades. Pueden ayudarte a hacer lluvia de ideas, redactar contenido, resumir información y explorar ideas, pero siempre debes aplicar tu propio juicio a su producción.
 
-
+![](images/human-judgment.jpg)
 
 Recuerda a Javier, que está planeando unas vacaciones familiares a Japón. Si simplemente le pide a ChatGPT `"Planifica mi viaje perfecto a Japón"` y sigue cualquier itinerario que genere, podría terminar con una experiencia turística genérica que no coincide con los intereses de su familia o visitar atracciones que están cerradas por renovación.
 
@@ -375,7 +375,7 @@ Ahora que entendemos la relación entre la inteligencia humana y las capacidades
 
 ¿Recuerdas nuestra metáfora del director de cine? Ampliemos lo que significa ser un director efectivo de herramientas de IA.
 
-
+![](images/director-mindset.jpg)
 
 Así como un director de cine no simplemente dice a los actores "hagan una buena escena" y espera lo mejor, tú no deberías acercarte a la IA con peticiones vagas y una aceptación pasiva de lo que sea que produzca. La mentalidad del director involucra varias prácticas clave:
 
@@ -399,7 +399,7 @@ Las indicaciones vagas conducen a respuestas genéricas. Cuanto más específica
 
 **Dirección específica:** "Dirijo un puesto de venta de productos de granja orgánica local dirigido a familias conscientes de la salud. Sugiéreme cinco enfoques de marketing de bajo presupuesto que nos ayuden a enfatizar nuestras prácticas agrícolas sostenibles y nuestras raíces comunitarias."
 
-
+![](images/specific-direction.jpg)
 
 La dirección específica proporciona contexto y limitaciones que ayudan a la IA a generar respuestas relevantes adaptadas a tus necesidades.
 
@@ -423,7 +423,7 @@ Aproxímate al contenido generado por IA con un escepticismo saludable. Pregúnt
 - ¿Es este el enfoque correcto para mi situación específica?
 - ¿Esto se alinea con mis valores y objetivos?
 
-
+![](images/critical-evaluation.jpg)
 
 Recuerda que tú eres el juez final de la calidad y la idoneidad. La IA está ahí para ayudarte, no para tomar decisiones finales.
 
@@ -437,7 +437,7 @@ Cuando combinas la dirección humana con las capacidades de la IA, sucede algo n
 
 Sara, una profesora de inglés de secundaria, experimenta esta amplificación cuando planifica su currículum. Podría pasar horas buscando materiales de lectura relevantes, redactando preguntas para discusión y creando tareas. En cambio, dirige a ChatGPT con sus objetivos educativos específicos y conocimiento de sus estudiantes:
 
-
+![](images/teacher-curriculum.jpg)
 
 *"Necesito diseñar una unidad sobre 'identidad' para mi clase de inglés de 10º grado. Muchos de mis estudiantes son estadounidenses de primera generación que a menudo discuten los desafíos de navegar entre culturas. Sugiere cuentos contemporáneos de autores diversos que exploren la formación de identidad, y para cada historia, esboza posibles preguntas de discusión que conecten con la experiencia inmigrante."*
 
@@ -459,7 +459,7 @@ Establezcamos una comprensión equilibrada de lo que estas herramientas pueden y
 
 La IA sobresale en producir varios tipos de contenido escrito, desde escritura creativa hasta explicaciones técnicas, desde conversaciones casuales hasta documentos formales. Puede adaptar su tono, estilo y nivel de complejidad según tu dirección.
 
-
+![](images/text-generation.jpg)
 
 #### Procesar y Resumir Información
 
@@ -487,7 +487,7 @@ La IA puede representar diferentes puntos de vista o áreas de experiencia, perm
 
 Los modelos de lenguaje de IA no tienen la capacidad de verificar hechos de forma independiente. Pueden presentar con confianza información incorrecta (a veces llamada "alucinaciones") que suena plausible pero es realmente errónea.
 
-
+![](images/hallucination.jpg)
 
 #### Proporcionar Información Actualizada
 
@@ -529,7 +529,7 @@ Abordemos algunos conceptos erróneos frecuentes sobre las herramientas de IA qu
 
 **Realidad:** La IA simula opiniones basadas en patrones en sus datos de entrenamiento, pero realmente no tiene creencias o convicciones.
 
-
+![](images/ai-misconceptions.jpg)
 
 ### Concepto erróneo: "La IA siempre se está mejorando a sí misma"
 
@@ -545,7 +545,7 @@ En otras palabras:
 - Para contenido de riesgo moderado, deberías revisar cuidadosamente las sugerencias de IA y hacer tus propios juicios
 - Para decisiones de alto riesgo o afirmaciones factuales, deberías verificar independientemente la información a través de fuentes confiables
 
-
+![](images/verification-principle.jpg)
 
 Miguel, un fotógrafo aficionado investigando equipos de cámara, aplica este principio: *"Uso ChatGPT para obtener explicaciones rápidas de conceptos técnicos y generar preguntas que debería hacer. Pero antes de gastar 2,000 dólares en una nueva cámara, siempre verifico los detalles específicos del modelo en el sitio web del fabricante y leo reseñas de sitios de fotografía confiables."*
 
@@ -569,7 +569,7 @@ Para abrazar plenamente tu papel como director de herramientas de IA, considera 
 
 7. **Toma las decisiones finales** basadas en tu juicio, valores y conocimiento
 
-
+![](images/directing-process.jpg)
 
 Este enfoque te coloca firmemente en control del proceso mientras aprovechas las capacidades de la IA para mejorar tu pensamiento y productividad.
 
@@ -593,7 +593,7 @@ ewpage
 
 Recuerda, no hay mejor manera de aprender que haciendo. No te preocupes por cometer errores, son parte del proceso de aprendizaje.
 
-
+![](images/hands-on-learning.jpg)
 
 ---
 
@@ -627,7 +627,7 @@ Recuerda, no hay mejor manera de aprender que haciendo. No te preocupes por come
    
    `"Soy un padre/madre ocupado/a con dos niños pequeños tratando de aprender español básico en preparación para un viaje familiar a México en tres meses. Solo puedo practicar durante unos 15 minutos cada día, generalmente mientras viajo en transporte público. Dame un plan de aprendizaje realista que se ajuste a estas limitaciones y se centre en frases prácticas para viajar."`
 
-
+![](images/prompt-specificity.jpg)
 
 5. Compara las tres respuestas. Observa cómo la calidad y utilidad de la producción de la IA corresponde directamente a la especificidad de tu dirección.
 
@@ -657,7 +657,7 @@ Recuerda, no hay mejor manera de aprender que haciendo. No te preocupes por come
 
 1. Identifica un desafío actual en tu vida que requiera algo de pensamiento o planificación. Podría ser una decisión que necesitas tomar, un proyecto que estás planificando o un problema que estás tratando de resolver. Elige algo real pero no extremadamente personal o sensible.
 
-
+![](images/identify-challenge.jpg)
 
 2. Antes de consultar con la IA, dedica 3-5 minutos a escribir tus propios pensamientos sobre el desafío:
    - ¿Qué hace que esto sea desafiante?
@@ -701,7 +701,7 @@ Recuerda, no hay mejor manera de aprender que haciendo. No te preocupes por come
 
 1. Elige un tema que conozcas bien, quizás relacionado con tu profesión, un pasatiempo o tu comunidad local.
 
-
+![](images/testing-limitations.jpg)
 
 2. Haz a ChatGPT una serie de preguntas cada vez más específicas sobre este tema, comenzando con preguntas generales y avanzando hacia preguntas muy específicas que podrían requerir conocimientos muy recientes o especializados.
 
@@ -744,7 +744,7 @@ Roberto, un astrónomo aficionado, probó esto con su pasatiempo: *"Me impresion
    - Diseña un volante para un evento comunitario
    - Crea una rutina de ejercicios
 
-
+![](images/creative-control.jpg)
 
 2. Comienza por definir tu visión para el proyecto. Escribe:
    - El objetivo o propósito principal
@@ -791,7 +791,7 @@ Roberto, un astrónomo aficionado, probó esto con su pasatiempo: *"Me impresion
    - ¿Qué habilidades te gustaría desarrollar, con la IA como ayuda de aprendizaje?
    - ¿Qué aspectos de tu pensamiento o trabajo nunca querrías externalizar?
 
-
+![](images/personal-guidelines.jpg)
 
 2. Pide ayuda a ChatGPT para pensar en estas preguntas con una indicación como:
    
@@ -827,7 +827,7 @@ Roberto, un astrónomo aficionado, probó esto con su pasatiempo: *"Me impresion
 
 ¡Felicitaciones por completar estas actividades! Has dado tus primeros pasos para convertirte en un hábil director de IA. A través de estos ejercicios, has experimentado de primera mano cómo tu dirección da forma a los resultados de la IA, cómo mantener el control de los procesos creativos y cómo establecer límites saludables para el uso de IA en tu vida.
 
-
+![](images/moving-forward.jpg)
 
 Recuerda que el concepto de Inteligencia Real enfatiza que tú—el humano—eres la inteligencia esencial en esta asociación. La IA es una herramienta que amplifica tu pensamiento, pero la dirección, el propósito y la sabiduría provienen de ti.
 
