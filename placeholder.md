@@ -1,3 +1,2 @@
-# actual-intelligence - Placeholder
-
-This is a placeholder file for when PDF generation fails.
+# Actual Intelligence - Placeholder PDF
+PDF generation encountered issues with images. Please see HTML or EPUB versions.
