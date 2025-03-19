@@ -4,6 +4,7 @@
 # Usage: build-language.sh [language] [--skip-pdf] [--skip-epub] [--skip-mobi] [--skip-html]
 
 set -e  # Exit on error
+set -x  # Enable debug output to see each command
 
 # Get the language from the first argument
 LANGUAGE=${1:-en}
@@ -56,6 +57,14 @@ if [ "$LANGUAGE" != "en" ]; then
   if [ -d "book/$LANGUAGE/images" ]; then
     echo "Copying language-specific images for $LANGUAGE..."
     cp -r "book/$LANGUAGE/images/"* "build/$LANGUAGE/images/" || true
+  fi
+  
+  # Copy chapter-specific images if they exist
+  if [ -d "book/$LANGUAGE/chapter-01/images" ]; then
+    echo "Copying chapter-specific images for $LANGUAGE..."
+    cp -r "book/$LANGUAGE/chapter-01/images/"* "build/$LANGUAGE/images/" || true
+    # Also copy to main images directory for EPUB generation
+    cp -r "book/$LANGUAGE/chapter-01/images/"* "build/images/" || true
   fi
 fi
 
@@ -151,6 +160,22 @@ if [ "$LANGUAGE" != "en" ]; then
     cp "$HTML_PATH" "build/$HTML_FILENAME"
     echo "  - Copied HTML: $HTML_PATH -> build/$HTML_FILENAME"
   fi
+  
+  # Verify the copy worked
+  if [ "$SKIP_EPUB" = false ]; then
+    if [ -f "build/$EPUB_FILENAME" ]; then
+      echo "  ✅ Verified EPUB copy to root directory succeeded"
+      du -h "build/$EPUB_FILENAME"
+    else
+      echo "  ❌ EPUB copy to root directory failed!"
+      echo "  Trying direct generation to root directory..."
+      # Try direct generation to root as a fallback
+      source tools/scripts/generate-epub.sh "$LANGUAGE" "$MARKDOWN_PATH" "build/$EPUB_FILENAME" "$BOOK_TITLE" "$BOOK_SUBTITLE" "$RESOURCE_PATHS"
+    fi
+  fi
 fi
 
 echo "✅ Successfully built $LANGUAGE version of the book"
+
+# Disable debug output
+set +x
