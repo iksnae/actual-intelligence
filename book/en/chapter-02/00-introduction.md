@@ -2,7 +2,7 @@
 
 ... The Art of Directing AI
 
-Do you ever find yourself unsure how to ask ChatGPT for what you really want? Or perhaps you've tried using it but were disappointed with the results, thinking "Is this really all it can do?"
+Do you ever find yourself unsure how to ask ChatGPT for what you really want? Or perhaps you've tried using it but were disappointed with the results, thinking *"Is this really all it can do?"*
 
 You're not alone. Many people's first experiences with AI tools leave them underwhelmed—not because the tools aren't powerful, but because effectively directing these tools is a skill that needs to be developed.
 

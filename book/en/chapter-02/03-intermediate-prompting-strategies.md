@@ -68,7 +68,9 @@ For complex problems, you can guide ChatGPT to break down its thinking process s
 
 `Think through this math word problem step by step. First identify the key variables and what we're solving for, then set up the appropriate equation, solve it mathematically showing each step, and finally interpret what the result means in context of the original problem:
 
-'A café sells coffee for $4.50 per cup and tea for $3.75 per cup. On Tuesday, they sold 56 more coffees than teas, with total sales of $526.50. How many cups of each drink did they sell?'`
+```
+A café sells coffee for $4.50 per cup and tea for $3.75 per cup. On Tuesday, they sold 56 more coffees than teas, with total sales of $526.50. How many cups of each drink did they sell?
+```
 
 This technique is particularly useful for math problems, logical reasoning, troubleshooting, and complex decision-making processes.
 
@@ -80,7 +82,9 @@ While you don't have direct access to system messages (instructions that set par
 
 **Example**:
 
-`For our conversation, I'd like you to act as a writing coach helping me improve a short story. Please provide constructive criticism focused on character development, plot coherence, and dialogue authenticity. When giving feedback, first mention one positive aspect before suggesting improvements. Keep your responses concise, around 3-4 paragraphs. If something in my story is unclear, ask clarifying questions instead of making assumptions.`
+```
+For our conversation, I'd like you to act as a writing coach helping me improve a short story. Please provide constructive criticism focused on character development, plot coherence, and dialogue authenticity. When giving feedback, first mention one positive aspect before suggesting improvements. Keep your responses concise, around 3-4 paragraphs. If something in my story is unclear, ask clarifying questions instead of making assumptions.
+```
 
 This approach is especially useful for longer conversations where you'll be sharing multiple excerpts or ideas and want consistent feedback in a particular style.
 
@@ -92,13 +96,15 @@ Sometimes the easiest way to get exactly what you want is to show ChatGPT an exa
 
 **Example**:
 
-`I'd like you to create social media post ideas for a small bakery, following this format and style:
+```
+I'd like you to create social media post ideas for a small bakery, following this format and style:
 
 #MondayMuffins: 'Start your week on a sweet note with our blueberry streusel muffins! Baked fresh this morning with locally sourced berries. Perfect with your morning coffee or as an afternoon pick-me-up! 💙🧁'
 
 Please create 5 more post ideas for different products using this same approachable tone, emoji style, and format with a hashtag followed by the post text.`
 
 This technique, sometimes called "few-shot learning," dramatically improves the likelihood of getting results that match your expectations exactly.
+```
 
 ### Multi-turn Refinement: Iterative Improvement
 
@@ -124,7 +130,8 @@ This iterative approach allows you to guide the development of content or ideas 
 
 The most effective prompting often combines several of these techniques. Here's an example that integrates role assignment, format specification, and examples:
 
-`I want you to act as an experienced science teacher for middle school students. Create a lesson plan about photosynthesis that will engage 7th graders with different learning styles. The lesson plan should include:
+```
+I want you to act as an experienced science teacher for middle school students. Create a lesson plan about photosynthesis that will engage 7th graders with different learning styles. The lesson plan should include:
 
 1. Learning objectives (in bullet points)
 2. A 5-minute attention-grabbing introduction activity
@@ -134,7 +141,8 @@ The most effective prompting often combines several of these techniques. Here's 
 
 For the hands-on activity, something similar to this would work well: 'Students create a comic strip showing the journey of a carbon dioxide molecule through the photosynthesis process.'
 
-Keep the language accessible to 12-13 year olds while being scientifically accurate.`
+Keep the language accessible to 12-13 year olds while being scientifically accurate.
+```
 
 This comprehensive prompt combines role (science teacher), format (structured lesson plan with timing), an example (for the activity section), and parameters (middle school language level, scientific accuracy).
 
