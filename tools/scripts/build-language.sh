@@ -28,6 +28,17 @@ done
 
 echo "📚 Building $LANGUAGE version of the book..."
 
+# Check if this language directory exists
+if [ ! -d "book/$LANGUAGE" ]; then
+  echo "⚠️ Warning: Language directory book/$LANGUAGE doesn't exist!"
+  ls -la book/
+  exit 1
+fi
+
+# Debug: List content of the language directory
+echo "Content of book/$LANGUAGE:"
+ls -la "book/$LANGUAGE/"
+
 # Get book title and output filenames based on language
 if [ "$LANGUAGE" = "es" ]; then
   BOOK_TITLE="Inteligencia Real"
@@ -47,23 +58,17 @@ else
   MARKDOWN_FILENAME="actual-intelligence.md"
 fi
 
-# Define output paths based on language
-if [ "$LANGUAGE" = "en" ]; then
-  MARKDOWN_PATH="build/$MARKDOWN_FILENAME"
-  PDF_PATH="build/$PDF_FILENAME"
-  EPUB_PATH="build/$EPUB_FILENAME"
-  MOBI_PATH="build/$MOBI_FILENAME"
-  HTML_PATH="build/$HTML_FILENAME"
-else
-  MARKDOWN_PATH="build/$LANGUAGE/$MARKDOWN_FILENAME"
-  PDF_PATH="build/$LANGUAGE/$PDF_FILENAME"
-  EPUB_PATH="build/$LANGUAGE/$EPUB_FILENAME"
-  MOBI_PATH="build/$LANGUAGE/$MOBI_FILENAME"
-  HTML_PATH="build/$LANGUAGE/$HTML_FILENAME"
-  
-  # Create language directory if it doesn't exist
+# Define output paths - PUT ALL FILES IN BUILD ROOT DIRECTORY
+# This is the key change - all files go to the root build directory
+MARKDOWN_PATH="build/$MARKDOWN_FILENAME"
+PDF_PATH="build/$PDF_FILENAME"
+EPUB_PATH="build/$EPUB_FILENAME"
+MOBI_PATH="build/$MOBI_FILENAME"
+HTML_PATH="build/$HTML_FILENAME"
+
+# Create a language directory for web pages only
+if [ "$LANGUAGE" != "en" ]; then
   mkdir -p "build/$LANGUAGE"
-  # Also create images directory for the language
   mkdir -p "build/$LANGUAGE/images"
 fi
 
@@ -75,6 +80,12 @@ RESOURCE_PATHS=".:book:book/$LANGUAGE:build:book/$LANGUAGE/images:book/images:bu
 echo "📝 Combining markdown files for $LANGUAGE..."
 source tools/scripts/combine-markdown.sh "$LANGUAGE" "$MARKDOWN_PATH" "$BOOK_TITLE" "$BOOK_SUBTITLE"
 
+# Verify the combined markdown file was created
+if [ ! -f "$MARKDOWN_PATH" ] || [ ! -s "$MARKDOWN_PATH" ]; then
+  echo "⚠️ Error: Combined markdown file wasn't created or is empty!"
+  exit 1
+fi
+
 # Create a safety copy for fallbacks
 cp "$MARKDOWN_PATH" "${MARKDOWN_PATH%.*}-safe.md"
 
@@ -82,18 +93,39 @@ cp "$MARKDOWN_PATH" "${MARKDOWN_PATH%.*}-safe.md"
 if [ "$SKIP_PDF" = false ]; then
   echo "📄 Generating PDF for $LANGUAGE..."
   source tools/scripts/generate-pdf.sh "$LANGUAGE" "$MARKDOWN_PATH" "$PDF_PATH" "$BOOK_TITLE" "$RESOURCE_PATHS"
+  # Verify PDF was created
+  if [ -f "$PDF_PATH" ]; then
+    echo "✅ PDF created successfully: $PDF_PATH"
+    du -h "$PDF_PATH"
+  else
+    echo "⚠️ PDF generation failed!"
+  fi
 fi
 
 # Step 3: Generate EPUB
 if [ "$SKIP_EPUB" = false ]; then
   echo "📱 Generating EPUB for $LANGUAGE..."
   source tools/scripts/generate-epub.sh "$LANGUAGE" "$MARKDOWN_PATH" "$EPUB_PATH" "$BOOK_TITLE" "$BOOK_SUBTITLE" "$RESOURCE_PATHS"
+  # Verify EPUB was created
+  if [ -f "$EPUB_PATH" ]; then
+    echo "✅ EPUB created successfully: $EPUB_PATH"
+    du -h "$EPUB_PATH"
+  else
+    echo "⚠️ EPUB generation failed!"
+  fi
 fi
 
 # Step 4: Generate MOBI
 if [ "$SKIP_MOBI" = false ] && [ "$SKIP_EPUB" = false ]; then
   echo "📚 Generating MOBI for $LANGUAGE..."
   source tools/scripts/generate-mobi.sh "$LANGUAGE" "$EPUB_PATH" "$MOBI_PATH" "$BOOK_TITLE"
+  # Verify MOBI was created
+  if [ -f "$MOBI_PATH" ]; then
+    echo "✅ MOBI created successfully: $MOBI_PATH"
+    du -h "$MOBI_PATH"
+  else
+    echo "⚠️ MOBI generation failed or was skipped!"
+  fi
 fi
 
 # Step 5: Generate HTML
@@ -112,47 +144,8 @@ if [ "$SKIP_HTML" = false ]; then
   fi
 fi
 
-# Copy outputs to root directory for release assets if not English
-# This is critical for the release process!
-if [ "$LANGUAGE" != "en" ]; then
-  echo "🔄 Copying $LANGUAGE files to root build directory for release..."
-  
-  # Be more explicit about copying files - check if they exist first
-  if [ "$SKIP_PDF" = false ] && [ -f "$PDF_PATH" ]; then
-    echo "Copying $PDF_PATH to build/$PDF_FILENAME"
-    cp "$PDF_PATH" "build/$PDF_FILENAME"
-  else
-    echo "⚠️ Warning: $PDF_PATH does not exist or was skipped"
-  fi
-  
-  if [ "$SKIP_EPUB" = false ] && [ -f "$EPUB_PATH" ]; then
-    echo "Copying $EPUB_PATH to build/$EPUB_FILENAME"
-    cp "$EPUB_PATH" "build/$EPUB_FILENAME"
-  else
-    echo "⚠️ Warning: $EPUB_PATH does not exist or was skipped"
-  fi
-  
-  if [ "$SKIP_MOBI" = false ] && [ -f "$MOBI_PATH" ]; then
-    echo "Copying $MOBI_PATH to build/$MOBI_FILENAME"
-    cp "$MOBI_PATH" "build/$MOBI_FILENAME"
-  else
-    echo "⚠️ Warning: $MOBI_PATH does not exist or was skipped"
-  fi
-  
-  if [ "$SKIP_HTML" = false ] && [ -f "$HTML_PATH" ]; then
-    echo "Copying $HTML_PATH to build/$HTML_FILENAME"
-    cp "$HTML_PATH" "build/$HTML_FILENAME"
-  else
-    echo "⚠️ Warning: $HTML_PATH does not exist or was skipped"
-  fi
-  
-  # Copy markdown for completeness
-  if [ -f "$MARKDOWN_PATH" ]; then
-    echo "Copying $MARKDOWN_PATH to build/$MARKDOWN_FILENAME"
-    cp "$MARKDOWN_PATH" "build/$MARKDOWN_FILENAME"
-  else
-    echo "⚠️ Warning: $MARKDOWN_PATH does not exist"
-  fi
-fi
+# List final build directory contents for this language
+echo "📂 Contents of build directory for $LANGUAGE:"
+ls -la "build/$MARKDOWN_FILENAME" "build/$PDF_FILENAME" "build/$EPUB_FILENAME" "build/$MOBI_FILENAME" "build/$HTML_FILENAME" 2>/dev/null || echo "Some files may be missing"
 
 echo "✅ Successfully built $LANGUAGE version of the book"
