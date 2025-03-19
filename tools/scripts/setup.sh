@@ -16,13 +16,6 @@ mkdir -p templates
 # Create language-specific directories
 mkdir -p build/images
 mkdir -p build/es
-mkdir -p build/es/images
-
-# Add Spanish readme to ensure directory exists and is populated
-if [ -f "tools/es-readme-template.md" ]; then
-  echo "📋 Adding Spanish readme template to build/es/"
-  cp "tools/es-readme-template.md" "build/es/README.md"
-fi
 
 # Process cover image
 echo "🔎 Checking for cover image..."
@@ -33,66 +26,29 @@ if [ -f "art/cover.png" ]; then
   echo "✅ Found cover image at art/cover.png"
   COVER_IMAGE="art/cover.png"
   
-  # Ensure book/images directories exist
-  mkdir -p book/images
-  mkdir -p book/en/images
-  mkdir -p book/es/images
-  
-  # Copy cover to book directories for consistency
-  cp "$COVER_IMAGE" book/images/cover.png
-  cp "$COVER_IMAGE" book/en/images/cover.png
-  cp "$COVER_IMAGE" book/es/images/cover.png
-  
-  # Also copy to build directories
+  # Copy to build directory
   cp "$COVER_IMAGE" build/images/cover.png
-  mkdir -p build/es/images
-  cp "$COVER_IMAGE" build/es/images/cover.png
   
 elif [ -f "book/images/cover.png" ]; then
   echo "✅ Found cover image at book/images/cover.png"
   COVER_IMAGE="book/images/cover.png"
   
-  # Copy to other locations
-  mkdir -p book/en/images
-  mkdir -p book/es/images
-  cp "$COVER_IMAGE" book/en/images/cover.png
-  cp "$COVER_IMAGE" book/es/images/cover.png
-  
-  # Also copy to build directories
+  # Copy to build directory
   cp "$COVER_IMAGE" build/images/cover.png
-  mkdir -p build/es/images
-  cp "$COVER_IMAGE" build/es/images/cover.png
   
 elif [ -f "book/en/images/cover.png" ]; then
   echo "✅ Found cover image at book/en/images/cover.png"
   COVER_IMAGE="book/en/images/cover.png"
   
-  # Copy to other locations
-  mkdir -p book/images
-  mkdir -p book/es/images
-  cp "$COVER_IMAGE" book/images/cover.png
-  cp "$COVER_IMAGE" book/es/images/cover.png
-  
-  # Also copy to build directories
+  # Copy to build directory
   cp "$COVER_IMAGE" build/images/cover.png
-  mkdir -p build/es/images
-  cp "$COVER_IMAGE" build/es/images/cover.png
   
 elif [ -f "book/es/images/cover.png" ]; then
   echo "✅ Found cover image at book/es/images/cover.png"
   COVER_IMAGE="book/es/images/cover.png"
   
-  # Copy to other locations
-  mkdir -p book/images
-  mkdir -p book/en/images
-  cp "$COVER_IMAGE" book/images/cover.png
-  cp "$COVER_IMAGE" book/en/images/cover.png
-  
-  # Also copy to build directories
+  # Copy to build directory
   cp "$COVER_IMAGE" build/images/cover.png
-  mkdir -p build/es/images
-  cp "$COVER_IMAGE" build/es/images/cover.png
-
 else
   echo "⚠️ No cover image found. Building book without cover."
 fi
@@ -142,17 +98,11 @@ echo "   - COVER_IMAGE: $COVER_IMAGE"
 echo "   - TEMP_TEMPLATE: $TEMP_TEMPLATE"
 echo "   - Working Directory: $(pwd)"
 echo "   - Language Support: en_US.UTF-8, es_ES.UTF-8"
-find book -path "*/images" -type d | while read -r imgdir; do
-  echo "   - Image directory found: $imgdir"
-  # Count images for verification
-  IMG_COUNT=$(find "$imgdir" -type f | wc -l)
-  echo "     (contains $IMG_COUNT image files)"
-done
 
-# Verify build directories are properly set up
-echo "   - Build Directories:"
-find build -type d | sort | while read -r dir; do
-  echo "     - $dir"
-done
+# List all image directories
+echo "   - Image directories:"
+ls -la "build/images/"
+echo "   - Spanish web images:"
+ls -la "build/es/"
 
 echo "✅ Setup completed successfully"
