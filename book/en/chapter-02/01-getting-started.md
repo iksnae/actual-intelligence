@@ -62,7 +62,7 @@ When you first log in to ChatGPT, you'll see a clean, straightforward interface:
 Let's try a simple interaction to get comfortable with the interface:
 
 1. Click on the input field at the bottom of the screen
-2. Type: "Hello! Can you explain what types of questions I can ask you?"
+2. Type: `Hello! Can you explain what types of questions I can ask you?`
 3. Press Enter or click the submit button (paper airplane icon)
 4. Read ChatGPT's response to get a sense of its capabilities
 
