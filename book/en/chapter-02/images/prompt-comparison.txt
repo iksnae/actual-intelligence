@@ -1,0 +1,13 @@
+Image Description: Weak vs. Strong Prompt Comparison
+
+This side-by-side comparison image illustrates the difference between weak and strong prompts. The layout is divided into two columns:
+
+Left column (labeled "Weak Prompt"):
+- Shows a simple, vague prompt such as "Help me with gardening"
+- Below it is a generic, broadly applicable response from ChatGPT that lacks specificity
+
+Right column (labeled "Strong Prompt"):
+- Shows a detailed, specific prompt such as "I need advice for growing tomatoes in a container garden on a balcony with 4 hours of morning sunlight in hardiness zone 6b. I'm a beginner with limited space. What varieties would work best, and what size containers and soil type should I use?"
+- Below it is ChatGPT's tailored, specific response addressing all elements of the prompt
+
+The image uses color-coding to highlight the key elements that make the strong prompt effective (context, constraints, specificity, and format). Arrows or callouts point to these elements to help readers understand prompt construction principles. The comparison visually demonstrates how prompt quality directly impacts response quality.

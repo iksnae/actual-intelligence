@@ -1,0 +1,15 @@
+Image Description: ChatGPT Context Window Visualization
+
+This image illustrates the concept of context window in a ChatGPT conversation. The visualization shows:
+
+A conversation thread between a user and ChatGPT with multiple exchanges, resembling the actual interface
+
+A semi-transparent blue highlight over the most recent 3-4 exchanges, representing the "active context window" that ChatGPT is primarily working with
+
+Faded text for older exchanges at the top, indicating they may be partially out of the primary context (though still potentially accessible)
+
+Small arrows or connecting lines showing how information in one message relates to questions or responses in subsequent messages
+
+Call-out boxes with brief explanations of how context is maintained between related messages
+
+This visualization helps readers understand how ChatGPT maintains conversation history within a limited window, demonstrating why context refreshing and management is important for longer conversations.
