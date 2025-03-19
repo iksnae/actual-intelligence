@@ -917,6 +917,8 @@ For most beginners, the free tier provides plenty of functionality to get starte
 
 When you first log in to ChatGPT, you'll see a clean, straightforward interface:
 
+![](./images/chatgpt-interface.jpg)
+
 **Main components:**
 
 1. **Conversation area** - The central space where your conversation with ChatGPT appears
@@ -974,6 +976,7 @@ ewpage
 
 Now that you're familiar with the ChatGPT interface, let's explore how to craft effective prompts—the instructions you give to AI—to get the most useful responses.
 
+
 ### What Makes a Good Prompt?
 
 A good prompt is like a well-formulated question or clear instruction. It provides enough information for ChatGPT to understand exactly what you're looking for. Let's look at the key elements of effective prompts:
@@ -982,6 +985,8 @@ A good prompt is like a well-formulated question or clear instruction. It provid
 **Context**: Provide relevant background information
 **Constraints**: Set parameters or limitations
 **Format**: Specify how you want the response structured
+
+![](./images/prompt-comparison.jpg)
 
 Let's see these elements in action with a before-and-after example:
 
@@ -1120,6 +1125,8 @@ ewpage
 ## Intermediate Prompt Engineering Strategies
 
 As you become more comfortable with basic prompting, you can incorporate more advanced techniques to get even better results. These intermediate strategies allow for greater precision and help overcome some of ChatGPT's limitations.
+
+![](./images/prompt-anatomy.jpg)
 
 ### Role Assignment: Giving ChatGPT a Persona
 
@@ -1288,6 +1295,9 @@ ewpage
 ## Understanding Context and Conversation Flow
 
 One of ChatGPT's most powerful features is its ability to maintain context throughout a conversation. Unlike traditional search engines that treat each query independently, ChatGPT can remember what you've discussed earlier in the same conversation and build upon that context. Mastering this aspect of the tool can significantly enhance your experience.
+
+![](./images/context-window.jpg)
+
 
 ### How Context Works in ChatGPT
 
