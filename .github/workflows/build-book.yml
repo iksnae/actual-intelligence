@@ -61,6 +61,10 @@ jobs:
             echo "COVER_IMAGE=book/en/images/cover.png" >> $GITHUB_ENV
             echo "✅ Found cover image at book/en/images/cover.png"
             echo "cover_found=true" >> $GITHUB_OUTPUT
+          elif [ -f "book/es/images/cover.png" ]; then
+            echo "COVER_IMAGE=book/es/images/cover.png" >> $GITHUB_ENV
+            echo "✅ Found cover image at book/es/images/cover.png"
+            echo "cover_found=true" >> $GITHUB_OUTPUT
           else
             echo "⚠️ No cover image found"
             echo "cover_found=false" >> $GITHUB_OUTPUT
@@ -85,12 +89,27 @@ jobs:
           # Fix permissions on script files
           chmod +x build.sh
           find tools/scripts -name "*.sh" -exec chmod +x {} \;
+          
+          # Check if Spanish content exists
+          echo "Checking Spanish content..."
+          if [ -d "book/es" ]; then
+            echo "✅ Spanish content found in book/es"
+            ls -la book/es/
+          else
+            echo "❌ No Spanish content found in book/es"
+          fi
 
       - name: Build book (All languages)
         run: |
           echo "Running build script for all languages..."
+          # Enable debugging in bash
+          set -x
+          
           # Run the build script with all languages
           ./build.sh --all-languages || echo "Build script completed with warnings"
+          
+          # Disable debugging
+          set +x
 
       - name: List build directory contents
         run: |
@@ -102,6 +121,21 @@ jobs:
           
           echo "\n=== Images Directory Contents ==="
           ls -la build/images/ || echo "Images directory may not exist yet"
+          
+          # Add extra debugging for Spanish build
+          if [ -f "build/inteligencia-real.epub" ]; then
+            echo "\n✅ Spanish EPUB file exists in root build directory"
+            ls -la build/inteligencia-real.epub
+          else
+            echo "\n❌ Spanish EPUB file does not exist in root build directory"
+          fi
+          
+          if [ -d "build/es" ] && [ -f "build/es/inteligencia-real.epub" ]; then
+            echo "\n✅ Spanish EPUB file exists in build/es directory"
+            ls -la build/es/inteligencia-real.epub
+          else
+            echo "\n❌ Spanish EPUB file does not exist in build/es directory"
+          fi
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
