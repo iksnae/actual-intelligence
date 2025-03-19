@@ -40,16 +40,6 @@ jobs:
           echo "DATE=$DATE" >> $GITHUB_ENV
           echo "date=$DATE" >> $GITHUB_OUTPUT
 
-      - name: Create build directories
-        run: |
-          mkdir -p build
-          mkdir -p build/es
-          mkdir -p build/images
-          mkdir -p build/es/images
-
-      - name: Create templates directory
-        run: mkdir -p templates
-
       - name: Check for cover image
         id: cover
         run: |
@@ -57,48 +47,14 @@ jobs:
             echo "COVER_IMAGE=art/cover.png" >> $GITHUB_ENV
             echo "✅ Found cover image at art/cover.png"
             echo "cover_found=true" >> $GITHUB_OUTPUT
-            
-            # Copy to both language-specific image directories
-            mkdir -p book/images
-            mkdir -p book/en/images
-            mkdir -p book/es/images
-            cp art/cover.png book/images/cover.png
-            cp art/cover.png book/en/images/cover.png
-            cp art/cover.png book/es/images/cover.png
-            
           elif [ -f "book/images/cover.png" ]; then
             echo "COVER_IMAGE=book/images/cover.png" >> $GITHUB_ENV
             echo "✅ Found cover image at book/images/cover.png"
             echo "cover_found=true" >> $GITHUB_OUTPUT
-            
-            # Copy to language-specific image directories
-            mkdir -p book/en/images
-            mkdir -p book/es/images
-            cp book/images/cover.png book/en/images/cover.png
-            cp book/images/cover.png book/es/images/cover.png
-            
           elif [ -f "book/en/images/cover.png" ]; then
             echo "COVER_IMAGE=book/en/images/cover.png" >> $GITHUB_ENV
             echo "✅ Found cover image at book/en/images/cover.png"
             echo "cover_found=true" >> $GITHUB_OUTPUT
-            
-            # Copy to common and Spanish image directories
-            mkdir -p book/images
-            mkdir -p book/es/images
-            cp book/en/images/cover.png book/images/cover.png
-            cp book/en/images/cover.png book/es/images/cover.png
-            
-          elif [ -f "book/es/images/cover.png" ]; then
-            echo "COVER_IMAGE=book/es/images/cover.png" >> $GITHUB_ENV
-            echo "✅ Found cover image at book/es/images/cover.png"
-            echo "cover_found=true" >> $GITHUB_OUTPUT
-            
-            # Copy to common and English image directories
-            mkdir -p book/images
-            mkdir -p book/en/images
-            cp book/es/images/cover.png book/images/cover.png
-            cp book/es/images/cover.png book/en/images/cover.png
-            
           else
             echo "⚠️ No cover image found"
             echo "cover_found=false" >> $GITHUB_OUTPUT
@@ -124,6 +80,17 @@ jobs:
           chmod +x build.sh
           find tools/scripts -name "*.sh" -exec chmod +x {} \;
 
+      - name: Check source directories
+        run: |
+          echo "=== Book Content Structure ==="
+          find book -type d | sort
+          
+          echo "=== English Content ==="
+          ls -la book/en/
+          
+          echo "=== Spanish Content ==="
+          ls -la book/es/ || echo "No Spanish content found"
+
       - name: Build book (All languages)
         run: |
           echo "Running build script for all languages..."
@@ -135,16 +102,13 @@ jobs:
           echo "=== Build Directory Contents ==="
           ls -la build/
           
-          echo "\n=== ES Directory Contents ==="
+          echo "=== ES Directory Contents ==="
           ls -la build/es/ || echo "ES directory may not exist yet"
           
-          echo "\n=== Images Directory Contents ==="
+          echo "=== Images Directory Contents ==="
           ls -la build/images/ || echo "Images directory may not exist yet"
-          
-          echo "\n=== ES Images Directory Contents ==="
-          ls -la build/es/images/ || echo "ES images directory may not exist yet"
 
-      - name: Verify multilingual outputs
+      - name: Verify book files
         run: |
           echo "=== Verifying English Files ==="
           if [ -f "build/actual-intelligence.pdf" ]; then
@@ -189,23 +153,6 @@ jobs:
           else
             echo "❌ Spanish MOBI missing"
           fi
-          
-          # Check if any Spanish files are missing and need to be manually copied
-          echo "=== Checking Spanish ES Directory ==="
-          if [ -f "build/es/inteligencia-real.pdf" ] && [ ! -f "build/inteligencia-real.pdf" ]; then
-            echo "⚠️ Spanish PDF found in build/es/ but not in root, copying..."
-            cp build/es/inteligencia-real.pdf build/
-          fi
-          
-          if [ -f "build/es/inteligencia-real.epub" ] && [ ! -f "build/inteligencia-real.epub" ]; then
-            echo "⚠️ Spanish EPUB found in build/es/ but not in root, copying..."
-            cp build/es/inteligencia-real.epub build/
-          fi
-          
-          if [ -f "build/es/inteligencia-real.mobi" ] && [ ! -f "build/inteligencia-real.mobi" ]; then
-            echo "⚠️ Spanish MOBI found in build/es/ but not in root, copying..."
-            cp build/es/inteligencia-real.mobi build/
-          fi
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -217,8 +164,8 @@ jobs:
             build/*.mobi
             build/*.html
             build/*.md
-            build/es/*
-            build/images/*
+            build/es/**
+            build/images/**
 
   release:
     # Only run release job on main branch
@@ -240,10 +187,10 @@ jobs:
           echo "=== Build Directory Contents ==="
           ls -la build/
           
-          echo "\n=== ES Directory Contents ==="
+          echo "=== ES Directory Contents ==="
           ls -la build/es/ || echo "ES directory may not exist yet"
           
-          echo "\n=== File Sizes ==="
+          echo "=== Book File Sizes ==="
           du -h build/*.pdf build/*.epub build/*.mobi 2>/dev/null || echo "Some files may be missing"
 
       - name: Create release
