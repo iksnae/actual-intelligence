@@ -24,7 +24,7 @@ cat > "$OUTPUT_PATH" << EOF
 ---
 title: "$BOOK_TITLE"
 subtitle: "$BOOK_SUBTITLE"
-author: "Open Source Community"
+author: "K Mills"
 publisher: "Khaos Studios"
 language: "$LANGUAGE"
 toc: true

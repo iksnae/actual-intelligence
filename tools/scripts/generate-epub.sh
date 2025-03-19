@@ -39,7 +39,7 @@ if command -v generate-epub &> /dev/null; then
     echo "Including cover image in EPUB: $LANG_COVER_IMAGE"
     generate-epub \
       --title "$BOOK_TITLE" \
-      --author "Open Source Community" \
+      --author "K Mills" \
       --publisher "Khaos Studios" \
       --language "$LANGUAGE" \
       --cover "$LANG_COVER_IMAGE" \
@@ -49,7 +49,7 @@ if command -v generate-epub &> /dev/null; then
   else
     generate-epub \
       --title "$BOOK_TITLE" \
-      --author "Open Source Community" \
+      --author "K Mills" \
       --publisher "Khaos Studios" \
       --language "$LANGUAGE" \
       --resource-path "$RESOURCE_PATHS" \
@@ -94,7 +94,7 @@ if [ -n "$LANG_COVER_IMAGE" ]; then
     --toc-depth=2 \
     --metadata title="$BOOK_TITLE" \
     --metadata publisher="Khaos Studios" \
-    --metadata creator="Open Source Community" \
+    --metadata creator="K Mills" \
     --metadata language="$LANGUAGE" \
     --resource-path="$RESOURCE_PATHS" \
     --extract-media=build/$LANGUAGE/epub-media
@@ -104,7 +104,7 @@ else
     --toc-depth=2 \
     --metadata title="$BOOK_TITLE" \
     --metadata publisher="Khaos Studios" \
-    --metadata creator="Open Source Community" \
+    --metadata creator="K Mills" \
     --metadata language="$LANGUAGE" \
     --resource-path="$RESOURCE_PATHS" \
     --extract-media=build/$LANGUAGE/epub-media

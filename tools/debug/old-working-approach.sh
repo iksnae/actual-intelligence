@@ -75,7 +75,7 @@ if [ -n "$COVER_IMAGE" ]; then
     --toc-depth=2 \
     --metadata title="Actual Intelligence" \
     --metadata publisher="Khaos Studios" \
-    --metadata creator="Open Source Community" \
+    --metadata creator="K Mills" \
     --resource-path="$RESOURCE_PATHS" \
     --extract-media=build/epub-media
 else
@@ -84,7 +84,7 @@ else
     --toc-depth=2 \
     --metadata title="Actual Intelligence" \
     --metadata publisher="Khaos Studios" \
-    --metadata creator="Open Source Community" \
+    --metadata creator="K Mills" \
     --resource-path="$RESOURCE_PATHS" \
     --extract-media=build/epub-media
 fi

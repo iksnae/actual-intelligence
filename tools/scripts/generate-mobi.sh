@@ -25,7 +25,7 @@ mkdir -p "$(dirname "$OUTPUT_MOBI")"
 # Use Calibre's ebook-convert to convert EPUB to MOBI
 ebook-convert "$INPUT_EPUB" "$OUTPUT_MOBI" \
   --title="$BOOK_TITLE" \
-  --authors="Open Source Community" \
+  --authors="K Mills" \
   --publisher="Khaos Studios" \
   --language="$LANGUAGE" || true
 

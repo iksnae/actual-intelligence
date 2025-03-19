@@ -185,7 +185,7 @@ async function buildLanguage(language) {
   const metadataHeader = `---
 title: "${config.titles[language] || config.titles.en}"
 subtitle: "${config.subtitles[language] || config.subtitles.en}"
-author: "Open Source Community"
+author: "K Mills"
 publisher: "Khaos Studios"
 language: "${language}"
 toc: true
@@ -272,7 +272,7 @@ toc: true
     const bookTitle = config.titles[language] || config.titles.en;
     const bookSubtitle = config.subtitles[language] || config.subtitles.en;
     
-    const command = `pandoc "${outputMdFile}" -o "${epubFile}" ${coverImageOption}--toc --toc-depth=2 --metadata=title:"${bookTitle}" --metadata=subtitle:"${bookSubtitle}" --metadata=author:"Open Source Community" --metadata=publisher:"Khaos Studios" --metadata=lang:${language} --resource-path="${resourcePaths}" --extract-media=${config.outputDir}/epub-media`;
+    const command = `pandoc "${outputMdFile}" -o "${epubFile}" ${coverImageOption}--toc --toc-depth=2 --metadata=title:"${bookTitle}" --metadata=subtitle:"${bookSubtitle}" --metadata=author:"K Mills" --metadata=publisher:"Khaos Studios" --metadata=lang:${language} --resource-path="${resourcePaths}" --extract-media=${config.outputDir}/epub-media`;
     console.log(`Running: ${command}`);
     execSync(command, { stdio: 'inherit' });
     console.log(`EPUB created: ${epubFile}`);
@@ -297,7 +297,7 @@ toc: true
     if (fs.existsSync(epubFile)) {
       const bookTitle = config.titles[language] || config.titles.en;
       
-      const command = `ebook-convert "${epubFile}" "${mobiFile}" --title="${bookTitle}" --authors="Open Source Community" --publisher="Khaos Studios" --language="${language}"`;
+      const command = `ebook-convert "${epubFile}" "${mobiFile}" --title="${bookTitle}" --authors="K Mills" --publisher="Khaos Studios" --language="${language}"`;
       console.log(`Running: ${command}`);
       execSync(command, { stdio: 'inherit' });
       console.log(`MOBI created: ${mobiFile}`);
