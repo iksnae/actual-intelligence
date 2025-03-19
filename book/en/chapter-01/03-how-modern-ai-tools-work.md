@@ -53,7 +53,7 @@ This limitation explains why AI often struggles with:
 
 ## The Probability Generator
 
-When ChatGPT generates text, it's essentially making a series of word choices based on probability. For each position in a sentence, it calculates which word is most likely to come next, given the preceding words and the overall context.
+When ChatGPT generates text, it's essentially making a series of word choices based on probability, like guessing the next note in a melody. For each position in a sentence, it calculates which word is most likely to come next, given the preceding words and the overall context.
 
 Imagine a game where you start a sentence, and someone has to guess what word comes next:
 

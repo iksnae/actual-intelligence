@@ -66,11 +66,13 @@ When you combine human direction with AI capabilities, something remarkable happ
 - Your knowledge is amplified by the AI's ability to provide information and perspectives you might not have considered
 - Your productivity is amplified by the AI's ability to handle routine aspects of tasks, freeing you to focus on higher-level thinking
 
-Sarah, a high school English teacher, experiences this amplification when planning her curriculum. She could spend hours searching for relevant reading materials, drafting discussion questions, and creating assignments. Instead, she directs ChatGPT with her specific educational goals and knowledge of her students:
+This amplification becomes particularly powerful when applied to real-world challenges. Consider how Sarah, a high school English teacher, experiences this amplification when planning her curriculum:
+
+```
+I need to design a unit on 'identity' for my 10th grade English class. Many of my students are first-generation Americans who often discuss the challenges of navigating between cultures. Suggest contemporary short stories from diverse authors that explore identity formation, and for each story, outline potential discussion questions that connect to the immigrant experience.
+```
 
 ![](images/teacher-curriculum.jpg)
-
-*"I need to design a unit on 'identity' for my 10th grade English class. Many of my students are first-generation Americans who often discuss the challenges of navigating between cultures. Suggest contemporary short stories from diverse authors that explore identity formation, and for each story, outline potential discussion questions that connect to the immigrant experience."*
 
 With this direction, ChatGPT can quickly generate suggestions that Sarah then evaluates based on her professional judgment, knowledge of her specific students, and curriculum requirements. She might accept some suggestions, modify others, and reject those that don't fit her vision.
 

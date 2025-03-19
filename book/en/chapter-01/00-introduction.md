@@ -1,5 +1,5 @@
 # Chapter 1: Actual Intelligence
-*... The Human Side of AI*
+*...The Human Side of AI*
 
 
 Have you ever watched someone use a new technology and make it look effortless, only to feel lost when you try it yourself? Or perhaps you've heard about **ChatGPT** and other AI tools in the news but haven't tried them yet, unsure if they're too complicated or technical for you?
@@ -8,7 +8,7 @@ Have you ever watched someone use a new technology and make it look effortless, 
 
 You're not alone. Many people find these technologies intimidating or aren't sure where to start. The good news is that you don't need to be a tech expert to use these tools effectively. In fact, the most important skills you'll need are ones you already have—curiosity, judgment, and your own unique perspective on what matters.
 
-That's what this book is all about: showing you how to pair your human wisdom with AI tools to accomplish things that matter to you. We call this partnership "Actual Intelligence," and it puts you—not the technology—at the center of the experience.
+That's what this book is all about: showing you how to pair your human wisdom with AI tools to accomplish things that matter to you. We call this partnership **Actual Intelligence**—a framework that centers you, not the technology, in the process.
 
 ## Quick Self-Reflection
 

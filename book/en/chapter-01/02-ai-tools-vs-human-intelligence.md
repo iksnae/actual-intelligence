@@ -47,7 +47,7 @@ This illustrates another key difference: human creativity often involves making 
 
 While AI can recombine existing ideas in impressive ways, it doesn't have the spark of genuine inspiration or the intuitive sense that allows humans to make leaps beyond what's explicitly known.
 
-## What AI Tools Do Well
+### What AI Tools Do Well
 
 These differences aren't weaknesses — they're the foundation of a powerful partnership. AI and humans are like teammates with complementary strengths.
 

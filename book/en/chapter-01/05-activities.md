@@ -20,7 +20,7 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 - 10-15 minutes
 
 
-"This activity was eye-opening," says Miguel, a high school teacher. "I couldn't believe how different the responses were just by adding a few details to my question."
+*"This activity was eye-opening,"* says Miguel (a high school teacher). *"I couldn't believe how different the responses were just by adding a few details to my question."*
 
 **Instructions:**
 
@@ -234,7 +234,6 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 <div style="page-break-after: always;"></div>
 
 ## Moving Forward with Confidence
-
 
 Congratulations on completing these activities! You've taken your first steps toward becoming a skilled AI director. Through these exercises, you've experienced firsthand how your direction shapes AI output, how to maintain control of creative processes, and how to set healthy boundaries for AI use in your life.
 
