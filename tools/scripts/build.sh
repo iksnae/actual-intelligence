@@ -36,10 +36,37 @@ source tools/scripts/setup.sh
 # Determine which languages to build
 if [ "$BUILD_ALL_LANGUAGES" = true ]; then
   echo "Building all languages..."
-  LANGUAGES=("en" "es")
+  # Verify which languages are available
+  echo "Checking available languages:"
+  AVAILABLE_LANGS=""
+  for lang_dir in book/*/; do
+    lang=$(basename "$lang_dir")
+    if [ -d "book/$lang/chapter-01" ]; then
+      echo "  ✓ Found $lang with chapter content"
+      AVAILABLE_LANGS="$AVAILABLE_LANGS $lang"
+    else
+      echo "  ✗ Found $lang but no chapter content"
+    fi
+  done
+  
+  if [ -z "$AVAILABLE_LANGS" ]; then
+    echo "⚠️ WARNING: No languages with chapter content found!"
+    LANGUAGES=("en")
+  else
+    # Convert to array
+    read -ra LANGUAGES <<< "$AVAILABLE_LANGS"
+    echo "Will build languages: ${LANGUAGES[*]}"
+  fi
 elif [ -n "$SPECIFIC_LANGUAGE" ]; then
   echo "Building specific language: $SPECIFIC_LANGUAGE"
-  LANGUAGES=("$SPECIFIC_LANGUAGE")
+  if [ -d "book/$SPECIFIC_LANGUAGE/chapter-01" ]; then
+    echo "✓ Found chapter content for $SPECIFIC_LANGUAGE"
+    LANGUAGES=("$SPECIFIC_LANGUAGE")
+  else
+    echo "⚠️ WARNING: No chapter content found for $SPECIFIC_LANGUAGE!"
+    echo "Defaulting to English."
+    LANGUAGES=("en")
+  fi
 else
   # By default, build all languages in CI
   if [ -n "$CI" ]; then
@@ -54,19 +81,44 @@ fi
 # Build each language
 for lang in "${LANGUAGES[@]}"; do
   echo "📚 Building $lang version..."
+  if [ ! -d "book/$lang" ]; then
+    echo "⚠️ WARNING: Language directory book/$lang does not exist, skipping!"
+    continue
+  fi
+  
+  if [ ! -d "book/$lang/chapter-01" ]; then
+    echo "⚠️ WARNING: No chapter content found for $lang, skipping!"
+    continue
+  fi
+  
   source tools/scripts/build-language.sh "$lang" $SKIP_FLAGS
 done
 
 # List the build folder contents for verification
-echo "\n📝 Contents of build/ directory:"
+echo -e "\n📝 Contents of build/ directory:"
 ls -la build/
 
 # Show language-specific directories if they exist
 for lang in "${LANGUAGES[@]}"; do
   if [ "$lang" != "en" ] && [ -d "build/$lang" ]; then
-    echo "\n📝 Contents of build/$lang/ directory:"
+    echo -e "\n📝 Contents of build/$lang/ directory:"
     ls -la "build/$lang/"
   fi
 done
+
+# Check for specific Spanish outputs
+if [[ " ${LANGUAGES[*]} " =~ " es " ]]; then
+  if [ -f "build/inteligencia-real.epub" ]; then
+    echo -e "\n✅ Spanish EPUB (inteligencia-real.epub) found in build directory"
+    du -h "build/inteligencia-real.epub"
+  else
+    echo -e "\n❌ Spanish EPUB (inteligencia-real.epub) NOT found in build directory!"
+  fi
+  
+  if [ -f "build/es/inteligencia-real.epub" ]; then
+    echo -e "\n✅ Spanish EPUB found in build/es directory"
+    du -h "build/es/inteligencia-real.epub"
+  fi
+fi
 
 echo "✅ Build process completed successfully!"
