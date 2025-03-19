@@ -9,7 +9,7 @@ cover-image: 'book/en/images/cover.png'
 ---
 
 # Chapter 1: Actual Intelligence
-*... The Human Side of AI*
+*...The Human Side of AI*
 
 
 Have you ever watched someone use a new technology and make it look effortless, only to feel lost when you try it yourself? Or perhaps you've heard about **ChatGPT** and other AI tools in the news but haven't tried them yet, unsure if they're too complicated or technical for you?
@@ -18,7 +18,7 @@ Have you ever watched someone use a new technology and make it look effortless, 
 
 You're not alone. Many people find these technologies intimidating or aren't sure where to start. The good news is that you don't need to be a tech expert to use these tools effectively. In fact, the most important skills you'll need are ones you already have—curiosity, judgment, and your own unique perspective on what matters.
 
-That's what this book is all about: showing you how to pair your human wisdom with AI tools to accomplish things that matter to you. We call this partnership "Actual Intelligence," and it puts you—not the technology—at the center of the experience.
+That's what this book is all about: showing you how to pair your human wisdom with AI tools to accomplish things that matter to you. We call this partnership **Actual Intelligence**—a framework that centers you, not the technology, in the process.
 
 ## Quick Self-Reflection
 
@@ -186,7 +186,7 @@ This illustrates another key difference: human creativity often involves making 
 
 While AI can recombine existing ideas in impressive ways, it doesn't have the spark of genuine inspiration or the intuitive sense that allows humans to make leaps beyond what's explicitly known.
 
-## What AI Tools Do Well
+### What AI Tools Do Well
 
 These differences aren't weaknesses — they're the foundation of a powerful partnership. AI and humans are like teammates with complementary strengths.
 
@@ -307,7 +307,7 @@ This limitation explains why AI often struggles with:
 
 ## The Probability Generator
 
-When ChatGPT generates text, it's essentially making a series of word choices based on probability. For each position in a sentence, it calculates which word is most likely to come next, given the preceding words and the overall context.
+When ChatGPT generates text, it's essentially making a series of word choices based on probability, like guessing the next note in a melody. For each position in a sentence, it calculates which word is most likely to come next, given the preceding words and the overall context.
 
 Imagine a game where you start a sentence, and someone has to guess what word comes next:
 
@@ -436,11 +436,13 @@ When you combine human direction with AI capabilities, something remarkable happ
 - Your knowledge is amplified by the AI's ability to provide information and perspectives you might not have considered
 - Your productivity is amplified by the AI's ability to handle routine aspects of tasks, freeing you to focus on higher-level thinking
 
-Sarah, a high school English teacher, experiences this amplification when planning her curriculum. She could spend hours searching for relevant reading materials, drafting discussion questions, and creating assignments. Instead, she directs ChatGPT with her specific educational goals and knowledge of her students:
+This amplification becomes particularly powerful when applied to real-world challenges. Consider how Sarah, a high school English teacher, experiences this amplification when planning her curriculum:
+
+```
+I need to design a unit on 'identity' for my 10th grade English class. Many of my students are first-generation Americans who often discuss the challenges of navigating between cultures. Suggest contemporary short stories from diverse authors that explore identity formation, and for each story, outline potential discussion questions that connect to the immigrant experience.
+```
 
 ![](images/teacher-curriculum.jpg)
-
-*"I need to design a unit on 'identity' for my 10th grade English class. Many of my students are first-generation Americans who often discuss the challenges of navigating between cultures. Suggest contemporary short stories from diverse authors that explore identity formation, and for each story, outline potential discussion questions that connect to the immigrant experience."*
 
 With this direction, ChatGPT can quickly generate suggestions that Sarah then evaluates based on her professional judgment, knowledge of her specific students, and curriculum requirements. She might accept some suggestions, modify others, and reject those that don't fit her vision.
 
@@ -610,7 +612,7 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 - 10-15 minutes
 
 
-"This activity was eye-opening," says Miguel, a high school teacher. "I couldn't believe how different the responses were just by adding a few details to my question."
+*"This activity was eye-opening,"* says Miguel (a high school teacher). *"I couldn't believe how different the responses were just by adding a few details to my question."*
 
 **Instructions:**
 
@@ -824,7 +826,6 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 <div style="page-break-after: always;"></div>
 
 ## Moving Forward with Confidence
-
 
 Congratulations on completing these activities! You've taken your first steps toward becoming a skilled AI director. Through these exercises, you've experienced firsthand how your direction shapes AI output, how to maintain control of creative processes, and how to set healthy boundaries for AI use in your life.
 
