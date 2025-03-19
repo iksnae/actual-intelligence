@@ -52,6 +52,23 @@ actual-intelligence/
 4. **Progressive Learning**: Build concepts progressively, don't introduce advanced topics too early.
 5. **Language**: Use clear, simple language and avoid technical jargon when possible.
 
+## Image Description Process
+
+As part of our drafting workflow (where we use language models extensively), we follow this process for images:
+
+1. **Create Image Descriptions First**: Before actual images are created, write detailed descriptions in text files within the `chapter-XX/images/` directories.
+2. **Naming Convention**: Use the same base filename for the description and the future image:
+   - Image: `concept-name.jpg` or `concept-name.png`
+   - Description: `concept-name.txt`
+3. **Description Content**: Each description should include:
+   - What elements the image should contain
+   - What the image is meant to convey
+   - Any specific details about layout, style, or appearance
+   - How the image connects to the book's content
+4. **Accessibility**: These descriptions also serve as alt text for accessibility purposes.
+
+This approach allows us to plan visual content during the writing phase, while the actual artwork can be created separately by designers.
+
 ## Markdown Formatting
 
 Content files use Markdown with the following conventions:
