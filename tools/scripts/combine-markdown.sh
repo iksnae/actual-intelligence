@@ -41,8 +41,8 @@ cat >> "$OUTPUT_PATH" << EOF
 
 EOF
 
-# Find all chapter directories for the specified language
-find "book/$LANGUAGE" -type d -name "chapter-*" | sort | while read -r chapter_dir; do
+# Find all chapter directories for the specified language and sort them numerically
+find "book/$LANGUAGE" -type d -name "chapter-*" | sort -V | while read -r chapter_dir; do
   echo "Processing chapter directory: $chapter_dir"
   
   # Look for title-page.md first if it exists (only for first chapter)
@@ -62,8 +62,9 @@ find "book/$LANGUAGE" -type d -name "chapter-*" | sort | while read -r chapter_d
     # No additional page break needed
   fi
   
-  # Process all section files in order
-  find "$chapter_dir" -maxdepth 1 -name "[0-9]*.md" | grep -v "00-introduction.md" | sort | while read -r section_file; do
+  # Process all section files in correct numeric order
+  # Find all numeric prefixed markdown files (excluding introduction) and sort them properly
+  find "$chapter_dir" -maxdepth 1 -type f -name "[0-9]*.md" | grep -v "00-introduction.md" | sort -V | while read -r section_file; do
     echo "Adding section from $section_file"
     # Add an explicit section header comment for better visibility in source
     echo -e "\n\n<!-- Start of section: $(basename "$section_file") -->\n" >> "$OUTPUT_PATH"
@@ -72,14 +73,14 @@ find "book/$LANGUAGE" -type d -name "chapter-*" | sort | while read -r chapter_d
   done
 done
 
-# Process appendices if they exist
+# Process appendices if they exist, ensuring numeric sorting
 appendices_dir="book/$LANGUAGE/appendices"
 if [ -d "$appendices_dir" ]; then
   echo "Processing appendices from $appendices_dir"
   
   echo -e "\n\n# Appendices\n\n" >> "$OUTPUT_PATH"
   
-  find "$appendices_dir" -name "*.md" | sort | while read -r appendix_file; do
+  find "$appendices_dir" -type f -name "*.md" | sort -V | while read -r appendix_file; do
     echo "Adding appendix: $appendix_file"
     cat "$appendix_file" >> "$OUTPUT_PATH"
     # Only add page break if file doesn't already have one
