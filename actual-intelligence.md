@@ -1,7 +1,7 @@
 ---
 title: "Actual Intelligence"
 subtitle: "A Practical Guide to Using AI in Everyday Life"
-author: "Open Source Community"
+author: "K Mills"
 publisher: "Khaos Studios"
 language: "en"
 toc: true

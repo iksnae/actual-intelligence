@@ -1,7 +1,7 @@
 ---
 title: "Inteligencia Real"
 subtitle: "Una Guía Práctica para Usar la IA en la Vida Cotidiana"
-author: "Open Source Community"
+author: "K Mills"
 publisher: "Khaos Studios"
 language: "es"
 toc: true
