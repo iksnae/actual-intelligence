@@ -4,6 +4,7 @@
 # Usage: combine-markdown.sh [language] [output_path] [book_title] [book_subtitle]
 
 set -e  # Exit on error
+set -x  # Enable debug mode to see commands
 
 # Get arguments
 LANGUAGE=${1:-en}
@@ -37,6 +38,20 @@ EOF
 if [ -n "$COVER_IMAGE" ]; then
   echo "  - Using cover image: $COVER_IMAGE"
   echo "cover-image: '$COVER_IMAGE'" >> "$OUTPUT_PATH"
+else
+  echo "  - No cover image specified"
+  
+  # Try to find language-specific cover
+  if [ -f "book/$LANGUAGE/images/cover.png" ]; then
+    echo "  - Found language-specific cover: book/$LANGUAGE/images/cover.png"
+    echo "cover-image: 'book/$LANGUAGE/images/cover.png'" >> "$OUTPUT_PATH"
+  elif [ -f "art/cover.png" ]; then
+    echo "  - Found art/cover.png"
+    echo "cover-image: 'art/cover.png'" >> "$OUTPUT_PATH"
+  elif [ -f "book/images/cover.png" ]; then
+    echo "  - Found book/images/cover.png"
+    echo "cover-image: 'book/images/cover.png'" >> "$OUTPUT_PATH"
+  fi
 fi
 
 # Close the metadata block
@@ -54,6 +69,7 @@ if [ ! -d "book/$LANGUAGE" ]; then
 fi
 
 # Find all chapter directories for the specified language
+echo "Looking for chapter directories in book/$LANGUAGE"
 CHAPTER_DIRS=$(find "book/$LANGUAGE" -type d -name "chapter-*" | sort)
 
 if [ -z "$CHAPTER_DIRS" ]; then
@@ -77,6 +93,8 @@ echo "$CHAPTER_DIRS" | while read -r chapter_dir; do
       echo "Adding title page from $title_page"
       cat "$title_page" >> "$OUTPUT_PATH"
       echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
+    else
+      echo "  - No title page found at $title_page"
     fi
   fi
   
@@ -90,6 +108,7 @@ echo "$CHAPTER_DIRS" | while read -r chapter_dir; do
   fi
   
   # Process all section files in order
+  echo "Searching for section files in $chapter_dir"
   SECTION_FILES=$(find "$chapter_dir" -maxdepth 1 -name "[0-9]*.md" | grep -v "00-introduction.md" | sort)
   
   if [ -z "$SECTION_FILES" ]; then
@@ -146,7 +165,14 @@ fi
 if [ -s "$OUTPUT_PATH" ]; then
   FILESIZE=$(du -k "$OUTPUT_PATH" | cut -f1)
   echo "✅ Markdown files combined into $OUTPUT_PATH (${FILESIZE}KB)"
+  
+  # Count sections as a sanity check
+  SECTION_COUNT=$(grep -c "<!-- Start of section:" "$OUTPUT_PATH")
+  echo "  - Combined $SECTION_COUNT sections"
 else
   echo "⚠️ WARNING: Output file $OUTPUT_PATH is empty or wasn't created properly"
   exit 1
 fi
+
+# Disable debug mode
+set +x
