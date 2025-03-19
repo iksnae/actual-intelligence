@@ -96,6 +96,12 @@ jobs:
           echo "Running build script for all languages..."
           # Run the build script with all languages
           ./build.sh --all-languages || echo "Build script completed with warnings"
+          
+      - name: Run Spanish build fix script
+        run: |
+          echo "Running Spanish build fix script..."
+          chmod +x tools/scripts/fix-spanish-build.sh
+          ./tools/scripts/fix-spanish-build.sh
 
       - name: List build directory contents
         run: |
