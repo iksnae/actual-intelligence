@@ -5,7 +5,7 @@ author: "Open Source Community"
 publisher: "Khaos Studios"
 language: "en"
 toc: true
-cover-image: 'art/cover.png'
+cover-image: 'book/en/images/cover.png'
 ---
 
 # Chapter 1: Actual Intelligence
