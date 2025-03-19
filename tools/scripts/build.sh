@@ -38,25 +38,10 @@ if [ "$BUILD_ALL_LANGUAGES" = true ]; then
   echo "Building all languages..."
   # Verify which languages are available
   echo "Checking available languages:"
-  AVAILABLE_LANGS=""
-  for lang_dir in book/*/; do
-    lang=$(basename "$lang_dir")
-    if [ -d "book/$lang/chapter-01" ]; then
-      echo "  ✓ Found $lang with chapter content"
-      AVAILABLE_LANGS="$AVAILABLE_LANGS $lang"
-    else
-      echo "  ✗ Found $lang but no chapter content"
-    fi
-  done
+  # Use languages from setup.sh
+  LANGUAGES=($AVAILABLE_LANGUAGES)
   
-  if [ -z "$AVAILABLE_LANGS" ]; then
-    echo "⚠️ WARNING: No languages with chapter content found!"
-    LANGUAGES=("en")
-  else
-    # Convert to array
-    read -ra LANGUAGES <<< "$AVAILABLE_LANGS"
-    echo "Will build languages: ${LANGUAGES[*]}"
-  fi
+  echo "Will build languages: ${LANGUAGES[*]}"
 elif [ -n "$SPECIFIC_LANGUAGE" ]; then
   echo "Building specific language: $SPECIFIC_LANGUAGE"
   if [ -d "book/$SPECIFIC_LANGUAGE/chapter-01" ]; then
@@ -71,7 +56,7 @@ else
   # By default, build all languages in CI
   if [ -n "$CI" ]; then
     echo "Running in CI environment, building all languages by default"
-    LANGUAGES=("en" "es")
+    LANGUAGES=($AVAILABLE_LANGUAGES)
   else
     echo "Building only English by default"
     LANGUAGES=("en")
@@ -93,6 +78,31 @@ for lang in "${LANGUAGES[@]}"; do
   
   source tools/scripts/build-language.sh "$lang" $SKIP_FLAGS
 done
+
+# Ensure we copy Spanish files to the root directory
+if [[ " ${LANGUAGES[*]} " =~ " es " ]]; then
+  echo "📋 Ensuring Spanish files are copied to root build directory..."
+  # Check if Spanish files exist in the es directory
+  if [ -f "build/es/inteligencia-real.epub" ]; then
+    cp "build/es/inteligencia-real.epub" "build/inteligencia-real.epub"
+    echo "  - Copied EPUB: build/es/inteligencia-real.epub -> build/inteligencia-real.epub"
+  fi
+  
+  if [ -f "build/es/inteligencia-real.pdf" ]; then
+    cp "build/es/inteligencia-real.pdf" "build/inteligencia-real.pdf"
+    echo "  - Copied PDF: build/es/inteligencia-real.pdf -> build/inteligencia-real.pdf"
+  fi
+  
+  if [ -f "build/es/inteligencia-real.mobi" ]; then
+    cp "build/es/inteligencia-real.mobi" "build/inteligencia-real.mobi"
+    echo "  - Copied MOBI: build/es/inteligencia-real.mobi -> build/inteligencia-real.mobi"
+  fi
+  
+  if [ -f "build/es/inteligencia-real.html" ]; then
+    cp "build/es/inteligencia-real.html" "build/inteligencia-real.html"
+    echo "  - Copied HTML: build/es/inteligencia-real.html -> build/inteligencia-real.html"
+  fi
+fi
 
 # List the build folder contents for verification
 echo -e "\n📝 Contents of build/ directory:"
