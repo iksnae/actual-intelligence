@@ -21,10 +21,10 @@ Keep related questions within the same conversation thread to maintain context. 
 
 **Example sequence:**
 
-1. "What are the must-visit locations in Tokyo for a first-time visitor?"
-2. "Which of those would be good for someone interested in traditional culture?"
-3. "What are the transportation options between these sites?"
-4. "Are there any special seasonal considerations for visiting in October?"
+1. `What are the must-visit locations in Tokyo for a first-time visitor?`
+2. `Which of those would be good for someone interested in traditional culture?`
+3. `What are the transportation options between these sites?`
+4. `Are there any special seasonal considerations for visiting in October?`
 
 ChatGPT will understand that each question builds upon previous ones, providing more coherent and relevant information than if these were separate conversations.
 
@@ -34,7 +34,7 @@ If a conversation becomes lengthy or you want to ensure ChatGPT remembers specif
 
 **Example:**
 
-"Earlier we discussed starting a container garden on a balcony with 4 hours of morning sunlight. Based on that lighting situation, which of the herb varieties you just mentioned would be most suitable?"
+`Earlier we discussed starting a container garden on a balcony with 4 hours of morning sunlight. Based on that lighting situation, which of the herb varieties you just mentioned would be most suitable?`
 
 This refreshes critical context (lighting conditions) while moving the conversation forward (selecting suitable herbs).
 
@@ -47,7 +47,7 @@ Sometimes, accumulated context can actually get in the way, especially when:
 
 In these cases, starting a new chat creates a clean slate. You can also explicitly state when you want to shift gears:
 
-"Let's set aside our previous discussion about fiction writing. I'd now like to focus on non-fiction research methods."
+`Let's set aside our previous discussion about fiction writing. I'd now like to focus on non-fiction research methods.`
 
 ### Multi-Turn Conversations: The Power of Follow-Up
 
@@ -60,15 +60,15 @@ One of the most effective ways to get value from ChatGPT is through multi-turn e
 
 **Example of a productive multi-turn exchange:**
 
-**User:** "I need to explain the water cycle to a 6-year-old. Can you help me with a simple explanation?"
+**User:** `I need to explain the water cycle to a 6-year-old. Can you help me with a simple explanation?`
 
 **ChatGPT:** *[Provides a basic explanation of the water cycle appropriate for a young child]*
 
-**User:** "That's a good start. Could you include a simple activity or demonstration I could do with household items to illustrate this?"
+**User:** `That's a good start. Could you include a simple activity or demonstration I could do with household items to illustrate this?`
 
 **ChatGPT:** *[Suggests an age-appropriate demonstration using common items]*
 
-**User:** "Perfect. Now can you suggest some simple questions I could ask to check their understanding after the explanation and activity?"
+**User:** `Perfect. Now can you suggest some simple questions I could ask to check their understanding after the explanation and activity?`
 
 This step-by-step approach often leads to more thorough and useful outcomes than trying to get everything in a single prompt.
 
@@ -80,7 +80,7 @@ This step-by-step approach often leads to more thorough and useful outcomes than
 
 **Solution:** Periodically summarize the key points you want to maintain and explicitly discard irrelevant parts of the conversation.
 
-**Example:** "To recap our key points: we're designing a vegetable garden for Zone 7b with clay soil and part shade. Let's focus on these conditions and set aside our earlier discussion about flower gardening."
+**Example:** `To recap our key points: we're designing a vegetable garden for Zone 7b with clay soil and part shade. Let's focus on these conditions and set aside our earlier discussion about flower gardening.`
 
 #### Challenge: Lost Context Between Sessions
 
@@ -88,7 +88,7 @@ This step-by-step approach often leads to more thorough and useful outcomes than
 
 **Solution:** Start the new session with a brief summary of the previous conversation and any important conclusions reached.
 
-**Example:** "Yesterday we discussed marketing strategies for my small bakery business. We concluded that focusing on local social media and community events would be most effective given my limited budget. Today I'd like to develop a specific 3-month content plan based on those approaches."
+**Example:** `Yesterday we discussed marketing strategies for my small bakery business. We concluded that focusing on local social media and community events would be most effective given my limited budget. Today I'd like to develop a specific 3-month content plan based on those approaches.`
 
 #### Challenge: Redirecting a Conversation That's Off Track
 
@@ -96,7 +96,7 @@ This step-by-step approach often leads to more thorough and useful outcomes than
 
 **Solution:** Politely but firmly redirect with a clear statement of what you want to focus on.
 
-**Example:** "I notice we've drifted into discussing bread recipes, but I'd like to return to my original question about pricing strategies for specialty baked goods in a small-town market."
+**Example:** `I notice we've drifted into discussing bread recipes, but I'd like to return to my original question about pricing strategies for specialty baked goods in a small-town market.`
 
 ### Preparing for Longer Conversations
 
