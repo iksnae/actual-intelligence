@@ -13,11 +13,11 @@ Now it's time to put your new knowledge into practice! The following activities 
 **Instructions:**
 
 1. Look at each of the following basic prompts:
-   - "Help me write a resume."
-   - "Tell me about healthy eating."
-   - "How do I fix my garden?"
-   - "Give me ideas for my presentation."
-   - "Help with my homework."
+   - `Help me write a resume.`
+   - `Tell me about healthy eating.`
+   - `How do I fix my garden?`
+   - `Give me ideas for my presentation.`
+   - `Help with my homework.`
 
 2. For each basic prompt, develop an improved version by adding:
    - Specific context about your situation
@@ -31,9 +31,9 @@ Now it's time to put your new knowledge into practice! The following activities 
 
 **Example Makeover:**
 
-**Original:** "Help me write a resume."
+**Original:** `Help me write a resume.`
 
-**Improved:** "I need help creating a resume for entry-level marketing positions. I recently graduated with a degree in communications and have two summers of internship experience in social media management. Could you create a one-page resume template that highlights transferable skills from my academic projects and internships, uses a clean professional format, and includes sections for education, experience, skills, and a brief professional summary?"
+**Improved:** `I need help creating a resume for entry-level marketing positions. I recently graduated with a degree in communications and have two summers of internship experience in social media management. Could you create a one-page resume template that highlights transferable skills from my academic projects and internships, uses a clean professional format, and includes sections for education, experience, skills, and a brief professional summary?`
 
 ### Activity 2: Role Play Workshop
 
@@ -63,9 +63,9 @@ Now it's time to put your new knowledge into practice! The following activities 
 
 Topic: Learning to cook basic meals
 
-**Teacher role:** "I want you to act as a cooking teacher for a complete beginner. Explain how to prepare a simple pasta dish with sauce, focusing on fundamental techniques and common mistakes to avoid. Use straightforward language and explain cooking terminology as you go."
+**Teacher role:** `I want you to act as a cooking teacher for a complete beginner. Explain how to prepare a simple pasta dish with sauce, focusing on fundamental techniques and common mistakes to avoid. Use straightforward language and explain cooking terminology as you go.`
 
-**Professional role:** "I want you to act as an experienced chef who specializes in efficient home cooking. Provide practical advice for preparing quick weeknight pasta dishes, including time-saving techniques, ingredient substitutions, and how to elevate basic recipes. Focus on methods used in professional kitchens that can be adapted for home use."
+**Professional role:** `I want you to act as an experienced chef who specializes in efficient home cooking. Provide practical advice for preparing quick weeknight pasta dishes, including time-saving techniques, ingredient substitutions, and how to elevate basic recipes. Focus on methods used in professional kitchens that can be adapted for home use.`
 
 ### Activity 3: Format Factory
 
@@ -94,9 +94,9 @@ Topic: Learning to cook basic meals
 
 Topic: Benefits of different types of exercise
 
-**Bulleted list format:** "Provide the main benefits of different exercise types (cardio, strength training, flexibility, and balance) in a comprehensive bulleted list format. Organize by exercise category and keep each point concise and clear."
+**Bulleted list format:** `Provide the main benefits of different exercise types (cardio, strength training, flexibility, and balance) in a comprehensive bulleted list format. Organize by exercise category and keep each point concise and clear.`
 
-**Comparison table format:** "Create a comparison table showing the benefits of different exercise types (cardio, strength training, flexibility, and balance). Include columns for physical benefits, mental/emotional benefits, recommended frequency, and beginner-friendly examples of each type."
+**Comparison table format:** `Create a comparison table showing the benefits of different exercise types (cardio, strength training, flexibility, and balance). Include columns for physical benefits, mental/emotional benefits, recommended frequency, and beginner-friendly examples of each type.`
 
 ### Activity 4: Context Control
 
@@ -125,11 +125,11 @@ Topic: Benefits of different types of exercise
 
 Project: Planning a weekend hiking trip
 
-**Initial prompt:** "I'm planning a day hike this weekend with 2 friends. We're intermediate hikers looking for a trail within 2 hours of Portland, Oregon. We'd like something with good views that's between 5-8 miles round trip. Can you suggest some options?"
+**Initial prompt:** `I'm planning a day hike this weekend with 2 friends. We're intermediate hikers looking for a trail within 2 hours of Portland, Oregon. We'd like something with good views that's between 5-8 miles round trip. Can you suggest some options?`
 
-**Follow-up 1 (asking for detail):** "The Columbia River Gorge trails sound perfect. Can you provide more specific information about the Eagle Creek Trail? What's the elevation gain and are there any specific landmarks or viewpoints?"
+**Follow-up 1 (asking for detail):** `The Columbia River Gorge trails sound perfect. Can you provide more specific information about the Eagle Creek Trail? What's the elevation gain and are there any specific landmarks or viewpoints?`
 
-**Follow-up 2 (referencing earlier information):** "Based on the elevation gain you mentioned, I think Eagle Creek might be too challenging for one member of our group. Of the other options you suggested earlier, which would have more moderate elevation changes?"
+**Follow-up 2 (referencing earlier information):** `Based on the elevation gain you mentioned, I think Eagle Creek might be too challenging for one member of our group. Of the other options you suggested earlier, which would have more moderate elevation changes?`
 
 ### Activity 5: Creative Companion
 
@@ -159,9 +159,9 @@ Project: Planning a weekend hiking trip
 
 Project: Creating a children's story
 
-**Idea generation:** "I'd like to write a bedtime story for a 6-year-old who loves animals and the ocean. Could you help me brainstorm 7 different story concepts that involve marine animals and contain subtle lessons about friendship or courage? For each concept, provide a brief premise and main characters."
+**Idea generation:** `I'd like to write a bedtime story for a 6-year-old who loves animals and the ocean. Could you help me brainstorm 7 different story concepts that involve marine animals and contain subtle lessons about friendship or courage? For each concept, provide a brief premise and main characters.`
 
-**Deepening chosen idea:** "I like the concept about the shy octopus who learns to use his unique talents to help other sea creatures. Could you help me develop this further by suggesting: 1) Names for the octopus and 3 other main characters, 2) Three challenges the octopus might face, 3) A surprising twist in the middle of the story, and 4) A satisfying resolution that emphasizes the friendship theme?"
+**Deepening chosen idea:** `I like the concept about the shy octopus who learns to use his unique talents to help other sea creatures. Could you help me develop this further by suggesting: 1) Names for the octopus and 3 other main characters, 2) Three challenges the octopus might face, 3) A surprising twist in the middle of the story, and 4) A satisfying resolution that emphasizes the friendship theme?`
 
 ### Activity 6: Email Assistant
 
@@ -196,7 +196,7 @@ Project: Creating a children's story
 
 **Scenario:** Requesting a letter of recommendation
 
-**Prompt:** "Help me draft an email to my former professor, Dr. Martinez, requesting a letter of recommendation for a graduate school application. We had a positive relationship - I took two of her courses in environmental science and earned A's in both. She also supervised my senior research project last year. The application is due in 3 weeks, and I need the letter submitted online by then. I want the tone to be respectful and professional but not overly formal since we worked closely together. The email should be concise (no more than 3 paragraphs), mention specific accomplishments she observed that would strengthen my application, and offer to provide any additional information she might need."
+**Prompt:** `Help me draft an email to my former professor, Dr. Martinez, requesting a letter of recommendation for a graduate school application. We had a positive relationship - I took two of her courses in environmental science and earned A's in both. She also supervised my senior research project last year. The application is due in 3 weeks, and I need the letter submitted online by then. I want the tone to be respectful and professional but not overly formal since we worked closely together. The email should be concise (no more than 3 paragraphs), mention specific accomplishments she observed that would strengthen my application, and offer to provide any additional information she might need.`
 
 ### Moving Forward With Your New Skills
 
