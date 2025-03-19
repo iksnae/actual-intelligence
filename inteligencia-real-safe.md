@@ -1,7 +1,7 @@
 ---
 title: "Inteligencia Real"
 subtitle: "Una Guía Práctica para Usar la IA en la Vida Cotidiana"
-author: "K Mills"
+author: "Open Source Community"
 publisher: "Khaos Studios"
 language: "es"
 toc: true
@@ -39,12 +39,6 @@ Comencemos nuestro viaje hacia convertirnos en directores confiados y efectivos 
 ---
 
 <div style="page-break-after: always;"></div>
-
-
-ewpage
-
-
-
 
 <!-- Start of section: 01-what-is-actual-intelligence.md -->
 
@@ -126,12 +120,6 @@ En las siguientes secciones, exploraremos qué hace que la inteligencia humana s
 ---
 
 <div style="page-break-after: always;"></div>
-
-
-ewpage
-
-
-
 
 <!-- Start of section: 02-ai-tools-vs-human-intelligence.md -->
 
@@ -242,12 +230,6 @@ En la siguiente sección, exploraremos en términos simples cómo funcionan real
 
 <div style="page-break-after: always;"></div>
 
-
-ewpage
-
-
-
-
 <!-- Start of section: 03-how-modern-ai-tools-work.md -->
 
 # Cómo Funcionan las Herramientas Modernas de IA (Simplificado para Lectores No Técnicos)
@@ -357,12 +339,6 @@ En la siguiente sección, exploraremos cómo tomar el control de esta asociació
 ---
 
 <div style="page-break-after: always;"></div>
-
-
-ewpage
-
-
-
 
 <!-- Start of section: 04-directing-ai-and-setting-expectations.md -->
 
@@ -577,12 +553,6 @@ En la siguiente sección, pondremos estas ideas en práctica con actividades pr�
 ---
 
 <div style="page-break-after: always;"></div>
-
-
-ewpage
-
-
-
 
 <!-- Start of section: 05-activities.md -->
 
@@ -839,8 +809,3 @@ Por ahora, tómate un momento para reflexionar sobre lo que has descubierto acer
 ---
 
 <div style="page-break-after: always;"></div>
-
-
-ewpage
-
-

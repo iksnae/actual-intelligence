@@ -1,7 +1,7 @@
 ---
 title: "Actual Intelligence"
 subtitle: "A Practical Guide to Using AI in Everyday Life"
-author: "K Mills"
+author: "Open Source Community"
 publisher: "Khaos Studios"
 language: "en"
 toc: true
@@ -40,12 +40,6 @@ Let's begin our journey toward becoming confident, effective directors of these 
 ---
 
 <div style="page-break-after: always;"></div>
-
-
-
-ewpage
-
-
 
 
 <!-- Start of section: 01-what-is-actual-intelligence.md -->
@@ -128,12 +122,6 @@ In the next sections, we'll explore what makes human intelligence unique and how
 ---
 
 <div style="page-break-after: always;"></div>
-
-
-ewpage
-
-
-
 
 <!-- Start of section: 02-ai-tools-vs-human-intelligence.md -->
 
@@ -244,12 +232,6 @@ In the next section, we'll explore in simple terms how these AI tools actually w
 
 <div style="page-break-after: always;"></div>
 
-
-ewpage
-
-
-
-
 <!-- Start of section: 03-how-modern-ai-tools-work.md -->
 
 # How Modern AI Tools Work (Simplified for Non-Technical Readers)
@@ -359,12 +341,6 @@ In the next section, we'll explore how to take control of this human-AI partners
 ---
 
 <div style="page-break-after: always;"></div>
-
-
-ewpage
-
-
-
 
 <!-- Start of section: 04-directing-ai-and-setting-expectations.md -->
 
@@ -581,12 +557,6 @@ In the next section, we'll put these ideas into practice with hands-on activitie
 ---
 
 <div style="page-break-after: always;"></div>
-
-
-ewpage
-
-
-
 
 <!-- Start of section: 05-activities.md -->
 
@@ -841,13 +811,7 @@ For now, take a moment to reflect on what you've discovered about the human-AI p
 
 ---
 
-<div style="page-break-after: always;"></div>
-
-
-ewpage
-
-
-# Chapter 2: Mastering ChatGPT with Effective Prompts
+<div style="page-break-after: always;"></div># Chapter 2: Mastering ChatGPT with Effective Prompts
 
 ... The Art of Directing AI
 
@@ -897,12 +861,6 @@ Maria now uses ChatGPT to handle 30% of her customer emails—not by letting AI 
 *"Draft a response to a customer who received damaged goods. Emphasize our apology, replacement policy, and include a 15% discount code. Keep tone empathetic but professional."*
 
 This approach maintains Maria's business values and voice while saving her valuable time. That's the essence of the human-AI partnership we call Actual Intelligence.
-
-
-ewpage
-
-
-
 
 <!-- Start of section: 01-getting-started.md -->
 
@@ -995,12 +953,6 @@ ChatGPT works well on both desktop browsers and mobile devices, with a few diffe
 - Full sidebar visibility for conversation history
 
 Whether you're using a phone, tablet, or computer, the core functionality remains the same. Choose whichever device is most convenient for your needs.
-
-
-ewpage
-
-
-
 
 <!-- Start of section: 02-basic-prompting-techniques.md -->
 
@@ -1156,12 +1108,6 @@ Even with well-crafted prompts, it's important to understand ChatGPT's limitatio
 Knowing these limitations helps set realistic expectations and develop strategies to work around them when needed—another example of how your human judgment remains essential in the partnership.
 
 As we move forward, remember that prompting is a partnership between your human direction and AI capabilities—the essence of Actual Intelligence.
-
-
-ewpage
-
-
-
 
 <!-- Start of section: 03-intermediate-prompting-strategies.md -->
 
@@ -1327,12 +1273,6 @@ Not every interaction requires advanced prompting. Use these techniques when:
 
 With practice, you'll develop an intuition for which techniques work best for different types of requests.
 
-
-ewpage
-
-
-
-
 <!-- Start of section: 04-context-and-conversation.md -->
 
 ## Understanding Context and Conversation Flow
@@ -1458,12 +1398,6 @@ Remember that anything you share with ChatGPT becomes part of the conversation c
 - Remember that starting a new chat creates a fresh context
 
 By thoughtfully managing context, you can have rich, productive conversations that build meaningfully over multiple exchanges while maintaining appropriate privacy boundaries.
-
-
-ewpage
-
-
-
 
 <!-- Start of section: 05-personal-use-cases.md -->
 
@@ -1707,12 +1641,6 @@ To illustrate the impact of effective prompting, let's look at some real-world e
 
 These examples demonstrate how taking the time to craft detailed prompts with relevant context leads to significantly more useful responses that address your specific situation.
 
-
-ewpage
-
-
-
-
 <!-- Start of section: 06-activities.md -->
 
 ## Activities: Crafting Effective Prompts for Different Scenarios
@@ -1923,12 +1851,6 @@ Keep a record of particularly effective prompts you develop through these exerci
 
 In the next chapter, we'll build on these fundamentals to explore more advanced applications of ChatGPT, including how to integrate it into your workflow for specific professional and educational contexts.
 
-
-ewpage
-
-
-
-
 <!-- Start of section: 07-conclusion.md -->
 
 ## Moving Forward with Confidence
@@ -1972,8 +1894,3 @@ These prompting skills form your director's toolkit. In Chapter 3, we'll explore
 You'll learn how Jake combines these skills to plan family adventures, how Marcus uses them to grow his bakery business, and how Lisa creates more engaging science lessons for her students.
 
 As we continue our journey, remember that the most powerful aspect of AI tools isn't the technology itself—it's your ability to direct it toward goals that matter to you. That's the true meaning of Actual Intelligence.
-
-
-ewpage
-
-
