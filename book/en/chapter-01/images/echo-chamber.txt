@@ -1,0 +1,1 @@
+A visual metaphor showing an echo chamber made of books, documents, articles, and web pages. In the center of this chamber is a simplified representation of an AI model that's reflecting back information from these sources. The visualization should suggest that the AI can only echo back knowledge that already exists in its training data, not create truly new information.
