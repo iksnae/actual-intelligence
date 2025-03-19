@@ -2,6 +2,9 @@
 
 One of ChatGPT's most powerful features is its ability to maintain context throughout a conversation. Unlike traditional search engines that treat each query independently, ChatGPT can remember what you've discussed earlier in the same conversation and build upon that context. Mastering this aspect of the tool can significantly enhance your experience.
 
+![](./images/context-window.jpg)
+
+
 ### How Context Works in ChatGPT
 
 When you chat with ChatGPT, it maintains what's called a "context window" — essentially the recent history of your conversation. This allows for natural, flowing exchanges where you can:

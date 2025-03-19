@@ -2,6 +2,8 @@
 
 As you become more comfortable with basic prompting, you can incorporate more advanced techniques to get even better results. These intermediate strategies allow for greater precision and help overcome some of ChatGPT's limitations.
 
+![](./images/prompt-anatomy.jpg)
+
 ### Role Assignment: Giving ChatGPT a Persona
 
 One powerful technique is to assign ChatGPT a specific role or persona. This helps frame its responses from a particular perspective or expertise area.

@@ -41,6 +41,8 @@ For most beginners, the free tier provides plenty of functionality to get starte
 
 When you first log in to ChatGPT, you'll see a clean, straightforward interface:
 
+![](./images/chatgpt-interface.jpg)
+
 **Main components:**
 
 1. **Conversation area** - The central space where your conversation with ChatGPT appears

@@ -2,6 +2,7 @@
 
 Now that you're familiar with the ChatGPT interface, let's explore how to craft effective prompts—the instructions you give to AI—to get the most useful responses.
 
+
 ### What Makes a Good Prompt?
 
 A good prompt is like a well-formulated question or clear instruction. It provides enough information for ChatGPT to understand exactly what you're looking for. Let's look at the key elements of effective prompts:
@@ -10,6 +11,8 @@ A good prompt is like a well-formulated question or clear instruction. It provid
 **Context**: Provide relevant background information
 **Constraints**: Set parameters or limitations
 **Format**: Specify how you want the response structured
+
+![](./images/prompt-comparison.jpg)
 
 Let's see these elements in action with a before-and-after example:
 
