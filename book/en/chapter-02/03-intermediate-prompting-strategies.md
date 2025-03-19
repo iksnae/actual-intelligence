@@ -10,11 +10,11 @@ One powerful technique is to assign ChatGPT a specific role or persona. This hel
 
 **Examples**:
 
-- "I want you to act as a travel guide who specializes in budget-friendly European destinations. Recommend a 7-day itinerary for Barcelona that includes free or low-cost attractions, affordable dining options, and transportation tips."
+`I want you to act as a travel guide who specializes in budget-friendly European destinations. Recommend a 7-day itinerary for Barcelona that includes free or low-cost attractions, affordable dining options, and transportation tips.`
 
-- "I want you to act as a fitness coach for beginners. Create a simple 20-minute home workout routine that requires no equipment and is gentle on the knees. Include warm-up and cool-down exercises."
+`I want you to act as a fitness coach for beginners. Create a simple 20-minute home workout routine that requires no equipment and is gentle on the knees. Include warm-up and cool-down exercises.`
 
-- "I want you to act as a children's book editor. Review the following story opening and suggest ways to make it more engaging for 8-10 year olds while keeping the language at an appropriate reading level."
+`I want you to act as a children's book editor. Review the following story opening and suggest ways to make it more engaging for 8-10 year olds while keeping the language at an appropriate reading level.`
 
 By assigning a specific role, you help ChatGPT understand not just what information you're looking for, but also what perspective, tone, and type of expertise should be emphasized in the response.
 
@@ -32,7 +32,7 @@ Another useful technique is explicitly stating how you want information to be st
 
 **Example**:
 
-"Compare electric cars and gasoline cars in terms of initial cost, maintenance expenses, environmental impact, and convenience. Present this information in a table with two columns, and after the table, provide a brief paragraph summarizing which type might be better for different types of users."
+`Compare electric cars and gasoline cars in terms of initial cost, maintenance expenses, environmental impact, and convenience. Present this information in a table with two columns, and after the table, provide a brief paragraph summarizing which type might be better for different types of users.`
 
 Specifying formats not only makes information easier to consume but also ensures you get exactly the type of output you need for your specific purpose.
 
@@ -52,9 +52,11 @@ While you can't directly change ChatGPT's "temperature" setting in the standard 
 
 **Example**:
 
-*Precise request*: "Provide a concise, fact-based explanation of how vaccines work in the human body, focusing on the role of antibodies and immune response."
+*Precise request*: 
+`Provide a concise, fact-based explanation of how vaccines work in the human body, focusing on the role of antibodies and immune response.`
 
-*Creative request*: "Think creatively about different ways to explain how vaccines work to a curious 8-year-old. Use imaginative analogies and engaging scenarios that would capture a child's attention."
+*Creative request*: 
+`Think creatively about different ways to explain how vaccines work to a curious 8-year-old. Use imaginative analogies and engaging scenarios that would capture a child's attention.`
 
 ### Chain of Thought: Breaking Down Complex Problems
 
@@ -64,9 +66,9 @@ For complex problems, you can guide ChatGPT to break down its thinking process s
 
 **Example**:
 
-"Think through this math word problem step by step. First identify the key variables and what we're solving for, then set up the appropriate equation, solve it mathematically showing each step, and finally interpret what the result means in context of the original problem:
+`Think through this math word problem step by step. First identify the key variables and what we're solving for, then set up the appropriate equation, solve it mathematically showing each step, and finally interpret what the result means in context of the original problem:
 
-'A café sells coffee for $4.50 per cup and tea for $3.75 per cup. On Tuesday, they sold 56 more coffees than teas, with total sales of $526.50. How many cups of each drink did they sell?'"
+'A café sells coffee for $4.50 per cup and tea for $3.75 per cup. On Tuesday, they sold 56 more coffees than teas, with total sales of $526.50. How many cups of each drink did they sell?'`
 
 This technique is particularly useful for math problems, logical reasoning, troubleshooting, and complex decision-making processes.
 
@@ -78,7 +80,7 @@ While you don't have direct access to system messages (instructions that set par
 
 **Example**:
 
-"For our conversation, I'd like you to act as a writing coach helping me improve a short story. Please provide constructive criticism focused on character development, plot coherence, and dialogue authenticity. When giving feedback, first mention one positive aspect before suggesting improvements. Keep your responses concise, around 3-4 paragraphs. If something in my story is unclear, ask clarifying questions instead of making assumptions."
+`For our conversation, I'd like you to act as a writing coach helping me improve a short story. Please provide constructive criticism focused on character development, plot coherence, and dialogue authenticity. When giving feedback, first mention one positive aspect before suggesting improvements. Keep your responses concise, around 3-4 paragraphs. If something in my story is unclear, ask clarifying questions instead of making assumptions.`
 
 This approach is especially useful for longer conversations where you'll be sharing multiple excerpts or ideas and want consistent feedback in a particular style.
 
@@ -90,11 +92,11 @@ Sometimes the easiest way to get exactly what you want is to show ChatGPT an exa
 
 **Example**:
 
-"I'd like you to create social media post ideas for a small bakery, following this format and style:
+`I'd like you to create social media post ideas for a small bakery, following this format and style:
 
 #MondayMuffins: 'Start your week on a sweet note with our blueberry streusel muffins! Baked fresh this morning with locally sourced berries. Perfect with your morning coffee or as an afternoon pick-me-up! 💙🧁'
 
-Please create 5 more post ideas for different products using this same approachable tone, emoji style, and format with a hashtag followed by the post text."
+Please create 5 more post ideas for different products using this same approachable tone, emoji style, and format with a hashtag followed by the post text.`
 
 This technique, sometimes called "few-shot learning," dramatically improves the likelihood of getting results that match your expectations exactly.
 
@@ -110,11 +112,11 @@ Complex tasks often benefit from breaking the work into multiple turns of conver
 
 **Example sequence**:
 
-1. "Draft a simple introduction for a presentation about sustainable urban transportation options."
+1. `Draft a simple introduction for a presentation about sustainable urban transportation options.`
 2. *[ChatGPT provides draft]*
-3. "That's a good start. Could you revise it to include a brief statistic about carbon emissions from traditional vehicles?"
+3. `That's a good start. Could you revise it to include a brief statistic about carbon emissions from traditional vehicles?`
 4. *[ChatGPT provides revised draft]*
-5. "Now make the tone more engaging and conversational, as if speaking to young professionals rather than academics."
+5. `Now make the tone more engaging and conversational, as if speaking to young professionals rather than academics.`
 
 This iterative approach allows you to guide the development of content or ideas in stages, rather than trying to get a perfect result with a single, complex prompt.
 
@@ -122,7 +124,7 @@ This iterative approach allows you to guide the development of content or ideas 
 
 The most effective prompting often combines several of these techniques. Here's an example that integrates role assignment, format specification, and examples:
 
-"I want you to act as an experienced science teacher for middle school students. Create a lesson plan about photosynthesis that will engage 7th graders with different learning styles. The lesson plan should include:
+`I want you to act as an experienced science teacher for middle school students. Create a lesson plan about photosynthesis that will engage 7th graders with different learning styles. The lesson plan should include:
 
 1. Learning objectives (in bullet points)
 2. A 5-minute attention-grabbing introduction activity
@@ -132,7 +134,7 @@ The most effective prompting often combines several of these techniques. Here's 
 
 For the hands-on activity, something similar to this would work well: 'Students create a comic strip showing the journey of a carbon dioxide molecule through the photosynthesis process.'
 
-Keep the language accessible to 12-13 year olds while being scientifically accurate."
+Keep the language accessible to 12-13 year olds while being scientifically accurate.`
 
 This comprehensive prompt combines role (science teacher), format (structured lesson plan with timing), an example (for the activity section), and parameters (middle school language level, scientific accuracy).
 
