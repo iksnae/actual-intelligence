@@ -37,6 +37,7 @@ actual-intelligence/
 ├── book/
 │   ├── en/              # English content
 │   │   ├── chapter-01/  # Chapter 1 content
+│   │   │   ├── images/  # Chapter-specific images and image descriptions
 │   │   ├── chapter-02/  # Chapter 2 content
 │   │   └── ...
 │   └── images/          # Common images
