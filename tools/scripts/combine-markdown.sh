@@ -51,7 +51,7 @@ find "book/$LANGUAGE" -type d -name "chapter-*" | sort | while read -r chapter_d
     if [ -f "$title_page" ]; then
       echo "Adding title page from $title_page"
       cat "$title_page" >> "$OUTPUT_PATH"
-      echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
+      # echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
     fi
   fi
   

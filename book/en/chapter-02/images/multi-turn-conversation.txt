@@ -1,0 +1,20 @@
+Image Description: Multi-Turn Conversation Flow
+
+This image illustrates an effective multi-turn conversation between a user and ChatGPT. The visualization shows:
+
+A sequence of 5-6 message exchanges presented in the ChatGPT interface style, with user messages on one side and ChatGPT responses on the other
+
+The conversation demonstrates a logical progression from an initial question about planning a small backyard garden, through multiple refinements, specific questions, and development of the plan
+
+Call-out boxes or annotations highlight key conversational moves like:
+- Clarifying ambiguous information
+- Building on previous responses
+- Asking for specific details
+- Redirecting when needed
+- Requesting format changes
+
+Arrows connect related points between messages, showing how information builds across the conversation
+
+The final exchange shows a much more developed and specific plan than what could have been achieved in a single prompt-response pair
+
+This visualization demonstrates the iterative process of working with ChatGPT and how much more can be accomplished through thoughtful follow-up prompts than through a single exchange.

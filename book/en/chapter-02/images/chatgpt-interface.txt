@@ -1,0 +1,11 @@
+Image Description: ChatGPT Interface Overview
+
+This image shows a screenshot of the ChatGPT web interface with clear labels pointing to the main components. The layout features:
+
+1. The main conversation area in the center where messages between the user and ChatGPT appear
+2. The input field at the bottom with a paper airplane send button
+3. The "New Chat" button in the upper left corner
+4. A sidebar on the left showing previous conversation titles
+5. The settings menu in the bottom left corner
+
+The image uses annotations with arrows or highlighted areas to identify each component, making it easy for readers to locate key interface elements when they begin using ChatGPT. The design is clean and uncluttered, focusing on the essential elements that a new user needs to understand.
