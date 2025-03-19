@@ -24,7 +24,7 @@ cat > "$OUTPUT_PATH" << EOF
 ---
 title: "$BOOK_TITLE"
 subtitle: "$BOOK_SUBTITLE"
-author: "K Mills"
+author: "Open Source Community"
 publisher: "Khaos Studios"
 language: "$LANGUAGE"
 toc: true
@@ -51,8 +51,8 @@ find "book/$LANGUAGE" -type d -name "chapter-*" | sort | while read -r chapter_d
     if [ -f "$title_page" ]; then
       echo "Adding title page from $title_page"
       cat "$title_page" >> "$OUTPUT_PATH"
-      # Fixed page break - properly escaped
-      echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
+      # HTML page break style - works for both PDF and EPUB
+      echo -e "\n\n<div style=\"page-break-after: always;\"></div>\n\n" >> "$OUTPUT_PATH"
     fi
   fi
   
@@ -60,8 +60,7 @@ find "book/$LANGUAGE" -type d -name "chapter-*" | sort | while read -r chapter_d
   if [ -f "$chapter_dir/00-introduction.md" ]; then
     echo "Adding chapter introduction from $chapter_dir/00-introduction.md"
     cat "$chapter_dir/00-introduction.md" >> "$OUTPUT_PATH"
-    # Fixed page break - properly escaped
-    echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
+    # No need to add page break here since source files already have them
   fi
   
   # Process all section files in order
@@ -70,8 +69,7 @@ find "book/$LANGUAGE" -type d -name "chapter-*" | sort | while read -r chapter_d
     # Add an explicit section header comment for better visibility in source
     echo -e "\n\n<!-- Start of section: $(basename "$section_file") -->\n" >> "$OUTPUT_PATH"
     cat "$section_file" >> "$OUTPUT_PATH"
-    # Fixed page break - properly escaped
-    echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
+    # No need to add page break here since source files already have them
   done
 done
 
@@ -85,8 +83,8 @@ if [ -d "$appendices_dir" ]; then
   find "$appendices_dir" -name "*.md" | sort | while read -r appendix_file; do
     echo "Adding appendix: $appendix_file"
     cat "$appendix_file" >> "$OUTPUT_PATH"
-    # Fixed page break - properly escaped
-    echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
+    # HTML page break style - works for both PDF and EPUB
+    echo -e "\n\n<div style=\"page-break-after: always;\"></div>\n\n" >> "$OUTPUT_PATH"
   done
 fi
 
@@ -96,8 +94,8 @@ if [ -f "$glossary_file" ]; then
   echo "Adding glossary from $glossary_file"
   echo -e "\n\n# Glossary\n\n" >> "$OUTPUT_PATH"
   cat "$glossary_file" >> "$OUTPUT_PATH"
-  # Fixed page break - properly escaped
-  echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
+  # HTML page break style - works for both PDF and EPUB
+  echo -e "\n\n<div style=\"page-break-after: always;\"></div>\n\n" >> "$OUTPUT_PATH"
 fi
 
 echo "✅ Markdown files combined into $OUTPUT_PATH"
