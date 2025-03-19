@@ -12,6 +12,9 @@ BOOK_TITLE=${3:-"Actual Intelligence"}
 BOOK_SUBTITLE=${4:-"A Practical Guide to Using AI in Everyday Life"}
 
 echo "📝 Combining markdown files for $LANGUAGE..."
+echo "  - Output path: $OUTPUT_PATH"
+echo "  - Book title: $BOOK_TITLE"
+echo "  - Subtitle: $BOOK_SUBTITLE"
 
 # Make sure the parent directory exists
 mkdir -p "$(dirname "$OUTPUT_PATH")"
@@ -32,6 +35,7 @@ EOF
 
 # Add cover image metadata if a cover image exists
 if [ -n "$COVER_IMAGE" ]; then
+  echo "  - Using cover image: $COVER_IMAGE"
   echo "cover-image: '$COVER_IMAGE'" >> "$OUTPUT_PATH"
 fi
 
@@ -41,8 +45,29 @@ cat >> "$OUTPUT_PATH" << EOF
 
 EOF
 
+# Check if the language directory exists
+if [ ! -d "book/$LANGUAGE" ]; then
+  echo "⚠️ WARNING: Language directory book/$LANGUAGE does not exist!"
+  echo "Available languages:"
+  ls -la book/ | grep -v "^total" | grep "^d"
+  exit 1
+fi
+
 # Find all chapter directories for the specified language
-find "book/$LANGUAGE" -type d -name "chapter-*" | sort | while read -r chapter_dir; do
+CHAPTER_DIRS=$(find "book/$LANGUAGE" -type d -name "chapter-*" | sort)
+
+if [ -z "$CHAPTER_DIRS" ]; then
+  echo "⚠️ WARNING: No chapter directories found for language $LANGUAGE in book/$LANGUAGE"
+  echo "Available directories:"
+  ls -la "book/$LANGUAGE"
+  exit 1
+fi
+
+echo "Found chapter directories:"
+echo "$CHAPTER_DIRS"
+
+# Process each chapter directory
+echo "$CHAPTER_DIRS" | while read -r chapter_dir; do
   echo "Processing chapter directory: $chapter_dir"
   
   # Look for title-page.md first if it exists (only for first chapter)
@@ -60,17 +85,28 @@ find "book/$LANGUAGE" -type d -name "chapter-*" | sort | while read -r chapter_d
     echo "Adding chapter introduction from $chapter_dir/00-introduction.md"
     cat "$chapter_dir/00-introduction.md" >> "$OUTPUT_PATH"
     echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
+  else
+    echo "  - No introduction file found in $chapter_dir"
   fi
   
   # Process all section files in order
-  find "$chapter_dir" -maxdepth 1 -name "[0-9]*.md" | grep -v "00-introduction.md" | sort | while read -r section_file; do
-    echo "Adding section from $section_file"
-    # Add an explicit section header comment for better visibility in source
-    echo -e "\n\n<!-- Start of section: $(basename "$section_file") -->\n" >> "$OUTPUT_PATH"
-    cat "$section_file" >> "$OUTPUT_PATH"
-    # Add explicit page break after each section
-    echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
-  done
+  SECTION_FILES=$(find "$chapter_dir" -maxdepth 1 -name "[0-9]*.md" | grep -v "00-introduction.md" | sort)
+  
+  if [ -z "$SECTION_FILES" ]; then
+    echo "  - No section files found in $chapter_dir"
+  else
+    echo "  - Found sections:"
+    echo "$SECTION_FILES"
+    
+    echo "$SECTION_FILES" | while read -r section_file; do
+      echo "Adding section from $section_file"
+      # Add an explicit section header comment for better visibility in source
+      echo -e "\n\n<!-- Start of section: $(basename "$section_file") -->\n" >> "$OUTPUT_PATH"
+      cat "$section_file" >> "$OUTPUT_PATH"
+      # Add explicit page break after each section
+      echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
+    done
+  fi
 done
 
 # Process appendices if they exist
@@ -78,13 +114,21 @@ appendices_dir="book/$LANGUAGE/appendices"
 if [ -d "$appendices_dir" ]; then
   echo "Processing appendices from $appendices_dir"
   
-  echo -e "\n\n# Appendices\n\n" >> "$OUTPUT_PATH"
+  APPENDIX_FILES=$(find "$appendices_dir" -name "*.md" | sort)
   
-  find "$appendices_dir" -name "*.md" | sort | while read -r appendix_file; do
-    echo "Adding appendix: $appendix_file"
-    cat "$appendix_file" >> "$OUTPUT_PATH"
-    echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
-  done
+  if [ -n "$APPENDIX_FILES" ]; then
+    echo -e "\n\n# Appendices\n\n" >> "$OUTPUT_PATH"
+    
+    echo "$APPENDIX_FILES" | while read -r appendix_file; do
+      echo "Adding appendix: $appendix_file"
+      cat "$appendix_file" >> "$OUTPUT_PATH"
+      echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
+    done
+  else
+    echo "  - No appendix files found in $appendices_dir"
+  fi
+else
+  echo "  - No appendices directory found for $LANGUAGE"
 fi
 
 # Process glossary if it exists
@@ -94,6 +138,15 @@ if [ -f "$glossary_file" ]; then
   echo -e "\n\n# Glossary\n\n" >> "$OUTPUT_PATH"
   cat "$glossary_file" >> "$OUTPUT_PATH"
   echo -e "\n\n\\newpage\n\n" >> "$OUTPUT_PATH"
+else
+  echo "  - No glossary file found for $LANGUAGE"
 fi
 
-echo "✅ Markdown files combined into $OUTPUT_PATH"
+# Check the final output
+if [ -s "$OUTPUT_PATH" ]; then
+  FILESIZE=$(du -k "$OUTPUT_PATH" | cut -f1)
+  echo "✅ Markdown files combined into $OUTPUT_PATH (${FILESIZE}KB)"
+else
+  echo "⚠️ WARNING: Output file $OUTPUT_PATH is empty or wasn't created properly"
+  exit 1
+fi
