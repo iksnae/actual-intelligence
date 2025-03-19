@@ -47,6 +47,18 @@ else
   MARKDOWN_FILENAME="actual-intelligence.md"
 fi
 
+# Create language directory if it doesn't exist
+if [ "$LANGUAGE" != "en" ]; then
+  mkdir -p "build/$LANGUAGE"
+  mkdir -p "build/$LANGUAGE/images"
+  
+  # Copy any language-specific images
+  if [ -d "book/$LANGUAGE/images" ]; then
+    echo "Copying language-specific images for $LANGUAGE..."
+    cp -r "book/$LANGUAGE/images/"* "build/$LANGUAGE/images/" || true
+  fi
+fi
+
 # Define output paths based on language
 if [ "$LANGUAGE" = "en" ]; then
   MARKDOWN_PATH="build/$MARKDOWN_FILENAME"
@@ -60,13 +72,21 @@ else
   EPUB_PATH="build/$LANGUAGE/$EPUB_FILENAME"
   MOBI_PATH="build/$LANGUAGE/$MOBI_FILENAME"
   HTML_PATH="build/$LANGUAGE/$HTML_FILENAME"
-  
-  # Create language directory if it doesn't exist
-  mkdir -p "build/$LANGUAGE"
 fi
+
+# Add more debug info
+echo "🔍 Language build settings:"
+echo "  - Language: $LANGUAGE"
+echo "  - Output paths:"
+echo "    - Markdown: $MARKDOWN_PATH"
+echo "    - PDF: $PDF_PATH"
+echo "    - EPUB: $EPUB_PATH"
+echo "    - MOBI: $MOBI_PATH"
+echo "    - HTML: $HTML_PATH"
 
 # Set up resource paths for pandoc
 RESOURCE_PATHS=".:book:book/$LANGUAGE:build:book/$LANGUAGE/images:book/images:build/images:build/$LANGUAGE/images"
+echo "  - Resource paths: $RESOURCE_PATHS"
 
 # Step 1: Generate combined markdown file from source files
 echo "📝 Combining markdown files for $LANGUAGE..."
@@ -110,20 +130,26 @@ fi
 
 # Copy outputs to root directory for release assets if not English
 if [ "$LANGUAGE" != "en" ]; then
+  echo "📋 Copying language artifacts to root build directory for release..."
+  
   if [ "$SKIP_PDF" = false ] && [ -f "$PDF_PATH" ]; then
     cp "$PDF_PATH" "build/$PDF_FILENAME"
+    echo "  - Copied PDF: $PDF_PATH -> build/$PDF_FILENAME"
   fi
   
   if [ "$SKIP_EPUB" = false ] && [ -f "$EPUB_PATH" ]; then
     cp "$EPUB_PATH" "build/$EPUB_FILENAME"
+    echo "  - Copied EPUB: $EPUB_PATH -> build/$EPUB_FILENAME"
   fi
   
   if [ "$SKIP_MOBI" = false ] && [ -f "$MOBI_PATH" ]; then
     cp "$MOBI_PATH" "build/$MOBI_FILENAME"
+    echo "  - Copied MOBI: $MOBI_PATH -> build/$MOBI_FILENAME"
   fi
   
   if [ "$SKIP_HTML" = false ] && [ -f "$HTML_PATH" ]; then
     cp "$HTML_PATH" "build/$HTML_FILENAME"
+    echo "  - Copied HTML: $HTML_PATH -> build/$HTML_FILENAME"
   fi
 fi
 
