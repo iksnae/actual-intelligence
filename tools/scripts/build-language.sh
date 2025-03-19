@@ -47,29 +47,26 @@ else
   MARKDOWN_FILENAME="actual-intelligence.md"
 fi
 
-# Define output paths based on language
-if [ "$LANGUAGE" = "en" ]; then
-  MARKDOWN_PATH="build/$MARKDOWN_FILENAME"
-  PDF_PATH="build/$PDF_FILENAME"
-  EPUB_PATH="build/$EPUB_FILENAME"
-  MOBI_PATH="build/$MOBI_FILENAME"
-  HTML_PATH="build/$HTML_FILENAME"
-else
-  MARKDOWN_PATH="build/$LANGUAGE/$MARKDOWN_FILENAME"
-  PDF_PATH="build/$LANGUAGE/$PDF_FILENAME"
-  EPUB_PATH="build/$LANGUAGE/$EPUB_FILENAME"
-  MOBI_PATH="build/$LANGUAGE/$MOBI_FILENAME"
-  HTML_PATH="build/$LANGUAGE/$HTML_FILENAME"
-  
-  # Create language directory if it doesn't exist
-  mkdir -p "build/$LANGUAGE"
-  # Also create images directory for the language
-  mkdir -p "build/$LANGUAGE/images"
+# Define all output paths in the same root build directory
+# This mimics how Rise and Code stores all language variants in the same directory
+MARKDOWN_PATH="build/$MARKDOWN_FILENAME"
+PDF_PATH="build/$PDF_FILENAME"
+EPUB_PATH="build/$EPUB_FILENAME"
+MOBI_PATH="build/$MOBI_FILENAME"
+HTML_PATH="build/$HTML_FILENAME"
+
+# Additionally, create language-specific directory for web access
+if [ "$LANGUAGE" != "en" ]; then
+  LANG_DIR="build/$LANGUAGE"
+  mkdir -p "$LANG_DIR"
+  HTML_INDEX_PATH="$LANG_DIR/index.html"
+  # For storing language-specific files (primarily for the web version)
+  mkdir -p "$LANG_DIR/images"
 fi
 
 # Set up resource paths for pandoc
-# Improve path handling - list all possible resource paths explicitly
-RESOURCE_PATHS=".:book:book/$LANGUAGE:build:book/$LANGUAGE/images:book/images:build/images:build/$LANGUAGE/images"
+# Include all possible image locations
+RESOURCE_PATHS=".:book:book/$LANGUAGE:build:book/$LANGUAGE/images:book/images:build/images"
 
 # Step 1: Generate combined markdown file from source files
 echo "📝 Combining markdown files for $LANGUAGE..."
@@ -106,53 +103,39 @@ if [ "$SKIP_HTML" = false ]; then
     cp "$HTML_PATH" "build/index.html"
     echo "Created index.html for English"
   else
-    mkdir -p "build/$LANGUAGE"
     cp "$HTML_PATH" "build/$LANGUAGE/index.html"
     echo "Created index.html for $LANGUAGE"
   fi
 fi
 
-# Copy outputs to root directory for release assets if not English
-# This is critical for the release process!
-if [ "$LANGUAGE" != "en" ]; then
-  echo "🔄 Copying $LANGUAGE files to root build directory for release..."
-  
-  # Be more explicit about copying files - check if they exist first
-  if [ "$SKIP_PDF" = false ] && [ -f "$PDF_PATH" ]; then
-    echo "Copying $PDF_PATH to build/$PDF_FILENAME"
-    cp "$PDF_PATH" "build/$PDF_FILENAME"
-  else
-    echo "⚠️ Warning: $PDF_PATH does not exist or was skipped"
-  fi
-  
-  if [ "$SKIP_EPUB" = false ] && [ -f "$EPUB_PATH" ]; then
-    echo "Copying $EPUB_PATH to build/$EPUB_FILENAME"
-    cp "$EPUB_PATH" "build/$EPUB_FILENAME"
-  else
-    echo "⚠️ Warning: $EPUB_PATH does not exist or was skipped"
-  fi
-  
-  if [ "$SKIP_MOBI" = false ] && [ -f "$MOBI_PATH" ]; then
-    echo "Copying $MOBI_PATH to build/$MOBI_FILENAME"
-    cp "$MOBI_PATH" "build/$MOBI_FILENAME"
-  else
-    echo "⚠️ Warning: $MOBI_PATH does not exist or was skipped"
-  fi
-  
-  if [ "$SKIP_HTML" = false ] && [ -f "$HTML_PATH" ]; then
-    echo "Copying $HTML_PATH to build/$HTML_FILENAME"
-    cp "$HTML_PATH" "build/$HTML_FILENAME"
-  else
-    echo "⚠️ Warning: $HTML_PATH does not exist or was skipped"
-  fi
-  
-  # Copy markdown for completeness
-  if [ -f "$MARKDOWN_PATH" ]; then
-    echo "Copying $MARKDOWN_PATH to build/$MARKDOWN_FILENAME"
-    cp "$MARKDOWN_PATH" "build/$MARKDOWN_FILENAME"
-  else
-    echo "⚠️ Warning: $MARKDOWN_PATH does not exist"
-  fi
+# Verify the files were created
+echo "✅ Build outputs for $LANGUAGE:"
+if [ "$SKIP_PDF" = false ] && [ -f "$PDF_PATH" ]; then
+  ls -la "$PDF_PATH"
+  echo "✓ PDF file exists"
+else
+  echo "⚠️ PDF file missing or skipped"
+fi
+
+if [ "$SKIP_EPUB" = false ] && [ -f "$EPUB_PATH" ]; then
+  ls -la "$EPUB_PATH"
+  echo "✓ EPUB file exists"
+else
+  echo "⚠️ EPUB file missing or skipped"
+fi
+
+if [ "$SKIP_MOBI" = false ] && [ -f "$MOBI_PATH" ]; then
+  ls -la "$MOBI_PATH"
+  echo "✓ MOBI file exists"
+else
+  echo "⚠️ MOBI file missing or skipped"
+fi
+
+if [ "$SKIP_HTML" = false ] && [ -f "$HTML_PATH" ]; then
+  ls -la "$HTML_PATH"
+  echo "✓ HTML file exists"
+else
+  echo "⚠️ HTML file missing or skipped"
 fi
 
 echo "✅ Successfully built $LANGUAGE version of the book"
