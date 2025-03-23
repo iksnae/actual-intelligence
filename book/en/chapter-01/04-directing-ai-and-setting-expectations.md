@@ -74,9 +74,9 @@ When you combine human direction with AI capabilities, something remarkable happ
 
 This amplification becomes particularly powerful when applied to real-world challenges. Consider how Sarah, a high school English teacher, experiences this amplification when planning her curriculum:
 
-```markdown
+`
 I need to design a unit on 'identity' for my 10th grade English class. Many of my students are first-generation Americans who often discuss the challenges of navigating between cultures. Suggest contemporary short stories from diverse authors that explore identity formation, and for each story, outline potential discussion questions that connect to the immigrant experience.
-```
+`
 
 ![](images/teacher-curriculum.jpg)
 

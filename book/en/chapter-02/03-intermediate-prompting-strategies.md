@@ -70,9 +70,9 @@ For complex problems, you can guide ChatGPT to break down its thinking process s
 
 `Think through this math word problem step by step. First identify the key variables and what we're solving for, then set up the appropriate equation, solve it mathematically showing each step, and finally interpret what the result means in context of the original problem:
 
-```
+`
 A café sells coffee for $4.50 per cup and tea for $3.75 per cup. On Tuesday, they sold 56 more coffees than teas, with total sales of $526.50. How many cups of each drink did they sell?
-```
+`
 
 This technique is particularly useful for math problems, logical reasoning, troubleshooting, and complex decision-making processes.
 
@@ -85,7 +85,9 @@ While you don't have direct access to system messages (instructions that set par
 **Example**:
 
 ```
-For our conversation, I'd like you to act as a writing coach helping me improve a short story. Please provide constructive criticism focused on character development, plot coherence, and dialogue authenticity. When giving feedback, first mention one positive aspect before suggesting improvements. Keep your responses concise, around 3-4 paragraphs. If something in my story is unclear, ask clarifying questions instead of making assumptions.
+For our conversation, I'd like you to act as a writing coach helping me improve a short story. Please provide constructive criticism focused on character development, plot coherence, and dialogue authenticity. When giving feedback, first mention one positive aspect before suggesting improvements. Keep your responses concise, around 3-4 paragraphs. 
+
+If something in my story is unclear, ask clarifying questions instead of making assumptions.
 ```
 
 This approach is especially useful for longer conversations where you'll be sharing multiple excerpts or ideas and want consistent feedback in a particular style.
