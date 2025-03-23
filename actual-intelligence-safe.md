@@ -11,7 +11,6 @@ cover-image: 'book/en/images/cover.png'
 # Chapter 1: Actual Intelligence
 *...The Human Side of AI*
 
-
 Have you ever watched someone use a new technology and make it look effortless, only to feel lost when you try it yourself? Or perhaps you've heard about **ChatGPT** and other AI tools in the news but haven't tried them yet, unsure if they're too complicated or technical for you?
 
 ![](./images/hesitant-beginner.jpg)
@@ -24,9 +23,9 @@ That's what this book is all about: showing you how to pair your human wisdom wi
 
 Before we dive in, take a moment to jot down your answers to these questions:
 
-* What's one task in your daily life or work that feels repetitive or time-consuming?
-* What's one topic you've been curious about but haven't had time to explore deeply?
-* What's one creative project you've wanted to try but haven't gotten around to?
+- What's one task in your daily life or work that feels repetitive or time-consuming?
+- What's one topic you've been curious about but haven't had time to explore deeply?
+- What's one creative project you've wanted to try but haven't gotten around to?
 
 ![](images/reflection-notebook.jpg)
 
@@ -36,10 +35,7 @@ In the pages ahead, we'll establish a simple framework for thinking about AI too
 
 Let's begin our journey toward becoming confident, effective directors of these powerful tools—starting from the very first interaction.
 
-
 ---
-
-<div style="page-break-after: always;"></div>
 
 
 <!-- Start of section: 01-what-is-actual-intelligence.md -->
@@ -62,6 +58,7 @@ That's it! You've just had your first AI conversation.
 Notice how the AI introduces itself and explains its capabilities. This isn't a pre-recorded message—the AI is generating this response specifically for you. In the coming chapters, you'll learn how to make these conversations increasingly useful for your specific needs.
 
 Maria, a small business owner with no technical background, described her first experience: 
+
 *"I was honestly expecting it to be complicated—like I'd need to learn special commands or something. But it was just like texting. I asked how to write a better email newsletter, and within seconds I had ideas I could actually use. No technical jargon, no complicated setup."*
 
 ## Understanding the Human-AI Partnership
@@ -121,7 +118,6 @@ In the next sections, we'll explore what makes human intelligence unique and how
 
 ---
 
-<div style="page-break-after: always;"></div>
 
 <!-- Start of section: 02-ai-tools-vs-human-intelligence.md -->
 
@@ -230,7 +226,6 @@ In the next section, we'll explore in simple terms how these AI tools actually w
 
 ---
 
-<div style="page-break-after: always;"></div>
 
 <!-- Start of section: 03-how-modern-ai-tools-work.md -->
 
@@ -269,6 +264,7 @@ Another helpful way to think about these AI tools is as an echo chamber of human
 If you ask ChatGPT about the French Revolution, it can provide information because many human writers have written about this topic, and those writings were part of its training data. But if you ask about a completely fictional historical event that no one has written about, it can't provide accurate information because that pattern doesn't exist in its training data.
 
 This means AI tools:
+
 - Can reflect existing human knowledge and writing patterns
 - Cannot generate truly novel discoveries or insights that aren't derived from existing knowledge
 - May confidently present information that seems plausible but is actually incorrect
@@ -282,6 +278,7 @@ Think of it like someone who has memorized a cookbook in a foreign language with
 ![](images/foreign-cookbook.jpg)
 
 This limitation explains why AI often struggles with:
+
 - Common sense reasoning
 - Understanding the physical world
 - Grasping cause and effect
@@ -300,6 +297,7 @@ Most people would guess `"oven"` because that's the most probable word to follow
 ![](images/probability-prediction.jpg)
 
 This probabilistic approach means that:
+
 - ChatGPT doesn't have a fixed set of responses—it generates new text each time
 - Responses can vary even to identical prompts
 - The AI doesn't "decide" what to say based on reasoning—it selects words based on probability
@@ -329,6 +327,7 @@ Given these limitations, it's helpful to think of AI tools as assistants rather 
 Remember Jake, who's planning a family vacation to Japan. If he simply asks ChatGPT `"Plan my perfect Japan trip"` and follows whatever itinerary it generates, he might end up with a generic tourist experience that doesn't match his family's interests or visit attractions that are closed for renovation.
 
 Instead, Jake uses his understanding of AI limitations to direct the tool more effectively. He knows that:
+
 - The AI's information might be outdated
 - It doesn't know his family's specific preferences
 - It can't verify if suggested accommodations are actually available
@@ -337,10 +336,7 @@ So he uses AI as an assistant for specific tasks where pattern matching is helpf
 
 In the next section, we'll explore how to take control of this human-AI partnership to get the most value from these powerful but limited tools.
 
-
 ---
-
-<div style="page-break-after: always;"></div>
 
 <!-- Start of section: 04-directing-ai-and-setting-expectations.md -->
 
@@ -368,6 +364,8 @@ Before engaging with AI, ask yourself:
 
 This clarity helps you give more effective directions and evaluate the AI's responses more critically.
 
+--
+
 ### 2. Specificity in Direction
 
 Vague prompts lead to generic responses. The more specific your direction, the more useful the AI's assistance will be. Compare these approaches:
@@ -380,6 +378,8 @@ Vague prompts lead to generic responses. The more specific your direction, the m
 
 The specific direction provides context and constraints that help the AI generate relevant responses tailored to your needs.
 
+--
+
 ### 3. Iterative Refinement
 
 Working with AI is rarely a one-and-done process. Think of it as a conversation rather than a single question and answer.
@@ -391,6 +391,8 @@ Don't settle for the first response if it doesn't quite meet your needs. Instead
 - `That's helpful, but could you make it simpler?`
 - `I like the third idea best. Can you expand on that approach specifically?`
 - `These examples are too technical. Can you rewrite them for someone with no background in this field?`
+
+--
 
 ### 4. Critical Evaluation
 
@@ -414,7 +416,7 @@ When you combine human direction with AI capabilities, something remarkable happ
 
 This amplification becomes particularly powerful when applied to real-world challenges. Consider how Sarah, a high school English teacher, experiences this amplification when planning her curriculum:
 
-```
+```markdown
 I need to design a unit on 'identity' for my 10th grade English class. Many of my students are first-generation Americans who often discuss the challenges of navigating between cultures. Suggest contemporary short stories from diverse authors that explore identity formation, and for each story, outline potential discussion questions that connect to the immigrant experience.
 ```
 
@@ -556,7 +558,6 @@ In the next section, we'll put these ideas into practice with hands-on activitie
 
 ---
 
-<div style="page-break-after: always;"></div>
 
 <!-- Start of section: 05-activities.md -->
 
@@ -810,8 +811,7 @@ In the chapters ahead, we'll build on these foundations by exploring more specif
 For now, take a moment to reflect on what you've discovered about the human-AI partnership and how you might start incorporating these tools into your life in ways that align with your goals and values.
 
 ---
-
-<div style="page-break-after: always;"></div># Chapter 2: Mastering ChatGPT with Effective Prompts
+# Chapter 2: Mastering ChatGPT with Effective Prompts
 
 ... The Art of Directing AI
 
