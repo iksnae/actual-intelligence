@@ -22,6 +22,7 @@ Congratulations! You now have access to ChatGPT's free tier.
 ChatGPT offers both free and paid tiers:
 
 **ChatGPT (Free)**
+
 - Access to chat functionality
 - Ability to start new conversations and ask questions
 - Support for general knowledge up to the model's training cutoff date
@@ -29,6 +30,7 @@ ChatGPT offers both free and paid tiers:
 - Standard response times
 
 **ChatGPT Plus (Paid Subscription)**
+
 - Priority access even during peak times
 - Faster response speeds
 - Access to the most advanced AI models
@@ -75,12 +77,14 @@ This simple first interaction helps you understand the conversational nature of 
 ChatGPT works well on both desktop browsers and mobile devices, with a few differences:
 
 **Mobile:**
+
 - Simplified interface with collapsible menus
 - Convenient for on-the-go questions
 - May require more scrolling for longer responses
 - Voice input option on most devices
 
 **Desktop:**
+
 - More screen space to see both your prompts and responses
 - Easier to copy and paste longer text
 - Better for complex tasks involving multiple prompts

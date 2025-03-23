@@ -34,6 +34,8 @@
 
 **Scenario:** Requesting a letter of recommendation
 
-**Prompt:** `Help me draft an email to my former professor, Dr. Martinez, requesting a letter of recommendation for a graduate school application. We had a positive relationship - I took two of her courses in environmental science and earned A's in both. She also supervised my senior research project last year. The application is due in 3 weeks, and I need the letter submitted online by then. I want the tone to be respectful and professional but not overly formal since we worked closely together. The email should be concise (no more than 3 paragraphs), mention specific accomplishments she observed that would strengthen my application, and offer to provide any additional information she might need.`
+**Prompt:**
 
---- 
+`Help me draft an email to my former professor, Dr. Martinez, requesting a letter of recommendation for a graduate school application. We had a positive relationship - I took two of her courses in environmental science and earned A's in both. She also supervised my senior research project last year. The application is due in 3 weeks, and I need the letter submitted online by then. I want the tone to be respectful and professional but not overly formal since we worked closely together. The email should be concise (no more than 3 paragraphs), mention specific accomplishments she observed that would strengthen my application, and offer to provide any additional information she might need.`
+
+---

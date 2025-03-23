@@ -34,4 +34,4 @@
 
 **Improved:** `I need help creating a resume for entry-level marketing positions. I recently graduated with a degree in communications and have two summers of internship experience in social media management. Could you create a one-page resume template that highlights transferable skills from my academic projects and internships, uses a clean professional format, and includes sections for education, experience, skills, and a brief professional summary?`
 
---- 
+---

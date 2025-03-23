@@ -28,8 +28,12 @@
 
 Project: Creating a children's story
 
-**Idea generation:** `I'd like to write a bedtime story for a 6-year-old who loves animals and the ocean. Could you help me brainstorm 7 different story concepts that involve marine animals and contain subtle lessons about friendship or courage? For each concept, provide a brief premise and main characters.`
+**Idea generation:**
 
-**Deepening chosen idea:** `I like the concept about the shy octopus who learns to use his unique talents to help other sea creatures. Could you help me develop this further by suggesting: 1) Names for the octopus and 3 other main characters, 2) Three challenges the octopus might face, 3) A surprising twist in the middle of the story, and 4) A satisfying resolution that emphasizes the friendship theme?`
+`I'd like to write a bedtime story for a 6-year-old who loves animals and the ocean. Could you help me brainstorm 7 different story concepts that involve marine animals and contain subtle lessons about friendship or courage? For each concept, provide a brief premise and main characters.`
+
+**Deepening chosen idea:**
+
+`I like the concept about the shy octopus who learns to use his unique talents to help other sea creatures. Could you help me develop this further by suggesting: 1) Names for the octopus and 3 other main characters, 2) Three challenges the octopus might face, 3) A surprising twist in the middle of the story, and 4) A satisfying resolution that emphasizes the friendship theme?`
 
 --- 

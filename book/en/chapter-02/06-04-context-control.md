@@ -33,4 +33,4 @@ Project: Planning a weekend hiking trip
 
 **Follow-up 2 (referencing earlier information):** `Based on the elevation gain you mentioned, I think Eagle Creek might be too challenging for one member of our group. Of the other options you suggested earlier, which would have more moderate elevation changes?`
 
---- 
+---
