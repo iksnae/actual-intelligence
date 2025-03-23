@@ -896,6 +896,7 @@ Congratulations! You now have access to ChatGPT's free tier.
 ChatGPT offers both free and paid tiers:
 
 **ChatGPT (Free)**
+
 - Access to chat functionality
 - Ability to start new conversations and ask questions
 - Support for general knowledge up to the model's training cutoff date
@@ -903,6 +904,7 @@ ChatGPT offers both free and paid tiers:
 - Standard response times
 
 **ChatGPT Plus (Paid Subscription)**
+
 - Priority access even during peak times
 - Faster response speeds
 - Access to the most advanced AI models
@@ -949,12 +951,14 @@ This simple first interaction helps you understand the conversational nature of 
 ChatGPT works well on both desktop browsers and mobile devices, with a few differences:
 
 **Mobile:**
+
 - Simplified interface with collapsible menus
 - Convenient for on-the-go questions
 - May require more scrolling for longer responses
 - Voice input option on most devices
 
 **Desktop:**
+
 - More screen space to see both your prompts and responses
 - Easier to copy and paste longer text
 - Better for complex tasks involving multiple prompts
@@ -1700,7 +1704,7 @@ These examples demonstrate how taking the time to craft detailed prompts with re
 
 Now it's time to put your new knowledge into practice! The following activities will help you develop your prompt engineering skills through hands-on exercises. Each activity focuses on a different aspect of effective prompting and provides a structured way to experiment with the techniques we've discussed.
 
---- 
+---
 
 <!-- Start of section: 06-01-prompt-makeover.md -->
 
@@ -1740,7 +1744,7 @@ Now it's time to put your new knowledge into practice! The following activities 
 
 **Improved:** `I need help creating a resume for entry-level marketing positions. I recently graduated with a degree in communications and have two summers of internship experience in social media management. Could you create a one-page resume template that highlights transferable skills from my academic projects and internships, uses a clean professional format, and includes sections for education, experience, skills, and a brief professional summary?`
 
---- 
+---
 
 <!-- Start of section: 06-02-role-play-workshop.md -->
 
@@ -1854,7 +1858,7 @@ Project: Planning a weekend hiking trip
 
 **Follow-up 2 (referencing earlier information):** `Based on the elevation gain you mentioned, I think Eagle Creek might be too challenging for one member of our group. Of the other options you suggested earlier, which would have more moderate elevation changes?`
 
---- 
+---
 
 <!-- Start of section: 06-05-creative-companion.md -->
 
@@ -1888,9 +1892,13 @@ Project: Planning a weekend hiking trip
 
 Project: Creating a children's story
 
-**Idea generation:** `I'd like to write a bedtime story for a 6-year-old who loves animals and the ocean. Could you help me brainstorm 7 different story concepts that involve marine animals and contain subtle lessons about friendship or courage? For each concept, provide a brief premise and main characters.`
+**Idea generation:**
 
-**Deepening chosen idea:** `I like the concept about the shy octopus who learns to use his unique talents to help other sea creatures. Could you help me develop this further by suggesting: 1) Names for the octopus and 3 other main characters, 2) Three challenges the octopus might face, 3) A surprising twist in the middle of the story, and 4) A satisfying resolution that emphasizes the friendship theme?`
+`I'd like to write a bedtime story for a 6-year-old who loves animals and the ocean. Could you help me brainstorm 7 different story concepts that involve marine animals and contain subtle lessons about friendship or courage? For each concept, provide a brief premise and main characters.`
+
+**Deepening chosen idea:**
+
+`I like the concept about the shy octopus who learns to use his unique talents to help other sea creatures. Could you help me develop this further by suggesting: 1) Names for the octopus and 3 other main characters, 2) Three challenges the octopus might face, 3) A surprising twist in the middle of the story, and 4) A satisfying resolution that emphasizes the friendship theme?`
 
 --- 
 
@@ -1932,9 +1940,11 @@ Project: Creating a children's story
 
 **Scenario:** Requesting a letter of recommendation
 
-**Prompt:** `Help me draft an email to my former professor, Dr. Martinez, requesting a letter of recommendation for a graduate school application. We had a positive relationship - I took two of her courses in environmental science and earned A's in both. She also supervised my senior research project last year. The application is due in 3 weeks, and I need the letter submitted online by then. I want the tone to be respectful and professional but not overly formal since we worked closely together. The email should be concise (no more than 3 paragraphs), mention specific accomplishments she observed that would strengthen my application, and offer to provide any additional information she might need.`
+**Prompt:**
 
---- 
+`Help me draft an email to my former professor, Dr. Martinez, requesting a letter of recommendation for a graduate school application. We had a positive relationship - I took two of her courses in environmental science and earned A's in both. She also supervised my senior research project last year. The application is due in 3 weeks, and I need the letter submitted online by then. I want the tone to be respectful and professional but not overly formal since we worked closely together. The email should be concise (no more than 3 paragraphs), mention specific accomplishments she observed that would strengthen my application, and offer to provide any additional information she might need.`
+
+---
 
 <!-- Start of section: 06-07-conclusion.md -->
 
