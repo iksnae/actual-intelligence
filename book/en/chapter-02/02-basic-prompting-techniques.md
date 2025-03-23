@@ -14,6 +14,7 @@ Effective prompting involves the same key practices we explored in the Director'
 **4. Critical Evaluation**: Judge the outputs based on how well they serve your needs
 
 ![](./images/prompt-anatomy.jpg)
+
 *Understanding the anatomy of an effective prompt helps you move from vague requests to clear direction that yields useful results.*
 
 ### What Makes a Good Prompt?
@@ -28,9 +29,11 @@ A good prompt is like a well-formulated question or clear instruction. It provid
 Lisa, our middle school science teacher from Chapter 1, applies these elements when using ChatGPT for her lesson planning:
 
 **Weak prompt:**
+
 `Give me a lesson on climate change.`
 
 **Strong prompt:**
+
 `Help me create an interactive demonstration that shows how greenhouse gases work, suitable for 7th graders who have already learned about the water cycle but struggle with abstract concepts. Include a simple hands-on experiment using household materials that visually demonstrates the greenhouse effect in under 15 minutes.`
 
 Notice how Lisa's stronger prompt provides clarity (interactive demonstration about greenhouse gases), context (7th graders with specific background knowledge), constraints (household materials, under 15 minutes), and format guidance (hands-on experiment that visually demonstrates the concept).
@@ -67,7 +70,8 @@ Jake, who was planning a family trip to Japan in our previous chapter, could use
 **Parameters**: "Focus on family-friendly locations, avoiding excessively crowded tourist spots. We prefer a moderate pace with no more than two major activities per day."
 **Format**: "Organize by day with morning and afternoon activities, suggested transportation between sites, and estimated times."
 
-Combined prompt: 
+Combined prompt:
+
 `Create an itinerary for a 10-day family trip to Japan with two children ages 8 and 12 who enjoy outdoor activities and are interested in samurai history. Focus on family-friendly locations, avoiding excessively crowded tourist spots. We prefer a moderate pace with no more than two major activities per day. Organize by day with morning and afternoon activities, suggested transportation between sites, and estimated times.`
 
 ### The Amplification Effect in Action
@@ -77,9 +81,11 @@ When you apply these prompting techniques, you're experiencing the Amplification
 Marcus, the bakery owner we met earlier, demonstrates this when researching locations for his second shop:
 
 **Vague prompt:**
+
 `Where should I open my second bakery?`
 
 **Amplified prompt:**
+
 `I own a successful artisanal bakery specializing in sourdough bread and French pastries in a college town. I'm considering opening a second location and have narrowed my options to either: (1) a business district with high weekday foot traffic but quiet weekends, or (2) a residential neighborhood with steady traffic and several complementary businesses (coffee shop, bookstore). Help me create a pros and cons analysis for each location, considering factors like customer demographics, competition, rent considerations, staffing requirements, and potential for cross-promotion with nearby businesses.`
 
 Notice how Marcus infuses the prompt with his specific business knowledge and decision-making context. The AI can't know which location is best for his unique situation, but it can help him organize relevant considerations for his final decision.
@@ -88,27 +94,32 @@ Notice how Marcus infuses the prompt with his specific business knowledge and de
 
 Let's practice identifying weak prompts and strengthening them using the Director's Mindset:
 
-**Weak**: 
+**Weak**:
+
 `Tell me about climate change.`
 
 **Why it's weak**: Too broad, no specified format or depth, unclear what aspects are most relevant to the user.
 
-**Improved**: 
+**Improved**:
+
 `Explain the three most significant ways climate change is affecting agriculture globally. Include recent scientific findings and potential adaptation strategies farmers are using. Keep the explanation accessible to someone with basic science knowledge.`
 
 ---
 
-**Weak**: 
+**Weak**:
+
 `How do I learn a language?`
 
 **Why it's weak**: Vague, doesn't specify which language, the user's experience level, or learning goals.
 
-**Improved**: 
+**Improved**:
+
 `I want to learn conversational Spanish for an upcoming trip to Mexico in 3 months. I'm a complete beginner with about 30 minutes daily to practice. Please suggest a structured learning plan with specific resources and activities that prioritize practical travel vocabulary and basic conversation skills.`
 
 ---
 
-**Weak**: 
+**Weak**:
+
 `Write an email.`
 
 **Why it's weak**: No information about purpose, recipient, tone, or content.
@@ -127,12 +138,15 @@ This is why specific prompts are so valuable—they make it easier for you to ev
 For example, Elena (our watercolor enthusiast from Chapter 1) might use this approach:
 
 **Brainstorming prompt (low verification needed):**
+
 `Suggest 10 unusual subjects for watercolor painting practice that would help me explore color mixing and translucency effects.`
 
 **Technical information prompt (medium verification needed):**
+
 `Explain how watercolor paints are traditionally manufactured, focusing on pigment selection and binding agents. Compare traditional and modern production methods.`
 
 **Purchase decision prompt (high verification needed):**
+
 `Compare Winsor & Newton and Daniel Smith professional watercolor brands in terms of lightfastness, pigment concentration, and price value. Include the specific pigments used in their Ultramarine Blue offerings.`
 
 For the third prompt, Elena would verify information against manufacturer websites and professional reviews before making a significant purchase decision.

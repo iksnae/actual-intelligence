@@ -54,10 +54,12 @@ While you can't directly change ChatGPT's "temperature" setting in the standard 
 
 **Example**:
 
-*Precise request*: 
+*Precise request*:
+
 `Provide a concise, fact-based explanation of how vaccines work in the human body, focusing on the role of antibodies and immune response.`
 
-*Creative request*: 
+*Creative request*:
+
 `Think creatively about different ways to explain how vaccines work to a curious 8-year-old. Use imaginative analogies and engaging scenarios that would capture a child's attention.`
 
 ### Chain of Thought: Breaking Down Complex Problems
@@ -115,6 +117,7 @@ This technique, sometimes called "few-shot learning," dramatically improves the 
 Complex tasks often benefit from breaking the work into multiple turns of conversation, with each building on the previous.
 
 **Approach**:
+
 1. Start with a basic request
 2. Review the response
 3. Ask for specific refinements
