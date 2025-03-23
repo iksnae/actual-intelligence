@@ -8,8 +8,9 @@ toc: true
 cover-image: 'book/en/images/cover.png'
 ---
 
-# Chapter 1: Actual Intelligence
-*...The Human Side of AI*
+# Chapter 1
+
+## Actual Intelligence *...The Human Side of AI*
 
 Have you ever watched someone use a new technology and make it look effortless, only to feel lost when you try it yourself? Or perhaps you've heard about **ChatGPT** and other AI tools in the news but haven't tried them yet, unsure if they're too complicated or technical for you?
 
@@ -41,6 +42,7 @@ Let's begin our journey toward becoming confident, effective directors of these 
 <!-- Start of section: 01-what-is-actual-intelligence.md -->
 
 # What is **Actual Intelligence**?
+
 *...The Human-AI Partnership*
 
 ## Your First AI Conversation: A Guided Tour
@@ -61,7 +63,7 @@ Maria, a small business owner with no technical background, described her first 
 
 *"I was honestly expecting it to be complicated—like I'd need to learn special commands or something. But it was just like texting. I asked how to write a better email newsletter, and within seconds I had ideas I could actually use. No technical jargon, no complicated setup."*
 
-## Understanding the Human-AI Partnership
+### Understanding the Human-AI Partnership
 
 Think of AI tools like kitchen appliances. A stand mixer can do the hard work of mixing dough, but it doesn't decide what recipe to make or know when the consistency is just right—that's your job. The mixer is very good at its specific task, but you're the one with the taste buds, the creativity to modify recipes, and the knowledge of whether you're baking for someone with dietary restrictions.
 
@@ -73,7 +75,7 @@ Think about the last time you used a powerful tool to solve a problem. Maybe it 
 
 ![](images/human-ai-partnership.jpg)
 
-### The Partnership Model
+#### The Partnership Model
 
 Rather than thinking of AI as some magical entity with a mind of its own, consider this simple relationship:
 
@@ -86,7 +88,7 @@ When you recognize that you're the director and AI is your assistant, you natura
 
 Isn't that a more empowering way to approach these tools?
 
-### The Human Element in Action
+#### The Human Element in Action
 
 Let's see this partnership in action through a real example.
 
@@ -100,7 +102,7 @@ With this context that no AI could possess, Lisa directed ChatGPT with a more sp
 
 The resulting lesson was far more effective because it combined Lisa's understanding of her students with the AI's ability to generate creative teaching ideas. That's Actual Intelligence at work—you remain central to the process while leveraging AI as a powerful tool.
 
-## Creating Your First Personalized Prompt
+### Creating Your First Personalized Prompt
 
 Now it's your turn. Let's create a prompt that's specifically relevant to you. Fill in the blanks below:
 `I work as a _____________ and one challenge I often face is _____________. Could you suggest three ways I might approach this problem?`
@@ -121,7 +123,9 @@ In the next sections, we'll explore what makes human intelligence unique and how
 
 <!-- Start of section: 02-ai-tools-vs-human-intelligence.md -->
 
-# AI Tools vs. Human Intelligence: Understanding the Relationship
+# AI Tools vs. Human Intelligence
+
+## Understanding the Relationship
 
 
 You might be wondering... *"Do I need to learn coding or computer science to use these AI tools effectively?"*
@@ -229,9 +233,9 @@ In the next section, we'll explore in simple terms how these AI tools actually w
 
 <!-- Start of section: 03-how-modern-ai-tools-work.md -->
 
-# How Modern AI Tools Work (Simplified for Non-Technical Readers)
+# How Modern AI Tools Work (for the Non-Technical)
 
-To effectively direct AI tools, you don't need to understand all the technical details—just as you don't need to know exactly how a car engine functions to drive effectively. However, having a basic conceptual understanding will help you set realistic expectations and use these tools more skillfully.
+To effectively direct AI tools, you don't need to understand all the technical details — just as you don't need to know exactly how a car engine functions to drive effectively. However, having a basic conceptual understanding will help you set realistic expectations and use these tools more skillfully.
 
 Let's explore how AI tools like ChatGPT work, using simple analogies that highlight both their capabilities and limitations.
 
@@ -561,7 +565,9 @@ In the next section, we'll put these ideas into practice with hands-on activitie
 
 <!-- Start of section: 05-00-activities-intro.md -->
 
-# Activities: Your First Hands-On AI Experiences
+# Activities
+
+## Your First Hands-On AI Experiences
 
 Let's put everything we've learned into practice! These hands-on activities will help you develop your AI direction skills while experiencing firsthand how your input shapes the results you get.
 
@@ -569,7 +575,7 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 
 ![](images/hands-on-learning.jpg)
 
---- 
+---
 
 <!-- Start of section: 05-01-directors-chair.md -->
 
@@ -579,6 +585,7 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 
 
 **What You'll Need:**
+
 - Access to ChatGPT (free account)
 - 10-15 minutes
 
@@ -590,7 +597,7 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 1. Open ChatGPT and start a new conversation.
 
 2. First, give a vague prompt and observe the response:
-   
+
    `"Give me some advice."`
 
 3. Now, try a slightly more specific prompt:
@@ -605,18 +612,19 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 
 5. Compare the three responses. Notice how the quality and usefulness of the AI's output directly corresponds to the specificity of your direction.
 
-
 **Reflection Questions:**
 
 - Which response was most useful to you, and why?
 - What specific elements of your detailed prompt led to improvements in the AI's response?
 - How might you apply this principle of specificity to your own goals when using AI?
 
---- 
+---
 
 <!-- Start of section: 05-02-intelligence-amplifier.md -->
 
-## Activity 2: Intelligence Amplifier
+# Activity 2
+
+## Intelligence Amplifier
 
 **Objective:** Use AI as a thinking partner to amplify your own intelligence on a personal challenge.
 
@@ -663,7 +671,9 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 
 <!-- Start of section: 05-03-myth-vs-reality.md -->
 
-## Activity 3: Myth vs. Reality
+# Activity 3
+
+## Myth vs. Reality
 
 **Objective:** Test the limitations of AI to better understand where human intelligence remains essential.
 
@@ -703,7 +713,9 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 
 <!-- Start of section: 05-04-creative-control.md -->
 
-## Activity 4: Creative Control
+# Activity 4
+
+## Creative Control
 
 **Objective:** Practice maintaining ownership of a creative project while using AI as an assistant.
 
@@ -733,6 +745,7 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
    - Any constraints or requirements
 
 3. Create a series of specific requests for ChatGPT that will help you with different aspects of your project. Instead of asking it to complete the entire project, break it down into components where AI assistance would be helpful. For example, if writing a short story:
+
    - `Suggest three possible opening paragraphs for a story about...`
    - `Help me develop the main character who is...`
    - `Provide some descriptive language for the setting of...`
@@ -750,11 +763,13 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 - Which aspects required your human judgment and creativity?
 - How does the final result reflect your vision and style, despite using AI assistance?
 
---- 
+---
 
 <!-- Start of section: 05-05-setting-ai-compass.md -->
 
-## Activity 5: Setting Your AI Compass
+# Activity 5
+
+## Setting Your AI Compass
 
 **Objective:** Develop personal guidelines for how you want to use AI in your life.
 
@@ -805,7 +820,7 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 
 <!-- Start of section: 05-06-conclusion.md -->
 
-## Moving Forward with Confidence
+# Moving Forward with Confidence
 
 Congratulations on completing these activities! You've taken your first steps toward becoming a skilled AI director. Through these exercises, you've experienced firsthand how your direction shapes AI output, how to maintain control of creative processes, and how to set healthy boundaries for AI use in your life.
 
@@ -819,9 +834,11 @@ In the chapters ahead, we'll build on these foundations by exploring more specif
 
 For now, take a moment to reflect on what you've discovered about the human-AI partnership and how you might start incorporating these tools into your life in ways that align with your goals and values.
 
---- # Chapter 2: Mastering ChatGPT with Effective Prompts
+---# Chapter 2
 
-... The Art of Directing AI
+## Mastering ChatGPT with Effective Prompts
+
+### The Art of Directing AI
 
 Do you ever find yourself unsure how to ask ChatGPT for what you really want? Or perhaps you've tried using it but thought: *"Is this really all it can do?"*  
 
@@ -872,7 +889,7 @@ This approach maintains Maria's business values and voice while saving her valua
 
 <!-- Start of section: 01-getting-started.md -->
 
-## Getting Started with ChatGPT
+# Getting Started with ChatGPT
 
 Let's begin with the basics: setting up your ChatGPT account and becoming familiar with the interface.
 
@@ -984,7 +1001,6 @@ Effective prompting involves the same key practices we explored in the Director'
 **4. Critical Evaluation**: Judge the outputs based on how well they serve your needs
 
 ![](./images/prompt-anatomy.jpg)
-
 *Understanding the anatomy of an effective prompt helps you move from vague requests to clear direction that yields useful results.*
 
 ### What Makes a Good Prompt?
@@ -1700,7 +1716,9 @@ These examples demonstrate how taking the time to craft detailed prompts with re
 
 <!-- Start of section: 06-00-activities-intro.md -->
 
-## Activities: Crafting Effective Prompts for Different Scenarios
+# Activities
+
+## Crafting Effective Prompts for Different Scenarios
 
 Now it's time to put your new knowledge into practice! The following activities will help you develop your prompt engineering skills through hands-on exercises. Each activity focuses on a different aspect of effective prompting and provides a structured way to experiment with the techniques we've discussed.
 
@@ -1708,7 +1726,9 @@ Now it's time to put your new knowledge into practice! The following activities 
 
 <!-- Start of section: 06-01-prompt-makeover.md -->
 
-### Activity 1: Prompt Makeover
+# Activity 1
+
+## Prompt Makeover
 
 **Objective:** Transform vague prompts into effective, detailed instructions.
 
@@ -1748,7 +1768,9 @@ Now it's time to put your new knowledge into practice! The following activities 
 
 <!-- Start of section: 06-02-role-play-workshop.md -->
 
-### Activity 2: Role Play Workshop
+# Activity 2
+
+## Role Play Workshop
 
 **Objective:** Experiment with assigning different roles to ChatGPT for specific tasks.
 
@@ -1786,7 +1808,9 @@ Topic: Learning to cook basic meals
 
 <!-- Start of section: 06-03-format-factory.md -->
 
-### Activity 3: Format Factory
+# Activity 3
+
+## Format Factory
 
 **Objective:** Practice specifying different output formats for the same information.
 
@@ -1823,7 +1847,9 @@ Topic: Benefits of different types of exercise
 
 <!-- Start of section: 06-04-context-control.md -->
 
-### Activity 4: Context Control
+# Activity 4
+
+## Context Control
 
 **Objective:** Practice managing and directing multi-turn conversations.
 
@@ -1862,7 +1888,9 @@ Project: Planning a weekend hiking trip
 
 <!-- Start of section: 06-05-creative-companion.md -->
 
-### Activity 5: Creative Companion
+# Activity 5
+
+## Creative Companion
 
 **Objective:** Use ChatGPT for brainstorming and developing creative projects.
 
@@ -1900,11 +1928,13 @@ Project: Creating a children's story
 
 `I like the concept about the shy octopus who learns to use his unique talents to help other sea creatures. Could you help me develop this further by suggesting: 1) Names for the octopus and 3 other main characters, 2) Three challenges the octopus might face, 3) A surprising twist in the middle of the story, and 4) A satisfying resolution that emphasizes the friendship theme?`
 
---- 
+---
 
 <!-- Start of section: 06-06-email-assistant.md -->
 
-### Activity 6: Email Assistant
+# Activity 6
+
+## Email Assistant
 
 **Objective:** Practice using ChatGPT to draft different types of professional and personal emails.
 
@@ -1956,7 +1986,7 @@ Keep a record of particularly effective prompts you develop through these exerci
 
 In the next chapter, we'll build on these fundamentals to explore more advanced applications of ChatGPT, including how to integrate it into your workflow for specific professional and educational contexts.
 
---- 
+---
 
 <!-- Start of section: 07-conclusion.md -->
 
