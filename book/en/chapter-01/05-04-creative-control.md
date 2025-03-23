@@ -4,6 +4,7 @@
 
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - 20-30 minutes
 
@@ -11,6 +12,7 @@
 **Instructions:**
 
 1. Choose a simple creative project from the options below (or create your own):
+
    - Write a short story (300-500 words)
    - Plan a themed dinner party
    - Design a flyer for a community event
@@ -19,6 +21,7 @@
 ![](images/creative-control.jpg)
 
 2. Begin by defining your vision for the project. Write down:
+
    - The main goal or purpose
    - Key elements you want to include
    - Your personal style or preferences

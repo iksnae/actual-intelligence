@@ -4,6 +4,7 @@
 
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - Paper and pen, or digital document
 - 15-20 minutes
@@ -11,6 +12,7 @@
 **Instructions:**
 
 1. Reflect on your values, goals, and the areas of your life where you think AI tools might be helpful. Consider:
+
    - What types of tasks do you find draining or time-consuming?
    - What skills would you like to develop, with AI as a learning aid?
    - What aspects of your thinking or work would you never want to outsource?
@@ -22,6 +24,7 @@
    `I'm developing personal guidelines for how I want to use AI tools like you in my life. Can you help me think through some questions to consider about where AI might be most helpful to me and where I might want to be cautious about using it? Consider aspects like learning, creativity, critical thinking, and practical tasks.`
 
 3. Based on the AI's suggestions and your own reflection, draft 3-5 personal guidelines for your AI use. These might include:
+
    - Types of tasks you'll use AI for
    - Boundaries you'll maintain
    - How you'll verify or evaluate AI-generated content

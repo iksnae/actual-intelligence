@@ -4,6 +4,7 @@
 
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - A real problem or challenge you're currently facing
 - 15-20 minutes
@@ -16,11 +17,13 @@
 ![](images/identify-challenge.jpg)
 
 2. Before consulting AI, spend 3-5 minutes writing down your own thoughts about the challenge:
+
    - What makes this challenging?
    - What approaches have you considered?
    - What constraints or considerations are important?
 
 3. Now, craft a prompt that asks the AI to help you think through this challenge. Include:
+
    - A brief description of the situation
    - Your current thoughts and approaches
    - What specific type of help you want (brainstorming, organizing your thoughts, considering perspectives you might have missed, etc.)
