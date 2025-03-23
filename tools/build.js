@@ -235,7 +235,7 @@ toc: true
     }
     
     const bookTitle = config.titles[language] || config.titles.en;
-    const command = `pandoc "${outputMdFile}" -o "${pdfFile}" --pdf-engine=xelatex --toc --metadata=title:"${bookTitle}" --metadata=lang:${language} --resource-path="${resourcePaths}"`;
+    const command = `pandoc "${outputMdFile}" -o "${pdfFile}" --pdf-engine=xelatex --toc --metadata=title:"${bookTitle}" --metadata=lang:${language} --resource-path="${resourcePaths}" --template=templates/template.tex --listings`;
     console.log(`Running: ${command}`);
     execSync(command, { stdio: 'inherit' });
     console.log(`PDF created: ${pdfFile}`);
@@ -272,7 +272,7 @@ toc: true
     const bookTitle = config.titles[language] || config.titles.en;
     const bookSubtitle = config.subtitles[language] || config.subtitles.en;
     
-    const command = `pandoc "${outputMdFile}" -o "${epubFile}" ${coverImageOption}--toc --toc-depth=2 --metadata=title:"${bookTitle}" --metadata=subtitle:"${bookSubtitle}" --metadata=author:"K Mills" --metadata=publisher:"Khaos Studios" --metadata=lang:${language} --resource-path="${resourcePaths}" --extract-media=${config.outputDir}/epub-media`;
+    const command = `pandoc "${outputMdFile}" -o "${epubFile}" ${coverImageOption}--toc --toc-depth=2 --metadata=title:"${bookTitle}" --metadata=subtitle:"${bookSubtitle}" --metadata=author:"K Mills" --metadata=publisher:"Khaos Studios" --metadata=lang:${language} --resource-path="${resourcePaths}" --extract-media=${config.outputDir}/epub-media --highlight-style=tango`;
     console.log(`Running: ${command}`);
     execSync(command, { stdio: 'inherit' });
     console.log(`EPUB created: ${epubFile}`);
@@ -321,7 +321,7 @@ toc: true
     
     const bookTitle = config.titles[language] || config.titles.en;
     
-    const command = `pandoc "${outputMdFile}" -o "${htmlFile}" --standalone --toc --toc-depth=2 --metadata=title:"${bookTitle}" --metadata=lang:${language} --resource-path="${resourcePaths}"`;
+    const command = `pandoc "${outputMdFile}" -o "${htmlFile}" --standalone --toc --toc-depth=2 --metadata=title:"${bookTitle}" --metadata=lang:${language} --resource-path="${resourcePaths}" --highlight-style=tango --css=templates/book.css`;
     console.log(`Running: ${command}`);
     execSync(command, { stdio: 'inherit' });
     console.log(`HTML created: ${htmlFile}`);
