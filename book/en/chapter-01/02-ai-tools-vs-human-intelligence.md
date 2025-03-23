@@ -102,5 +102,3 @@ Notice the pattern here — each question taps into the AI's ability to organize
 In the next section, we'll explore in simple terms how these AI tools actually work, which will help you understand their capabilities and limitations without requiring any technical background.
 
 ---
-
-<div style="page-break-after: always;"></div>

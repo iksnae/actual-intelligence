@@ -16,6 +16,7 @@ That's it! You've just had your first AI conversation.
 Notice how the AI introduces itself and explains its capabilities. This isn't a pre-recorded message—the AI is generating this response specifically for you. In the coming chapters, you'll learn how to make these conversations increasingly useful for your specific needs.
 
 Maria, a small business owner with no technical background, described her first experience: 
+
 *"I was honestly expecting it to be complicated—like I'd need to learn special commands or something. But it was just like texting. I asked how to write a better email newsletter, and within seconds I had ideas I could actually use. No technical jargon, no complicated setup."*
 
 ## Understanding the Human-AI Partnership
@@ -74,5 +75,3 @@ For example:
 In the next sections, we'll explore what makes human intelligence unique and how it complements AI capabilities. But remember, you don't need to understand all the technical details to start using these tools effectively today.
 
 ---
-
-<div style="page-break-after: always;"></div>

@@ -248,5 +248,3 @@ In the chapters ahead, we'll build on these foundations by exploring more specif
 For now, take a moment to reflect on what you've discovered about the human-AI partnership and how you might start incorporating these tools into your life in ways that align with your goals and values.
 
 ---
-
-<div style="page-break-after: always;"></div>

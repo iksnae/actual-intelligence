@@ -1,7 +1,6 @@
 # Chapter 1: Actual Intelligence
 *...The Human Side of AI*
 
-
 Have you ever watched someone use a new technology and make it look effortless, only to feel lost when you try it yourself? Or perhaps you've heard about **ChatGPT** and other AI tools in the news but haven't tried them yet, unsure if they're too complicated or technical for you?
 
 ![](./images/hesitant-beginner.jpg)
@@ -14,9 +13,9 @@ That's what this book is all about: showing you how to pair your human wisdom wi
 
 Before we dive in, take a moment to jot down your answers to these questions:
 
-* What's one task in your daily life or work that feels repetitive or time-consuming?
-* What's one topic you've been curious about but haven't had time to explore deeply?
-* What's one creative project you've wanted to try but haven't gotten around to?
+- What's one task in your daily life or work that feels repetitive or time-consuming?
+- What's one topic you've been curious about but haven't had time to explore deeply?
+- What's one creative project you've wanted to try but haven't gotten around to?
 
 ![](images/reflection-notebook.jpg)
 
@@ -26,7 +25,4 @@ In the pages ahead, we'll establish a simple framework for thinking about AI too
 
 Let's begin our journey toward becoming confident, effective directors of these powerful tools—starting from the very first interaction.
 
-
 ---
-
-<div style="page-break-after: always;"></div>

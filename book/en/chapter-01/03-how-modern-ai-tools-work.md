@@ -33,6 +33,7 @@ Another helpful way to think about these AI tools is as an echo chamber of human
 If you ask ChatGPT about the French Revolution, it can provide information because many human writers have written about this topic, and those writings were part of its training data. But if you ask about a completely fictional historical event that no one has written about, it can't provide accurate information because that pattern doesn't exist in its training data.
 
 This means AI tools:
+
 - Can reflect existing human knowledge and writing patterns
 - Cannot generate truly novel discoveries or insights that aren't derived from existing knowledge
 - May confidently present information that seems plausible but is actually incorrect
@@ -46,6 +47,7 @@ Think of it like someone who has memorized a cookbook in a foreign language with
 ![](images/foreign-cookbook.jpg)
 
 This limitation explains why AI often struggles with:
+
 - Common sense reasoning
 - Understanding the physical world
 - Grasping cause and effect
@@ -64,6 +66,7 @@ Most people would guess `"oven"` because that's the most probable word to follow
 ![](images/probability-prediction.jpg)
 
 This probabilistic approach means that:
+
 - ChatGPT doesn't have a fixed set of responses—it generates new text each time
 - Responses can vary even to identical prompts
 - The AI doesn't "decide" what to say based on reasoning—it selects words based on probability
@@ -93,6 +96,7 @@ Given these limitations, it's helpful to think of AI tools as assistants rather 
 Remember Jake, who's planning a family vacation to Japan. If he simply asks ChatGPT `"Plan my perfect Japan trip"` and follows whatever itinerary it generates, he might end up with a generic tourist experience that doesn't match his family's interests or visit attractions that are closed for renovation.
 
 Instead, Jake uses his understanding of AI limitations to direct the tool more effectively. He knows that:
+
 - The AI's information might be outdated
 - It doesn't know his family's specific preferences
 - It can't verify if suggested accommodations are actually available
@@ -101,7 +105,4 @@ So he uses AI as an assistant for specific tasks where pattern matching is helpf
 
 In the next section, we'll explore how to take control of this human-AI partnership to get the most value from these powerful but limited tools.
 
-
 ---
-
-<div style="page-break-after: always;"></div>

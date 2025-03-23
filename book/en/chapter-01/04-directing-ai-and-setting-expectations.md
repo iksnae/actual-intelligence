@@ -22,6 +22,8 @@ Before engaging with AI, ask yourself:
 
 This clarity helps you give more effective directions and evaluate the AI's responses more critically.
 
+--
+
 ### 2. Specificity in Direction
 
 Vague prompts lead to generic responses. The more specific your direction, the more useful the AI's assistance will be. Compare these approaches:
@@ -34,6 +36,8 @@ Vague prompts lead to generic responses. The more specific your direction, the m
 
 The specific direction provides context and constraints that help the AI generate relevant responses tailored to your needs.
 
+--
+
 ### 3. Iterative Refinement
 
 Working with AI is rarely a one-and-done process. Think of it as a conversation rather than a single question and answer.
@@ -45,6 +49,8 @@ Don't settle for the first response if it doesn't quite meet your needs. Instead
 - `That's helpful, but could you make it simpler?`
 - `I like the third idea best. Can you expand on that approach specifically?`
 - `These examples are too technical. Can you rewrite them for someone with no background in this field?`
+
+--
 
 ### 4. Critical Evaluation
 
@@ -68,7 +74,7 @@ When you combine human direction with AI capabilities, something remarkable happ
 
 This amplification becomes particularly powerful when applied to real-world challenges. Consider how Sarah, a high school English teacher, experiences this amplification when planning her curriculum:
 
-```
+```markdown
 I need to design a unit on 'identity' for my 10th grade English class. Many of my students are first-generation Americans who often discuss the challenges of navigating between cultures. Suggest contemporary short stories from diverse authors that explore identity formation, and for each story, outline potential discussion questions that connect to the immigrant experience.
 ```
 
@@ -209,5 +215,3 @@ This approach puts you firmly in control of the process while still leveraging t
 In the next section, we'll put these ideas into practice with hands-on activities designed to help you develop your skills as an AI director.
 
 ---
-
-<div style="page-break-after: always;"></div>
