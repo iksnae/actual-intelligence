@@ -235,10 +235,22 @@ toc: true
     }
     
     const bookTitle = config.titles[language] || config.titles.en;
-    const command = `pandoc "${outputMdFile}" -o "${pdfFile}" --pdf-engine=xelatex --toc --metadata=title:"${bookTitle}" --metadata=lang:${language} --resource-path="${resourcePaths}" --template=templates/template.tex --listings`;
+    
+    // Use LuaLaTeX instead of XeLaTeX to better handle image embedding
+    const command = `pandoc "${outputMdFile}" -o "${pdfFile}" --pdf-engine=lualatex --toc --metadata=title:"${bookTitle}" --metadata=lang:${language} --resource-path="${resourcePaths}" --template=templates/template.tex --listings --embed-resources --standalone`;
     console.log(`Running: ${command}`);
     execSync(command, { stdio: 'inherit' });
     console.log(`PDF created: ${pdfFile}`);
+    
+    // Verify that images are embedded in the PDF
+    try {
+      console.log(`Verifying embedded images in ${pdfFile}...`);
+      execSync(`chmod +x tools/scripts/verify-embedded-images.sh`, { stdio: 'inherit' });
+      execSync(`tools/scripts/verify-embedded-images.sh "${pdfFile}"`, { stdio: 'inherit' });
+    } catch (verifyError) {
+      console.error(`Warning: Image verification failed: ${verifyError.message}`);
+      console.log('The PDF may still be valid, but images might not be properly embedded.');
+    }
     
     // For non-default languages, copy to root folder for release assets
     if (language !== config.defaultLanguage) {

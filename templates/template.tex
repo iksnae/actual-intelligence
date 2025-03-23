@@ -18,6 +18,31 @@
 \usepackage{ragged2e}
 \usepackage{microtype}
 \usepackage{hyphenat}
+\usepackage{embedfile}    % For embedding files in the PDF
+\usepackage{pdfpages}     % For including PDF pages
+
+% Enhanced image handling
+\usepackage{adjustbox}
+\usepackage{grffile}      % For handling spaces and special characters in image paths
+
+% Configure hyperref for better embedding
+\hypersetup{
+  pdftitle={Actual Intelligence},
+  pdfauthor={K Mills},
+  pdfcreator={Pandoc},
+  pdfdisplaydoctitle=true,
+  bookmarks=true,
+  unicode=true,
+  colorlinks=true,
+  linkcolor=sectioncolor,
+  citecolor=sectioncolor,
+  urlcolor=sectioncolor,
+  pdfborder={0 0 0}
+}
+
+% Force image embedding in PDF
+\pdfobjcompresslevel=0
+\pdfminorversion=7
 
 % Fix for footnotes in tables
 \usepackage{footnote}
@@ -141,6 +166,27 @@ $endif$
 
 % Additional setup for inline code
 \newcommand{\code}[1]{\texttt{#1}}
+
+% Ensure images are embedded in PDF
+\IfFileExists{luatex85.sty}{\RequirePackage{luatex85}}{}
+
+% Embed images as resources in the PDF file
+\AtBeginDocument{
+  % Record image paths for embedding
+  \makeatletter
+  \let\orig@Ginclude@graphics\Ginclude@graphics
+  \def\Ginclude@graphics#1{%
+    % Embed the file referenced by #1
+    \IfFileExists{#1}{%
+      \embedfile{#1}%
+      % Output to log
+      \wlog{Embedding image: #1}%
+    }{}%
+    % Call the original handler
+    \orig@Ginclude@graphics{#1}%
+  }
+  \makeatother
+}
 
 \begin{document}
 
