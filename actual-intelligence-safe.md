@@ -622,6 +622,7 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - A real problem or challenge you're currently facing
 - 15-20 minutes
@@ -634,11 +635,13 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 ![](images/identify-challenge.jpg)
 
 2. Before consulting AI, spend 3-5 minutes writing down your own thoughts about the challenge:
+
    - What makes this challenging?
    - What approaches have you considered?
    - What constraints or considerations are important?
 
 3. Now, craft a prompt that asks the AI to help you think through this challenge. Include:
+
    - A brief description of the situation
    - Your current thoughts and approaches
    - What specific type of help you want (brainstorming, organizing your thoughts, considering perspectives you might have missed, etc.)
@@ -706,6 +709,7 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - 20-30 minutes
 
@@ -713,6 +717,7 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 **Instructions:**
 
 1. Choose a simple creative project from the options below (or create your own):
+
    - Write a short story (300-500 words)
    - Plan a themed dinner party
    - Design a flyer for a community event
@@ -721,6 +726,7 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 ![](images/creative-control.jpg)
 
 2. Begin by defining your vision for the project. Write down:
+
    - The main goal or purpose
    - Key elements you want to include
    - Your personal style or preferences
@@ -754,6 +760,7 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - Paper and pen, or digital document
 - 15-20 minutes
@@ -761,6 +768,7 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 **Instructions:**
 
 1. Reflect on your values, goals, and the areas of your life where you think AI tools might be helpful. Consider:
+
    - What types of tasks do you find draining or time-consuming?
    - What skills would you like to develop, with AI as a learning aid?
    - What aspects of your thinking or work would you never want to outsource?
@@ -772,6 +780,7 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
    `I'm developing personal guidelines for how I want to use AI tools like you in my life. Can you help me think through some questions to consider about where AI might be most helpful to me and where I might want to be cautious about using it? Consider aspects like learning, creativity, critical thinking, and practical tasks.`
 
 3. Based on the AI's suggestions and your own reflection, draft 3-5 personal guidelines for your AI use. These might include:
+
    - Types of tasks you'll use AI for
    - Boundaries you'll maintain
    - How you'll verify or evaluate AI-generated content
@@ -1640,23 +1649,29 @@ To illustrate the impact of effective prompting, let's look at some real-world e
 
 These examples demonstrate how taking the time to craft detailed prompts with relevant context leads to significantly more useful responses that address your specific situation.
 
-<!-- Start of section: 06-activities.md -->
+<!-- Start of section: 06-00-activities-intro.md -->
 
 ## Activities: Crafting Effective Prompts for Different Scenarios
 
 Now it's time to put your new knowledge into practice! The following activities will help you develop your prompt engineering skills through hands-on exercises. Each activity focuses on a different aspect of effective prompting and provides a structured way to experiment with the techniques we've discussed.
+
+--- 
+
+<!-- Start of section: 06-01-prompt-makeover.md -->
 
 ### Activity 1: Prompt Makeover
 
 **Objective:** Transform vague prompts into effective, detailed instructions.
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - 15-20 minutes
 
 **Instructions:**
 
 1. Look at each of the following basic prompts:
+
    - `Help me write a resume.`
    - `Tell me about healthy eating.`
    - `How do I fix my garden?`
@@ -1664,6 +1679,7 @@ Now it's time to put your new knowledge into practice! The following activities 
    - `Help with my homework.`
 
 2. For each basic prompt, develop an improved version by adding:
+
    - Specific context about your situation
    - Clear parameters or constraints
    - Format specifications where appropriate
@@ -1679,11 +1695,16 @@ Now it's time to put your new knowledge into practice! The following activities 
 
 **Improved:** `I need help creating a resume for entry-level marketing positions. I recently graduated with a degree in communications and have two summers of internship experience in social media management. Could you create a one-page resume template that highlights transferable skills from my academic projects and internships, uses a clean professional format, and includes sections for education, experience, skills, and a brief professional summary?`
 
+--- 
+
+<!-- Start of section: 06-02-role-play-workshop.md -->
+
 ### Activity 2: Role Play Workshop
 
 **Objective:** Experiment with assigning different roles to ChatGPT for specific tasks.
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - Paper and pen for notes
 - 20-25 minutes
@@ -1693,6 +1714,7 @@ Now it's time to put your new knowledge into practice! The following activities 
 1. Choose a topic you'd like advice or information about (e.g., starting a vegetable garden, improving public speaking skills, understanding basic economics).
 
 2. Create prompts that assign ChatGPT each of these roles to address your topic:
+
    - A patient teacher explaining to a beginner
    - An experienced professional giving practical advice
    - A creative thinker generating unusual approaches
@@ -1711,11 +1733,16 @@ Topic: Learning to cook basic meals
 
 **Professional role:** `I want you to act as an experienced chef who specializes in efficient home cooking. Provide practical advice for preparing quick weeknight pasta dishes, including time-saving techniques, ingredient substitutions, and how to elevate basic recipes. Focus on methods used in professional kitchens that can be adapted for home use.`
 
+--- 
+
+<!-- Start of section: 06-03-format-factory.md -->
+
 ### Activity 3: Format Factory
 
 **Objective:** Practice specifying different output formats for the same information.
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - 15-20 minutes
 
@@ -1724,6 +1751,7 @@ Topic: Learning to cook basic meals
 1. Choose an informational topic you're interested in (e.g., the benefits of exercise, basic investing concepts, or tips for sustainable living).
 
 2. Create prompts requesting the same core information in each of these formats:
+
    - A bulleted list of key points
    - A step-by-step guide
    - A table comparing different aspects
@@ -1742,11 +1770,16 @@ Topic: Benefits of different types of exercise
 
 **Comparison table format:** `Create a comparison table showing the benefits of different exercise types (cardio, strength training, flexibility, and balance). Include columns for physical benefits, mental/emotional benefits, recommended frequency, and beginner-friendly examples of each type.`
 
+--- 
+
+<!-- Start of section: 06-04-context-control.md -->
+
 ### Activity 4: Context Control
 
 **Objective:** Practice managing and directing multi-turn conversations.
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - 20-30 minutes
 
@@ -1757,6 +1790,7 @@ Topic: Benefits of different types of exercise
 2. Start a conversation with a clear initial prompt about your project.
 
 3. Through at least 5 follow-up exchanges, practice these context management techniques:
+
    - Ask for more detail on a specific aspect of the response
    - Redirect the conversation when it goes off-track
    - Reference information from earlier in the conversation
@@ -1775,11 +1809,16 @@ Project: Planning a weekend hiking trip
 
 **Follow-up 2 (referencing earlier information):** `Based on the elevation gain you mentioned, I think Eagle Creek might be too challenging for one member of our group. Of the other options you suggested earlier, which would have more moderate elevation changes?`
 
+--- 
+
+<!-- Start of section: 06-05-creative-companion.md -->
+
 ### Activity 5: Creative Companion
 
 **Objective:** Use ChatGPT for brainstorming and developing creative projects.
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - A creative project you're interested in working on
 - 20-30 minutes
@@ -1789,6 +1828,7 @@ Project: Planning a weekend hiking trip
 1. Choose a creative project you're interested in (e.g., writing a short story, planning a garden, designing a room, creating a presentation, or developing a photography series).
 
 2. Create prompts that use ChatGPT to:
+
    - Generate initial ideas or concepts (at least 5-7 possibilities)
    - Explore one of those ideas in greater depth
    - Identify potential challenges or considerations
@@ -1807,11 +1847,16 @@ Project: Creating a children's story
 
 **Deepening chosen idea:** `I like the concept about the shy octopus who learns to use his unique talents to help other sea creatures. Could you help me develop this further by suggesting: 1) Names for the octopus and 3 other main characters, 2) Three challenges the octopus might face, 3) A surprising twist in the middle of the story, and 4) A satisfying resolution that emphasizes the friendship theme?`
 
+--- 
+
+<!-- Start of section: 06-06-email-assistant.md -->
+
 ### Activity 6: Email Assistant
 
 **Objective:** Practice using ChatGPT to draft different types of professional and personal emails.
 
 **What You'll Need:**
+
 - Access to ChatGPT
 - Scenarios for different types of emails
 - 20-25 minutes
@@ -1819,6 +1864,7 @@ Project: Creating a children's story
 **Instructions:**
 
 1. For each of the following email scenarios, craft a detailed prompt that specifies:
+
    - The purpose of the email
    - The relationship with the recipient
    - Key points that must be included
@@ -1826,6 +1872,7 @@ Project: Creating a children's story
    - Any constraints (length, style, etc.)
 
 2. Email scenarios to address:
+
    - A request for information from a business or organization
    - A professional networking message to someone you briefly met
    - A complaint about a product or service that seeks resolution
@@ -1842,6 +1889,10 @@ Project: Creating a children's story
 
 **Prompt:** `Help me draft an email to my former professor, Dr. Martinez, requesting a letter of recommendation for a graduate school application. We had a positive relationship - I took two of her courses in environmental science and earned A's in both. She also supervised my senior research project last year. The application is due in 3 weeks, and I need the letter submitted online by then. I want the tone to be respectful and professional but not overly formal since we worked closely together. The email should be concise (no more than 3 paragraphs), mention specific accomplishments she observed that would strengthen my application, and offer to provide any additional information she might need.`
 
+--- 
+
+<!-- Start of section: 06-07-conclusion.md -->
+
 ### Moving Forward With Your New Skills
 
 As you complete these activities, you'll likely notice your prompting skills improving and your interactions with ChatGPT becoming more productive. Remember that effective prompting is both an art and a science—while the techniques we've covered provide a solid foundation, your own experimentation and practice will help you develop an intuitive sense for what works best in different situations.
@@ -1849,6 +1900,8 @@ As you complete these activities, you'll likely notice your prompting skills imp
 Keep a record of particularly effective prompts you develop through these exercises. They can serve as templates that you customize for future needs, creating your own personal library of proven prompting strategies.
 
 In the next chapter, we'll build on these fundamentals to explore more advanced applications of ChatGPT, including how to integrate it into your workflow for specific professional and educational contexts.
+
+--- 
 
 <!-- Start of section: 07-conclusion.md -->
 
