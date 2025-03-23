@@ -559,7 +559,7 @@ In the next section, we'll put these ideas into practice with hands-on activitie
 ---
 
 
-<!-- Start of section: 05-activities.md -->
+<!-- Start of section: 05-00-activities-intro.md -->
 
 # Activities: Your First Hands-On AI Experiences
 
@@ -569,9 +569,9 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 
 ![](images/hands-on-learning.jpg)
 
----
+--- 
 
-<div style="page-break-after: always;"></div>
+<!-- Start of section: 05-01-directors-chair.md -->
 
 ## Activity 1: The Director's Chair
 
@@ -612,9 +612,9 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 - What specific elements of your detailed prompt led to improvements in the AI's response?
 - How might you apply this principle of specificity to your own goals when using AI?
 
----
+--- 
 
-<div style="page-break-after: always;"></div>
+<!-- Start of section: 05-02-intelligence-amplifier.md -->
 
 ## Activity 2: Intelligence Amplifier
 
@@ -656,9 +656,9 @@ Remember, there's no better way to learn than by doing. Don't worry about making
 - How did your specific knowledge of the situation help you evaluate the AI's suggestions?
 - What role did you play versus what role did the AI play in this thinking partnership?
 
----
+--- 
 
-<div style="page-break-after: always;"></div>
+<!-- Start of section: 05-03-myth-vs-reality.md -->
 
 ## Activity 3: Myth vs. Reality
 
@@ -696,9 +696,9 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 - How transparent was the AI about its limitations?
 - How would you approach using AI for this topic in the future, knowing these limitations?
 
----
+--- 
 
-<div style="page-break-after: always;"></div>
+<!-- Start of section: 05-04-creative-control.md -->
 
 ## Activity 4: Creative Control
 
@@ -744,9 +744,9 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 - Which aspects required your human judgment and creativity?
 - How does the final result reflect your vision and style, despite using AI assistance?
 
----
+--- 
 
-<div style="page-break-after: always;"></div>
+<!-- Start of section: 05-05-setting-ai-compass.md -->
 
 ## Activity 5: Setting Your AI Compass
 
@@ -792,9 +792,9 @@ Robert, an amateur astronomer, tried this with his hobby: *"I was impressed with
 - How might these guidelines evolve as you gain more experience with AI tools?
 - How do these guidelines reflect your understanding of Actual Intelligence as a human-AI partnership?
 
----
+--- 
 
-<div style="page-break-after: always;"></div>
+<!-- Start of section: 05-06-conclusion.md -->
 
 ## Moving Forward with Confidence
 
@@ -810,8 +810,7 @@ In the chapters ahead, we'll build on these foundations by exploring more specif
 
 For now, take a moment to reflect on what you've discovered about the human-AI partnership and how you might start incorporating these tools into your life in ways that align with your goals and values.
 
----
-# Chapter 2: Mastering ChatGPT with Effective Prompts
+--- # Chapter 2: Mastering ChatGPT with Effective Prompts
 
 ... The Art of Directing AI
 
