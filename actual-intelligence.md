@@ -1367,7 +1367,9 @@ One of the most effective ways to get value from ChatGPT is through multi-turn e
 
 **Example of a productive multi-turn exchange:**
 
-**User:** `I need to explain the water cycle to a 6-year-old. Can you help me with a simple explanation?`
+**User:**
+
+`I need to explain the water cycle to a 6-year-old. Can you help me with a simple explanation?`
 
 **ChatGPT:** *[Provides a basic explanation of the water cycle appropriate for a young child]*
 
@@ -1375,7 +1377,8 @@ One of the most effective ways to get value from ChatGPT is through multi-turn e
 
 **ChatGPT:** *[Suggests an age-appropriate demonstration using common items]*
 
-**User:** `Perfect. Now can you suggest some simple questions I could ask to check their understanding after the explanation and activity?`
+**User:**
+`Perfect. Now can you suggest some simple questions I could ask to check their understanding after the explanation and activity?`
 
 This step-by-step approach often leads to more thorough and useful outcomes than trying to get everything in a single prompt.
 
@@ -1387,7 +1390,9 @@ This step-by-step approach often leads to more thorough and useful outcomes than
 
 **Solution:** Periodically summarize the key points you want to maintain and explicitly discard irrelevant parts of the conversation.
 
-**Example:** `To recap our key points: we're designing a vegetable garden for Zone 7b with clay soil and part shade. Let's focus on these conditions and set aside our earlier discussion about flower gardening.`
+**Example:**
+
+`To recap our key points: we're designing a vegetable garden for Zone 7b with clay soil and part shade. Let's focus on these conditions and set aside our earlier discussion about flower gardening.`
 
 #### Challenge: Lost Context Between Sessions
 
@@ -1395,7 +1400,9 @@ This step-by-step approach often leads to more thorough and useful outcomes than
 
 **Solution:** Start the new session with a brief summary of the previous conversation and any important conclusions reached.
 
-**Example:** `Yesterday we discussed marketing strategies for my small bakery business. We concluded that focusing on local social media and community events would be most effective given my limited budget. Today I'd like to develop a specific 3-month content plan based on those approaches.`
+**Example:**
+
+`Yesterday we discussed marketing strategies for my small bakery business. We concluded that focusing on local social media and community events would be most effective given my limited budget. Today I'd like to develop a specific 3-month content plan based on those approaches.`
 
 #### Challenge: Redirecting a Conversation That's Off Track
 
@@ -1403,7 +1410,9 @@ This step-by-step approach often leads to more thorough and useful outcomes than
 
 **Solution:** Politely but firmly redirect with a clear statement of what you want to focus on.
 
-**Example:** `I notice we've drifted into discussing bread recipes, but I'd like to return to my original question about pricing strategies for specialty baked goods in a small-town market.`
+**Example:**
+
+`I notice we've drifted into discussing bread recipes, but I'd like to return to my original question about pricing strategies for specialty baked goods in a small-town market.`
 
 ### Preparing for Longer Conversations
 
@@ -1445,6 +1454,7 @@ Writing is one of the most popular applications for ChatGPT, whether you're draf
 `I need to write a professional email requesting a deadline extension for a project. The original deadline was March 15, but I need until March 22 due to unexpected supplier delays. My manager is generally understanding but values timeliness.`
 
 **Pro tips:**
+
 - Specify the tone you want (formal, casual, warm, straightforward)
 - Include key points that must be addressed
 - Mention relationship context for more appropriate language
@@ -1458,6 +1468,7 @@ Writing is one of the most popular applications for ChatGPT, whether you're draf
 `Help me develop a character profile for a fantasy novel. She's a middle-aged herbalist with a mysterious past who lives at the edge of a small village. Include personality traits, potential secrets, and how villagers perceive her.`
 
 **Pro tips:**
+
 - Use ChatGPT to overcome writer's block with targeted brainstorming
 - Request specific elements rather than entire stories
 - Use iterative prompting to develop ideas progressively
@@ -1471,6 +1482,7 @@ Writing is one of the most popular applications for ChatGPT, whether you're draf
 `Suggest 3 different ways to rephrase this sentence to sound more professional: [sentence]`
 
 **Pro tips:**
+
 - Provide specific criteria for the type of improvement you want
 - Ask for multiple alternatives to choose from
 - For longer texts, break them into manageable chunks
@@ -1488,6 +1500,7 @@ ChatGPT can serve as a patient, adaptable learning companion for various subject
 `I'm struggling to understand the concept of opportunity cost in economics. Could you explain it using multiple examples, starting with very simple ones and progressing to more complex scenarios?`
 
 **Pro tips:**
+
 - Specify your current knowledge level
 - Ask for examples that relate to your interests or experiences
 - Request explanations from different angles if the first approach doesn't click
@@ -1501,6 +1514,7 @@ ChatGPT can serve as a patient, adaptable learning companion for various subject
 `I'm studying Spanish verb conjugations in the present tense. Can you create a practice exercise with 8 sentences that require me to fill in the correct verb form? Include verbs that follow regular patterns and some irregular verbs like 'tener' and 'ir'.`
 
 **Pro tips:**
+
 - Specify the difficulty level appropriate for your current knowledge
 - Ask for explanations along with answers to deepen understanding
 - Use ChatGPT to create customized practice materials for topics you're struggling with
@@ -1514,9 +1528,10 @@ ChatGPT can serve as a patient, adaptable learning companion for various subject
 `I'd like to start meditation but don't know where to begin. Can you provide a beginner's guide with 5-minute daily practices for the first week? Include guidance on posture, breathing, and managing distractions.`
 
 **Pro tips:**
+
 - Break complex skills into smaller, manageable components
 - Request specific guidance appropriate for your experience level
-- Ask for troubleshooting advice for common challenges beginners face
+- Ask for troubleshooting advice for common challenges beginners encounter
 
 ### Planning and Organization
 
@@ -1531,6 +1546,7 @@ ChatGPT can help structure your thinking and create frameworks for various plann
 `Help me create a packing list for a two-week business trip to Tokyo in November. I'll need professional attire for meetings, casual clothes for evenings, and appropriate items for the seasonal weather. I prefer to pack light and do laundry if necessary.`
 
 **Pro tips:**
+
 - Include specific constraints (budget, mobility, preferences, time)
 - Ask for alternatives in case of weather or other disruptions
 - Break complex trips into manageable segments
@@ -1544,6 +1560,7 @@ ChatGPT can help structure your thinking and create frameworks for various plann
 `I need to plan a virtual team-building activity for 12 colleagues across different time zones (US, Europe, and Asia). The activity should last about 60 minutes, promote collaboration, and be engaging even through video conferencing. What are some options?`
 
 **Pro tips:**
+
 - Specify all important constraints and considerations
 - Ask for contingency options
 - Request timeline and logistical guidance
@@ -1561,6 +1578,7 @@ ChatGPT can spark ideas and provide frameworks for various creative endeavors.
 `Suggest creative storage solutions for a child's bedroom that's only 10ft x 10ft and needs to accommodate toys, books, clothes, and a study area. The child is 9 years old and loves space and dinosaurs.`
 
 **Pro tips:**
+
 - Include specific measurements and constraints
 - Provide information about existing elements that need to be incorporated
 - Ask for solutions at different price points if budget is flexible
@@ -1574,6 +1592,7 @@ ChatGPT can spark ideas and provide frameworks for various creative endeavors.
 `Help me create a weekly meal plan focused on Mediterranean diet principles. I need breakfast, lunch, and dinner options that are practical for a busy professional. Include a shopping list organized by grocery store department.`
 
 **Pro tips:**
+
 - Specify cooking skill level and time constraints
 - Mention dietary preferences or restrictions
 - Ask for substitution options for ingredients you might not have
@@ -1591,6 +1610,7 @@ ChatGPT can help analyze situations and provide frameworks for making decisions.
 `I need to choose between renovating my current home or moving to a new one. Can you suggest a systematic approach to making this decision, including key factors to consider and questions I should answer before deciding?`
 
 **Pro tips:**
+
 - Present as much relevant context as possible
 - Ask for multiple perspectives or frameworks
 - Remember that ChatGPT can help structure your thinking but can't know your personal values
@@ -1604,6 +1624,7 @@ ChatGPT can help analyze situations and provide frameworks for making decisions.
 `My laptop is running extremely slowly. It's a 3-year-old Windows machine with 8GB of RAM. I've already tried restarting it and closing unnecessary applications. What are some potential causes and step-by-step troubleshooting approaches I can try before seeking professional help?`
 
 **Pro tips:**
+
 - Provide detailed information about the problem and context
 - Mention what solutions you've already tried
 - Ask for solutions organized from simplest to most complex
@@ -1621,6 +1642,7 @@ ChatGPT can serve as a supportive resource for various personal development goal
 `Help me design a morning routine that takes 30 minutes and incorporates mindfulness, brief exercise, and planning for the day. I'm not naturally a morning person, so I need something realistic that I can stick with.`
 
 **Pro tips:**
+
 - Be realistic about your starting point and time constraints
 - Ask for strategies to overcome common obstacles
 - Request small, incremental steps rather than dramatic changes
@@ -1634,6 +1656,7 @@ ChatGPT can serve as a supportive resource for various personal development goal
 `I need a system to better manage my email inbox, which currently has over 1,000 unread messages. Suggest a step-by-step approach to regain control and maintain organization going forward, keeping in mind I spend about 2 hours daily on email.`
 
 **Pro tips:**
+
 - Describe your specific challenges rather than general goals
 - Ask for techniques that align with your personal work style
 - Request concrete, actionable steps rather than general advice
@@ -1644,19 +1667,22 @@ To illustrate the impact of effective prompting, let's look at some real-world e
 
 #### Example 1: Recipe Planning
 
-**Basic prompt:** 
+**Basic prompt:**
+
 `Give me some dinner recipes.`
 
 **Result:** Generic list of common recipes without consideration for ingredients, dietary needs, or skill level.
 
-**Improved prompt:** 
+**Improved prompt:**
+
 `I need quick dinner recipes for a family of four, including two children who are picky eaters. We prefer dishes that take less than 30 minutes of prep time, use common pantry ingredients, and are reasonably healthy. One child dislikes most vegetables except corn and carrots, and I'd like options that don't require turning on the oven since it's summer.`
 
 **Result:** Tailored, practical recipes that address specific family needs, with suggestions for ingredient substitutions and tips for appealing to picky eaters.
 
 #### Example 2: Exercise Guidance
 
-**Basic prompt:** 
+**Basic prompt:**
+
 `Give me a workout plan.`
 
 **Result:** Generic fitness routine that may not match your fitness level, goals, or constraints.
