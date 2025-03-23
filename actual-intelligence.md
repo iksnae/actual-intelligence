@@ -1272,7 +1272,7 @@ This iterative approach allows you to guide the development of content or ideas 
 
 The most effective prompting often combines several of these techniques. Here's an example that integrates role assignment, format specification, and examples:
 
-```
+```markdown
 I want you to act as an experienced science teacher for middle school students. Create a lesson plan about photosynthesis that will engage 7th graders with different learning styles. The lesson plan should include:
 
 1. Learning objectives (in bullet points)
