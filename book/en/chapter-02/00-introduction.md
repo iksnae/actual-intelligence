@@ -1,6 +1,8 @@
-# Chapter 2: Mastering ChatGPT with Effective Prompts
+# Chapter 2
 
-... The Art of Directing AI
+## Mastering ChatGPT with Effective Prompts
+
+### The Art of Directing AI
 
 Do you ever find yourself unsure how to ask ChatGPT for what you really want? Or perhaps you've tried using it but thought: *"Is this really all it can do?"*  
 

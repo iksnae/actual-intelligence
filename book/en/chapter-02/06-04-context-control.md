@@ -1,4 +1,6 @@
-### Activity 4: Context Control
+# Activity 4
+
+## Context Control
 
 **Objective:** Practice managing and directing multi-turn conversations.
 

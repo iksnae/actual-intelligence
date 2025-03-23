@@ -1,4 +1,6 @@
-### Activity 6: Email Assistant
+# Activity 6
+
+## Email Assistant
 
 **Objective:** Practice using ChatGPT to draft different types of professional and personal emails.
 

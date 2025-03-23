@@ -1,4 +1,4 @@
-## Moving Forward with Confidence
+# Moving Forward with Confidence
 
 Congratulations on completing these activities! You've taken your first steps toward becoming a skilled AI director. Through these exercises, you've experienced firsthand how your direction shapes AI output, how to maintain control of creative processes, and how to set healthy boundaries for AI use in your life.
 
@@ -12,4 +12,4 @@ In the chapters ahead, we'll build on these foundations by exploring more specif
 
 For now, take a moment to reflect on what you've discovered about the human-AI partnership and how you might start incorporating these tools into your life in ways that align with your goals and values.
 
---- 
+---

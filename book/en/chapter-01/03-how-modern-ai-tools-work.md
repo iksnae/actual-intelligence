@@ -1,6 +1,6 @@
-# How Modern AI Tools Work (Simplified for Non-Technical Readers)
+# How Modern AI Tools Work (for the Non-Technical)
 
-To effectively direct AI tools, you don't need to understand all the technical details—just as you don't need to know exactly how a car engine functions to drive effectively. However, having a basic conceptual understanding will help you set realistic expectations and use these tools more skillfully.
+To effectively direct AI tools, you don't need to understand all the technical details — just as you don't need to know exactly how a car engine functions to drive effectively. However, having a basic conceptual understanding will help you set realistic expectations and use these tools more skillfully.
 
 Let's explore how AI tools like ChatGPT work, using simple analogies that highlight both their capabilities and limitations.
 

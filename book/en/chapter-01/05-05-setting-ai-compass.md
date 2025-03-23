@@ -1,4 +1,6 @@
-## Activity 5: Setting Your AI Compass
+# Activity 5
+
+## Setting Your AI Compass
 
 **Objective:** Develop personal guidelines for how you want to use AI in your life.
 

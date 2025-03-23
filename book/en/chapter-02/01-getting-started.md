@@ -1,4 +1,4 @@
-## Getting Started with ChatGPT
+# Getting Started with ChatGPT
 
 Let's begin with the basics: setting up your ChatGPT account and becoming familiar with the interface.
 

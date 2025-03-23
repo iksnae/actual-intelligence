@@ -4,6 +4,7 @@
 
 
 **What You'll Need:**
+
 - Access to ChatGPT (free account)
 - 10-15 minutes
 
@@ -15,7 +16,7 @@
 1. Open ChatGPT and start a new conversation.
 
 2. First, give a vague prompt and observe the response:
-   
+
    `"Give me some advice."`
 
 3. Now, try a slightly more specific prompt:
@@ -30,11 +31,10 @@
 
 5. Compare the three responses. Notice how the quality and usefulness of the AI's output directly corresponds to the specificity of your direction.
 
-
 **Reflection Questions:**
 
 - Which response was most useful to you, and why?
 - What specific elements of your detailed prompt led to improvements in the AI's response?
 - How might you apply this principle of specificity to your own goals when using AI?
 
---- 
+---

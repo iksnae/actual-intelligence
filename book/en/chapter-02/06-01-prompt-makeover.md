@@ -1,4 +1,6 @@
-### Activity 1: Prompt Makeover
+# Activity 1
+
+## Prompt Makeover
 
 **Objective:** Transform vague prompts into effective, detailed instructions.
 

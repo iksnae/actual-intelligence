@@ -14,7 +14,6 @@ Effective prompting involves the same key practices we explored in the Director'
 **4. Critical Evaluation**: Judge the outputs based on how well they serve your needs
 
 ![](./images/prompt-anatomy.jpg)
-
 *Understanding the anatomy of an effective prompt helps you move from vague requests to clear direction that yields useful results.*
 
 ### What Makes a Good Prompt?

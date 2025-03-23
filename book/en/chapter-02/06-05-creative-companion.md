@@ -1,4 +1,6 @@
-### Activity 5: Creative Companion
+# Activity 5
+
+## Creative Companion
 
 **Objective:** Use ChatGPT for brainstorming and developing creative projects.
 
@@ -36,4 +38,4 @@ Project: Creating a children's story
 
 `I like the concept about the shy octopus who learns to use his unique talents to help other sea creatures. Could you help me develop this further by suggesting: 1) Names for the octopus and 3 other main characters, 2) Three challenges the octopus might face, 3) A surprising twist in the middle of the story, and 4) A satisfying resolution that emphasizes the friendship theme?`
 
---- 
+---

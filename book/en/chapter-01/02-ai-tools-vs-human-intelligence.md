@@ -1,4 +1,6 @@
-# AI Tools vs. Human Intelligence: Understanding the Relationship
+# AI Tools vs. Human Intelligence
+
+## Understanding the Relationship
 
 
 You might be wondering... *"Do I need to learn coding or computer science to use these AI tools effectively?"*

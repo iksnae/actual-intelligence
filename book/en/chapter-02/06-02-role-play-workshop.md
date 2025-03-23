@@ -1,4 +1,6 @@
-### Activity 2: Role Play Workshop
+# Activity 2
+
+## Role Play Workshop
 
 **Objective:** Experiment with assigning different roles to ChatGPT for specific tasks.
 

@@ -1,4 +1,6 @@
-## Activity 4: Creative Control
+# Activity 4
+
+## Creative Control
 
 **Objective:** Practice maintaining ownership of a creative project while using AI as an assistant.
 
@@ -28,6 +30,7 @@
    - Any constraints or requirements
 
 3. Create a series of specific requests for ChatGPT that will help you with different aspects of your project. Instead of asking it to complete the entire project, break it down into components where AI assistance would be helpful. For example, if writing a short story:
+
    - `Suggest three possible opening paragraphs for a story about...`
    - `Help me develop the main character who is...`
    - `Provide some descriptive language for the setting of...`
@@ -45,4 +48,4 @@
 - Which aspects required your human judgment and creativity?
 - How does the final result reflect your vision and style, despite using AI assistance?
 
---- 
+---

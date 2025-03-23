@@ -1,4 +1,5 @@
 # What is **Actual Intelligence**?
+
 *...The Human-AI Partnership*
 
 ## Your First AI Conversation: A Guided Tour
@@ -19,7 +20,7 @@ Maria, a small business owner with no technical background, described her first 
 
 *"I was honestly expecting it to be complicated—like I'd need to learn special commands or something. But it was just like texting. I asked how to write a better email newsletter, and within seconds I had ideas I could actually use. No technical jargon, no complicated setup."*
 
-## Understanding the Human-AI Partnership
+### Understanding the Human-AI Partnership
 
 Think of AI tools like kitchen appliances. A stand mixer can do the hard work of mixing dough, but it doesn't decide what recipe to make or know when the consistency is just right—that's your job. The mixer is very good at its specific task, but you're the one with the taste buds, the creativity to modify recipes, and the knowledge of whether you're baking for someone with dietary restrictions.
 
@@ -31,7 +32,7 @@ Think about the last time you used a powerful tool to solve a problem. Maybe it 
 
 ![](images/human-ai-partnership.jpg)
 
-### The Partnership Model
+#### The Partnership Model
 
 Rather than thinking of AI as some magical entity with a mind of its own, consider this simple relationship:
 
@@ -44,7 +45,7 @@ When you recognize that you're the director and AI is your assistant, you natura
 
 Isn't that a more empowering way to approach these tools?
 
-### The Human Element in Action
+#### The Human Element in Action
 
 Let's see this partnership in action through a real example.
 
@@ -58,7 +59,7 @@ With this context that no AI could possess, Lisa directed ChatGPT with a more sp
 
 The resulting lesson was far more effective because it combined Lisa's understanding of her students with the AI's ability to generate creative teaching ideas. That's Actual Intelligence at work—you remain central to the process while leveraging AI as a powerful tool.
 
-## Creating Your First Personalized Prompt
+### Creating Your First Personalized Prompt
 
 Now it's your turn. Let's create a prompt that's specifically relevant to you. Fill in the blanks below:
 `I work as a _____________ and one challenge I often face is _____________. Could you suggest three ways I might approach this problem?`

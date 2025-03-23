@@ -1,4 +1,6 @@
-## Activity 2: Intelligence Amplifier
+# Activity 2
+
+## Intelligence Amplifier
 
 **Objective:** Use AI as a thinking partner to amplify your own intelligence on a personal challenge.
 

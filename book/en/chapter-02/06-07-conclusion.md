@@ -6,4 +6,4 @@ Keep a record of particularly effective prompts you develop through these exerci
 
 In the next chapter, we'll build on these fundamentals to explore more advanced applications of ChatGPT, including how to integrate it into your workflow for specific professional and educational contexts.
 
---- 
+---

@@ -1,4 +1,6 @@
-## Activity 3: Myth vs. Reality
+# Activity 3
+
+## Myth vs. Reality
 
 **Objective:** Test the limitations of AI to better understand where human intelligence remains essential.
 

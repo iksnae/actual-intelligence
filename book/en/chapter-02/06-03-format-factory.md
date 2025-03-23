@@ -1,4 +1,6 @@
-### Activity 3: Format Factory
+# Activity 3
+
+## Format Factory
 
 **Objective:** Practice specifying different output formats for the same information.
 
