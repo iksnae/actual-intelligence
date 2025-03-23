@@ -161,7 +161,25 @@ $endif$
   tabsize=2,
   commentstyle=\color{codecomment},
   stringstyle=\color{codestring},
-  keywordstyle=\color{codekeyword}\bfseries
+  keywordstyle=\color{codekeyword}\bfseries,
+  
+  % Enhanced line breaking and wrapping
+  breakindent=0.5em,
+  breakautoindent=true,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
+  columns=flexible,
+  extendedchars=true,
+  inputencoding=utf8,
+  upquote=true,
+  literate=
+    {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+    {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+    {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+    {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+    {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+    {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {ç}{{\c c}}1 {Ç}{{\c C}}1
+    {¿}{{?`}}1 {¡}{{!`}}1 
 }
 
 % Additional setup for inline code
@@ -169,6 +187,19 @@ $endif$
 
 % Ensure images are embedded in PDF
 \IfFileExists{luatex85.sty}{\RequirePackage{luatex85}}{}
+
+% Override pandoc's default code block formatting for better wrapping
+\renewenvironment{Shaded}{\begin{lstwrapped}}{\end{lstwrapped}}
+
+% Fix issues with long code lines in PDF
+\renewcommand{\texttt}[1]{%
+  \begingroup
+  \ttfamily
+  \begingroup\lccode`~=`\ \lowercase{\endgroup\def~}{\ \allowbreak}%
+  \catcode`\ =\active
+  \scantokens{#1\noexpand}%
+  \endgroup
+}
 
 % Embed images as resources in the PDF file
 \AtBeginDocument{
@@ -187,6 +218,65 @@ $endif$
   }
   \makeatother
 }
+
+% Ensure code blocks are properly wrapped
+\usepackage{fvextra}  % Enhanced verbatim support
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{
+  commandchars=\\\{\},
+  breaklines=true,
+  breakanywhere=true,
+  breakautoindent=false,
+  fontsize=\small,
+  frame=single,
+  framerule=0.5pt,
+  framesep=3pt,
+  rulecolor=\color{codeframe},
+  fillcolor=\color{codebg}
+}
+
+% Ensure listings wraps long lines better
+\usepackage{varwidth}
+\lstnewenvironment{lstwrapped}[1][]
+  {\minipage{\linewidth}\lstset{#1}}
+  {\endminipage}
+
+% Define common languages for listings
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, finally, for, function, if, in, instanceof, new, return, switch, this, throw, try, typeof, var, void, while, with, let, const, class, export, import, yield, async, await},
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstdefinelanguage{Python}{
+  keywords={and, as, assert, break, class, continue, def, del, elif, else, except, exec, finally, for, from, global, if, import, in, is, lambda, not, or, pass, print, raise, return, try, while, with, yield, self},
+  sensitive=true,
+  comment=[l]{\#},
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstdefinelanguage{HTML}{
+  case=ignore,
+  sensitive=false,
+  keywords={},
+  morestring=[b]",
+  morestring=[b]',
+  morecomment=[s]{<!--}{-->},
+  alsoletter={<>=/},
+  alsodigit={-},
+  otherkeywords={
+    <, </>, </
+  }
+}
+
+% Additional formatting to avoid overflows
+\setlength{\emergencystretch}{3em}
+\setlength{\parindent}{0pt}
+\tolerance=1000
+\hbadness=10000
 
 \begin{document}
 

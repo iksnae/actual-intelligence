@@ -137,6 +137,16 @@ async function buildLanguage(language) {
   // Copy image directories
   copyImageDirectories(language);
   
+  // Process code blocks to ensure proper wrapping in PDF
+  try {
+    console.log('Processing code blocks for proper wrapping...');
+    execSync('chmod +x tools/scripts/fix-code-blocks.sh', { stdio: 'inherit' });
+    execSync('./tools/scripts/fix-code-blocks.sh', { stdio: 'inherit' });
+  } catch (error) {
+    console.warn(`Warning: Failed to process code blocks: ${error.message}`);
+    console.log('Continuing with build process...');
+  }
+  
   // Find all markdown files for this language
   const markdownFiles = await glob(`book/${language}/**/*.md`, { ignore: '**/README.md' });
   
@@ -214,54 +224,7 @@ toc: true
     `${config.outputDir}/${language}/images`,
   ].join(':');
   
-  // Generate PDF using Pandoc
-  try {
-    const pdfFilename = getOutputFilename(language, 'pdf');
-    const pdfFile = path.join(config.outputDir, language === config.defaultLanguage ? pdfFilename : `${language}/${pdfFilename}`);
-    
-    // Check for cover image
-    let coverImagePath = '';
-    const coverPaths = [
-      'art/cover.png',
-      'book/images/cover.png',
-      `book/${language}/images/cover.png`
-    ];
-    
-    for (const imgPath of coverPaths) {
-      if (fs.existsSync(imgPath)) {
-        coverImagePath = imgPath;
-        break;
-      }
-    }
-    
-    const bookTitle = config.titles[language] || config.titles.en;
-    
-    // Use LuaLaTeX instead of XeLaTeX to better handle image embedding
-    const command = `pandoc "${outputMdFile}" -o "${pdfFile}" --pdf-engine=lualatex --toc --metadata=title:"${bookTitle}" --metadata=lang:${language} --resource-path="${resourcePaths}" --template=templates/template.tex --listings --embed-resources --standalone`;
-    console.log(`Running: ${command}`);
-    execSync(command, { stdio: 'inherit' });
-    console.log(`PDF created: ${pdfFile}`);
-    
-    // Verify that images are embedded in the PDF
-    try {
-      console.log(`Verifying embedded images in ${pdfFile}...`);
-      execSync(`chmod +x tools/scripts/verify-embedded-images.sh`, { stdio: 'inherit' });
-      execSync(`tools/scripts/verify-embedded-images.sh "${pdfFile}"`, { stdio: 'inherit' });
-    } catch (verifyError) {
-      console.error(`Warning: Image verification failed: ${verifyError.message}`);
-      console.log('The PDF may still be valid, but images might not be properly embedded.');
-    }
-    
-    // For non-default languages, copy to root folder for release assets
-    if (language !== config.defaultLanguage) {
-      fs.copySync(pdfFile, path.join(config.outputDir, pdfFilename));
-      console.log(`Copied ${pdfFile} to ${path.join(config.outputDir, pdfFilename)}`);
-    }
-  } catch (error) {
-    console.error(`Error generating PDF: ${error.message}`);
-  }
-  
-  // Generate EPUB using Pandoc
+  // Generate EPUB using Pandoc first, as it handles code blocks and images well
   try {
     const epubFilename = getOutputFilename(language, 'epub');
     const epubFile = path.join(config.outputDir, language === config.defaultLanguage ? epubFilename : `${language}/${epubFilename}`);
@@ -294,8 +257,13 @@ toc: true
       fs.copySync(epubFile, path.join(config.outputDir, epubFilename));
       console.log(`Copied ${epubFile} to ${path.join(config.outputDir, epubFilename)}`);
     }
+    
+    // Generate PDF from EPUB using Calibre
+    await generatePDFFromEPUB(epubFile, language);
   } catch (error) {
     console.error(`Error generating EPUB: ${error.message}`);
+    console.log('Falling back to direct PDF generation...');
+    generatePDFFromMarkdown(outputMdFile, resourcePaths, language);
   }
   
   // Generate MOBI using Calibre (from EPUB)
@@ -352,6 +320,125 @@ toc: true
     }
   } catch (error) {
     console.error(`Error generating HTML: ${error.message}`);
+  }
+}
+
+/**
+ * Generate PDF from EPUB using Calibre
+ * @param {string} epubFile Path to the EPUB file
+ * @param {string} language Language code
+ */
+async function generatePDFFromEPUB(epubFile, language) {
+  try {
+    const pdfFilename = getOutputFilename(language, 'pdf');
+    const pdfFile = path.join(config.outputDir, language === config.defaultLanguage ? pdfFilename : `${language}/${pdfFilename}`);
+    
+    console.log(`Generating PDF from EPUB: ${epubFile} -> ${pdfFile}`);
+    
+    const bookTitle = config.titles[language] || config.titles.en;
+    
+    // Create a custom CSS file for better PDF styling
+    const cssFile = path.join(config.outputDir, 'pdf-styles.css');
+    fs.writeFileSync(cssFile, `
+      pre, code {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 0.5em;
+        font-family: monospace;
+      }
+      body {
+        font-family: 'Helvetica', sans-serif;
+        line-height: 1.5;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        color: #2c3e50;
+      }
+    `);
+    
+    // Use ebook-convert from Calibre to convert EPUB to PDF with embedded images
+    const command = `ebook-convert "${epubFile}" "${pdfFile}" --title="${bookTitle}" --authors="K Mills" --publisher="Khaos Studios" --language="${language}" --pdf-page-numbers --pdf-page-margin-bottom=36 --pdf-page-margin-top=36 --pdf-page-margin-left=36 --pdf-page-margin-right=36 --extra-css="${cssFile}" --pdf-default-font-size=11 --pdf-mono-font-size=10 --embed-all-fonts --pdf-add-toc`;
+    console.log(`Running: ${command}`);
+    execSync(command, { stdio: 'inherit' });
+    console.log(`PDF created from EPUB: ${pdfFile}`);
+    
+    // For non-default languages, copy to root folder for release assets
+    if (language !== config.defaultLanguage) {
+      fs.copySync(pdfFile, path.join(config.outputDir, pdfFilename));
+      console.log(`Copied ${pdfFile} to ${path.join(config.outputDir, pdfFilename)}`);
+    }
+  } catch (error) {
+    console.error(`Error generating PDF from EPUB: ${error.message}`);
+    console.log('Falling back to direct PDF generation...');
+    const outputMdFile = path.join(config.outputDir, language === config.defaultLanguage ? getOutputFilename(language, 'markdown') : `${language}/${getOutputFilename(language, 'markdown')}`);
+    const resourcePaths = [
+      '.',
+      'book',
+      `book/${language}`,
+      config.outputDir,
+      `book/${language}/images`,
+      'book/images',
+      `${config.outputDir}/images`,
+      `${config.outputDir}/${language}/images`,
+    ].join(':');
+    generatePDFFromMarkdown(outputMdFile, resourcePaths, language);
+  }
+}
+
+/**
+ * Generate PDF directly from Markdown using Pandoc and LaTeX
+ * This is a fallback method if EPUB conversion fails
+ * @param {string} outputMdFile Path to the markdown file
+ * @param {string} resourcePaths Resource paths for Pandoc
+ * @param {string} language Language code
+ */
+async function generatePDFFromMarkdown(outputMdFile, resourcePaths, language) {
+  try {
+    const pdfFilename = getOutputFilename(language, 'pdf');
+    const pdfFile = path.join(config.outputDir, language === config.defaultLanguage ? pdfFilename : `${language}/${pdfFilename}`);
+    
+    // Check for cover image
+    let coverImagePath = '';
+    const coverPaths = [
+      'art/cover.png',
+      'book/images/cover.png',
+      `book/${language}/images/cover.png`
+    ];
+    
+    for (const imgPath of coverPaths) {
+      if (fs.existsSync(imgPath)) {
+        coverImagePath = imgPath;
+        break;
+      }
+    }
+    
+    const bookTitle = config.titles[language] || config.titles.en;
+    
+    // Use LuaLaTeX instead of XeLaTeX to better handle image embedding
+    const command = `pandoc "${outputMdFile}" -o "${pdfFile}" --pdf-engine=lualatex --toc --metadata=title:"${bookTitle}" --metadata=lang:${language} --resource-path="${resourcePaths}" --template=templates/template.tex --listings --embed-resources --standalone --columns=80 --wrap=auto`;
+    console.log(`Running: ${command}`);
+    execSync(command, { stdio: 'inherit' });
+    console.log(`PDF created from Markdown: ${pdfFile}`);
+    
+    // Verify that images are embedded in the PDF
+    try {
+      console.log(`Verifying embedded images in ${pdfFile}...`);
+      execSync(`chmod +x tools/scripts/verify-embedded-images.sh`, { stdio: 'inherit' });
+      execSync(`tools/scripts/verify-embedded-images.sh "${pdfFile}"`, { stdio: 'inherit' });
+    } catch (verifyError) {
+      console.error(`Warning: Image verification failed: ${verifyError.message}`);
+      console.log('The PDF may still be valid, but images might not be properly embedded.');
+    }
+    
+    // For non-default languages, copy to root folder for release assets
+    if (language !== config.defaultLanguage) {
+      fs.copySync(pdfFile, path.join(config.outputDir, pdfFilename));
+      console.log(`Copied ${pdfFile} to ${path.join(config.outputDir, pdfFilename)}`);
+    }
+  } catch (error) {
+    console.error(`Error generating PDF from Markdown: ${error.message}`);
   }
 }
 
