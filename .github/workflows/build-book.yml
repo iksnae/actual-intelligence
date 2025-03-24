@@ -2,7 +2,7 @@ name: Build Book
 
 on:
   push:
-    # Run on any branch
+    # Run on any branch when book content changes
     paths:
       - 'book/**'
       - 'art/**'
@@ -10,9 +10,16 @@ on:
       - 'build.sh'
       - 'tools/**'
       - '.github/workflows/build-book.yml'
-  workflow_dispatch:
+      - 'book.yaml'  # Configuration file
+  workflow_dispatch:  # Allow manual triggering
+    inputs:
+      release:
+        description: 'Create a release'
+        required: false
+        type: boolean
+        default: false
 
-# Add permissions block to fix 403 error when creating releases
+# Permissions for creating releases and GitHub Pages
 permissions:
   contents: write
   deployments: write
@@ -26,8 +33,54 @@ jobs:
       version: ${{ steps.version.outputs.version }}
       date: ${{ steps.version.outputs.date }}
       cover_found: ${{ steps.cover.outputs.cover_found }}
+      book_title: ${{ steps.config.outputs.book_title }}
+      book_author: ${{ steps.config.outputs.book_author }}
+      file_prefix: ${{ steps.config.outputs.file_prefix }}
+      should_release: ${{ github.ref == 'refs/heads/main' || github.event.inputs.release == 'true' }}
     steps:
       - uses: actions/checkout@v4
+
+      # Load configuration from book.yaml
+      - name: Load configuration
+        id: config
+        run: |
+          if [ -f "book.yaml" ]; then
+            echo "Using configuration from book.yaml"
+            # Extract book title
+            BOOK_TITLE=$(grep 'title:' book.yaml | head -n 1 | cut -d':' -f2- | sed 's/^[ \t]*//' | sed 's/\"//g')
+            echo "book_title=$BOOK_TITLE" >> $GITHUB_OUTPUT
+            echo "BOOK_TITLE=$BOOK_TITLE" >> $GITHUB_ENV
+            
+            # Extract book author
+            BOOK_AUTHOR=$(grep 'author:' book.yaml | head -n 1 | cut -d':' -f2- | sed 's/^[ \t]*//' | sed 's/\"//g')
+            echo "book_author=$BOOK_AUTHOR" >> $GITHUB_OUTPUT
+            echo "BOOK_AUTHOR=$BOOK_AUTHOR" >> $GITHUB_ENV
+            
+            # Extract file prefix
+            FILE_PREFIX=$(grep 'file_prefix:' book.yaml | head -n 1 | cut -d':' -f2- | sed 's/^[ \t]*//' | sed 's/\"//g')
+            if [ -n "$FILE_PREFIX" ]; then
+              echo "file_prefix=$FILE_PREFIX" >> $GITHUB_OUTPUT
+              echo "FILE_PREFIX=$FILE_PREFIX" >> $GITHUB_ENV
+            else
+              # Default to lowercase book title with hyphens
+              FILE_PREFIX=$(echo "$BOOK_TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
+              echo "file_prefix=$FILE_PREFIX" >> $GITHUB_OUTPUT
+              echo "FILE_PREFIX=$FILE_PREFIX" >> $GITHUB_ENV
+            fi
+          else
+            echo "No book.yaml found, using default values"
+            echo "book_title=Actual Intelligence" >> $GITHUB_OUTPUT
+            echo "BOOK_TITLE=Actual Intelligence" >> $GITHUB_ENV
+            echo "book_author=K Mills" >> $GITHUB_OUTPUT
+            echo "BOOK_AUTHOR=K Mills" >> $GITHUB_ENV
+            echo "file_prefix=actual-intelligence" >> $GITHUB_OUTPUT
+            echo "FILE_PREFIX=actual-intelligence" >> $GITHUB_ENV
+          fi
+          
+          # Print the configuration values for debugging
+          echo "Book Title: $BOOK_TITLE"
+          echo "Book Author: $BOOK_AUTHOR"
+          echo "File Prefix: $FILE_PREFIX"
 
       - name: Set version and date
         id: version
@@ -68,40 +121,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Prepare environment
+      - name: Install book-tools
         run: |
-          mkdir -p build
-          mkdir -p templates
-          mkdir -p build/images
-          mkdir -p build/es
-          mkdir -p build/es/images
-          
-          # Fix permissions on script files
-          chmod +x build.sh
-          find tools/scripts -name "*.sh" -exec chmod +x {} \;
+          echo "Installing book-tools..."
+          curl -sSL https://raw.githubusercontent.com/iksnae/book-tools/main/install.sh | bash
+          echo "✅ book-tools installed"
 
-      - name: Check source directories
+      - name: Build book
         run: |
-          echo "=== Book Content Structure ==="
-          find book -type d | sort
-          
-          echo "=== English Content ==="
-          ls -la book/en/
-          
-          echo "=== Spanish Content ==="
-          ls -la book/es/ || echo "No Spanish content found"
-
-      - name: Build book (All languages)
-        run: |
-          echo "Running build script for all languages..."
-          # Run the build script with all languages
-          ./build.sh --all-languages || echo "Build script completed with warnings"
-          
-      - name: Run Spanish build fix script
-        run: |
-          echo "Running Spanish build fix script..."
-          chmod +x tools/scripts/fix-spanish-build.sh
-          ./tools/scripts/fix-spanish-build.sh
+          echo "Building book with book-tools..."
+          book-tools build --all-languages --verbose
 
       - name: List build directory contents
         run: |
@@ -111,54 +140,8 @@ jobs:
           echo "=== ES Directory Contents ==="
           ls -la build/es/ || echo "ES directory may not exist yet"
           
-          echo "=== Images Directory Contents ==="
-          ls -la build/images/ || echo "Images directory may not exist yet"
-
-      - name: Verify book files
-        run: |
-          echo "=== Verifying English Files ==="
-          if [ -f "build/actual-intelligence.pdf" ]; then
-            echo "✅ English PDF exists"
-            du -h build/actual-intelligence.pdf
-          else
-            echo "❌ English PDF missing"
-          fi
-          
-          if [ -f "build/actual-intelligence.epub" ]; then
-            echo "✅ English EPUB exists"
-            du -h build/actual-intelligence.epub
-          else
-            echo "❌ English EPUB missing"
-          fi
-          
-          if [ -f "build/actual-intelligence.mobi" ]; then
-            echo "✅ English MOBI exists"
-            du -h build/actual-intelligence.mobi
-          else
-            echo "❌ English MOBI missing"
-          fi
-          
-          echo "=== Verifying Spanish Files ==="
-          if [ -f "build/inteligencia-real.pdf" ]; then
-            echo "✅ Spanish PDF exists"
-            du -h build/inteligencia-real.pdf
-          else
-            echo "❌ Spanish PDF missing"
-          fi
-          
-          if [ -f "build/inteligencia-real.epub" ]; then
-            echo "✅ Spanish EPUB exists"
-            du -h build/inteligencia-real.epub
-          else
-            echo "❌ Spanish EPUB missing"
-          fi
-          
-          if [ -f "build/inteligencia-real.mobi" ]; then
-            echo "✅ Spanish MOBI exists"
-            du -h build/inteligencia-real.mobi
-          else
-            echo "❌ Spanish MOBI missing"
-          fi
+          echo "=== Book File Sizes ==="
+          find build/ -name "*.pdf" -o -name "*.epub" -o -name "*.mobi" -o -name "*.html" -o -name "*.docx" | xargs du -h 2>/dev/null || echo "Some files may be missing"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -170,16 +153,16 @@ jobs:
             build/*.mobi
             build/*.html
             build/*.md
+            build/*.docx
             build/es/**
             build/images/**
 
   release:
-    # Only run release job on main branch
-    if: github.ref == 'refs/heads/main'
+    # Only run release job when releasing
+    if: needs.setup.outputs.should_release == 'true'
     needs: [setup, build]
     runs-on: ubuntu-latest
     steps:
-      # Add checkout step so Git commands work properly
       - uses: actions/checkout@v4
 
       - name: Download artifacts
@@ -188,35 +171,23 @@ jobs:
           name: book-files
           path: build
 
-      - name: List build directory contents
-        run: |
-          echo "=== Build Directory Contents ==="
-          ls -la build/
-          
-          echo "=== ES Directory Contents ==="
-          ls -la build/es/ || echo "ES directory may not exist yet"
-          
-          echo "=== Book File Sizes ==="
-          du -h build/*.pdf build/*.epub build/*.mobi 2>/dev/null || echo "Some files may be missing"
-
       - name: Create release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            build/actual-intelligence.pdf
-            build/actual-intelligence.epub
-            build/actual-intelligence.mobi
-            build/actual-intelligence.html
-            build/inteligencia-real.pdf
-            build/inteligencia-real.epub
-            build/inteligencia-real.mobi
+            build/*.pdf
+            build/*.epub
+            build/*.mobi
+            build/*.html
+            build/*.docx
           tag_name: ${{ needs.setup.outputs.version }}
-          name: Actual Intelligence ${{ needs.setup.outputs.version }}
+          name: ${{ needs.setup.outputs.book_title }} ${{ needs.setup.outputs.version }}
           body: |
-            # Actual Intelligence Book
+            # ${{ needs.setup.outputs.book_title }}
             
-            Built on ${{ needs.setup.outputs.date }} by Khaos Studios
+            By ${{ needs.setup.outputs.book_author }}
+            Built on ${{ needs.setup.outputs.date }}
             
             ## 📚 Download Options
             
@@ -224,29 +195,31 @@ jobs:
             
             | Format | Description | Link |
             |--------|-------------|------|
-            | 📄 PDF | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/actual-intelligence.pdf) |
-            | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/actual-intelligence.epub) |
-            | 📚 MOBI | For Kindle devices | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/actual-intelligence.mobi) |
-            | 🌐 HTML | Read online in your browser | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/actual-intelligence.html) |
+            | 📄 PDF | For reading on computers and printing | [Download PDF](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/${{ needs.setup.outputs.file_prefix }}.pdf) |
+            | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/${{ needs.setup.outputs.file_prefix }}.epub) |
+            | 📚 MOBI | For Kindle devices | [Download MOBI](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/${{ needs.setup.outputs.file_prefix }}.mobi) |
+            | 🌐 HTML | Read online in your browser | [View HTML](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/${{ needs.setup.outputs.file_prefix }}.html) |
+            | 📝 DOCX | For Microsoft Word editing | [Download DOCX](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/${{ needs.setup.outputs.file_prefix }}.docx) |
             
             ### Spanish Version (Versión en Español)
             
             | Format | Description | Link |
             |--------|-------------|------|
-            | 📄 PDF | Para leer en computadoras e imprimir | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.pdf) |
-            | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.epub) |
-            | 📚 MOBI | Para dispositivos Kindle | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.mobi) |
+            | 📄 PDF | Para leer en computadoras e imprimir | [Descargar PDF](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.pdf) |
+            | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.epub) |
+            | 📚 MOBI | Para dispositivos Kindle | [Descargar MOBI](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.mobi) |
+            | 📝 DOCX | Para editar en Microsoft Word | [Descargar DOCX](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.docx) |
             
             ## 🔄 Web Version
             
             The latest version is also available online:
-            - English: https://iksnae.github.io/actual-intelligence/
-            - Spanish: https://iksnae.github.io/actual-intelligence/es/
+            - English: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+            - Spanish: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/es/
           draft: false
 
   deploy:
-    # Only run deploy job on main branch
-    if: github.ref == 'refs/heads/main'
+    # Only deploy to GitHub Pages when releasing
+    if: needs.setup.outputs.should_release == 'true'
     needs: [build, release]
     runs-on: ubuntu-latest
     steps:

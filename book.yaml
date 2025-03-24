@@ -1,0 +1,32 @@
+title: "Actual Intelligence"
+subtitle: "A Practical Guide to Using AI in Everyday Life"
+author: "K Mills"
+publisher: "Khaos Studios"
+rights: "Copyright © 2024"
+description: "A comprehensive guide to practical AI applications in everyday life"
+languages: [en, es]
+file_prefix: "actual-intelligence"
+
+# Output format settings
+pdf:
+  enabled: true
+  fontsize: 11pt
+  papersize: letter
+  margin: 1in
+  lineheight: 1.5
+
+epub:
+  enabled: true
+  css: "templates/book.css"
+  cover_image: "art/cover.png"
+
+mobi:
+  enabled: true
+
+html:
+  enabled: true
+  css: "templates/book.css"
+  template: "templates/template.html"
+
+docx:
+  enabled: true 
