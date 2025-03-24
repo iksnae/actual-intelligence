@@ -153,25 +153,44 @@ jobs:
           mkdir -p ~/.book-tools/book/en
           mkdir -p ~/.book-tools/resources/images
           
-          # Copy our book content
-          cp -r $GITHUB_WORKSPACE/book/* ~/.book-tools/book/
-          cp $GITHUB_WORKSPACE/book.yaml ~/.book-tools/
+          # Copy book content if it exists
+          if [ -d "$GITHUB_WORKSPACE/book" ]; then
+            echo "Copying book content..."
+            cp -r $GITHUB_WORKSPACE/book/* ~/.book-tools/book/ || echo "Warning: Some files could not be copied"
+          else
+            echo "Creating book directory structure..."
+            mkdir -p ~/.book-tools/book/en
+          fi
+          
+          # Copy book.yaml if it exists
+          if [ -f "$GITHUB_WORKSPACE/book.yaml" ]; then
+            echo "Copying book.yaml..."
+            cp $GITHUB_WORKSPACE/book.yaml ~/.book-tools/
+          else
+            echo "Warning: book.yaml not found"
+          fi
           
           # Copy images from various possible locations
+          echo "Copying images..."
           if [ -d "$GITHUB_WORKSPACE/art" ]; then
-            cp -r $GITHUB_WORKSPACE/art/* ~/.book-tools/resources/images/
+            echo "Copying from art directory..."
+            cp -r $GITHUB_WORKSPACE/art/* ~/.book-tools/resources/images/ || echo "Warning: Some art files could not be copied"
           fi
+          
           if [ -d "$GITHUB_WORKSPACE/book/images" ]; then
-            cp -r $GITHUB_WORKSPACE/book/images/* ~/.book-tools/resources/images/
+            echo "Copying from book/images directory..."
+            cp -r $GITHUB_WORKSPACE/book/images/* ~/.book-tools/resources/images/ || echo "Warning: Some book images could not be copied"
           fi
+          
           if [ -d "$GITHUB_WORKSPACE/book/en/images" ]; then
-            cp -r $GITHUB_WORKSPACE/book/en/images/* ~/.book-tools/resources/images/
+            echo "Copying from book/en/images directory..."
+            cp -r $GITHUB_WORKSPACE/book/en/images/* ~/.book-tools/resources/images/ || echo "Warning: Some English images could not be copied"
           fi
           
           echo "Book content:"
-          ls -la ~/.book-tools/book/
+          ls -la ~/.book-tools/book/ || echo "Book directory is empty"
           echo "Book config:"
-          cat ~/.book-tools/book.yaml
+          cat ~/.book-tools/book.yaml || echo "No book.yaml found"
           echo "Images:"
           ls -la ~/.book-tools/resources/images/ || echo "No images found"
 
