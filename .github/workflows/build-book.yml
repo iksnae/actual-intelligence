@@ -146,15 +146,33 @@ jobs:
           echo "✅ book-tools installed successfully"
           which book-tools
 
+      - name: Setup book content
+        run: |
+          echo "Setting up book content..."
+          # Create book directory structure in ~/.book-tools
+          mkdir -p ~/.book-tools/book/en
+          
+          # Copy our book content
+          cp -r $GITHUB_WORKSPACE/book/* ~/.book-tools/book/
+          cp $GITHUB_WORKSPACE/book.yaml ~/.book-tools/
+          
+          echo "Book content:"
+          ls -la ~/.book-tools/book/
+          echo "Book config:"
+          cat ~/.book-tools/book.yaml
+
       - name: Build book
         run: |
           echo "Building book with book-tools..."
           export PATH="$HOME/.local/bin:$PATH"
-          # Ensure we're in the correct directory
-          cd $GITHUB_WORKSPACE
+          cd ~/.book-tools
           pwd
           ls -la
           book-tools build --all-languages --verbose
+          
+          # Copy built files back to workspace
+          mkdir -p $GITHUB_WORKSPACE/build
+          cp -r ~/.book-tools/build/* $GITHUB_WORKSPACE/build/
 
       - name: List build directory contents
         run: |
