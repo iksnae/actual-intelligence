@@ -121,15 +121,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Install book-tools
+      - name: Setup book-tools
         run: |
-          echo "Installing book-tools..."
-          curl -sSL https://raw.githubusercontent.com/iksnae/book-tools/main/install.sh | bash
-          echo "✅ book-tools installed"
+          echo "Setting up book-tools..."
+          # Create required directories
+          mkdir -p ~/.local/bin
+          
+          # Clone book-tools repository
+          git clone https://github.com/iksnae/book-tools.git ~/.book-tools
+          
+          # Make scripts executable
+          cd ~/.book-tools/src/scripts
+          chmod +x *.sh
+          
+          # Create book-tools command
+          echo '#!/bin/bash' > ~/.local/bin/book-tools
+          echo 'exec ~/.book-tools/src/scripts/build.sh "$@"' >> ~/.local/bin/book-tools
+          chmod +x ~/.local/bin/book-tools
+          
+          # Add to PATH
+          export PATH="$HOME/.local/bin:$PATH"
+          echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.bashrc
+          
+          echo "✅ book-tools installed successfully"
+          which book-tools
 
       - name: Build book
         run: |
           echo "Building book with book-tools..."
+          export PATH="$HOME/.local/bin:$PATH"
           book-tools build --all-languages --verbose
 
       - name: List build directory contents
