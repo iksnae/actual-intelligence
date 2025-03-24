@@ -15,10 +15,12 @@ else
     cd ~/.book-tools/src/scripts
     chmod +x *.sh
     echo '#!/bin/bash' > ~/.local/bin/book-tools
-    echo 'exec ~/.book-tools/src/scripts/build.sh "$@"' >> ~/.local/bin/book-tools
+    echo 'exec ~/.book-tools/src/scripts/build.sh \"\$@\"' >> ~/.local/bin/book-tools
     chmod +x ~/.local/bin/book-tools
     export PATH=\"\$HOME/.local/bin:\$PATH\"
     cd /book
+    pwd
+    ls -la
     book-tools build $*
   "
   exit $?
@@ -41,4 +43,8 @@ fi
 
 # Run book-tools build with all arguments passed to this script
 export PATH="$HOME/.local/bin:$PATH"
+# Ensure we're in the correct directory
+cd "$(dirname "$0")"
+pwd
+ls -la
 book-tools build "$@"

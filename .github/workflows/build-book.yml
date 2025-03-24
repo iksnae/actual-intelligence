@@ -150,18 +150,23 @@ jobs:
         run: |
           echo "Building book with book-tools..."
           export PATH="$HOME/.local/bin:$PATH"
+          # Ensure we're in the correct directory
+          cd $GITHUB_WORKSPACE
+          pwd
+          ls -la
           book-tools build --all-languages --verbose
 
       - name: List build directory contents
         run: |
           echo "=== Build Directory Contents ==="
-          ls -la build/
+          cd $GITHUB_WORKSPACE
+          ls -la build/ || echo "Build directory not found"
           
           echo "=== ES Directory Contents ==="
           ls -la build/es/ || echo "ES directory may not exist yet"
           
           echo "=== Book File Sizes ==="
-          find build/ -name "*.pdf" -o -name "*.epub" -o -name "*.mobi" -o -name "*.html" -o -name "*.docx" | xargs du -h 2>/dev/null || echo "Some files may be missing"
+          find build/ -type f \( -name "*.pdf" -o -name "*.epub" -o -name "*.mobi" -o -name "*.html" -o -name "*.docx" \) -exec du -h {} \; 2>/dev/null || echo "Some files may be missing"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
