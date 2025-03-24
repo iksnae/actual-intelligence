@@ -151,15 +151,29 @@ jobs:
           echo "Setting up book content..."
           # Create book directory structure in ~/.book-tools
           mkdir -p ~/.book-tools/book/en
+          mkdir -p ~/.book-tools/resources/images
           
           # Copy our book content
           cp -r $GITHUB_WORKSPACE/book/* ~/.book-tools/book/
           cp $GITHUB_WORKSPACE/book.yaml ~/.book-tools/
           
+          # Copy images from various possible locations
+          if [ -d "$GITHUB_WORKSPACE/art" ]; then
+            cp -r $GITHUB_WORKSPACE/art/* ~/.book-tools/resources/images/
+          fi
+          if [ -d "$GITHUB_WORKSPACE/book/images" ]; then
+            cp -r $GITHUB_WORKSPACE/book/images/* ~/.book-tools/resources/images/
+          fi
+          if [ -d "$GITHUB_WORKSPACE/book/en/images" ]; then
+            cp -r $GITHUB_WORKSPACE/book/en/images/* ~/.book-tools/resources/images/
+          fi
+          
           echo "Book content:"
           ls -la ~/.book-tools/book/
           echo "Book config:"
           cat ~/.book-tools/book.yaml
+          echo "Images:"
+          ls -la ~/.book-tools/resources/images/ || echo "No images found"
 
       - name: Build book
         run: |
