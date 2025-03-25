@@ -154,3 +154,17 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for det
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Creating a Release
+
+To create a new release that will automatically build and publish all book formats:
+
+1. Make sure all your changes are committed and pushed to the main branch
+2. Run the release script with the desired version number:
+   ```bash
+   ./tag-release.sh v1.0.0
+   ```
+3. The script will create a git tag and push it to GitHub
+4. The GitHub Actions workflow will automatically build all book formats and create a release
+
+You can find all releases on the [GitHub Releases page](https://github.com/iksnae/actual-intelligence/releases).
