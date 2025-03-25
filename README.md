@@ -63,9 +63,53 @@ The book is organized into five main parts:
 
 We now use the `book-tools` CLI directly. To build the book:
 
-1. Install the CLI using the official installation script:
+1. Install the CLI using our robust installation method:
    ```bash
-   curl -sSL https://raw.githubusercontent.com/iksnae/book-tools/main/install.sh | bash
+   # Clone the repository
+   git clone https://github.com/iksnae/book-tools.git ~/.book-tools
+   
+   # Make scripts executable
+   cd ~/.book-tools/src
+   chmod +x make-scripts-executable.sh
+   ./make-scripts-executable.sh
+   
+   # Create wrapper script
+   mkdir -p ~/.local/bin
+   cat > ~/.local/bin/book-tools << 'EOF'
+#!/bin/bash
+
+BOOK_TOOLS_DIR="$HOME/.book-tools"
+COMMAND=$1
+shift
+
+# Check for commands
+case "$COMMAND" in
+  create)
+    "$BOOK_TOOLS_DIR/src/scripts/create-book.sh" "$@"
+    ;;
+  build)
+    "$BOOK_TOOLS_DIR/src/scripts/build.sh" "$(pwd)" "$@"
+    ;;
+  setup)
+    "$BOOK_TOOLS_DIR/src/scripts/setup.sh" "$@"
+    ;;
+  help)
+    echo "Usage: book-tools COMMAND [options]"
+    echo ""
+    echo "Commands:"
+    echo "  create    Create a new book project"
+    echo "  build     Build a book in the current directory"
+    echo "  setup     Setup the book environment"
+    echo "  help      Show this help message"
+    ;;
+  *)
+    echo "Unknown command: $COMMAND"
+    echo "Use 'book-tools help' for usage information"
+    exit 1
+    ;;
+esac
+EOF
+   chmod +x ~/.local/bin/book-tools
    ```
 
 2. Add the CLI to your PATH:
@@ -86,7 +130,7 @@ We now use the `book-tools` CLI directly. To build the book:
 Available commands include:
 - `book-tools build` - Build the book in various formats
 - `book-tools create` - Create a new book project
-- `book-tools build-docker` - Build using Docker (recommended)
+- `book-tools setup` - Setup the book environment
 - `book-tools help` - Show help information
 
 ### Prerequisites

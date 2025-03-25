@@ -19,8 +19,8 @@ jobs:
       run: |
         echo "Setting up book-tools CLI..."
         
-        # Install book-tools using the recommended installation script
-        curl -sSL https://raw.githubusercontent.com/iksnae/book-tools/main/install.sh | bash
+        # Run our custom installation script
+        bash .github/custom-install.sh
         
         # Add to PATH
         export PATH="$HOME/.local/bin:$PATH"
