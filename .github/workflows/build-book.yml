@@ -1,123 +1,19 @@
-name: Build Book
+name: Build and Release Book
 
 on:
   push:
-    # Run on any branch when book content changes
-    paths:
-      - 'book/**'
-      - 'art/**'
-      - 'templates/**'
-      - 'build.sh'
-      - 'tools/**'
-      - '.github/workflows/build-book.yml'
-      - 'book.yaml'  # Configuration file
-  workflow_dispatch:  # Allow manual triggering
-    inputs:
-      release:
-        description: 'Create a release'
-        required: false
-        type: boolean
-        default: false
-
-# Permissions for creating releases and GitHub Pages
-permissions:
-  contents: write
-  deployments: write
+    branches: [ main ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    container:
-      image: iksnae/book-builder:latest
-    outputs:
-      version: ${{ steps.version.outputs.version }}
-      date: ${{ steps.version.outputs.date }}
-      cover_found: ${{ steps.cover.outputs.cover_found }}
-      book_title: ${{ steps.config.outputs.book_title }}
-      book_author: ${{ steps.config.outputs.book_author }}
-      file_prefix: ${{ steps.config.outputs.file_prefix }}
-      should_release: ${{ github.ref == 'refs/heads/main' || github.event.inputs.release == 'true' }}
-    steps:
-      - uses: actions/checkout@v4
-
-      # Load configuration from book.yaml
-      - name: Load configuration
-        id: config
-        run: |
-          if [ -f "book.yaml" ]; then
-            echo "Using configuration from book.yaml"
-            # Extract book title
-            BOOK_TITLE=$(grep 'title:' book.yaml | head -n 1 | cut -d':' -f2- | sed 's/^[ \t]*//' | sed 's/\"//g')
-            echo "book_title=$BOOK_TITLE" >> $GITHUB_OUTPUT
-            echo "BOOK_TITLE=$BOOK_TITLE" >> $GITHUB_ENV
-            
-            # Extract book author
-            BOOK_AUTHOR=$(grep 'author:' book.yaml | head -n 1 | cut -d':' -f2- | sed 's/^[ \t]*//' | sed 's/\"//g')
-            echo "book_author=$BOOK_AUTHOR" >> $GITHUB_OUTPUT
-            echo "BOOK_AUTHOR=$BOOK_AUTHOR" >> $GITHUB_ENV
-            
-            # Extract file prefix
-            FILE_PREFIX=$(grep 'file_prefix:' book.yaml | head -n 1 | cut -d':' -f2- | sed 's/^[ \t]*//' | sed 's/\"//g')
-            if [ -n "$FILE_PREFIX" ]; then
-              echo "file_prefix=$FILE_PREFIX" >> $GITHUB_OUTPUT
-              echo "FILE_PREFIX=$FILE_PREFIX" >> $GITHUB_ENV
-            else
-              # Default to lowercase book title with hyphens
-              FILE_PREFIX=$(echo "$BOOK_TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g')
-              echo "file_prefix=$FILE_PREFIX" >> $GITHUB_OUTPUT
-              echo "FILE_PREFIX=$FILE_PREFIX" >> $GITHUB_ENV
-            fi
-          else
-            echo "No book.yaml found, using default values"
-            echo "book_title=Actual Intelligence" >> $GITHUB_OUTPUT
-            echo "BOOK_TITLE=Actual Intelligence" >> $GITHUB_ENV
-            echo "book_author=K Mills" >> $GITHUB_OUTPUT
-            echo "BOOK_AUTHOR=K Mills" >> $GITHUB_ENV
-            echo "file_prefix=actual-intelligence" >> $GITHUB_OUTPUT
-            echo "FILE_PREFIX=actual-intelligence" >> $GITHUB_ENV
-          fi
-          
-          # Print the configuration values for debugging
-          echo "Book Title: $BOOK_TITLE"
-          echo "Book Author: $BOOK_AUTHOR"
-          echo "File Prefix: $FILE_PREFIX"
-
-      - name: Set version and date
-        id: version
-        run: |
-          VERSION=$(date +'v%Y.%m.%d-%H%M')
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          
-          DATE=$(date +'%B %d, %Y')
-          echo "DATE=$DATE" >> $GITHUB_ENV
-          echo "date=$DATE" >> $GITHUB_OUTPUT
-
-      - name: Check for cover image
-        id: cover
-        run: |
-          if [ -f "art/cover.png" ]; then
-            echo "COVER_IMAGE=art/cover.png" >> $GITHUB_ENV
-            echo "✅ Found cover image at art/cover.png"
-            echo "cover_found=true" >> $GITHUB_OUTPUT
-          elif [ -f "book/images/cover.png" ]; then
-            echo "COVER_IMAGE=book/images/cover.png" >> $GITHUB_ENV
-            echo "✅ Found cover image at book/images/cover.png"
-            echo "cover_found=true" >> $GITHUB_OUTPUT
-          elif [ -f "book/en/images/cover.png" ]; then
-            echo "COVER_IMAGE=book/en/images/cover.png" >> $GITHUB_ENV
-            echo "✅ Found cover image at book/en/images/cover.png"
-            echo "cover_found=true" >> $GITHUB_OUTPUT
-          else
-            echo "⚠️ No cover image found"
-            echo "cover_found=false" >> $GITHUB_OUTPUT
-          fi
-
   build:
-    needs: setup
     runs-on: ubuntu-latest
-    container:
-      image: iksnae/book-builder:latest
+    container: iksnae/book-builder:latest
+
     steps:
       - uses: actions/checkout@v4
       
@@ -144,108 +40,49 @@ jobs:
           echo "Generated files:"
           find build/ -type f \( -name "*.pdf" -o -name "*.epub" -o -name "*.mobi" -o -name "*.html" -o -name "*.docx" \) -exec ls -la {} \;
 
-      - name: List build directory contents
-        run: |
-          echo "=== Build Directory Contents ==="
-          cd $GITHUB_WORKSPACE
-          ls -la build/ || echo "Build directory not found"
-          
-          echo "=== ES Directory Contents ==="
-          ls -la build/es/ || echo "ES directory may not exist yet"
-          
-          echo "=== Book File Sizes ==="
-          find build/ -type f \( -name "*.pdf" -o -name "*.epub" -o -name "*.mobi" -o -name "*.html" -o -name "*.docx" \) -exec du -h {} \; 2>/dev/null || echo "Some files may be missing"
-
-      - name: Upload artifacts
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: book-files
-          path: |
-            build/*.pdf
-            build/*.epub
-            build/*.mobi
-            build/*.html
-            build/*.md
-            build/*.docx
-            build/es/**
-            build/images/**
+          name: book-builds
+          path: build/
 
   release:
-    # Only run release job when releasing
-    if: needs.setup.outputs.should_release == 'true'
-    needs: [setup, build]
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Download artifacts
+      - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          name: book-files
+          name: book-builds
           path: build
 
-      - name: Create release
+      - name: List all files
+        run: find build -type f | sort
+
+      - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            build/*.pdf
-            build/*.epub
-            build/*.mobi
-            build/*.html
-            build/*.docx
-          tag_name: ${{ needs.setup.outputs.version }}
-          name: ${{ needs.setup.outputs.book_title }} ${{ needs.setup.outputs.version }}
-          body: |
-            # ${{ needs.setup.outputs.book_title }}
-            
-            By ${{ needs.setup.outputs.book_author }}
-            Built on ${{ needs.setup.outputs.date }}
-            
-            ## 📚 Download Options
-            
-            ### English Version
-            
-            | Format | Description | Link |
-            |--------|-------------|------|
-            | 📄 PDF | For reading on computers and printing | [Download PDF](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/${{ needs.setup.outputs.file_prefix }}.pdf) |
-            | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/${{ needs.setup.outputs.file_prefix }}.epub) |
-            | 📚 MOBI | For Kindle devices | [Download MOBI](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/${{ needs.setup.outputs.file_prefix }}.mobi) |
-            | 🌐 HTML | Read online in your browser | [View HTML](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/${{ needs.setup.outputs.file_prefix }}.html) |
-            | 📝 DOCX | For Microsoft Word editing | [Download DOCX](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/${{ needs.setup.outputs.file_prefix }}.docx) |
-            
-            ### Spanish Version (Versión en Español)
-            
-            | Format | Description | Link |
-            |--------|-------------|------|
-            | 📄 PDF | Para leer en computadoras e imprimir | [Descargar PDF](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.pdf) |
-            | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.epub) |
-            | 📚 MOBI | Para dispositivos Kindle | [Descargar MOBI](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.mobi) |
-            | 📝 DOCX | Para editar en Microsoft Word | [Descargar DOCX](https://github.com/${{ github.repository }}/releases/download/${{ needs.setup.outputs.version }}/inteligencia-real.docx) |
-            
-            ## 🔄 Web Version
-            
-            The latest version is also available online:
-            - English: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
-            - Spanish: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/es/
+            build/en/*.pdf
+            build/en/*.epub
+            build/en/*.mobi
+            build/en/*.docx
+            build/es/*.pdf
+            build/es/*.epub
+            build/es/*.mobi
+            build/es/*.docx
           draft: false
-
-  deploy:
-    # Only deploy to GitHub Pages when releasing
-    if: needs.setup.outputs.should_release == 'true'
-    needs: [build, release]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: book-files
-          path: build
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: build
-          branch: gh-pages
+          prerelease: false
+          name: Release ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          body: |
+            Automated release of book build artifacts.
+            
+            Includes:
+            - PDF versions
+            - EPUB versions
+            - MOBI versions
+            - DOCX versions
