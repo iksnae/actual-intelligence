@@ -12,16 +12,13 @@ else
     # Setup book-tools
     mkdir -p ~/.local/bin
     git clone https://github.com/iksnae/book-tools.git ~/.book-tools
-    cd ~/.book-tools/src/scripts
-    chmod +x *.sh
-    echo '#!/bin/bash' > ~/.local/bin/book-tools
-    echo 'exec ~/.book-tools/src/scripts/build.sh \"\$@\"' >> ~/.local/bin/book-tools
-    chmod +x ~/.local/bin/book-tools
+    cd ~/.book-tools
+    chmod +x tools/scripts/*.sh
     export PATH=\"\$HOME/.local/bin:\$PATH\"
     cd /book
     pwd
     ls -la
-    book-tools build $*
+    ~/.book-tools/tools/scripts/build-language.sh --all-languages
   "
   exit $?
 fi
@@ -32,11 +29,8 @@ if ! command -v book-tools &> /dev/null; then
   echo "Setting up book-tools..."
   mkdir -p ~/.local/bin
   git clone https://github.com/iksnae/book-tools.git ~/.book-tools
-  cd ~/.book-tools/src/scripts
-  chmod +x *.sh
-  echo '#!/bin/bash' > ~/.local/bin/book-tools
-  echo 'exec ~/.book-tools/src/scripts/build.sh "$@"' >> ~/.local/bin/book-tools
-  chmod +x ~/.local/bin/book-tools
+  cd ~/.book-tools
+  chmod +x tools/scripts/*.sh
   export PATH="$HOME/.local/bin:$PATH"
   echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.bashrc
 fi
@@ -47,4 +41,4 @@ export PATH="$HOME/.local/bin:$PATH"
 cd "$(dirname "$0")"
 pwd
 ls -la
-book-tools build "$@"
+~/.book-tools/tools/scripts/build-language.sh --all-languages
