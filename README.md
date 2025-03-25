@@ -88,7 +88,8 @@ case "$COMMAND" in
     "$BOOK_TOOLS_DIR/src/scripts/create-book.sh" "$@"
     ;;
   build)
-    "$BOOK_TOOLS_DIR/src/scripts/build.sh" "$(pwd)" "$@"
+    # Just run the build script without any directory parameter
+    "$BOOK_TOOLS_DIR/src/scripts/build.sh" "$@"
     ;;
   setup)
     "$BOOK_TOOLS_DIR/src/scripts/setup.sh" "$@"
