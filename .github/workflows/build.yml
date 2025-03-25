@@ -113,26 +113,12 @@ jobs:
       - name: Create markdown content for release
         run: |
           # Get the correct file naming pattern from the artifacts
-          EN_PDF=$(find build/en -name "*.pdf" | head -n 1)
-          EN_PDF_BASE=$(basename "$EN_PDF")
-          EN_EPUB=$(find build/en -name "*.epub" | head -n 1)
-          EN_EPUB_BASE=$(basename "$EN_EPUB")
-          EN_MOBI=$(find build/en -name "*.mobi" | head -n 1)
-          EN_MOBI_BASE=$(basename "$EN_MOBI")
-          EN_HTML=$(find build/en -name "*.html" | head -n 1)
-          EN_HTML_BASE=$(basename "$EN_HTML")
-          EN_DOCX=$(find build/en -name "*.docx" | head -n 1)
-          EN_DOCX_BASE=$(basename "$EN_DOCX")
+          echo "Generating release notes with correct file links..."
           
-          ES_PDF=$(find build/es -name "*.pdf" | head -n 1)
-          ES_PDF_BASE=$(basename "$ES_PDF")
-          ES_EPUB=$(find build/es -name "*.epub" | head -n 1)
-          ES_EPUB_BASE=$(basename "$ES_EPUB")
-          ES_MOBI=$(find build/es -name "*.mobi" | head -n 1)
-          ES_MOBI_BASE=$(basename "$ES_MOBI")
-          ES_DOCX=$(find build/es -name "*.docx" | head -n 1)
-          ES_DOCX_BASE=$(basename "$ES_DOCX")
+          # Debug: List all files to see their exact names
+          find build/ -type f | sort
           
+          # Create the release markdown
           cat > RELEASE.md << EOF
           # Actual Intelligence Book
 
@@ -142,22 +128,22 @@ jobs:
 
           ### English Version
 
-          | Format  | Description                           | Link                                                                                                                       |
-          | ------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-          | 📄 PDF  | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${EN_PDF_BASE})   |
-          | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${EN_EPUB_BASE}) |
-          | 📚 MOBI | For Kindle devices                    | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${EN_MOBI_BASE}) |
-          | 🌐 HTML | Read online in your browser           | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${EN_HTML_BASE})     |
-          | 📋 DOCX | Microsoft Word format                 | [Download DOCX](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${EN_DOCX_BASE}) |
+          | Format  | Description                           | Link                                                                                                                                        |
+          | ------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+          | 📄 PDF  | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-en.pdf)   |
+          | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-en.epub) |
+          | 📚 MOBI | For Kindle devices                    | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-en.mobi) |
+          | 🌐 HTML | Read online in your browser           | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-en.html)     |
+          | 📋 DOCX | Microsoft Word format                 | [Download DOCX](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-en.docx) |
 
           ### Spanish Version (Versión en Español)
 
-          | Format  | Description                                                         | Link                                                                                                                      |
-          | ------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-          | 📄 PDF  | Para leer en computadoras e imprimir                                | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${ES_PDF_BASE})   |
-          | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${ES_EPUB_BASE}) |
-          | 📚 MOBI | Para dispositivos Kindle                                            | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${ES_MOBI_BASE}) |
-          | 📋 DOCX | Formato Microsoft Word                                              | [Descargar DOCX](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${ES_DOCX_BASE}) |
+          | Format  | Description                                                         | Link                                                                                                                                        |
+          | ------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+          | 📄 PDF  | Para leer en computadoras e imprimir                                | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-es.pdf)   |
+          | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-es.epub) |
+          | 📚 MOBI | Para dispositivos Kindle                                            | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-es.mobi) |
+          | 📋 DOCX | Formato Microsoft Word                                              | [Descargar DOCX](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-es.docx) |
 
           ## 🔄 Web Version
 
