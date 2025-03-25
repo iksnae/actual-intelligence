@@ -14,16 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Create required directories
+    # Install the book-tools CLI
     - name: Set up environment
       run: |
-        mkdir -p ~/.local/bin
+        # Install book-tools CLI
+        npm install -g iksnae/book-tools
         
-        # Clone book-tools for scripts (using the updated version)
-        git clone https://github.com/iksnae/book-tools.git ~/.book-tools
-        
-        # Make scripts executable
-        chmod +x ~/.book-tools/src/scripts/*.sh
+        # Verify installation
+        book --version
         
         # Debug directory structure
         echo "=== Directory Structure ==="
@@ -41,9 +39,8 @@ jobs:
         # Set verbose mode for detailed logging
         export VERBOSE=true
         
-        # Build for all languages using the updated script
-        ~/.book-tools/src/scripts/build-language.sh en
-        ~/.book-tools/src/scripts/build-language.sh es
+        # Build for all languages using the CLI
+        book build --all-languages --verbose
 
     # Upload build artifacts
     - name: Upload artifacts

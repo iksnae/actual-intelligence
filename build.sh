@@ -10,35 +10,21 @@ else
   echo "Running locally, using Docker..."
   docker run --rm -v "$(pwd):/book" iksnae/book-builder:latest /bin/bash -c "
     # Setup book-tools
-    mkdir -p ~/.local/bin
-    git clone https://github.com/iksnae/book-tools.git ~/.book-tools
-    cd ~/.book-tools
-    chmod +x tools/scripts/*.sh
-    export PATH=\"\$HOME/.local/bin:\$PATH\"
     cd /book
-    pwd
-    ls -la
-    ~/.book-tools/tools/scripts/build-language.sh --all-languages
+    npm install -g iksnae/book-tools
+    book build --all-languages --verbose
   "
   exit $?
 fi
 
 # If we're here, we're running in the container
-# Setup book-tools if not already installed
-if ! command -v book-tools &> /dev/null; then
-  echo "Setting up book-tools..."
-  mkdir -p ~/.local/bin
-  git clone https://github.com/iksnae/book-tools.git ~/.book-tools
-  cd ~/.book-tools
-  chmod +x tools/scripts/*.sh
-  export PATH="$HOME/.local/bin:$PATH"
-  echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.bashrc
+# Setup book-tools CLI if not already installed
+if ! command -v book &> /dev/null; then
+  echo "Setting up book-tools CLI..."
+  npm install -g iksnae/book-tools
 fi
 
-# Run book-tools build with all arguments passed to this script
-export PATH="$HOME/.local/bin:$PATH"
-# Ensure we're in the correct directory
+# Run book CLI with all arguments passed to this script
 cd "$(dirname "$0")"
-pwd
-ls -la
-~/.book-tools/tools/scripts/build-language.sh --all-languages
+echo "Building book with book-tools CLI..."
+book build --all-languages --verbose

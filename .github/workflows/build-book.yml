@@ -123,89 +123,26 @@ jobs:
       
       - name: Setup book-tools
         run: |
-          echo "Setting up book-tools..."
-          # Create required directories
-          mkdir -p ~/.local/bin
+          echo "Setting up book-tools CLI..."
+          # Install book-tools globally via npm
+          npm install -g iksnae/book-tools
           
-          # Clone book-tools repository
-          git clone https://github.com/iksnae/book-tools.git ~/.book-tools
+          # Verify installation
+          book --version
           
-          # Make scripts executable
-          cd ~/.book-tools/src/scripts
-          chmod +x *.sh
-          
-          # Create book-tools command
-          echo '#!/bin/bash' > ~/.local/bin/book-tools
-          echo 'exec ~/.book-tools/src/scripts/build.sh "$@"' >> ~/.local/bin/book-tools
-          chmod +x ~/.local/bin/book-tools
-          
-          # Add to PATH
-          export PATH="$HOME/.local/bin:$PATH"
-          echo "export PATH=\"\$HOME/.local/bin:\$PATH\"" >> ~/.bashrc
-          
-          echo "✅ book-tools installed successfully"
-          which book-tools
-
-      - name: Setup book content
-        run: |
-          echo "Setting up book content..."
-          # Create book directory structure in ~/.book-tools
-          mkdir -p ~/.book-tools/book/en
-          mkdir -p ~/.book-tools/resources/images
-          
-          # Copy book content if it exists
-          if [ -d "$GITHUB_WORKSPACE/book" ]; then
-            echo "Copying book content..."
-            cp -r $GITHUB_WORKSPACE/book/* ~/.book-tools/book/ || echo "Warning: Some files could not be copied"
-          else
-            echo "Creating book directory structure..."
-            mkdir -p ~/.book-tools/book/en
-          fi
-          
-          # Copy book.yaml if it exists
-          if [ -f "$GITHUB_WORKSPACE/book.yaml" ]; then
-            echo "Copying book.yaml..."
-            cp $GITHUB_WORKSPACE/book.yaml ~/.book-tools/
-          else
-            echo "Warning: book.yaml not found"
-          fi
-          
-          # Copy images from various possible locations
-          echo "Copying images..."
-          if [ -d "$GITHUB_WORKSPACE/art" ]; then
-            echo "Copying from art directory..."
-            cp -r $GITHUB_WORKSPACE/art/* ~/.book-tools/resources/images/ || echo "Warning: Some art files could not be copied"
-          fi
-          
-          if [ -d "$GITHUB_WORKSPACE/book/images" ]; then
-            echo "Copying from book/images directory..."
-            cp -r $GITHUB_WORKSPACE/book/images/* ~/.book-tools/resources/images/ || echo "Warning: Some book images could not be copied"
-          fi
-          
-          if [ -d "$GITHUB_WORKSPACE/book/en/images" ]; then
-            echo "Copying from book/en/images directory..."
-            cp -r $GITHUB_WORKSPACE/book/en/images/* ~/.book-tools/resources/images/ || echo "Warning: Some English images could not be copied"
-          fi
-          
-          echo "Book content:"
-          ls -la ~/.book-tools/book/ || echo "Book directory is empty"
-          echo "Book config:"
-          cat ~/.book-tools/book.yaml || echo "No book.yaml found"
-          echo "Images:"
-          ls -la ~/.book-tools/resources/images/ || echo "No images found"
+          echo "✅ book-tools CLI installed successfully"
+          which book
 
       - name: Build book
         run: |
-          echo "Building book with book-tools..."
-          export PATH="$HOME/.local/bin:$PATH"
-          cd ~/.book-tools
-          pwd
-          ls -la
-          book-tools build --all-languages --verbose
+          echo "Building book with book-tools CLI..."
           
-          # Copy built files back to workspace
-          mkdir -p $GITHUB_WORKSPACE/build
-          cp -r ~/.book-tools/build/* $GITHUB_WORKSPACE/build/
+          # Build book for all languages with all formats
+          book build --all-languages --verbose
+          
+          # List the generated files
+          echo "Generated files:"
+          find build/ -type f \( -name "*.pdf" -o -name "*.epub" -o -name "*.mobi" -o -name "*.html" -o -name "*.docx" \) -exec ls -la {} \;
 
       - name: List build directory contents
         run: |

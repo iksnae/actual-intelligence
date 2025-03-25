@@ -59,7 +59,33 @@ The book is organized into five main parts:
 
 ## Building the Book
 
-This book is built using a combination of Markdown, Pandoc, and GitHub workflows. The book is designed with a clean layout, without headers, footers, or version information in the output.
+### Using the CLI (Recommended)
+
+We now use the `book-tools` CLI directly. To build the book:
+
+1. Install the CLI:
+   ```bash
+   npm install -g iksnae/book-tools
+   ```
+
+2. Build the book:
+   ```bash
+   book build --all-languages
+   ```
+
+3. For more options, use:
+   ```bash
+   book --help
+   ```
+
+Available commands include:
+- `book build` - Build the book in various formats
+- `book interactive` - Interactive build process
+- `book create-chapter` - Create a new chapter
+- `book check-chapter` - Check a chapter structure
+- `book info` - Display book information
+- `book clean` - Clean build artifacts
+- `book validate` - Check configuration and dependencies
 
 ### Prerequisites
 
