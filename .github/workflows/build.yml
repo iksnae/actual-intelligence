@@ -1,4 +1,4 @@
-name: Build Book (Diagnostic)
+name: Build Book
 
 on:
   push:
@@ -14,58 +14,40 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Create report for the book-tools issue
-    - name: Create diagnostic report
+    # Create required directories
+    - name: Set up environment
       run: |
-        echo "# Diagnostic Report for Book-Tools Issue" > book-tools-issue.md
-        echo "## Directory Structure" >> book-tools-issue.md
-        echo '```' >> book-tools-issue.md
-        find book -type d | sort >> book-tools-issue.md
-        echo '```' >> book-tools-issue.md
+        mkdir -p ~/.local/bin
         
-        echo "## Markdown Files" >> book-tools-issue.md
-        echo '```' >> book-tools-issue.md
-        find book -name "*.md" | sort >> book-tools-issue.md
-        echo '```' >> book-tools-issue.md
+        # Clone book-tools for scripts (using the updated version)
+        git clone https://github.com/iksnae/book-tools.git ~/.book-tools
         
-        # Clone book-tools in a way we can examine
-        echo "## Examining book-tools source" >> book-tools-issue.md
-        git clone https://github.com/iksnae/book-tools.git ~/book-tools-src
+        # Make scripts executable
+        chmod +x ~/.book-tools/src/scripts/*.sh
         
-        # Find the error message in the source
-        echo "### Files with 'No markdown files found' error message:" >> book-tools-issue.md
-        echo '```' >> book-tools-issue.md
-        grep -r "No markdown files found" ~/book-tools-src --include="*.sh" >> book-tools-issue.md || echo "No matches found" >> book-tools-issue.md
-        echo '```' >> book-tools-issue.md
-        
-        # Find where book/en is referenced
-        echo "### References to book/\$LANGUAGE directory:" >> book-tools-issue.md
-        echo '```' >> book-tools-issue.md
-        grep -r "book/\$LANGUAGE" ~/book-tools-src --include="*.sh" >> book-tools-issue.md
-        echo '```' >> book-tools-issue.md
-        
-        # Find markdown combining code
-        echo "### Code that processes chapter directories:" >> book-tools-issue.md
-        echo '```' >> book-tools-issue.md
-        grep -A 10 -r "chapter-\*" ~/book-tools-src --include="*.sh" >> book-tools-issue.md
-        echo '```' >> book-tools-issue.md
-        
-        # Create recommended issue
-        echo "## Recommended Issue Report for Book-Tools" >> book-tools-issue.md
-        echo "### Title: Fix handling of markdown files in chapter subdirectories" >> book-tools-issue.md
-        echo "### Description:" >> book-tools-issue.md
-        echo "The build script fails with 'No markdown files found in book/en' even though markdown files exist in chapter subdirectories (book/en/chapter-01/*.md, etc.)." >> book-tools-issue.md
-        echo "" >> book-tools-issue.md
-        echo "The 'combine-markdown.sh' script should successfully find and process these files, but it's failing. The script appears to correctly find chapter directories with:" >> book-tools-issue.md
-        echo "find \"book/\$LANGUAGE\" -type d -name \"chapter-*\" | sort -V" >> book-tools-issue.md
-        echo "" >> book-tools-issue.md
-        echo "But then fails to process markdown files within those directories." >> book-tools-issue.md
-        
-        cat book-tools-issue.md
+        # Debug directory structure
+        echo "=== Directory Structure ==="
+        ls -la
+        echo "=== Book Directory ==="
+        ls -la book/
+        echo "=== English Directory ==="
+        ls -la book/en/
+        echo "=== Chapter 1 Directory ==="
+        ls -la book/en/chapter-01/
 
-    # Upload diagnostic report
-    - name: Upload diagnostic report
+    # Build the book for all languages
+    - name: Build book
+      run: |
+        # Set verbose mode for detailed logging
+        export VERBOSE=true
+        
+        # Build for all languages using the updated script
+        ~/.book-tools/src/scripts/build-language.sh en
+        ~/.book-tools/src/scripts/build-language.sh es
+
+    # Upload build artifacts
+    - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: book-tools-issue-report
-        path: book-tools-issue.md
+        name: book-builds
+        path: build/
