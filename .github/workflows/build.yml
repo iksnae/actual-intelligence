@@ -1,10 +1,13 @@
-name: Build Book
+name: Build and Release Book
 
 on:
   push:
     branches: [ main ]
+    tags:
+      - 'v*'
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,48 +15,80 @@ jobs:
     container: iksnae/book-builder:latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      
+      - name: Setup book-tools
+        run: |
+          echo "Setting up book-tools CLI..."
+          
+          # Run our custom installation script
+          bash .github/custom-install.sh
+          
+          # Add to PATH
+          export PATH="$HOME/.local/bin:$PATH"
+          
+          # Verify installation
+          book-tools --version || echo "Version command not available, but installation should be complete"
+          which book-tools
+          echo "✅ book-tools CLI installed successfully"
 
-    # Setup book-tools CLI properly
-    - name: Set up environment
-      run: |
-        echo "Setting up book-tools CLI..."
-        
-        # Run our custom installation script
-        bash .github/custom-install.sh
-        
-        # Add to PATH
-        export PATH="$HOME/.local/bin:$PATH"
-        
-        # Verify installation
-        book-tools --version || echo "Version command not available, but installation should be complete"
-        which book-tools
-        
-        # Debug directory structure
-        echo "=== Directory Structure ==="
-        ls -la
-        echo "=== Book Directory ==="
-        ls -la book/
-        echo "=== English Directory ==="
-        ls -la book/en/
-        echo "=== Chapter 1 Directory ==="
-        ls -la book/en/chapter-01/
+      - name: Build book using CLI
+        run: |
+          echo "Building book with book-tools CLI..."
+          
+          # Add to PATH (again, for this step)
+          export PATH="$HOME/.local/bin:$PATH"
+          
+          # Build book for all languages with all formats using the CLI
+          book-tools build --all-languages --verbose
+          
+          # List the generated files
+          echo "Generated files:"
+          find build/ -type f \( -name "*.pdf" -o -name "*.epub" -o -name "*.mobi" -o -name "*.html" -o -name "*.docx" \) -exec ls -la {} \;
 
-    # Build the book using the CLI
-    - name: Build book
-      run: |
-        # Set verbose mode for detailed logging
-        export VERBOSE=true
-        
-        # Add to PATH (again, for this step)
-        export PATH="$HOME/.local/bin:$PATH"
-        
-        # Build for all languages using the CLI
-        book-tools build --all-languages --verbose
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: book-builds
+          path: build/
 
-    # Upload build artifacts
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: book-builds
-        path: build/
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: book-builds
+          path: build
+
+      - name: List all files
+        run: find build -type f | sort
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            build/en/*.pdf
+            build/en/*.epub
+            build/en/*.mobi
+            build/en/*.docx
+            build/es/*.pdf
+            build/es/*.epub
+            build/es/*.mobi
+            build/es/*.docx
+          draft: false
+          prerelease: false
+          name: Release ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          body: |
+            Automated release of book build artifacts.
+            
+            Includes:
+            - PDF versions
+            - EPUB versions
+            - MOBI versions
+            - DOCX versions
