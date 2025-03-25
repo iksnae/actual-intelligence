@@ -19,19 +19,34 @@ jobs:
       
       - name: Setup book-tools
         run: |
-          echo "Setting up book-tools CLI..."
-          # Install book-tools globally via npm
-          npm install -g iksnae/book-tools
+          echo "Setting up book-tools..."
+          
+          # Clone book-tools repository directly
+          git clone https://github.com/iksnae/book-tools.git ~/book-tools
+          
+          # Make scripts executable
+          chmod +x ~/book-tools/src/scripts/*.sh
+          chmod +x ~/book-tools/bin/book.js
+          
+          # Create a symbolic link to make the CLI available
+          mkdir -p ~/.local/bin
+          ln -s ~/book-tools/bin/book.js ~/.local/bin/book
+          chmod +x ~/.local/bin/book
+          
+          # Add to PATH
+          export PATH="$HOME/.local/bin:$PATH"
+          echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
           
           # Verify installation
-          book --version
-          
-          echo "✅ book-tools CLI installed successfully"
           which book
+          echo "✅ book-tools CLI installed successfully"
 
       - name: Build book
         run: |
           echo "Building book with book-tools CLI..."
+          
+          # Add to PATH (again, for this step)
+          export PATH="$HOME/.local/bin:$PATH"
           
           # Build book for all languages with all formats
           book build --all-languages --verbose

@@ -63,17 +63,31 @@ The book is organized into five main parts:
 
 We now use the `book-tools` CLI directly. To build the book:
 
-1. Install the CLI:
+1. Clone the book-tools repository:
    ```bash
-   npm install -g iksnae/book-tools
+   git clone https://github.com/iksnae/book-tools.git ~/.book-tools
    ```
 
-2. Build the book:
+2. Make the scripts executable:
+   ```bash
+   chmod +x ~/.book-tools/src/scripts/*.sh
+   chmod +x ~/.book-tools/bin/book.js
+   ```
+
+3. Create a symlink to the CLI:
+   ```bash
+   mkdir -p ~/.local/bin
+   ln -s ~/.book-tools/bin/book.js ~/.local/bin/book
+   chmod +x ~/.local/bin/book
+   export PATH="$HOME/.local/bin:$PATH"
+   ```
+
+4. Build the book:
    ```bash
    book build --all-languages
    ```
 
-3. For more options, use:
+5. For more options, use:
    ```bash
    book --help
    ```
