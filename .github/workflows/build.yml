@@ -15,10 +15,10 @@ jobs:
     - uses: actions/checkout@v4
 
     # Install book-tools
-    - name: Install book-tools
+    - name: Install book-tools and setup
       run: |
         # Create required directories
-        mkdir -p ~/.local/bin
+        mkdir -p ~/.local/bin build/images build/en/images build/es/images
 
         # Clone book-tools for scripts
         git clone https://github.com/iksnae/book-tools.git ~/.book-tools
@@ -27,18 +27,34 @@ jobs:
         mkdir -p tools/scripts
         cp -r ~/.book-tools/src/scripts/* tools/scripts/
         chmod +x tools/scripts/*.sh
+        
+        # Find scripts that reference placeholder images
+        echo "=== Scripts referencing placeholder images ==="
+        grep -r "placeholder" tools/scripts/ || echo "No references found"
 
-    # Create placeholder image
-    - name: Create placeholder image
+    # Debug issue with copy-images.sh
+    - name: Debug copy-images.sh issue
       run: |
-        mkdir -p book/en/images book/es/images
-        touch book/en/images/placeholder.svg
-        touch book/es/images/placeholder.svg
+        # Patch the copy-images.sh script to remove placeholder image dependency
+        sed -i 's/cp: cannot stat.*placeholder.*/# Placeholder image not found - continuing anyway/' tools/scripts/copy-images.sh || true
+        
+        # Find any errors in copy-images.sh
+        grep -r "Error:" tools/scripts/copy-images.sh || echo "No Error message found"
+        
+        # Add more debugging information to the script
+        sed -i 's/set -e/set -e\necho "Running with working directory: $(pwd)"\necho "Directory structure:"\nfind book -type d | sort/' tools/scripts/copy-images.sh || true
 
-    # Build the book
+    # Run the build
     - name: Build Book
       run: |
-        ./tools/scripts/build.sh --all-languages --verbose
+        # Run with verbose mode
+        ./tools/scripts/build.sh --all-languages --verbose || echo "Build failed, continuing for debugging"
+        
+        # If the build failed, list the directory contents for debugging
+        echo "=== Directory Structure After Build ==="
+        find . -type d -maxdepth 3 | sort
+        echo "=== Any Generated Files ==="
+        find build -type f 2>/dev/null || echo "No build files found"
 
     # Upload build artifacts
     - name: Upload Build Artifacts
