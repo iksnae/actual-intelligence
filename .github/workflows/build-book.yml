@@ -19,37 +19,28 @@ jobs:
       
       - name: Setup book-tools
         run: |
-          echo "Setting up book-tools..."
+          echo "Setting up book-tools CLI..."
           
-          # Clone book-tools repository directly
-          git clone https://github.com/iksnae/book-tools.git ~/book-tools
-          
-          # Make scripts executable
-          chmod +x ~/book-tools/src/scripts/*.sh
-          chmod +x ~/book-tools/bin/book.js
-          
-          # Create a symbolic link to make the CLI available
-          mkdir -p ~/.local/bin
-          ln -s ~/book-tools/bin/book.js ~/.local/bin/book
-          chmod +x ~/.local/bin/book
+          # Install book-tools using the recommended installation script
+          curl -sSL https://raw.githubusercontent.com/iksnae/book-tools/main/install.sh | bash
           
           # Add to PATH
           export PATH="$HOME/.local/bin:$PATH"
-          echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
           
           # Verify installation
-          which book
+          book-tools --version || echo "Version command not available, but installation should be complete"
+          which book-tools
           echo "✅ book-tools CLI installed successfully"
 
-      - name: Build book
+      - name: Build book using CLI
         run: |
           echo "Building book with book-tools CLI..."
           
           # Add to PATH (again, for this step)
           export PATH="$HOME/.local/bin:$PATH"
           
-          # Build book for all languages with all formats
-          book build --all-languages --verbose
+          # Build book for all languages with all formats using the CLI
+          book-tools build --all-languages --verbose
           
           # List the generated files
           echo "Generated files:"

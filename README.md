@@ -63,43 +63,31 @@ The book is organized into five main parts:
 
 We now use the `book-tools` CLI directly. To build the book:
 
-1. Clone the book-tools repository:
+1. Install the CLI using the official installation script:
    ```bash
-   git clone https://github.com/iksnae/book-tools.git ~/.book-tools
+   curl -sSL https://raw.githubusercontent.com/iksnae/book-tools/main/install.sh | bash
    ```
 
-2. Make the scripts executable:
+2. Add the CLI to your PATH:
    ```bash
-   chmod +x ~/.book-tools/src/scripts/*.sh
-   chmod +x ~/.book-tools/bin/book.js
-   ```
-
-3. Create a symlink to the CLI:
-   ```bash
-   mkdir -p ~/.local/bin
-   ln -s ~/.book-tools/bin/book.js ~/.local/bin/book
-   chmod +x ~/.local/bin/book
    export PATH="$HOME/.local/bin:$PATH"
    ```
 
-4. Build the book:
+3. Build the book:
    ```bash
-   book build --all-languages
+   book-tools build --all-languages
    ```
 
-5. For more options, use:
+4. For more options, use:
    ```bash
-   book --help
+   book-tools help
    ```
 
 Available commands include:
-- `book build` - Build the book in various formats
-- `book interactive` - Interactive build process
-- `book create-chapter` - Create a new chapter
-- `book check-chapter` - Check a chapter structure
-- `book info` - Display book information
-- `book clean` - Clean build artifacts
-- `book validate` - Check configuration and dependencies
+- `book-tools build` - Build the book in various formats
+- `book-tools create` - Create a new book project
+- `book-tools build-docker` - Build using Docker (recommended)
+- `book-tools help` - Show help information
 
 ### Prerequisites
 

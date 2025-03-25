@@ -14,27 +14,20 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Setup book-tools by cloning directly 
+    # Setup book-tools CLI properly
     - name: Set up environment
       run: |
-        # Clone book-tools repository directly
-        git clone https://github.com/iksnae/book-tools.git ~/book-tools
+        echo "Setting up book-tools CLI..."
         
-        # Make scripts executable
-        chmod +x ~/book-tools/src/scripts/*.sh
-        chmod +x ~/book-tools/bin/book.js
-        
-        # Create a symbolic link to make the CLI available
-        mkdir -p ~/.local/bin
-        ln -s ~/book-tools/bin/book.js ~/.local/bin/book
-        chmod +x ~/.local/bin/book
+        # Install book-tools using the recommended installation script
+        curl -sSL https://raw.githubusercontent.com/iksnae/book-tools/main/install.sh | bash
         
         # Add to PATH
         export PATH="$HOME/.local/bin:$PATH"
-        echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
         
         # Verify installation
-        which book
+        book-tools --version || echo "Version command not available, but installation should be complete"
+        which book-tools
         
         # Debug directory structure
         echo "=== Directory Structure ==="
@@ -46,7 +39,7 @@ jobs:
         echo "=== Chapter 1 Directory ==="
         ls -la book/en/chapter-01/
 
-    # Build the book for all languages
+    # Build the book using the CLI
     - name: Build book
       run: |
         # Set verbose mode for detailed logging
@@ -56,7 +49,7 @@ jobs:
         export PATH="$HOME/.local/bin:$PATH"
         
         # Build for all languages using the CLI
-        book build --all-languages --verbose
+        book-tools build --all-languages --verbose
 
     # Upload build artifacts
     - name: Upload artifacts
