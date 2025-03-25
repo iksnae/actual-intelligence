@@ -1,4 +1,4 @@
-name: Build Book
+name: Build Book (Diagnostic)
 
 on:
   push:
@@ -14,52 +14,58 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Install book-tools
-    - name: Install book-tools and setup
+    # Create report for the book-tools issue
+    - name: Create diagnostic report
       run: |
-        # Create required directories
-        mkdir -p ~/.local/bin build/images build/en/images build/es/images
+        echo "# Diagnostic Report for Book-Tools Issue" > book-tools-issue.md
+        echo "## Directory Structure" >> book-tools-issue.md
+        echo '```' >> book-tools-issue.md
+        find book -type d | sort >> book-tools-issue.md
+        echo '```' >> book-tools-issue.md
+        
+        echo "## Markdown Files" >> book-tools-issue.md
+        echo '```' >> book-tools-issue.md
+        find book -name "*.md" | sort >> book-tools-issue.md
+        echo '```' >> book-tools-issue.md
+        
+        # Clone book-tools in a way we can examine
+        echo "## Examining book-tools source" >> book-tools-issue.md
+        git clone https://github.com/iksnae/book-tools.git ~/book-tools-src
+        
+        # Find the error message in the source
+        echo "### Files with 'No markdown files found' error message:" >> book-tools-issue.md
+        echo '```' >> book-tools-issue.md
+        grep -r "No markdown files found" ~/book-tools-src --include="*.sh" >> book-tools-issue.md || echo "No matches found" >> book-tools-issue.md
+        echo '```' >> book-tools-issue.md
+        
+        # Find where book/en is referenced
+        echo "### References to book/\$LANGUAGE directory:" >> book-tools-issue.md
+        echo '```' >> book-tools-issue.md
+        grep -r "book/\$LANGUAGE" ~/book-tools-src --include="*.sh" >> book-tools-issue.md
+        echo '```' >> book-tools-issue.md
+        
+        # Find markdown combining code
+        echo "### Code that processes chapter directories:" >> book-tools-issue.md
+        echo '```' >> book-tools-issue.md
+        grep -A 10 -r "chapter-\*" ~/book-tools-src --include="*.sh" >> book-tools-issue.md
+        echo '```' >> book-tools-issue.md
+        
+        # Create recommended issue
+        echo "## Recommended Issue Report for Book-Tools" >> book-tools-issue.md
+        echo "### Title: Fix handling of markdown files in chapter subdirectories" >> book-tools-issue.md
+        echo "### Description:" >> book-tools-issue.md
+        echo "The build script fails with 'No markdown files found in book/en' even though markdown files exist in chapter subdirectories (book/en/chapter-01/*.md, etc.)." >> book-tools-issue.md
+        echo "" >> book-tools-issue.md
+        echo "The 'combine-markdown.sh' script should successfully find and process these files, but it's failing. The script appears to correctly find chapter directories with:" >> book-tools-issue.md
+        echo "find \"book/\$LANGUAGE\" -type d -name \"chapter-*\" | sort -V" >> book-tools-issue.md
+        echo "" >> book-tools-issue.md
+        echo "But then fails to process markdown files within those directories." >> book-tools-issue.md
+        
+        cat book-tools-issue.md
 
-        # Clone book-tools for scripts
-        git clone https://github.com/iksnae/book-tools.git ~/.book-tools
-        
-        # Make scripts executable and copy to project
-        mkdir -p tools/scripts
-        cp -r ~/.book-tools/src/scripts/* tools/scripts/
-        chmod +x tools/scripts/*.sh
-        
-        # Find scripts that reference placeholder images
-        echo "=== Scripts referencing placeholder images ==="
-        grep -r "placeholder" tools/scripts/ || echo "No references found"
-
-    # Debug issue with copy-images.sh
-    - name: Debug copy-images.sh issue
-      run: |
-        # Patch the copy-images.sh script to remove placeholder image dependency
-        sed -i 's/cp: cannot stat.*placeholder.*/# Placeholder image not found - continuing anyway/' tools/scripts/copy-images.sh || true
-        
-        # Find any errors in copy-images.sh
-        grep -r "Error:" tools/scripts/copy-images.sh || echo "No Error message found"
-        
-        # Add more debugging information to the script
-        sed -i 's/set -e/set -e\necho "Running with working directory: $(pwd)"\necho "Directory structure:"\nfind book -type d | sort/' tools/scripts/copy-images.sh || true
-
-    # Run the build
-    - name: Build Book
-      run: |
-        # Run with verbose mode
-        ./tools/scripts/build.sh --all-languages --verbose || echo "Build failed, continuing for debugging"
-        
-        # If the build failed, list the directory contents for debugging
-        echo "=== Directory Structure After Build ==="
-        find . -type d -maxdepth 3 | sort
-        echo "=== Any Generated Files ==="
-        find build -type f 2>/dev/null || echo "No build files found"
-
-    # Upload build artifacts
-    - name: Upload Build Artifacts
+    # Upload diagnostic report
+    - name: Upload diagnostic report
       uses: actions/upload-artifact@v4
       with:
-        name: book-builds
-        path: build/
-        if-no-files-found: warn
+        name: book-tools-issue-report
+        path: book-tools-issue.md
