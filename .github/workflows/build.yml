@@ -1,0 +1,76 @@
+name: Build Book
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: iksnae/book-builder:latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setting up book-tools...
+      run: |
+        # Create required directories
+        mkdir -p ~/.local/bin
+
+        # Clone book-tools repository
+        git clone https://github.com/iksnae/book-tools.git ~/.book-tools
+
+        # Make scripts executable
+        cd ~/.book-tools/src/scripts
+        chmod +x *.sh
+
+        echo "✅ book-tools installed successfully"
+        ls -la ~/.book-tools/src/scripts/
+
+    - name: Setting up book content...
+      run: |
+        # Create book directory structure in ~/.book-tools
+        mkdir -p ~/.book-tools/book/en
+        mkdir -p ~/.book-tools/resources/images
+
+        # Copy book content if it exists
+        if [ -d "$GITHUB_WORKSPACE/book" ]; then
+          echo "Copying book content..."
+          cp -r $GITHUB_WORKSPACE/book/* ~/.book-tools/book/
+        fi
+
+        # Copy book.yaml if it exists
+        if [ -f "$GITHUB_WORKSPACE/book.yaml" ]; then
+          echo "Copying book.yaml..."
+          cp $GITHUB_WORKSPACE/book.yaml ~/.book-tools/
+        fi
+
+        # Copy images from art directory
+        if [ -d "$GITHUB_WORKSPACE/art" ]; then
+          echo "Copying from art directory..."
+          cp -r $GITHUB_WORKSPACE/art/* ~/.book-tools/resources/images/
+        fi
+
+        echo "Book content:"
+        ls -la ~/.book-tools/book/
+        echo "Book config:"
+        cat ~/.book-tools/book.yaml
+        echo "Images:"
+        ls -la ~/.book-tools/resources/images/
+
+    - name: Building book...
+      run: |
+        cd ~/.book-tools
+        ./src/scripts/build.sh --all-languages --verbose
+
+        # Copy built files back to workspace
+        mkdir -p $GITHUB_WORKSPACE/build
+        cp -r ~/.book-tools/build/* $GITHUB_WORKSPACE/build/
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: book-files
+        path: build/
