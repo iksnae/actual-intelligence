@@ -13,9 +13,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: iksnae/book-builder:latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # We need the full history for versioning
+      
+      - name: Generate version
+        id: version
+        run: |
+          # If this is a tag, use the tag name
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+          else
+            # Otherwise, use the date and time for versioning
+            DATE_VERSION=$(date +'%Y.%m.%d')
+            TIME_VERSION=$(date +'%H%M')
+            VERSION="v${DATE_VERSION}-${TIME_VERSION}"
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Generated version: $VERSION"
       
       - name: Setup book-tools
         run: |
@@ -54,7 +74,8 @@ jobs:
 
   release:
     needs: build
-    if: startsWith(github.ref, 'refs/tags/v')
+    # Run the release job for both tags and pushes to main
+    if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
     
     steps:
@@ -66,6 +87,40 @@ jobs:
 
       - name: List all files
         run: find build -type f | sort
+      
+      - name: Create markdown content for release
+        run: |
+          cat > RELEASE.md << 'EOF'
+          # Actual Intelligence Book
+
+          Built on $(date +"%B %d, %Y") by Khaos Studios
+
+          ## 📚 Download Options
+
+          ### English Version
+
+          | Format  | Description                           | Link                                                                                                                       |
+          | ------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+          | 📄 PDF  | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence.pdf)   |
+          | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence.epub) |
+          | 📚 MOBI | For Kindle devices                    | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence.mobi) |
+          | 🌐 HTML | Read online in your browser           | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence.html)     |
+
+          ### Spanish Version (Versión en Español)
+
+          | Format  | Description                                                         | Link                                                                                                                      |
+          | ------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+          | 📄 PDF  | Para leer en computadoras e imprimir                                | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/inteligencia-real.pdf)   |
+          | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/inteligencia-real.epub) |
+          | 📚 MOBI | Para dispositivos Kindle                                            | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/inteligencia-real.mobi) |
+
+          ## 🔄 Web Version
+
+          The latest version is also available online:
+
+          * English: https://iksnae.github.io/actual-intelligence/
+          * Spanish: https://iksnae.github.io/actual-intelligence/es/
+          EOF
 
       - name: Create Release
         id: create_release
@@ -75,6 +130,7 @@ jobs:
             build/en/*.pdf
             build/en/*.epub
             build/en/*.mobi
+            build/en/*.html
             build/en/*.docx
             build/es/*.pdf
             build/es/*.epub
@@ -82,13 +138,7 @@ jobs:
             build/es/*.docx
           draft: false
           prerelease: false
-          name: Release ${{ github.ref_name }}
-          tag_name: ${{ github.ref_name }}
-          body: |
-            Automated release of book build artifacts.
-            
-            Includes:
-            - PDF versions
-            - EPUB versions
-            - MOBI versions
-            - DOCX versions
+          name: ${{ needs.build.outputs.version }}
+          tag_name: ${{ needs.build.outputs.version }}
+          body_path: RELEASE.md
+          token: ${{ secrets.GITHUB_TOKEN }}
