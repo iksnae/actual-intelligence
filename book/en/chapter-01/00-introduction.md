@@ -27,4 +27,3 @@ In the pages ahead, we'll establish a simple framework for thinking about AI too
 Let's begin our journey toward becoming confident, effective directors of these powerful tools—starting from the very first interaction.
 
 ---
-
