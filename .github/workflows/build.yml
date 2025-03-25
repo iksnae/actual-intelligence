@@ -14,38 +14,49 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Setting up book-tools...
+    # Create required directories and setup
+    - name: Setup Build Environment
       run: |
         # Create required directories
         mkdir -p ~/.local/bin
+        mkdir -p build/images
+        mkdir -p build/en/images
+        mkdir -p build/es/images
+        mkdir -p templates
 
-        # Clone book-tools repository
-        git clone https://github.com/iksnae/book-tools.git ~/.book-tools
+        # Create placeholder image for missing images
+        echo "Creating placeholder image..."
+        convert -size 800x600 xc:lightgray -gravity center -pointsize 30 \
+          -draw "text 0,0 'Image Placeholder'" \
+          book/images/placeholder.svg
 
-        # Make scripts executable
-        cd ~/.book-tools/src/scripts
-        chmod +x *.sh
-
-        echo "✅ book-tools installed successfully"
-        ls -la ~/.book-tools/src/scripts/
-
-    - name: Building book...
-      run: |
-        # We'll build directly in the workspace where our content is
-        cd $GITHUB_WORKSPACE
+        # Ensure templates exist
+        if [ ! -f "templates/book.css" ]; then
+          echo "/* Default book styles */" > templates/book.css
+        fi
         
-        # Make sure the build directory exists
-        mkdir -p build
+        if [ ! -f "templates/template.html" ]; then
+          echo "<!DOCTYPE html><html><body>{{{CONTENT}}}</body></html>" > templates/template.html
+        fi
 
-        # Copy necessary scripts to our project
+        # Clone book-tools for scripts
+        git clone https://github.com/iksnae/book-tools.git ~/.book-tools
+        
+        # Make scripts executable and copy to project
+        mkdir -p tools/scripts
         cp -r ~/.book-tools/src/scripts/* tools/scripts/
         chmod +x tools/scripts/*.sh
 
+    # Build the book
+    - name: Build Book
+      run: |
         # Run the build from our project directory
         ./tools/scripts/build.sh --all-languages --verbose
 
-    - name: Upload build artifacts
+    # Upload build artifacts
+    - name: Upload Build Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: book-files
+        name: book-builds
         path: build/
+        if-no-files-found: error
