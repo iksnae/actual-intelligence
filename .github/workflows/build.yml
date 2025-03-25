@@ -9,6 +9,10 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# Add permissions needed for creating tags and releases
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -79,6 +83,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
@@ -88,9 +96,40 @@ jobs:
       - name: List all files
         run: find build -type f | sort
       
+      - name: Create git tag if needed
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          # Only create a tag if we're running off main, not from an existing tag
+          echo "Creating git tag ${{ needs.build.outputs.version }}"
+          
+          # Configure git
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+          # Create and push the tag
+          git tag ${{ needs.build.outputs.version }}
+          git push origin ${{ needs.build.outputs.version }}
+      
       - name: Create markdown content for release
         run: |
-          cat > RELEASE.md << 'EOF'
+          # Get the correct file naming pattern from the artifacts
+          EN_PDF=$(find build/en -name "*.pdf" | head -n 1)
+          EN_PDF_BASE=$(basename "$EN_PDF")
+          EN_EPUB=$(find build/en -name "*.epub" | head -n 1)
+          EN_EPUB_BASE=$(basename "$EN_EPUB")
+          EN_MOBI=$(find build/en -name "*.mobi" | head -n 1)
+          EN_MOBI_BASE=$(basename "$EN_MOBI")
+          EN_HTML=$(find build/en -name "*.html" | head -n 1)
+          EN_HTML_BASE=$(basename "$EN_HTML")
+          
+          ES_PDF=$(find build/es -name "*.pdf" | head -n 1)
+          ES_PDF_BASE=$(basename "$ES_PDF")
+          ES_EPUB=$(find build/es -name "*.epub" | head -n 1)
+          ES_EPUB_BASE=$(basename "$ES_EPUB")
+          ES_MOBI=$(find build/es -name "*.mobi" | head -n 1)
+          ES_MOBI_BASE=$(basename "$ES_MOBI")
+          
+          cat > RELEASE.md << EOF
           # Actual Intelligence Book
 
           Built on $(date +"%B %d, %Y") by Khaos Studios
@@ -101,18 +140,18 @@ jobs:
 
           | Format  | Description                           | Link                                                                                                                       |
           | ------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-          | 📄 PDF  | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence.pdf)   |
-          | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence.epub) |
-          | 📚 MOBI | For Kindle devices                    | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence.mobi) |
-          | 🌐 HTML | Read online in your browser           | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence.html)     |
+          | 📄 PDF  | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${EN_PDF_BASE})   |
+          | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${EN_EPUB_BASE}) |
+          | 📚 MOBI | For Kindle devices                    | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${EN_MOBI_BASE}) |
+          | 🌐 HTML | Read online in your browser           | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${EN_HTML_BASE})     |
 
           ### Spanish Version (Versión en Español)
 
           | Format  | Description                                                         | Link                                                                                                                      |
           | ------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-          | 📄 PDF  | Para leer en computadoras e imprimir                                | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/inteligencia-real.pdf)   |
-          | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/inteligencia-real.epub) |
-          | 📚 MOBI | Para dispositivos Kindle                                            | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/inteligencia-real.mobi) |
+          | 📄 PDF  | Para leer en computadoras e imprimir                                | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${ES_PDF_BASE})   |
+          | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${ES_EPUB_BASE}) |
+          | 📚 MOBI | Para dispositivos Kindle                                            | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/${ES_MOBI_BASE}) |
 
           ## 🔄 Web Version
 
