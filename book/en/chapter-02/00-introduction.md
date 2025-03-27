@@ -1,4 +1,3 @@
-## Chapter 2
 
 #### Mastering ChatGPT with Effective Prompts
 

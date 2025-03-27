@@ -1,4 +1,3 @@
-## Chapter 1
 
 #### Actual Intelligence *...The Human Side of AI*
 
