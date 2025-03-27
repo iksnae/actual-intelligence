@@ -1,5 +1,12 @@
 name: Build and Release Book
 
+# This workflow:
+# 1. Builds the book in multiple formats (PDF, EPUB, MOBI, HTML, DOCX)
+# 2. Creates a GitHub Release with all the book files
+# 3. Deploys the HTML version to GitHub Pages (via gh-pages branch)
+#
+# GitHub Pages is configured to deploy from the gh-pages branch
+
 on:
   push:
     branches: [ main ]
@@ -197,58 +204,46 @@ jobs:
     # Only deploy to Pages on pushes to main or tags
     if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
-    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+    
     permissions:
-      contents: read
-      pages: write
-      id-token: write
-    # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-    # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-    concurrency:
-      group: "pages"
-      cancel-in-progress: false
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      contents: write  # Needed to push to gh-pages branch
+      
     steps:
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v4
-
+      - name: Checkout
+        uses: actions/checkout@v4
+      
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
           name: book-builds
           path: build
       
-      - name: Prepare files for deployment
+      - name: Prepare deployment files
         run: |
           # Create directory structure for pages
-          mkdir -p _site
-          mkdir -p _site/es
+          mkdir -p site
+          mkdir -p site/es
           
           # Copy HTML files to the correct locations
-          cp build/en/actual-intelligence.html _site/index.html
-          cp build/es/actual-intelligence.html _site/es/index.html
+          cp build/en/actual-intelligence.html site/index.html
+          cp build/es/actual-intelligence.html site/es/index.html
           
           # Copy any image directories needed for HTML files
-          cp -r build/en/images _site/ || true
-          cp -r build/en/media _site/ || true
-          cp -r build/es/images _site/es/ || true
-          cp -r build/es/media _site/es/ || true
+          cp -r build/en/images site/ || true
+          cp -r build/en/media site/ || true
+          cp -r build/es/images site/es/ || true
+          cp -r build/es/media site/es/ || true
           
           # Create a .nojekyll file to disable Jekyll processing
-          touch _site/.nojekyll
+          touch site/.nojekyll
           
           # List out what we're deploying
           echo "Files to be deployed:"
-          find _site -type f | sort
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '_site'
+          find site -type f | sort
       
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: site
+          branch: gh-pages
+          clean: true

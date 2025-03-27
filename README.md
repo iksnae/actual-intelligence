@@ -186,12 +186,16 @@ The HTML version will be available at:
 
 ## GitHub Pages Setup
 
-To enable GitHub Pages for this repository:
+For the GitHub Pages deployment to work correctly, please follow these steps:
 
-1. Go to the repository settings: https://github.com/iksnae/actual-intelligence/settings
-2. Navigate to "Pages" in the left sidebar
-3. Under "Build and deployment", select:
-   - Source: "GitHub Actions"
-4. Save the settings
+1. Go to the repository settings: https://github.com/iksnae/actual-intelligence/settings/pages
+2. Under "Build and deployment":
+   - Source: Select "Deploy from a branch"
+   - Branch: Select "gh-pages" and "/ (root)"
+   - Click "Save"
+3. Under "GitHub Pages visibility", select:
+   - "Public" (if you want everyone to be able to view the page)
+4. The workflow will automatically deploy to the gh-pages branch when code is pushed to main or a new tag is created
+5. After the workflow completes, your site will be available at: https://iksnae.github.io/actual-intelligence/
 
-This will allow the GitHub Actions workflow to deploy the book to GitHub Pages.
+**Note**: The first deployment will automatically create the gh-pages branch. After the workflow runs successfully, return to the Pages settings to select the gh-pages branch as your source.
