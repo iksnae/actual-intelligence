@@ -9,9 +9,11 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-# Add permissions needed for creating tags and releases
+# Add permissions needed for creating tags, releases, and GitHub Pages
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -200,17 +202,19 @@ jobs:
       contents: read
       pages: write
       id-token: write
-    # Allow only one concurrent deployment
+    # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+    # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
     concurrency:
       group: "pages"
-      cancel-in-progress: true
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v4
-      
+
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
@@ -220,30 +224,30 @@ jobs:
       - name: Prepare files for deployment
         run: |
           # Create directory structure for pages
-          mkdir -p pages
-          mkdir -p pages/es
+          mkdir -p _site
+          mkdir -p _site/es
           
           # Copy HTML files to the correct locations
-          cp build/en/actual-intelligence.html pages/index.html
-          cp build/es/actual-intelligence.html pages/es/index.html
+          cp build/en/actual-intelligence.html _site/index.html
+          cp build/es/actual-intelligence.html _site/es/index.html
           
           # Copy any image directories needed for HTML files
-          cp -r build/en/images pages/ || true
-          cp -r build/en/media pages/ || true
-          cp -r build/es/images pages/es/ || true
-          cp -r build/es/media pages/es/ || true
+          cp -r build/en/images _site/ || true
+          cp -r build/en/media _site/ || true
+          cp -r build/es/images _site/es/ || true
+          cp -r build/es/media _site/es/ || true
           
           # Create a .nojekyll file to disable Jekyll processing
-          touch pages/.nojekyll
+          touch _site/.nojekyll
           
           # List out what we're deploying
           echo "Files to be deployed:"
-          find pages -type f | sort
+          find _site -type f | sort
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'pages'
+          path: '_site'
       
       - name: Deploy to GitHub Pages
         id: deployment

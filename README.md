@@ -183,3 +183,15 @@ To manually trigger a deployment:
 The HTML version will be available at:
 - English: https://iksnae.github.io/actual-intelligence/
 - Spanish: https://iksnae.github.io/actual-intelligence/es/
+
+## GitHub Pages Setup
+
+To enable GitHub Pages for this repository:
+
+1. Go to the repository settings: https://github.com/iksnae/actual-intelligence/settings
+2. Navigate to "Pages" in the left sidebar
+3. Under "Build and deployment", select:
+   - Source: "GitHub Actions"
+4. Save the settings
+
+This will allow the GitHub Actions workflow to deploy the book to GitHub Pages.
