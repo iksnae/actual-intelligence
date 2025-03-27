@@ -10,9 +10,9 @@ A practical, non-technical guide to using AI tools like ChatGPT in everyday life
 
 <div align="center">
 
-[![Download PDF](https://img.shields.io/badge/Download-PDF%20Version-blue?style=for-the-badge&logo=adobe-acrobat-reader)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual%20Intelligence-en.pdf)
-[![Download EPUB](https://img.shields.io/badge/Download-EPUB%20Version-green?style=for-the-badge&logo=apple)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual%20Intelligence-en.epub)
-[![Download MOBI](https://img.shields.io/badge/Download-Kindle%20Version-orange?style=for-the-badge&logo=amazon)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual%20Intelligence-en.mobi)
+[![Download PDF](https://img.shields.io/badge/Download-PDF%20Version-blue?style=for-the-badge&logo=adobe-acrobat-reader)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual.Intelligence-en.pdf)
+[![Download EPUB](https://img.shields.io/badge/Download-EPUB%20Version-green?style=for-the-badge&logo=apple)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual.Intelligence-en.epub)
+[![Download MOBI](https://img.shields.io/badge/Download-Kindle%20Version-orange?style=for-the-badge&logo=amazon)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual.Intelligence-en.mobi)
 [![Read Online](https://img.shields.io/badge/Read-Web%20Version-purple?style=for-the-badge&logo=html5)](https://iksnae.github.io/actual-intelligence/)
 
 </div>
@@ -21,9 +21,9 @@ A practical, non-technical guide to using AI tools like ChatGPT in everyday life
 
 <div align="center">
 
-[![Download PDF](https://img.shields.io/badge/Descargar-Versión%20PDF-blue?style=for-the-badge&logo=adobe-acrobat-reader)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual%20Intelligence-es.pdf)
-[![Download EPUB](https://img.shields.io/badge/Descargar-Versión%20EPUB-green?style=for-the-badge&logo=apple)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual%20Intelligence-es.epub)
-[![Download MOBI](https://img.shields.io/badge/Descargar-Versión%20Kindle-orange?style=for-the-badge&logo=amazon)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual%20Intelligence-es.mobi)
+[![Download PDF](https://img.shields.io/badge/Descargar-Versión%20PDF-blue?style=for-the-badge&logo=adobe-acrobat-reader)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual.Intelligence-es.pdf)
+[![Download EPUB](https://img.shields.io/badge/Descargar-Versión%20EPUB-green?style=for-the-badge&logo=apple)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual.Intelligence-es.epub)
+[![Download MOBI](https://img.shields.io/badge/Descargar-Versión%20Kindle-orange?style=for-the-badge&logo=amazon)](https://github.com/iksnae/actual-intelligence/releases/latest/download/Actual.Intelligence-es.mobi)
 [![Read Online](https://img.shields.io/badge/Leer-Versión%20Web-purple?style=for-the-badge&logo=html5)](https://iksnae.github.io/actual-intelligence/es/)
 
 </div>
