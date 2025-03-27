@@ -52,18 +52,33 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      - name: List files for deployment
+      - name: Prepare files for deployment
         run: |
-          echo "Files to be deployed:"
-          find build -type f | grep -E '\.(html|css|js|png|jpg|jpeg|gif|svg)$'
+          # Create directory structure for pages
+          mkdir -p pages
+          mkdir -p pages/es
+          
+          # Copy HTML files to the correct locations
+          cp build/en/Actual.Intelligence-en.html pages/index.html
+          cp build/es/Actual.Intelligence-es.html pages/es/index.html
+          
+          # Copy any image directories needed for HTML files
+          cp -r build/en/images pages/ || true
+          cp -r build/en/media pages/ || true
+          cp -r build/es/images pages/es/ || true
+          cp -r build/es/media pages/es/ || true
           
           # Create a .nojekyll file to disable Jekyll processing
-          touch build/.nojekyll
+          touch pages/.nojekyll
+          
+          # List out what we're deploying
+          echo "Files to be deployed:"
+          find pages -type f | sort
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: 'build'
+          path: 'pages'
       
       - name: Deploy to GitHub Pages
         id: deployment
