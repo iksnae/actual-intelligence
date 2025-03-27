@@ -115,6 +115,15 @@ if [[ ":$PATH:" != *":${BIN_DIR}:"* ]]; then
     echo -e "${YELLOW}Then restart your terminal or run:${NC} source ~/.bashrc (or ~/.zshrc)"
 fi
 
+# Run the post-install script to fix image support
+if [ -f ".github/scripts/post-install.sh" ]; then
+    echo -e "${YELLOW}Running post-installation fixes...${NC}"
+    chmod +x .github/scripts/post-install.sh
+    .github/scripts/post-install.sh
+else
+    echo -e "${RED}Warning: post-install.sh script not found. Image support may not work correctly.${NC}"
+fi
+
 echo -e "${GREEN}Installation successful!${NC}"
 echo -e "${GREEN}You can now use Book Tools by running:${NC} book-tools [command]"
 echo -e ""
