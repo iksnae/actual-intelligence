@@ -130,21 +130,21 @@ jobs:
 
           | Format  | Description                           | Link                                                                                                                                        |
           | ------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-          | 📄 PDF  | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual.Intelligence-en.pdf)   |
-          | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual.Intelligence-en.epub) |
-          | 📚 MOBI | For Kindle devices                    | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual.Intelligence-en.mobi) |
-          | 🌐 HTML | Read online in your browser           | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual.Intelligence-en.html)     |
-          | 📋 DOCX | Microsoft Word format                 | [Download DOCX](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual.Intelligence-en.docx) |
+          | 📄 PDF  | For reading on computers and printing | [Download PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/en/actual-intelligence.pdf)   |
+          | 📱 EPUB | For most e-readers and mobile devices | [Download EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/en/actual-intelligence.epub) |
+          | 📚 MOBI | For Kindle devices                    | [Download MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/en/actual-intelligence.mobi) |
+          | 🌐 HTML | Read online in your browser           | [View HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/en/actual-intelligence.html)     |
+          | 📋 DOCX | Microsoft Word format                 | [Download DOCX](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/en/actual-intelligence.docx) |
 
           ### Spanish Version (Versión en Español)
 
           | Format  | Description                                                         | Link                                                                                                                                        |
           | ------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-          | 📄 PDF  | Para leer en computadoras e imprimir                                | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual.Intelligence-es.pdf)   |
-          | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual.Intelligence-es.epub) |
-          | 📚 MOBI | Para dispositivos Kindle                                            | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual.Intelligence-es.mobi) |
-          | 🌐 HTML | Leer en su navegador                                                | [Ver HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual.Intelligence-es.html)       |
-          | 📋 DOCX | Formato Microsoft Word                                              | [Descargar DOCX](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual.Intelligence-es.docx) |
+          | 📄 PDF  | Para leer en computadoras e imprimir                                | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/es/actual-intelligence.pdf)   |
+          | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/es/actual-intelligence.epub) |
+          | 📚 MOBI | Para dispositivos Kindle                                            | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/es/actual-intelligence.mobi) |
+          | 🌐 HTML | Leer en su navegador                                                | [Ver HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/es/actual-intelligence.html)       |
+          | 📋 DOCX | Formato Microsoft Word                                              | [Descargar DOCX](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/es/actual-intelligence.docx) |
 
           ## 🔄 Web Version
 
@@ -159,19 +159,78 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            build/en/Actual.Intelligence-en.pdf
-            build/en/Actual.Intelligence-en.epub
-            build/en/Actual.Intelligence-en.mobi
-            build/en/Actual.Intelligence-en.html
-            build/en/Actual.Intelligence-en.docx
-            build/es/Actual.Intelligence-es.pdf
-            build/es/Actual.Intelligence-es.epub
-            build/es/Actual.Intelligence-es.mobi
-            build/es/Actual.Intelligence-es.html
-            build/es/Actual.Intelligence-es.docx
+            build/en/actual-intelligence.pdf
+            build/en/actual-intelligence.epub
+            build/en/actual-intelligence.mobi
+            build/en/actual-intelligence.html
+            build/en/actual-intelligence.docx
+            build/es/actual-intelligence.pdf
+            build/es/actual-intelligence.epub
+            build/es/actual-intelligence.mobi
+            build/es/actual-intelligence.html
+            build/es/actual-intelligence.docx
           draft: false
           prerelease: false
           name: ${{ needs.build.outputs.version }}
           tag_name: ${{ needs.build.outputs.version }}
           body_path: RELEASE.md
           token: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy-pages:
+    needs: [build, release]
+    # Only deploy to Pages on pushes to main or tags
+    if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    # Allow only one concurrent deployment
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: book-builds
+          path: build
+      
+      - name: Prepare files for deployment
+        run: |
+          # Create directory structure for pages
+          mkdir -p pages
+          mkdir -p pages/es
+          
+          # Copy HTML files to the correct locations
+          cp build/en/actual-intelligence.html pages/index.html
+          cp build/es/actual-intelligence.html pages/es/index.html
+          
+          # Copy any image directories needed for HTML files
+          cp -r build/en/images pages/ || true
+          cp -r build/en/media pages/ || true
+          cp -r build/es/images pages/es/ || true
+          cp -r build/es/media pages/es/ || true
+          
+          # Create a .nojekyll file to disable Jekyll processing
+          touch pages/.nojekyll
+          
+          # List out what we're deploying
+          echo "Files to be deployed:"
+          find pages -type f | sort
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'pages'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3
