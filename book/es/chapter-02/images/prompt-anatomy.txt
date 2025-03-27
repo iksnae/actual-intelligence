@@ -1,0 +1,14 @@
+Image Description: The Anatomy of an Effective Prompt
+
+This instructional diagram breaks down the components of a well-constructed prompt using a visual hierarchy. The image features:
+
+A sample effective prompt at the center: "Create a 7-day meal plan for a vegetarian athlete training for a marathon. Include breakfast, lunch, dinner, and two snacks per day with high-protein plant-based options. Each day should provide approximately 2,500 calories with a balance of carbohydrates, proteins, and healthy fats. Present the plan in a daily table format with estimated prep times."
+
+Around this sample prompt are four labeled sections with connecting lines pointing to relevant parts of the text:
+
+1. Task Specification: Highlighting "Create a 7-day meal plan"
+2. Context: Highlighting "vegetarian athlete training for a marathon"
+3. Parameters: Highlighting the nutritional requirements and calorie count
+4. Output Format: Highlighting "Present the plan in a daily table format"
+
+Each section includes a brief explanation of why this component matters and how it improves the prompt's effectiveness. The design uses color-coding to distinguish between the different elements, making it easy for readers to identify each component in the sample prompt.
