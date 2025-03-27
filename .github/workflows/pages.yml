@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Run after successful build
+  workflow_run:
+    workflows: ["Build and Release Book"]
+    types:
+      - completed
+    branches: [main]
+  # Allow manual deployment
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # Only run on successful builds
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Download build artifacts
+        uses: dawidd6/action-download-artifact@v2
+        if: github.event_name != 'workflow_dispatch'
+        with:
+          workflow: build.yml
+          name: book-builds
+          path: build
+
+      - name: Build locally if manually triggered
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          # If we're triggered manually, run the build.sh script to generate the files
+          bash ./build.sh
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: List files for deployment
+        run: |
+          echo "Files to be deployed:"
+          find build -type f | grep -E '\.(html|css|js|png|jpg|jpeg|gif|svg)$'
+          
+          # Create a .nojekyll file to disable Jekyll processing
+          touch build/.nojekyll
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: 'build'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2 
