@@ -168,3 +168,18 @@ To create a new release that will automatically build and publish all book forma
 4. The GitHub Actions workflow will automatically build all book formats and create a release
 
 You can find all releases on the [GitHub Releases page](https://github.com/iksnae/actual-intelligence/releases).
+
+## 🛠️ Development Information
+
+### GitHub Pages Deployment
+
+The book is automatically deployed to GitHub Pages after each successful build. The deployment is handled by the GitHub Actions workflow in `.github/workflows/pages.yml`.
+
+To manually trigger a deployment:
+1. Go to the [Actions tab](https://github.com/iksnae/actual-intelligence/actions)
+2. Select the "Deploy to GitHub Pages" workflow
+3. Click "Run workflow" and select the branch to deploy from (usually `main`)
+
+The HTML version will be available at:
+- English: https://iksnae.github.io/actual-intelligence/
+- Spanish: https://iksnae.github.io/actual-intelligence/es/
