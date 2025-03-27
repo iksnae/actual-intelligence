@@ -143,6 +143,7 @@ jobs:
           | 📄 PDF  | Para leer en computadoras e imprimir                                | [Descargar PDF](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-es.pdf)   |
           | 📱 EPUB | Para la mayoría de los lectores electrónicos y dispositivos móviles | [Descargar EPUB](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-es.epub) |
           | 📚 MOBI | Para dispositivos Kindle                                            | [Descargar MOBI](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-es.mobi) |
+          | 🌐 HTML | Leer en su navegador                                                | [Ver HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-es.html)     |
           | 📋 DOCX | Formato Microsoft Word                                              | [Descargar DOCX](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/Actual%20Intelligence-es.docx) |
 
           ## 🔄 Web Version
@@ -158,15 +159,16 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            build/en/*.pdf
-            build/en/*.epub
-            build/en/*.mobi
-            build/en/*.html
-            build/en/*.docx
-            build/es/*.pdf
-            build/es/*.epub
-            build/es/*.mobi
-            build/es/*.docx
+            build/en/Actual Intelligence-en.pdf
+            build/en/Actual Intelligence-en.epub
+            build/en/Actual Intelligence-en.mobi
+            build/en/Actual Intelligence-en.html
+            build/en/Actual Intelligence-en.docx
+            build/es/Actual Intelligence-es.pdf
+            build/es/Actual Intelligence-es.epub
+            build/es/Actual Intelligence-es.mobi
+            build/es/Actual Intelligence-es.html
+            build/es/Actual Intelligence-es.docx
           draft: false
           prerelease: false
           name: ${{ needs.build.outputs.version }}
