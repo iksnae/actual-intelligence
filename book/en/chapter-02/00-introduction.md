@@ -1,6 +1,6 @@
-# Chapter 2
+## Chapter 2
 
-## Mastering ChatGPT with Effective Prompts
+#### Mastering ChatGPT with Effective Prompts
 
 ### The Art of Directing AI
 

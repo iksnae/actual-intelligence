@@ -1,6 +1,6 @@
-# Chapter 1
+## Chapter 1
 
-## Actual Intelligence *...The Human Side of AI*
+#### Actual Intelligence *...The Human Side of AI*
 
 Have you ever watched someone use a new technology and make it look effortless, only to feel lost when you try it yourself? Or perhaps you've heard about **ChatGPT** and other AI tools in the news but haven't tried them yet, unsure if they're too complicated or technical for you?
 
