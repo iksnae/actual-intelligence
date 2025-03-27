@@ -37,7 +37,7 @@ You can also view all previous versions and releases [here](https://github.com/i
 ## Available Languages
 
 - **English**: Original version
-- **Spanish (Español)**: Complete translation of Chapter 1
+- **Spanish (Español)**: Complete translation of Chapters 1 and 2
 
 ## Publisher
 
