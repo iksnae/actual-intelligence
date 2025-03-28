@@ -33,10 +33,12 @@ mkdir -p "${BIN_DIR}"
 if [ -d "${INSTALL_DIR}/.git" ]; then
     echo -e "${YELLOW}Book Tools already installed, updating...${NC}"
     cd "${INSTALL_DIR}"
-    git pull origin main
+    git fetch origin
+    git reset --hard origin/main
+    echo -e "${GREEN}Reset to latest version of book-tools${NC}"
 else
     echo -e "${YELLOW}Downloading Book Tools...${NC}"
-    git clone "${REPO_URL}" "${INSTALL_DIR}"
+    git clone --depth=1 "${REPO_URL}" "${INSTALL_DIR}"
 fi
 
 # Make scripts executable
