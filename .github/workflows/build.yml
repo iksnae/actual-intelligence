@@ -36,6 +36,7 @@ jobs:
       
       - name: Generate version
         id: version
+        shell: bash
         run: |
           # If this is a tag, use the tag name
           if [[ $GITHUB_REF == refs/tags/* ]]; then
@@ -51,6 +52,7 @@ jobs:
           echo "Generated version: $VERSION"
       
       - name: Setup book-tools
+        shell: bash
         run: |
           echo "Setting up book-tools CLI..."
           
@@ -62,10 +64,11 @@ jobs:
           
           # Verify installation
           book-tools --version || echo "Version command not available, but installation should be complete"
-          which book-tools
+          which book-tools || true
           echo "✅ book-tools CLI installed successfully"
 
       - name: Build book using CLI
+        shell: bash
         run: |
           echo "Building book with book-tools CLI..."
           
@@ -107,6 +110,7 @@ jobs:
       
       - name: Create git tag if needed
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+        shell: bash
         run: |
           # Only create a tag if we're running off main, not from an existing tag
           echo "Creating git tag ${{ needs.build.outputs.version }}"
@@ -120,6 +124,7 @@ jobs:
           git push origin ${{ needs.build.outputs.version }}
       
       - name: Create markdown content for release
+        shell: bash
         run: |
           # Get the correct file naming pattern from the artifacts
           echo "Generating release notes with correct file links..."
@@ -175,30 +180,31 @@ jobs:
           EOF
       
       - name: Prepare release assets
+        shell: bash
         run: |
           # Create temporary directory for renamed files
           mkdir -p release_assets
           
           # Copy and rename English files
-          cp build/en/actual-intelligence.pdf release_assets/actual-intelligence-en.pdf
-          cp build/en/actual-intelligence.epub release_assets/actual-intelligence-en.epub
-          cp build/en/actual-intelligence.mobi release_assets/actual-intelligence-en.mobi
-          cp build/en/actual-intelligence.html release_assets/actual-intelligence-en.html
-          cp build/en/actual-intelligence.docx release_assets/actual-intelligence-en.docx
+          cp build/en/actual-intelligence.pdf release_assets/actual-intelligence-en.pdf || echo "English PDF not found"
+          cp build/en/actual-intelligence.epub release_assets/actual-intelligence-en.epub || echo "English EPUB not found"
+          cp build/en/actual-intelligence.mobi release_assets/actual-intelligence-en.mobi || echo "English MOBI not found"
+          cp build/en/actual-intelligence.html release_assets/actual-intelligence-en.html || echo "English HTML not found"
+          cp build/en/actual-intelligence.docx release_assets/actual-intelligence-en.docx || echo "English DOCX not found"
           
           # Copy and rename Spanish files
-          cp build/es/actual-intelligence.pdf release_assets/actual-intelligence-es.pdf
-          cp build/es/actual-intelligence.epub release_assets/actual-intelligence-es.epub
-          cp build/es/actual-intelligence.mobi release_assets/actual-intelligence-es.mobi
-          cp build/es/actual-intelligence.html release_assets/actual-intelligence-es.html
-          cp build/es/actual-intelligence.docx release_assets/actual-intelligence-es.docx
+          cp build/es/actual-intelligence.pdf release_assets/actual-intelligence-es.pdf || echo "Spanish PDF not found"
+          cp build/es/actual-intelligence.epub release_assets/actual-intelligence-es.epub || echo "Spanish EPUB not found"
+          cp build/es/actual-intelligence.mobi release_assets/actual-intelligence-es.mobi || echo "Spanish MOBI not found"
+          cp build/es/actual-intelligence.html release_assets/actual-intelligence-es.html || echo "Spanish HTML not found"
+          cp build/es/actual-intelligence.docx release_assets/actual-intelligence-es.docx || echo "Spanish DOCX not found"
           
-          # Copy and rename Japanese files
-          cp build/ja/actual-intelligence.pdf release_assets/actual-intelligence-ja.pdf
-          cp build/ja/actual-intelligence.epub release_assets/actual-intelligence-ja.epub
-          cp build/ja/actual-intelligence.mobi release_assets/actual-intelligence-ja.mobi
-          cp build/ja/actual-intelligence.html release_assets/actual-intelligence-ja.html
-          cp build/ja/actual-intelligence.docx release_assets/actual-intelligence-ja.docx
+          # Copy and rename Japanese files if they exist
+          cp build/ja/actual-intelligence.pdf release_assets/actual-intelligence-ja.pdf || echo "Japanese PDF not found"
+          cp build/ja/actual-intelligence.epub release_assets/actual-intelligence-ja.epub || echo "Japanese EPUB not found"
+          cp build/ja/actual-intelligence.mobi release_assets/actual-intelligence-ja.mobi || echo "Japanese MOBI not found"
+          cp build/ja/actual-intelligence.html release_assets/actual-intelligence-ja.html || echo "Japanese HTML not found"
+          cp build/ja/actual-intelligence.docx release_assets/actual-intelligence-ja.docx || echo "Japanese DOCX not found"
           
           # List prepared assets
           echo "Prepared release assets:"
@@ -237,16 +243,17 @@ jobs:
           path: build
       
       - name: Prepare deployment files
+        shell: bash
         run: |
           # Create directory structure for pages
           mkdir -p site
           mkdir -p site/es
           mkdir -p site/ja
           
-          # Copy HTML files to the correct locations
-          cp build/en/actual-intelligence.html site/index.html
-          cp build/es/actual-intelligence.html site/es/index.html
-          cp build/ja/actual-intelligence.html site/ja/index.html
+          # Copy HTML files to the correct locations if they exist
+          cp build/en/actual-intelligence.html site/index.html || echo "English HTML not found for site deployment"
+          cp build/es/actual-intelligence.html site/es/index.html || echo "Spanish HTML not found for site deployment"
+          cp build/ja/actual-intelligence.html site/ja/index.html || echo "Japanese HTML not found for site deployment"
           
           # Copy any image directories needed for HTML files
           cp -r build/en/images site/ || true
