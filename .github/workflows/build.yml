@@ -155,12 +155,23 @@ jobs:
           | 🌐 HTML | Leer en su navegador                                                | [Ver HTML](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence-es.html)       |
           | 📋 DOCX | Formato Microsoft Word                                              | [Descargar DOCX](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence-es.docx) |
 
+          ### Japanese Version (日本語版)
+
+          | Format  | Description                           | Link                                                                                                                            |
+          | ------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+          | 📄 PDF  | コンピューターでの閲覧や印刷用                  | [PDFをダウンロード](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence-ja.pdf)   |
+          | 📱 EPUB | ほとんどの電子書籍リーダーやモバイル端末用        | [EPUBをダウンロード](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence-ja.epub) |
+          | 📚 MOBI | Kindle端末用                            | [MOBIをダウンロード](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence-ja.mobi) |
+          | 🌐 HTML | ブラウザでオンライン閲覧                      | [HTMLを表示](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence-ja.html)     |
+          | 📋 DOCX | Microsoft Word形式                     | [DOCXをダウンロード](https://github.com/iksnae/actual-intelligence/releases/download/${{ needs.build.outputs.version }}/actual-intelligence-ja.docx) |
+
           ## 🔄 Web Version
 
           The latest version is also available online:
 
           * English: https://iksnae.github.io/actual-intelligence/
           * Spanish: https://iksnae.github.io/actual-intelligence/es/
+          * Japanese: https://iksnae.github.io/actual-intelligence/ja/
           EOF
       
       - name: Prepare release assets
@@ -181,6 +192,13 @@ jobs:
           cp build/es/actual-intelligence.mobi release_assets/actual-intelligence-es.mobi
           cp build/es/actual-intelligence.html release_assets/actual-intelligence-es.html
           cp build/es/actual-intelligence.docx release_assets/actual-intelligence-es.docx
+          
+          # Copy and rename Japanese files
+          cp build/ja/actual-intelligence.pdf release_assets/actual-intelligence-ja.pdf
+          cp build/ja/actual-intelligence.epub release_assets/actual-intelligence-ja.epub
+          cp build/ja/actual-intelligence.mobi release_assets/actual-intelligence-ja.mobi
+          cp build/ja/actual-intelligence.html release_assets/actual-intelligence-ja.html
+          cp build/ja/actual-intelligence.docx release_assets/actual-intelligence-ja.docx
           
           # List prepared assets
           echo "Prepared release assets:"
@@ -223,16 +241,20 @@ jobs:
           # Create directory structure for pages
           mkdir -p site
           mkdir -p site/es
+          mkdir -p site/ja
           
           # Copy HTML files to the correct locations
           cp build/en/actual-intelligence.html site/index.html
           cp build/es/actual-intelligence.html site/es/index.html
+          cp build/ja/actual-intelligence.html site/ja/index.html
           
           # Copy any image directories needed for HTML files
           cp -r build/en/images site/ || true
           cp -r build/en/media site/ || true
           cp -r build/es/images site/es/ || true
           cp -r build/es/media site/es/ || true
+          cp -r build/ja/images site/ja/ || true
+          cp -r build/ja/media site/ja/ || true
           
           # Create a .nojekyll file to disable Jekyll processing
           touch site/.nojekyll
