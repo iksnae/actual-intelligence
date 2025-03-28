@@ -3,34 +3,64 @@
 /* Default styles */
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.6;
-  max-width: 800px;
+  line-height: 1.7;
+  max-width: 860px;
   margin: 0 auto;
   padding: 2em;
   color: #333;
+  background-color: #fcfcfc;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Improved typography */
+p {
+  margin-bottom: 1.4em;
+}
+
+/* Image styling */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2.5em auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Image captions */
+img + em {
+  display: block;
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: -1.5em;
+  margin-bottom: 2em;
 }
 
 /* Code block styling */
 pre {
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 1em;
-  margin: 1.5em 0;
+  background-color: #f8f8f8;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  padding: 1.2em;
+  margin: 1.8em 0;
   overflow: auto;
   line-height: 1.45;
-  font-family: 'Courier New', monospace;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 0.9em;
   white-space: pre-wrap; /* Ensures code wraps */
   word-wrap: break-word; /* Support long words wrapping */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 code {
-  font-family: 'Courier New', monospace;
-  background-color: #f5f5f5;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  background-color: rgba(0, 0, 0, 0.05);
   padding: 0.2em 0.4em;
   border-radius: 3px;
   font-size: 0.9em;
+  transition: background-color 0.3s ease;
 }
 
 /* Syntax highlighting */
@@ -59,13 +89,266 @@ code {
 /* Headers and TOC */
 h1, h2, h3, h4, h5, h6 {
   color: #2c3e50;
-  margin-top: 1.5em;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 2em 0 1em 0;
+  transition: color 0.3s ease;
 }
 
+h1 {
+  font-size: 2.2em;
+  margin-top: 0;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid #eaecef;
+}
+
+h2 {
+  font-size: 1.8em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.3em;
+}
+
+/* Table of Contents styling */
 #TOC {
   background-color: #f8f9fa;
-  padding: 1em;
-  margin: 1em 0 2em 0;
+  padding: 1.5em;
+  margin: 2em 0 3em 0;
   border: 1px solid #eaecef;
-  border-radius: 4px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#TOC ul {
+  list-style-type: none;
+  padding-left: 1.5em;
+}
+
+#TOC a {
+  color: #0366d6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#TOC a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #dfe2e5;
+  padding: 0 1em;
+  color: #6a737d;
+  margin: 1.5em 0;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 2em;
+  margin-bottom: 1.5em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+/* Links */
+a {
+  color: #0366d6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Reading progress indicator */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: transparent;
+  z-index: 1000;
+}
+
+.progress-bar {
+  height: 5px;
+  background: #0366d6;
+  width: 0%;
+  transition: background-color 0.3s ease;
+}
+
+/* Theme toggle button hover effect */
+.theme-toggle:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* Dark mode via class (for JS toggle) */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5, 
+body.dark-mode h6 {
+  color: #e0e0e0;
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+  border-color: #404040;
+}
+
+body.dark-mode pre, 
+body.dark-mode code {
+  background-color: #2a2a2a;
+  border-color: #404040;
+}
+
+body.dark-mode #TOC {
+  background-color: #202020;
+  border-color: #404040;
+}
+
+body.dark-mode #TOC a {
+  color: #58a6ff;
+}
+
+body.dark-mode a {
+  color: #58a6ff;
+}
+
+body.dark-mode blockquote {
+  border-color: #404040;
+  color: #a0a0a0;
+}
+
+body.dark-mode img {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode img + em {
+  color: #a0a0a0;
+}
+
+body.dark-mode .progress-bar {
+  background: #58a6ff;
+}
+
+body.dark-mode .reading-time {
+  color: #a0a0a0;
+}
+
+body.dark-mode .theme-toggle {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode via media query (for system preference) */
+@media (prefers-color-scheme: dark) {
+  body:not(.dark-mode) {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+  }
+  
+  body:not(.dark-mode) h1, 
+  body:not(.dark-mode) h2, 
+  body:not(.dark-mode) h3, 
+  body:not(.dark-mode) h4, 
+  body:not(.dark-mode) h5, 
+  body:not(.dark-mode) h6 {
+    color: #e0e0e0;
+  }
+  
+  body:not(.dark-mode) h1,
+  body:not(.dark-mode) h2 {
+    border-color: #404040;
+  }
+  
+  body:not(.dark-mode) pre, 
+  body:not(.dark-mode) code {
+    background-color: #2a2a2a;
+    border-color: #404040;
+  }
+  
+  body:not(.dark-mode) #TOC {
+    background-color: #202020;
+    border-color: #404040;
+  }
+  
+  body:not(.dark-mode) #TOC a {
+    color: #58a6ff;
+  }
+  
+  body:not(.dark-mode) a {
+    color: #58a6ff;
+  }
+  
+  body:not(.dark-mode) blockquote {
+    border-color: #404040;
+    color: #a0a0a0;
+  }
+  
+  body:not(.dark-mode) img {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  body:not(.dark-mode) img + em {
+    color: #a0a0a0;
+  }
+  
+  body:not(.dark-mode) .progress-bar {
+    background: #58a6ff;
+  }
+  
+  body:not(.dark-mode) .reading-time {
+    color: #a0a0a0;
+  }
+  
+  body:not(.dark-mode) .theme-toggle {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  body {
+    padding: 1.5em;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 1em;
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  h2 {
+    font-size: 1.6em;
+  }
+  
+  h3 {
+    font-size: 1.4em;
+  }
 } 
