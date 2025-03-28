@@ -30,7 +30,7 @@ Think of AI tools like kitchen appliances. A stand mixer can do the hard work of
 
 Think about the last time you used a powerful tool to solve a problem. Maybe it was a food processor that cut your prep time in half, or mapping software that helped you navigate an unfamiliar city. The tool was invaluable, but you were the one who decided what to cook or where to go. That's exactly your relationship with AI — you're not just pushing buttons, you're the creative director calling the shots.
 
-![](images/human-ai-partnership.jpg){ width=250px }
+![](images/human-ai-partnership.jpg){ width=90% }
 
 #### The Partnership Model
 
@@ -51,7 +51,7 @@ Let's see this partnership in action through a real example.
 
 Lisa, a middle school science teacher with no previous AI experience, wanted to create a lesson on climate change. She could have simply asked ChatGPT to `create a climate change lesson for 7th graders` and used whatever it generated—but that would have ignored her unique knowledge of her students.
 
-![](images/teacher-example.jpg){ width=250px }
+![](images/teacher-example.jpg){ width=90% }
 
 Instead, Lisa applied her human judgment. She knew her specific students—their knowledge levels, interests, and the local environmental issues they see every day. She understood which concepts they'd struggled with in past lessons.
 
@@ -64,7 +64,7 @@ The resulting lesson was far more effective because it combined Lisa's understan
 Now it's your turn. Let's create a prompt that's specifically relevant to you. Fill in the blanks below:
 `I work as a _____________ and one challenge I often face is _____________. Could you suggest three ways I might approach this problem?`
 
-![](images/prompt-template.jpg){ width=250px }
+![](images/prompt-template.jpg){ width=90% }
 
 For example:
 `I work as a retail manager and one challenge I often face is scheduling staff efficiently. Could you suggest three ways I might approach this problem?`
