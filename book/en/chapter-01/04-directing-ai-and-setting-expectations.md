@@ -126,7 +126,7 @@ AI can role-play different viewpoints or expertise areas, allowing you to explor
 
 AI language models don't have the ability to independently verify facts. They can confidently present incorrect information (sometimes called "hallucinations") that sounds plausible but is actually wrong.
 
-![](images/hallucination{ width=90% }
+![](images/hallucination.jpg){ width=90% }
 
 #### Provide Up-to-Date Information
 

@@ -16,7 +16,7 @@
 
 1. Identify a current challenge in your life that requires some thinking or planning. This could be a decision you need to make, a project you're planning, or a problem you're trying to solve. Choose something real but not extremely personal or sensitive.
 
-![](images/identify-challenge.jpg)
+![](images/identify-challenge.jpg){ width=90% }
 
 2. Before consulting AI, spend 3-5 minutes writing down your own thoughts about the challenge:
 
