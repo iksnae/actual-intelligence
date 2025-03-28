@@ -1,0 +1,45 @@
+The Values-Based Financial System
+
+This image visually represents how the Budget Buddy system connects financial decisions to personal values and priorities. The illustration is designed as a before-and-after comparison that shows the transformation from disconnected financial management to an integrated, values-aligned approach.
+
+The centerpiece of the image is a dashboard-like control panel with financial controls, dials, gauges, and levers. Unlike a conventional budget dashboard with generic categories, this dashboard's elements are distinctively connected to personal values and life goals through visual tethers and symbolic representations.
+
+Each financial control is linked to a corresponding value or life priority:
+- A dial labeled "Housing" connects to a family icon (representing security and comfort)
+- A slider for "Entertainment" links to symbols of experiences and memories
+- A gauge showing "Savings" ties to future-oriented symbols (education, retirement, dreams)
+- Controls for "Transportation" connect to lifestyle choices and environmental values
+- "Giving" elements link to community and relationship symbols
+
+The left side of the image depicts the "Before" state:
+- Disconnected financial pieces scattered without coherent organization
+- Budget categories isolated from their purpose and meaning
+- Purely numerical approach with cold, technical styling
+- Stressed human figure trying to manually connect fragmented elements
+- Financial decisions represented as isolated transactions
+- Abstract dollar symbols divorced from what they represent in real life
+
+The right side shows the "After" state with the integrated system:
+- Unified dashboard where spending clearly aligns with priorities
+- Harmonious connections between numbers and values
+- Warm, purpose-driven visual treatment
+- Relaxed human figure confidently adjusting controls
+- Financial decisions shown as steps toward meaningful goals
+- Money represented in terms of what it enables in life
+
+The human figure (representing the user) occupies the foreground, clearly in control of the dashboard and making adjustments. Their posture and expression reflect ownership and purpose rather than stress or confusion.
+
+An AI assistant figure appears in a supportive position, offering:
+- Analysis tools that highlight patterns in spending
+- Magnifying glasses to examine specific areas more closely
+- Suggestion cards with potential optimizations
+- Balancing scales showing trade-offs between different priorities
+- Alignment gauges showing how closely spending matches stated values
+
+The overall design emphasizes that the system connects the often separate worlds of:
+- Raw numbers and personal meaning
+- Technical budgeting and emotional priorities
+- Short-term decisions and long-term vision
+- Financial constraints and life aspirations
+
+Color transitions from cool, clinical blues in the "Before" section to warm, vibrant hues in the "After" section, visually reinforcing how bringing values into financial decisions transforms the experience from cold and technical to meaningful and purposeful.
