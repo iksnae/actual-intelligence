@@ -28,6 +28,17 @@ A practical, non-technical guide to using AI tools like ChatGPT in everyday life
 
 </div>
 
+### Japanese Version (日本語版)
+
+<div align="center">
+
+[![Download PDF](https://img.shields.io/badge/ダウンロード-PDF%20版-blue?style=for-the-badge&logo=adobe-acrobat-reader)](https://github.com/iksnae/actual-intelligence/releases/latest/download/actual-intelligence-ja.pdf)
+[![Download EPUB](https://img.shields.io/badge/ダウンロード-EPUB%20版-green?style=for-the-badge&logo=apple)](https://github.com/iksnae/actual-intelligence/releases/latest/download/actual-intelligence-ja.epub)
+[![Download MOBI](https://img.shields.io/badge/ダウンロード-Kindle%20版-orange?style=for-the-badge&logo=amazon)](https://github.com/iksnae/actual-intelligence/releases/latest/download/actual-intelligence-ja.mobi)
+[![Read Online](https://img.shields.io/badge/閲覧-Web%20版-purple?style=for-the-badge&logo=html5)](https://iksnae.github.io/actual-intelligence/ja/)
+
+</div>
+
 You can also view all previous versions and releases [here](https://github.com/iksnae/actual-intelligence/releases).
 
 ## About This Book
@@ -38,6 +49,7 @@ You can also view all previous versions and releases [here](https://github.com/i
 
 - **English**: Original version
 - **Spanish (Español)**: Complete translation of Chapters 1 and 2
+- **Japanese (日本語)**: Complete translation of Chapter 1
 
 ## Publisher
 
@@ -183,6 +195,7 @@ To manually trigger a deployment:
 The HTML version will be available at:
 - English: https://iksnae.github.io/actual-intelligence/
 - Spanish: https://iksnae.github.io/actual-intelligence/es/
+- Japanese: https://iksnae.github.io/actual-intelligence/ja/
 
 ## GitHub Pages Setup
 
