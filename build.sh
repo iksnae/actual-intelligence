@@ -89,4 +89,24 @@ fi
 cd "$(dirname "$0")"
 echo "Building book with book-tools CLI..."
 export PATH="$HOME/.local/bin:$PATH"
+
+# DEBUG: Print the available languages from book.yaml
+echo "DEBUG: Checking languages in book.yaml"
+grep -E "languages:" book.yaml
+
+# First build using the CLI (which might not be correctly handling all languages)
 book-tools build --all-languages --verbose
+
+# DEBUG: Check if Japanese files were built
+echo "DEBUG: Checking if Japanese files were created"
+find build/ja -type f -name "*.pdf" -o -name "*.epub" -o -name "*.mobi" -o -name "*.html" -o -name "*.docx"
+
+# EXPLICIT BUILD: If Japanese files are missing, explicitly build Japanese
+if [ ! -f "build/ja/actual-intelligence.pdf" ]; then
+  echo "NOTICE: Japanese build not found, explicitly building Japanese version..."
+  source tools/scripts/build-language.sh ja
+fi
+
+# Final verification
+echo "DEBUG: Final verification of all language builds"
+find build/ -maxdepth 2 -type f -name "*.pdf" | sort
