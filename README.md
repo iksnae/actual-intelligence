@@ -49,7 +49,7 @@ You can also view all previous versions and releases [here](https://github.com/i
 
 - **English**: Original version
 - **Spanish (Español)**: Complete translation of Chapters 1 and 2
-- **Japanese (日本語)**: Complete translation of Chapter 1
+- **Japanese (日本語)**: Complete translation of Chapters 1 and 2
 
 ## Publisher
 
