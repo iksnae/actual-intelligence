@@ -1,112 +1,63 @@
 #!/bin/bash
+set -e
 
-# Actual Intelligence Book Builder
-# Main entry point for building the book using book-tools
+# Record start time for benchmarking
+start_time=$(date +%s)
 
-# Function to install book-tools reliably
-install_book_tools() {
-  echo "Installing book-tools..."
-  # Clone the repository directly
-  git clone https://github.com/iksnae/book-tools.git ~/.book-tools
-  
-  # Make scripts executable
-  cd ~/.book-tools/src
-  chmod +x make-scripts-executable.sh
-  ./make-scripts-executable.sh
-  
-  # Create the bin directory and wrapper script
-  mkdir -p ~/.local/bin
-  
-  cat > ~/.local/bin/book-tools << 'EOF'
-#!/bin/bash
+# Set colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
 
-BOOK_TOOLS_DIR="$HOME/.book-tools"
-COMMAND=$1
-shift
+echo -e "${GREEN}Starting Actual Intelligence book build...${NC}"
 
-# Check for commands
-case "$COMMAND" in
-  create)
-    "$BOOK_TOOLS_DIR/src/scripts/create-book.sh" "$@"
-    ;;
-  build)
-    # Just run the build script without any directory parameter
-    "$BOOK_TOOLS_DIR/src/scripts/build.sh" "$@"
-    ;;
-  build-docker)
-    echo "Docker build not available in this installation"
-    exit 1
-    ;;
-  setup)
-    "$BOOK_TOOLS_DIR/src/scripts/setup.sh" "$@"
-    ;;
-  help)
-    echo "Usage: book-tools COMMAND [options]"
-    echo ""
-    echo "Commands:"
-    echo "  create    Create a new book project"
-    echo "  build     Build a book in the current directory"
-    echo "  setup     Setup the book environment"
-    echo "  help      Show this help message"
-    ;;
-  *)
-    echo "Unknown command: $COMMAND"
-    echo "Use 'book-tools help' for usage information"
-    exit 1
-    ;;
-esac
-EOF
-  
-  chmod +x ~/.local/bin/book-tools
-  echo "book-tools installed successfully!"
-}
+# Generate version from current date and time
+DATE_VERSION=$(date +'%Y.%m.%d')
+TIME_VERSION=$(date +'%H%M')
+VERSION="v${DATE_VERSION}-${TIME_VERSION}"
+echo -e "${BLUE}Version: ${VERSION}${NC}"
 
-# Check if running in Docker
-if [ -f /.dockerenv ]; then
-  echo "Running in Docker container..."
-else
-  echo "Running locally, using Docker..."
-  docker run --rm -v "$(pwd):/book" iksnae/book-builder:latest /bin/bash -c "
-    # Setup book-tools using our custom installation function
-    cd /book
-    source ./build.sh
-    install_book_tools
-    export PATH=\"\$HOME/.local/bin:\$PATH\"
-    book-tools build --all-languages --verbose
-  "
-  exit $?
+# Create directory for all builds if it doesn't exist
+echo "Creating build directory..."
+mkdir -p build
+
+# Call book-tools build with all languages flag
+echo -e "${YELLOW}Building all language versions with book-tools...${NC}"
+book-tools build --all-languages
+
+# Failsafe: Check if Japanese build exists, if not, build it explicitly
+if [ ! -f "build/ja/actual-intelligence.epub" ]; then
+    echo -e "${YELLOW}Japanese build files not found. Building Japanese version explicitly...${NC}"
+    echo -e "${BLUE}Setting up Japanese build...${NC}"
+    
+    # Ensure the Japanese build directory exists
+    mkdir -p build/ja
+    
+    # Call book-tools build-language.sh directly for Japanese
+    echo -e "${YELLOW}Building Japanese version...${NC}"
+    "$HOME/.book-tools/scripts/build-language.sh" "ja"
+    
+    echo -e "${GREEN}✅ Japanese build completed${NC}"
 fi
 
-# If we're here, we're running in the container
-# Setup book-tools CLI if not already installed
-if ! command -v book-tools &> /dev/null; then
-  echo "Setting up book-tools CLI..."
-  install_book_tools
-  export PATH="$HOME/.local/bin:$PATH"
+# Calculate and display the time taken
+end_time=$(date +%s)
+duration=$((end_time - start_time))
+minutes=$((duration / 60))
+seconds=$((duration % 60))
+
+echo -e "${GREEN}✅ Build completed in ${minutes}m ${seconds}s${NC}"
+echo -e "${BLUE}Generated version: ${VERSION}${NC}"
+ls -la build/*/actual-intelligence.epub
+
+# Tag the version if the BUILD_TAG environment variable is set
+if [ "${BUILD_TAG}" = "true" ]; then
+    echo -e "${YELLOW}Tagging version ${VERSION}...${NC}"
+    git tag -a "${VERSION}" -m "Release ${VERSION}"
+    git push origin "${VERSION}"
+    echo -e "${GREEN}✅ Tagged version ${VERSION}${NC}"
 fi
 
-# Run book CLI with all arguments passed to this script
-cd "$(dirname "$0")"
-echo "Building book with book-tools CLI..."
-export PATH="$HOME/.local/bin:$PATH"
-
-# DEBUG: Print the available languages from book.yaml
-echo "DEBUG: Checking languages in book.yaml"
-grep -E "languages:" book.yaml
-
-# First build using the CLI (which might not be correctly handling all languages)
-book-tools build --all-languages --verbose
-
-# DEBUG: Check if Japanese files were built
-echo "DEBUG: Checking if Japanese files were created"
-find build/ja -type f -name "*.pdf" -o -name "*.epub" -o -name "*.mobi" -o -name "*.html" -o -name "*.docx"
-
-# EXPLICIT BUILD: If Japanese files are missing, explicitly build Japanese
-if [ ! -f "build/ja/actual-intelligence.pdf" ]; then
-  echo "NOTICE: Japanese build not found, explicitly building Japanese version..."
-  source tools/scripts/build-language.sh ja
-fi
-
-# Final verification
-echo "DEBUG: Final verification of all language builds"
-find build/ -maxdepth 2 -type f -name "*.pdf" | sort
+echo -e "${GREEN}All done!${NC}"
