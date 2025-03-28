@@ -42,6 +42,14 @@ if [ ! -f "build/ja/actual-intelligence.epub" ]; then
     echo -e "${GREEN}✅ Japanese build completed${NC}"
 fi
 
+# Enhance HTML files for better web reading experience
+echo -e "${YELLOW}Enhancing HTML files for web reading...${NC}"
+find build -name "*.html" -type f | while read html_file; do
+    echo -e "Enhancing ${BLUE}$html_file${NC}..."
+    tools/scripts/enhance-html.sh "$html_file"
+done
+echo -e "${GREEN}✅ HTML enhancement completed${NC}"
+
 # Calculate and display the time taken
 end_time=$(date +%s)
 duration=$((end_time - start_time))
