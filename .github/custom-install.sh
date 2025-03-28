@@ -45,6 +45,49 @@ cd "${INSTALL_DIR}/src"
 chmod +x make-scripts-executable.sh
 ./make-scripts-executable.sh
 
+# Patch the build.sh script to support all languages
+echo -e "${YELLOW}Patching build.sh to support all languages...${NC}"
+BUILD_SCRIPT="${INSTALL_DIR}/src/scripts/build.sh"
+if [ -f "$BUILD_SCRIPT" ]; then
+    # Make a backup of the original script
+    cp "$BUILD_SCRIPT" "${BUILD_SCRIPT}.backup"
+    
+    # Check if the script needs to be patched (look for Spanish-only code)
+    if grep -q "Building Spanish version" "$BUILD_SCRIPT"; then
+        echo -e "${BLUE}Updating build script to support all languages dynamically...${NC}"
+        # Replace the language-specific part with a loop to handle all languages
+        sed -i '/# Build Spanish version if requested/,/fi$/c\
+# If --all-languages flag is used, build all available languages\
+if [ "$ALL_LANGUAGES" = true ]; then\
+  # Get all language directories directly from book directory\
+  for lang_dir in book/*/ ; do\
+    # Extract language code from directory name\
+    lang_code=$(basename "$lang_dir")\
+    \
+    # Skip English since we already built it\
+    if [ "$lang_code" = "en" ]; then\
+      continue\
+    fi\
+    \
+    # Skip '"'"'images'"'"' directory which isn'"'"'t a language\
+    if [ "$lang_code" = "images" ]; then\
+      continue\
+    fi\
+    \
+    echo "🔨 Building $lang_code version..."\
+    source "$(dirname "$0")/build-language.sh" "$lang_code"\
+  done\
+fi' "$BUILD_SCRIPT"
+        
+        echo -e "${GREEN}✅ Build script patched successfully to support all languages${NC}"
+    else
+        echo -e "${GREEN}✅ Build script already supports all languages${NC}"
+    fi
+else
+    echo -e "${RED}Error: Could not find build.sh script at $BUILD_SCRIPT${NC}"
+    exit 1
+fi
+
 # Create wrapper script in bin directory
 echo -e "${YELLOW}Creating book-tools command...${NC}"
 cat > "${BIN_DIR}/book-tools" << 'EOF'
