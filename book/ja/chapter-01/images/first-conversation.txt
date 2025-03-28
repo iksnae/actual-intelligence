@@ -1,0 +1,1 @@
+A screenshot of a simple conversation with ChatGPT. The conversation should show the user's first message: "Hi, I'm new to ChatGPT. Can you explain what you can help me with in simple terms?" and ChatGPT's response explaining its capabilities in an approachable way. The interface should match the current ChatGPT design with its distinctive layout and styling.
