@@ -1,0 +1,32 @@
+The AI Learning Partner System
+
+This image depicts a visual metaphor of a learning journey as a winding mountain path. The illustration shows the contrast between traditional self-directed learning and AI-assisted learning.
+
+In the background, faded paths represent traditional learning journeys - winding, unclear routes with dead ends, backtracking, and confusing intersections. These paths show learners wandering without clear direction, sometimes stuck in loops or abandoning the journey entirely.
+
+In the foreground is the AI-assisted learning path - a clearer, more structured route up the same mountain. This path features:
+
+- Clearly marked stages of progression (beginner, intermediate, advanced)
+- Strategic viewpoints (representing conceptual understanding)
+- Rest areas (practice stations)
+- Signposts showing milestone achievements
+- Bridges over difficult terrain (representing challenging concepts)
+
+A human figure (the learner) is shown actively progressing along this path, carrying a backpack of tools and knowledge. They are clearly in control, choosing their direction and pace.
+
+The AI assistant is depicted as a supportive guide figure walking alongside but slightly behind the learner. The AI guide is:
+- Offering maps of the terrain ahead (learning roadmaps)
+- Pointing out potential obstacles or misconceptions
+- Providing tools at key points (practice exercises, explanations)
+- Holding a lantern to illuminate difficult passages
+- Creating shortcuts through complex terrain
+
+Notable visual elements include:
+- The human learner's compass (representing values and goals) that determines direction
+- The AI assistant's telescope (showing ability to see patterns and connections)
+- Feedback loops shown as small circular paths that return to the main journey
+- Review stations depicted as overlooks where previous terrain is visible
+
+The color scheme uses warmer colors for the human elements and cooler, more digital colors for the AI elements, while the overall path integrates both color schemes to show the partnership.
+
+The image emphasizes that effective learning combines human direction, motivation, and experience with AI structure, feedback, and personalization - creating a journey that is more efficient and enjoyable than either human-only or AI-only approaches.
