@@ -1,0 +1,33 @@
+The Decision Framework System
+
+This image visualizes how AI assistance enhances human judgment in decision-making processes. The illustration portrays decision-making as a journey through a complex landscape with multiple branching paths.
+
+The centerpiece of the image is a human figure standing at a major decision point. The figure holds a compass prominently in their hands - a visual metaphor representing personal values that ultimately guide direction. The compass is designed with elements that suggest personal priorities and principles.
+
+Three different potential paths stretch out before the decision-maker:
+
+On the left side is a path representing emotional, intuitive approaches to decisions. This path features heart symbols, intuitive leaps across gaps, and warm colors. Elements on this path show decisions driven by feelings, relationships, and personal significance.
+
+On the right is a path representing purely logical, analytical approaches. This path features charts, scales, and formulas with cool, calculated colors. Elements here show decisions driven by data, probabilities, and objective metrics.
+
+In the center is a balanced path that integrates both approaches with the help of AI tools. This path glows with a balanced color palette and shows a more stable journey that acknowledges both emotional and analytical factors.
+
+An AI assistant figure appears beside the human, offering several decision-enhancing tools:
+- Detailed maps showing the terrain ahead (representing improved visibility of consequences)
+- A telescope for seeing distant implications (long-term perspective)
+- Scales for objectively weighing different factors
+- Bridges across particularly challenging terrain (difficult trade-offs)
+- Signposts highlighting potential cognitive biases
+
+The landscape itself contains visual metaphors for different decision elements:
+- Fork junctions representing explicit choice points
+- Fog banks indicating areas of uncertainty
+- Rocky terrain showing difficult emotional considerations
+- Measured grid areas showing analytical zones
+- Viewpoints offering perspective
+
+Throughout the image, it's clear that while the AI provides enhanced analytical capabilities, improved foresight, and decision-structuring frameworks, the human remains the actual decision-maker. The human's hands grip the compass firmly, their stance is active and engaged, and they are positioned in the foreground while the AI assistant remains in a supportive position.
+
+Various decision tools from the framework appear as bridges, scaffolding, and viewpoints along the journey - visual representations of weighted matrices, pro-con analyses, probability assessments, and value alignment checks.
+
+The overall color scheme balances cool analytical blues with warm intuitive reds, creating a purple harmony along the central path where the two approaches integrate effectively.
