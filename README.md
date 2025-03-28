@@ -1,4 +1,4 @@
-![cover](./art/image.png)
+![cover](./art/image.jpg)
 
 # Actual Intelligence
 
