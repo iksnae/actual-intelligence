@@ -6,7 +6,7 @@ Ahora que entendemos la relación entre la inteligencia humana y las capacidades
 
 ¿Recuerdas nuestra metáfora del director de cine? Ampliemos lo que significa ser un director efectivo de herramientas de IA.
 
-![](images/director-mindset.jpg)
+![](images/director-mindset.jpg){ width=90% }
 
 Así como un director de cine no simplemente dice a los actores "hagan una buena escena" y espera lo mejor, tú no deberías acercarte a la IA con peticiones vagas y una aceptación pasiva de lo que sea que produzca. La mentalidad del director involucra varias prácticas clave:
 
@@ -30,7 +30,7 @@ Las indicaciones vagas conducen a respuestas genéricas. Cuanto más específica
 
 **Dirección específica:** "Dirijo un puesto de venta de productos de granja orgánica local dirigido a familias conscientes de la salud. Sugiéreme cinco enfoques de marketing de bajo presupuesto que nos ayuden a enfatizar nuestras prácticas agrícolas sostenibles y nuestras raíces comunitarias."
 
-![](images/specific-direction.jpg)
+![](images/specific-direction.jpg){ width=90% }
 
 La dirección específica proporciona contexto y limitaciones que ayudan a la IA a generar respuestas relevantes adaptadas a tus necesidades.
 
@@ -54,7 +54,7 @@ Aproxímate al contenido generado por IA con un escepticismo saludable. Pregúnt
 - ¿Es este el enfoque correcto para mi situación específica?
 - ¿Esto se alinea con mis valores y objetivos?
 
-![](images/critical-evaluation.jpg)
+![](images/critical-evaluation.jpg){ width=90% }
 
 Recuerda que tú eres el juez final de la calidad y la idoneidad. La IA está ahí para ayudarte, no para tomar decisiones finales.
 
@@ -68,7 +68,7 @@ Cuando combinas la dirección humana con las capacidades de la IA, sucede algo n
 
 Sara, una profesora de inglés de secundaria, experimenta esta amplificación cuando planifica su currículum. Podría pasar horas buscando materiales de lectura relevantes, redactando preguntas para discusión y creando tareas. En cambio, dirige a ChatGPT con sus objetivos educativos específicos y conocimiento de sus estudiantes:
 
-![](images/teacher-curriculum.jpg)
+![](images/teacher-curriculum.jpg){ width=90% }
 
 *"Necesito diseñar una unidad sobre 'identidad' para mi clase de inglés de 10º grado. Muchos de mis estudiantes son estadounidenses de primera generación que a menudo discuten los desafíos de navegar entre culturas. Sugiere cuentos contemporáneos de autores diversos que exploren la formación de identidad, y para cada historia, esboza posibles preguntas de discusión que conecten con la experiencia inmigrante."*
 
@@ -90,7 +90,7 @@ Establezcamos una comprensión equilibrada de lo que estas herramientas pueden y
 
 La IA sobresale en producir varios tipos de contenido escrito, desde escritura creativa hasta explicaciones técnicas, desde conversaciones casuales hasta documentos formales. Puede adaptar su tono, estilo y nivel de complejidad según tu dirección.
 
-![](images/text-generation.jpg)
+![](images/text-generation.jpg){ width=90% }
 
 #### Procesar y Resumir Información
 
@@ -118,7 +118,7 @@ La IA puede representar diferentes puntos de vista o áreas de experiencia, perm
 
 Los modelos de lenguaje de IA no tienen la capacidad de verificar hechos de forma independiente. Pueden presentar con confianza información incorrecta (a veces llamada "alucinaciones") que suena plausible pero es realmente errónea.
 
-![](images/hallucination.jpg)
+![](images/hallucination.jpg){ width=90% }
 
 #### Proporcionar Información Actualizada
 
@@ -160,7 +160,7 @@ Abordemos algunos conceptos erróneos frecuentes sobre las herramientas de IA qu
 
 **Realidad:** La IA simula opiniones basadas en patrones en sus datos de entrenamiento, pero realmente no tiene creencias o convicciones.
 
-![](images/ai-misconceptions.jpg)
+![](images/ai-misconceptions.jpg){ width=90% }
 
 ### Concepto erróneo: "La IA siempre se está mejorando a sí misma"
 
@@ -176,7 +176,7 @@ En otras palabras:
 - Para contenido de riesgo moderado, deberías revisar cuidadosamente las sugerencias de IA y hacer tus propios juicios
 - Para decisiones de alto riesgo o afirmaciones factuales, deberías verificar independientemente la información a través de fuentes confiables
 
-![](images/verification-principle.jpg)
+![](images/verification-principle.jpg){ width=90% }
 
 Miguel, un fotógrafo aficionado investigando equipos de cámara, aplica este principio: *"Uso ChatGPT para obtener explicaciones rápidas de conceptos técnicos y generar preguntas que debería hacer. Pero antes de gastar 2,000 dólares en una nueva cámara, siempre verifico los detalles específicos del modelo en el sitio web del fabricante y leo reseñas de sitios de fotografía confiables."*
 

@@ -15,7 +15,7 @@
 
 1. Choose a topic you know well—perhaps related to your profession, a hobby, or your local community.
 
-![](images/testing-limitations.jpg)
+![](images/testing-limitations.jpg){ width=90% }
 
 2. Ask ChatGPT a series of increasingly specific questions about this topic, starting with general questions and moving toward highly specific ones that might require very recent or specialized knowledge.
 

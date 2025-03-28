@@ -20,7 +20,7 @@
    - Design a flyer for a community event
    - Create a workout routine
 
-![](images/creative-control.jpg)
+![](images/creative-control.jpg){ width=90% }
 
 2. Begin by defining your vision for the project. Write down:
 

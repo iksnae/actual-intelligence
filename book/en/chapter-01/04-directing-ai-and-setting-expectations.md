@@ -6,7 +6,7 @@ Now that we understand the relationship between human intelligence and AI capabi
 
 Remember our film director metaphor? Let's expand on what it means to be an effective director of AI tools.
 
-![](images/director-mindset.jpg)
+![](images/director-mindset.jpg){ width=90% }
 
 Just as a film director doesn't simply tell actors "make a good scene" and hope for the best, you shouldn't approach AI with vague requests and passive acceptance of whatever it produces. The director's mindset involves several key practices:
 
@@ -32,7 +32,7 @@ Vague prompts lead to generic responses. The more specific your direction, the m
 
 **Specific direction:** "I run a local organic farm stand targeting health-conscious families. Suggest five low-budget marketing approaches that would help us emphasize our sustainable farming practices and community roots."
 
-![](images/specific-direction.jpg)
+![](images/specific-direction.jpg){ width=90% }
 
 The specific direction provides context and constraints that help the AI generate relevant responses tailored to your needs.
 
@@ -60,7 +60,7 @@ Approach AI-generated content with a healthy skepticism. Ask yourself:
 - Is this the right approach for my specific situation?
 - Does this align with my values and objectives?
 
-![](images/critical-evaluation.jpg)
+![](images/critical-evaluation.jpg){ width=90% }
 
 Remember that you are the ultimate judge of quality and appropriateness. The AI is there to assist you, not make final decisions.
 
@@ -78,7 +78,7 @@ This amplification becomes particularly powerful when applied to real-world chal
 I need to design a unit on 'identity' for my 10th grade English class. Many of my students are first-generation Americans who often discuss the challenges of navigating between cultures. Suggest contemporary short stories from diverse authors that explore identity formation, and for each story, outline potential discussion questions that connect to the immigrant experience.
 `
 
-![](images/teacher-curriculum.jpg)
+![](images/teacher-curriculum.jpg){ width=90% }
 
 With this direction, ChatGPT can quickly generate suggestions that Sarah then evaluates based on her professional judgment, knowledge of her specific students, and curriculum requirements. She might accept some suggestions, modify others, and reject those that don't fit her vision.
 
@@ -98,7 +98,7 @@ Let's establish a balanced understanding of what these tools can and cannot do t
 
 AI excels at producing various types of written content—from creative writing to technical explanations, from casual conversation to formal documents. It can adapt its tone, style, and complexity level based on your direction.
 
-![](images/text-generation.jpg)
+![](images/text-generation.jpg){ width=90% }
 
 #### Process and Summarize Information
 
@@ -126,7 +126,7 @@ AI can role-play different viewpoints or expertise areas, allowing you to explor
 
 AI language models don't have the ability to independently verify facts. They can confidently present incorrect information (sometimes called "hallucinations") that sounds plausible but is actually wrong.
 
-![](images/hallucination.jpg)
+![](images/hallucination{ width=90% }
 
 #### Provide Up-to-Date Information
 
@@ -168,7 +168,7 @@ Let's address some frequent misconceptions about AI tools that can lead to unrea
 
 **Reality:** AI simulates opinions based on patterns in its training data but doesn't actually hold beliefs or convictions.
 
-![](images/ai-misconceptions.jpg)
+![](images/ai-misconceptions.jpg){ width=90% }
 
 ### Misconception: "AI is always improving itself"
 
@@ -184,7 +184,7 @@ In other words:
 - For moderate-stakes content, you should review AI suggestions carefully and make your own judgments
 - For high-stakes decisions or factual claims, you should independently verify information through reliable sources
 
-![](images/verification-principle.jpg)
+![](images/verification-principle.jpg){ width=90% }
 
 Michael, a hobby photographer researching camera equipment, applies this principle: *"I use ChatGPT to get quick explanations of technical concepts and generate questions I should ask. But before spending $2,000 on a new camera, I always verify the specific model details on the manufacturer's website and read reviews from trusted photography sites."*
 
@@ -208,7 +208,7 @@ To fully embrace your role as the director of AI tools, consider this general ap
 
 7. **Make the final decisions** based on your judgment, values, and knowledge
 
-![](images/directing-process.jpg)
+![](images/directing-process.jpg){ width=90% }
 
 This approach puts you firmly in control of the process while still leveraging the AI's capabilities to enhance your thinking and productivity.
 

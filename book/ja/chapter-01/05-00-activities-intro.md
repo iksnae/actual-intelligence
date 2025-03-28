@@ -6,6 +6,6 @@
 
 覚えておいてください、学ぶための最良の方法は実践することです。間違いを恐れないでください—それらは学習プロセスの一部です。
 
-![](images/hands-on-learning.jpg)
+![](images/hands-on-learning.jpg){ width=90% }
 
 --- 

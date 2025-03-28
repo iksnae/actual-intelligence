@@ -13,7 +13,7 @@ Effective prompting involves the same key practices we explored in the Director'
 **3. Iterative Refinement**: Treat prompting as a conversation, not a single question
 **4. Critical Evaluation**: Judge the outputs based on how well they serve your needs
 
-![](./images/prompt-anatomy.jpg)
+![](./images/prompt-anatomy.jpg){ width=90% }
 *Understanding the anatomy of an effective prompt helps you move from vague requests to clear direction that yields useful results.*
 
 ### What Makes a Good Prompt?

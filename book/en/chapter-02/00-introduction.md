@@ -9,7 +9,7 @@ You're not alone. Many people's first experiences with AI tools leave them under
 
 Remember Maria, the small business owner from our introduction? At first, she thought AI would be too technical, but once she learned to direct it with clear intentions—like a filmmaker guiding their crew—she transformed ChatGPT into her most valuable assistant.
 
-![](./images/director-clapperboard.jpg)  
+![](./images/director-clapperboard.jpg){ width=90% }
 *Just as a film director doesn't need to operate every camera to create magic, you don't need technical expertise to harness AI—only the ability to communicate your vision clearly.*  
 
 In this chapter, we'll build on your **Actual Intelligence** foundation to help you:  

@@ -43,7 +43,7 @@ For most beginners, the free tier provides plenty of functionality to get starte
 
 When you first log in to ChatGPT, you'll see a clean, straightforward interface:
 
-![](./images/chatgpt-interface.jpg)
+![](./images/chatgpt-interface.jpg){ width=90% }
 
 **Main components:**
 

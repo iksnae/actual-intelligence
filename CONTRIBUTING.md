@@ -78,7 +78,15 @@ Content files use Markdown with the following conventions:
 2. **Section Headings**: Use `## Section Title`
 3. **Subsections**: Use `### Subsection Title`
 4. **Code Blocks**: Use triple backticks for code samples
-5. **Activity Blocks**: Use the following format for activities:
+5. **Lists**: 
+   - Use dashes (`-`) for bulleted lists, not asterisks
+   - Always precede lists with an empty line
+   - Indent sublists with 3 spaces
+6. **Images**:
+   - Use the format: `![](./path/to/image.jpg){ width=90% }`
+   - Include descriptive alt text when needed: `![Alt text](./path/to/image.jpg){ width=90% }`
+   - Store images in the appropriate `images/` directory
+7. **Activity Blocks**: Use the following format for activities:
 
 ```markdown
 ## Try This Now
