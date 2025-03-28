@@ -44,40 +44,40 @@ jobs:
             # Otherwise, use the date and time for versioning
             DATE_VERSION=$(date +'%Y.%m.%d')
             TIME_VERSION=$(date +'%H%M')
-            VERSION="v${DATE_VERSION}-${TIME_VERSION}"
+            VERSION=\"v${DATE_VERSION}-${TIME_VERSION}\"
           fi
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Generated version: $VERSION"
+          echo \"VERSION=$VERSION\" >> $GITHUB_ENV
+          echo \"version=$VERSION\" >> $GITHUB_OUTPUT
+          echo \"Generated version: $VERSION\"
       
       - name: Setup book-tools
         run: |
-          echo "Setting up book-tools CLI..."
+          echo \"Setting up book-tools CLI...\"
           
           # Run our custom installation script
           bash .github/custom-install.sh
           
           # Add to PATH
-          export PATH="$HOME/.local/bin:$PATH"
+          export PATH=\"$HOME/.local/bin:$PATH\"
           
           # Verify installation
-          book-tools --version || echo "Version command not available, but installation should be complete"
+          book-tools --version || echo \"Version command not available, but installation should be complete\"
           which book-tools
-          echo "✅ book-tools CLI installed successfully"
+          echo \"✅ book-tools CLI installed successfully\"
 
       - name: Build book using CLI
         run: |
-          echo "Building book with book-tools CLI..."
+          echo \"Building book with book-tools CLI...\"
           
           # Add to PATH (again, for this step)
-          export PATH="$HOME/.local/bin:$PATH"
+          export PATH=\"$HOME/.local/bin:$PATH\"
           
           # Build book for all languages with all formats using the CLI
           book-tools build --all-languages --verbose
           
           # List the generated files
-          echo "Generated files:"
-          find build/ -type f \( -name "*.pdf" -o -name "*.epub" -o -name "*.mobi" -o -name "*.html" -o -name "*.docx" \) -exec ls -la {} \;
+          echo \"Generated files:\"
+          find build/ -type f \( -name \"*.pdf\" -o -name \"*.epub\" -o -name \"*.mobi\" -o -name \"*.html\" -o -name \"*.docx\" \) -exec ls -la {} \;
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -109,11 +109,11 @@ jobs:
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
         run: |
           # Only create a tag if we're running off main, not from an existing tag
-          echo "Creating git tag ${{ needs.build.outputs.version }}"
+          echo \"Creating git tag ${{ needs.build.outputs.version }}\"
           
           # Configure git
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+          git config --global user.name \"GitHub Actions\"
+          git config --global user.email \"actions@github.com\"
           
           # Create and push the tag
           git tag ${{ needs.build.outputs.version }}
@@ -122,7 +122,7 @@ jobs:
       - name: Create markdown content for release
         run: |
           # Get the correct file naming pattern from the artifacts
-          echo "Generating release notes with correct file links..."
+          echo \"Generating release notes with correct file links...\"
           
           # Debug: List all files to see their exact names
           find build/ -type f | sort
@@ -131,7 +131,7 @@ jobs:
           cat > RELEASE.md << EOF
           # Actual Intelligence Book
 
-          Built on $(date +"%B %d, %Y") by Khaos Studios
+          Built on $(date +\"%B %d, %Y\") by Khaos Studios
 
           ## 📚 Download Options
 
@@ -180,28 +180,28 @@ jobs:
           mkdir -p release_assets
           
           # Copy and rename English files
-          cp build/en/actual-intelligence.pdf release_assets/actual-intelligence-en.pdf
-          cp build/en/actual-intelligence.epub release_assets/actual-intelligence-en.epub
-          cp build/en/actual-intelligence.mobi release_assets/actual-intelligence-en.mobi
-          cp build/en/actual-intelligence.html release_assets/actual-intelligence-en.html
-          cp build/en/actual-intelligence.docx release_assets/actual-intelligence-en.docx
+          cp build/en/actual-intelligence.pdf release_assets/actual-intelligence-en.pdf || echo "English PDF not found"
+          cp build/en/actual-intelligence.epub release_assets/actual-intelligence-en.epub || echo "English EPUB not found"
+          cp build/en/actual-intelligence.mobi release_assets/actual-intelligence-en.mobi || echo "English MOBI not found"
+          cp build/en/actual-intelligence.html release_assets/actual-intelligence-en.html || echo "English HTML not found"
+          cp build/en/actual-intelligence.docx release_assets/actual-intelligence-en.docx || echo "English DOCX not found"
           
           # Copy and rename Spanish files
-          cp build/es/actual-intelligence.pdf release_assets/actual-intelligence-es.pdf
-          cp build/es/actual-intelligence.epub release_assets/actual-intelligence-es.epub
-          cp build/es/actual-intelligence.mobi release_assets/actual-intelligence-es.mobi
-          cp build/es/actual-intelligence.html release_assets/actual-intelligence-es.html
-          cp build/es/actual-intelligence.docx release_assets/actual-intelligence-es.docx
+          cp build/es/actual-intelligence.pdf release_assets/actual-intelligence-es.pdf || echo "Spanish PDF not found"
+          cp build/es/actual-intelligence.epub release_assets/actual-intelligence-es.epub || echo "Spanish EPUB not found"
+          cp build/es/actual-intelligence.mobi release_assets/actual-intelligence-es.mobi || echo "Spanish MOBI not found"
+          cp build/es/actual-intelligence.html release_assets/actual-intelligence-es.html || echo "Spanish HTML not found"
+          cp build/es/actual-intelligence.docx release_assets/actual-intelligence-es.docx || echo "Spanish DOCX not found"
           
-          # Copy and rename Japanese files
-          cp build/ja/actual-intelligence.pdf release_assets/actual-intelligence-ja.pdf
-          cp build/ja/actual-intelligence.epub release_assets/actual-intelligence-ja.epub
-          cp build/ja/actual-intelligence.mobi release_assets/actual-intelligence-ja.mobi
-          cp build/ja/actual-intelligence.html release_assets/actual-intelligence-ja.html
-          cp build/ja/actual-intelligence.docx release_assets/actual-intelligence-ja.docx
+          # Copy and rename Japanese files if they exist
+          cp build/ja/actual-intelligence.pdf release_assets/actual-intelligence-ja.pdf || echo "Japanese PDF not found"
+          cp build/ja/actual-intelligence.epub release_assets/actual-intelligence-ja.epub || echo "Japanese EPUB not found"
+          cp build/ja/actual-intelligence.mobi release_assets/actual-intelligence-ja.mobi || echo "Japanese MOBI not found"
+          cp build/ja/actual-intelligence.html release_assets/actual-intelligence-ja.html || echo "Japanese HTML not found"
+          cp build/ja/actual-intelligence.docx release_assets/actual-intelligence-ja.docx || echo "Japanese DOCX not found"
           
           # List prepared assets
-          echo "Prepared release assets:"
+          echo \"Prepared release assets:\"
           ls -la release_assets/
 
       - name: Create Release
@@ -243,10 +243,10 @@ jobs:
           mkdir -p site/es
           mkdir -p site/ja
           
-          # Copy HTML files to the correct locations
-          cp build/en/actual-intelligence.html site/index.html
-          cp build/es/actual-intelligence.html site/es/index.html
-          cp build/ja/actual-intelligence.html site/ja/index.html
+          # Copy HTML files to the correct locations if they exist
+          cp build/en/actual-intelligence.html site/index.html || echo "English HTML not found for site deployment"
+          cp build/es/actual-intelligence.html site/es/index.html || echo "Spanish HTML not found for site deployment"
+          cp build/ja/actual-intelligence.html site/ja/index.html || echo "Japanese HTML not found for site deployment"
           
           # Copy any image directories needed for HTML files
           cp -r build/en/images site/ || true
@@ -260,7 +260,7 @@ jobs:
           touch site/.nojekyll
           
           # List out what we're deploying
-          echo "Files to be deployed:"
+          echo \"Files to be deployed:\"
           find site -type f | sort
       
       - name: Deploy to GitHub Pages
