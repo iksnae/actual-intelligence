@@ -36,6 +36,7 @@ jobs:
       
       - name: Generate version
         id: version
+        shell: bash
         run: |
           # If this is a tag, use the tag name
           if [[ $GITHUB_REF == refs/tags/* ]]; then
@@ -44,40 +45,42 @@ jobs:
             # Otherwise, use the date and time for versioning
             DATE_VERSION=$(date +'%Y.%m.%d')
             TIME_VERSION=$(date +'%H%M')
-            VERSION=\"v${DATE_VERSION}-${TIME_VERSION}\"
+            VERSION="v${DATE_VERSION}-${TIME_VERSION}"
           fi
-          echo \"VERSION=$VERSION\" >> $GITHUB_ENV
-          echo \"version=$VERSION\" >> $GITHUB_OUTPUT
-          echo \"Generated version: $VERSION\"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Generated version: $VERSION"
       
       - name: Setup book-tools
+        shell: bash
         run: |
-          echo \"Setting up book-tools CLI...\"
+          echo "Setting up book-tools CLI..."
           
           # Run our custom installation script
           bash .github/custom-install.sh
           
           # Add to PATH
-          export PATH=\"$HOME/.local/bin:$PATH\"
+          export PATH="$HOME/.local/bin:$PATH"
           
           # Verify installation
-          book-tools --version || echo \"Version command not available, but installation should be complete\"
-          which book-tools
-          echo \"✅ book-tools CLI installed successfully\"
+          book-tools --version || echo "Version command not available, but installation should be complete"
+          which book-tools || true
+          echo "✅ book-tools CLI installed successfully"
 
       - name: Build book using CLI
+        shell: bash
         run: |
-          echo \"Building book with book-tools CLI...\"
+          echo "Building book with book-tools CLI..."
           
           # Add to PATH (again, for this step)
-          export PATH=\"$HOME/.local/bin:$PATH\"
+          export PATH="$HOME/.local/bin:$PATH"
           
           # Build book for all languages with all formats using the CLI
           book-tools build --all-languages --verbose
           
           # List the generated files
-          echo \"Generated files:\"
-          find build/ -type f \( -name \"*.pdf\" -o -name \"*.epub\" -o -name \"*.mobi\" -o -name \"*.html\" -o -name \"*.docx\" \) -exec ls -la {} \;
+          echo "Generated files:"
+          find build/ -type f \( -name "*.pdf" -o -name "*.epub" -o -name "*.mobi" -o -name "*.html" -o -name "*.docx" \) -exec ls -la {} \;
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -107,22 +110,24 @@ jobs:
       
       - name: Create git tag if needed
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+        shell: bash
         run: |
           # Only create a tag if we're running off main, not from an existing tag
-          echo \"Creating git tag ${{ needs.build.outputs.version }}\"
+          echo "Creating git tag ${{ needs.build.outputs.version }}"
           
           # Configure git
-          git config --global user.name \"GitHub Actions\"
-          git config --global user.email \"actions@github.com\"
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
           
           # Create and push the tag
           git tag ${{ needs.build.outputs.version }}
           git push origin ${{ needs.build.outputs.version }}
       
       - name: Create markdown content for release
+        shell: bash
         run: |
           # Get the correct file naming pattern from the artifacts
-          echo \"Generating release notes with correct file links...\"
+          echo "Generating release notes with correct file links..."
           
           # Debug: List all files to see their exact names
           find build/ -type f | sort
@@ -131,7 +136,7 @@ jobs:
           cat > RELEASE.md << EOF
           # Actual Intelligence Book
 
-          Built on $(date +\"%B %d, %Y\") by Khaos Studios
+          Built on $(date +"%B %d, %Y") by Khaos Studios
 
           ## 📚 Download Options
 
@@ -175,6 +180,7 @@ jobs:
           EOF
       
       - name: Prepare release assets
+        shell: bash
         run: |
           # Create temporary directory for renamed files
           mkdir -p release_assets
@@ -201,7 +207,7 @@ jobs:
           cp build/ja/actual-intelligence.docx release_assets/actual-intelligence-ja.docx || echo "Japanese DOCX not found"
           
           # List prepared assets
-          echo \"Prepared release assets:\"
+          echo "Prepared release assets:"
           ls -la release_assets/
 
       - name: Create Release
@@ -237,6 +243,7 @@ jobs:
           path: build
       
       - name: Prepare deployment files
+        shell: bash
         run: |
           # Create directory structure for pages
           mkdir -p site
@@ -260,7 +267,7 @@ jobs:
           touch site/.nojekyll
           
           # List out what we're deploying
-          echo \"Files to be deployed:\"
+          echo "Files to be deployed:"
           find site -type f | sort
       
       - name: Deploy to GitHub Pages
